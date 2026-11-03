@@ -29,6 +29,7 @@ Este roadmap reemplaza el plan inicial de nueve fases. Distingue el trabajo hist
 Antes de ejecutar pruebas se necesita confirmar qué componentes del código actual ya existen. El repositorio publicado no contiene el código fuente, por lo que la inspección debe hacerse en el workspace local. Solo después de esa inspección y autorización se implementará lo que falte:
 
 - Adaptador de exportación/recepción JSON y JSONL.
+- Workspace de intercambio físicamente separado (por ejemplo, `C:\\NolvusAIT_Exchange\\job_<job_id>\\`), abierto como único workspace de Antigravity; no abrir la raíz del proyecto.
 - Contrato de lote versionado con IDs estables, hashes y contexto.
 - Gatekeeper local independiente, con DB de prueba y permisos mínimos.
 - Validadores para conteo, conjunto de IDs, duplicados, placeholders, etiquetas, claves, glosario y ES-419.
@@ -42,7 +43,7 @@ No dar al agente acceso de escritura a DB principal, glosario, TM, STOCK GAME, M
 Solo cuando 10.1 supere revisión:
 1. Confirmar modelos visibles en el selector en la fecha de la prueba.
 2. Comprobar que **AI Credit Overages = Never**; si no puede confirmarse, no ejecutar solicitudes de modelos.
-3. Verificar permisos reales de la versión Windows instalada y limitar la escritura del agente a staging.
+3. Abrir solo el workspace de intercambio aislado y verificar los permisos reales de la versión Windows instalada; limitar la escritura del agente al directorio de salida de esa carpeta.
 4. Procesar 25 cadenas reales en una DB aislada.
 5. Interrumpir una escritura de prueba y comprobar que solo se recuperan líneas completas válidas; la línea incompleta se pone en cuarentena.
 
