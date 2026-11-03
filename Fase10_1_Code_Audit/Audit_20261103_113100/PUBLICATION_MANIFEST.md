@@ -1,5 +1,7 @@
 # MANIFIESTO DE PUBLICACIÓN Y TRAZABILIDAD — AUDITORÍA FASE 10.1-A
 
+> **Nota de reconciliación posterior (2026-11-03):** los tamaños y hashes SHA-256 de la tabla de la Sección 2 documentan los cinco artefactos exactamente como fueron generados en la ejecución original `AUDIT-10.1A-20261103-113100`. Las correcciones de contadores de módulos, componentes Antigravity y pruebas se registran en `AUDIT_10_1A_RECONCILIATION.md` y en el PR de reconciliación. Por tanto, los hashes de esta tabla son evidencia de la versión original, no hashes de los contenidos corregidos actuales. Los originales permanecen recuperables en el historial Git.
+
 ## 1. Metadatos de Ejecución y Publicación
 
 | Campo | Valor verificado |
