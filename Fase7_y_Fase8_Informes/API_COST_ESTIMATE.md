@@ -1,3 +1,7 @@
+> **ESTIMACIÓN DE COSTES V1 — OBSOLETA Y CONSERVADA:** Esta es la primera estimación económica de la Fase 8. Fue corregida y sustituida históricamente por [API_COST_ESTIMATE_V2.md](./API_COST_ESTIMATE_V2.md), que también debe tratarse como estimación histórica y no como tarifa actual. No usar sus cifras, catálogo de modelos ni recomendaciones para decidir gasto presente.
+
+---
+
 # ESTIMACIÓN ECONÓMICA Y COMPARATIVA DE PROVEEDORES IA — FASE 8 (`ES-419`)
 **Proyecto**: NOLVUS AI TRANSLATOR — Nolvus Awakening 6.0.21  
 **Política Aplicada**: Localización 100 % propia en español latinoamericano neutro (`es-419`) desde el inglés original, conservando separada la localización oficial de Bethesda y excluyendo el 100 % de las traducciones comunitarias.  
