@@ -49,7 +49,7 @@ Se recomienda un **intercambio supervisado JSON + JSONL desde un workspace Antig
 1. El núcleo crea el manifiesto y el JSONL de entrada, con IDs y hash de contenido, en una carpeta de intercambio independiente, por ejemplo `C:\\NolvusAIT_Exchange\\job_<job_id>\\`.
 2. Se abre únicamente esa carpeta como workspace de Antigravity. No se abre la raíz del traductor, que contiene código, DB, glosario y TM. El paquete de intercambio no contiene esos recursos ni archivos de Nolvus.
 3. Antigravity lee los archivos de entrada y devuelve un único archivo JSONL completo por lote en staging. No se depende de `Append=True`, de escritura incremental ni de una API local no documentada.
-3. El Gatekeeper valida sintaxis, esquema, cantidad y conjunto exacto de IDs, hashes, placeholders, etiquetas, claves no traducibles, glosario y reglas ES-419.
+4. El Gatekeeper valida sintaxis, esquema, cantidad y conjunto exacto de IDs, hashes, placeholders, etiquetas, claves no traducibles, glosario y reglas ES-419.
 5. Las líneas completas y válidas pueden recuperarse individualmente; la última línea incompleta, líneas malformadas, IDs duplicados, ausentes o inesperados se ponen en cuarentena y se reintentan de forma aislada.
 6. La salida validada queda como candidata. Durante smoke test y benchmark se usa exclusivamente una base de datos de prueba. La base de producción no recibe resultados hasta una autorización específica y una transacción controlada.
 
