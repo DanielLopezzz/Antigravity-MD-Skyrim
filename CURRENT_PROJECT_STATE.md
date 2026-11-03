@@ -56,15 +56,16 @@ Se recomienda un **intercambio transaccional por archivos JSON + JSONL con stagi
 
 ## 4. Orden de validación
 
-La validación se ejecuta por puertas; no se salta a traducción global por superar un benchmark pequeño.
+La validación se ejecuta por puertas; no se salta a traducción global por superar un benchmark pequeño. El adaptador Antigravity y el Gatekeeper todavía requieren inspección del código e implementación mínima en entorno aislado, si no existen ya.
 
 | Etapa | Alcance | Condición de salida |
 |---|---|---|
-| Preflight | Confirmar modelos, permisos, carpeta de workspace, rutas de prueba y ajuste de créditos | Sin coste adicional automático y sin acceso de escritura a originales/DB de producción |
-| Smoke test | 25 cadenas reales con el protocolo de archivos y base aislada | Contrato, archivos, IDs, validación y recuperación comprobados |
+| Implementación aislada | Completar o adaptar el exportador JSON/JSONL, Gatekeeper y DB de prueba | Contrato y controles probados sin escribir en producción |
+| Preflight | Confirmar modelos, permisos Windows, carpeta de workspace y AI Credit Overages = Never | Sin gasto automático y sin acceso a originales/DB productiva |
+| Smoke test | 25 cadenas reales con el protocolo de archivos y base aislada | IDs, estructura, QA y recuperación demostrados |
 | Benchmark | 300 cadenas × 3 modelos, entradas idénticas y sesiones aisladas | Comparación ciega de calidad y métricas operativas |
 | Piloto | Un mod completo representativo (~1.100–1.500 cadenas) | Coherencia de términos y QA a escala de mod |
-| Continuidad y recuperación | 12–15 lotes consecutivos y fallos controlados | Sin pérdida silenciosa; recuperación reproducible |
+| Continuidad y recuperación | 12–15 lotes consecutivos y fallos controlados | Sin pérdida silenciosa; recuperación medida y reproducible |
 | Decisión de escala | Evaluación de cuotas, ritmo sostenible, errores y carga humana | Decisión documentada: Antigravity, híbrido o API |
 
 El benchmark de 300 cadenas no demuestra por sí solo que Antigravity pueda procesar ~240.684 cadenas.
