@@ -1,0 +1,737 @@
+{
+  "schema_version": "1.0.0",
+  "audit_phase": "10.1-A",
+  "audit_execution_id": "AUDIT-10.1A-20261103-113100",
+  "audit_mode": "STATIC_READ_ONLY",
+  "allowed_classifications": [
+    "IMPLEMENTADO",
+    "IMPLEMENTADO CON PRUEBAS",
+    "PARCIAL",
+    "STUB/MOCK",
+    "AUSENTE",
+    "NO VERIFICABLE"
+  ],
+  "summary_counts": {
+    "source_modules_total": 36,
+    "source_modules_by_classification": {
+      "IMPLEMENTADO CON PRUEBAS": 29,
+      "IMPLEMENTADO": 4,
+      "PARCIAL": 2,
+      "STUB/MOCK": 1,
+      "AUSENTE": 0,
+      "NO VERIFICABLE": 0
+    },
+    "antigravity_23_items_by_classification": {
+      "IMPLEMENTADO CON PRUEBAS": 6,
+      "IMPLEMENTADO": 0,
+      "PARCIAL": 11,
+      "STUB/MOCK": 0,
+      "AUSENTE": 6,
+      "NO VERIFICABLE": 0
+    }
+  },
+  "modules": [
+    {
+      "module_path": "src/nolvus_translator/__init__.py",
+      "subsystem": "entrypoint",
+      "classes": [],
+      "functions": [],
+      "responsibilities": "Declares package metadata (__version__ = '0.6.0', __app_name__).",
+      "internal_dependencies": [],
+      "classification": "IMPLEMENTADO CON PRUEBAS",
+      "evidence_notes": "Imported across test suite and runtime."
+    },
+    {
+      "module_path": "src/nolvus_translator/__main__.py",
+      "subsystem": "entrypoint",
+      "classes": [],
+      "functions": ["main"],
+      "responsibilities": "CLI entrypoint parsing only --workspace and launching the Tkinter desktop GUI.",
+      "internal_dependencies": ["nolvus_translator.ui.app.launch_desktop_app"],
+      "classification": "PARCIAL",
+      "evidence_notes": "Launches GUI only; lacks headless CLI subcommands for Antigravity batch export, Gatekeeper validation, retry generation, or reporting."
+    },
+    {
+      "module_path": "src/nolvus_translator/core/config.py",
+      "subsystem": "core",
+      "classes": ["AppConfig", "ConfigManager"],
+      "functions": [],
+      "responsibilities": "Pydantic configuration model, workspace directory resolution, JSON persistence, and PHASE_1_PAID_API_LOCK enforcement.",
+      "internal_dependencies": ["nolvus_translator.core.exceptions.PaidApiBlockedError"],
+      "classification": "IMPLEMENTADO CON PRUEBAS",
+      "evidence_notes": "Enforces active_provider == 'mock' while PHASE_1_PAID_API_LOCK is True. Tested in test_end_to_end.py."
+    },
+    {
+      "module_path": "src/nolvus_translator/core/database.py",
+      "subsystem": "core",
+      "classes": ["DatabaseManager"],
+      "functions": [],
+      "responsibilities": "SQLite WAL persistence engine (schema v1.1.0) managing 10 tables: meta_info, scan_snapshots, scanned_files, string_entries, glossary_terms, translation_memory, tm_versions, translation_jobs, translation_batches, export_history.",
+      "internal_dependencies": ["nolvus_translator.core.models.ExtractedStringRecord"],
+      "classification": "IMPLEMENTADO CON PRUEBAS",
+      "evidence_notes": "Supports transactions, batch upserts, paginated queries, and snapshot summaries. Tested in all 3 test files."
+    },
+    {
+      "module_path": "src/nolvus_translator/core/exceptions.py",
+      "subsystem": "core",
+      "classes": [
+        "NolvusTranslatorError",
+        "ReadOnlyViolationError",
+        "PaidApiBlockedError",
+        "CommunityTranslationBlockError",
+        "GlossaryConflictError",
+        "PlaceholderIntegrityError",
+        "BinaryFormatError",
+        "PexIdentifierProtectionError"
+      ],
+      "functions": ["assert_safe_write_path"],
+      "responsibilities": "Domain exception hierarchy and path-traversal/read-only guard preventing writes inside STOCK GAME, Nolvus, or MO2 directories.",
+      "internal_dependencies": [],
+      "classification": "IMPLEMENTADO CON PRUEBAS",
+      "evidence_notes": "Tested in test_end_to_end.py, test_formats.py, and test_protector_glossary_tm.py."
+    },
+    {
+      "module_path": "src/nolvus_translator/core/logging_manager.py",
+      "subsystem": "core",
+      "classes": ["StructuredJsonFormatter", "LoggingManager"],
+      "functions": [],
+      "responsibilities": "Dual rotating text log (nolvus_translator.log) and structured JSONL audit log (audit_events.jsonl).",
+      "internal_dependencies": [],
+      "classification": "IMPLEMENTADO CON PRUEBAS",
+      "evidence_notes": "Used by ProjectService during test_end_to_end.py execution."
+    },
+    {
+      "module_path": "src/nolvus_translator/core/lz4_codec.py",
+      "subsystem": "core",
+      "classes": ["LZ4CodecError"],
+      "functions": ["decompress_lz4_block", "compress_lz4_block", "decompress_lz4_frame", "compress_lz4_frame", "decompress_bsa_lz4"],
+      "responsibilities": "Pure-Python LZ4 block and frame compressor/decompressor for Skyrim SE BSA v105 archives.",
+      "internal_dependencies": [],
+      "classification": "IMPLEMENTADO CON PRUEBAS",
+      "evidence_notes": "Tested via BsaArchiveReader in test_formats.py and test_end_to_end.py."
+    },
+    {
+      "module_path": "src/nolvus_translator/core/models.py",
+      "subsystem": "core",
+      "classes": [
+        "FileFormat",
+        "StringClassification",
+        "ReviewStatus",
+        "ContentDomain",
+        "TranslationRule",
+        "GlossaryCategory",
+        "RuntimeEnvironmentReport",
+        "ModEntry",
+        "VirtualFileEntry",
+        "ExtractedStringRecord",
+        "ProtectedToken",
+        "ProtectionEnvelope",
+        "QualityValidationResult",
+        "GlossaryTerm",
+        "TranslationBatchItem",
+        "TranslationBatchResult"
+      ],
+      "functions": [],
+      "responsibilities": "Central enums and dataclasses shared across all subsystems.",
+      "internal_dependencies": [],
+      "classification": "IMPLEMENTADO CON PRUEBAS",
+      "evidence_notes": "Exercised across all unit and integration tests."
+    },
+    {
+      "module_path": "src/nolvus_translator/core/pe_inspector.py",
+      "subsystem": "core",
+      "classes": [],
+      "functions": ["compute_sha256", "extract_pe_file_version", "build_minimal_pe_with_version"],
+      "responsibilities": "Win32 PE VS_FIXEDFILEINFO binary parser to verify SkyrimSE.exe version (1.5.97.0 vs 1.6.x) and SHA-256 hash.",
+      "internal_dependencies": [],
+      "classification": "IMPLEMENTADO CON PRUEBAS",
+      "evidence_notes": "Tested in test_end_to_end.py."
+    },
+    {
+      "module_path": "src/nolvus_translator/classification/classifier.py",
+      "subsystem": "classification",
+      "classes": ["ClassificationDecision", "LinguisticTechnicalClassifier"],
+      "functions": [],
+      "responsibilities": "Deterministic linguistic/technical classifier distinguishing TRANSLATABLE, ALREADY_SPANISH, PROPER_NOUN_PROTECTED, PURE_VARIABLE, IDENTIFIER, TECHNICAL_TEXT, NUMERIC_OR_SYMBOL, and CORRUPT_ENCODING.",
+      "internal_dependencies": ["nolvus_translator.core.models", "nolvus_translator.quality.protector.VariableProtector"],
+      "classification": "IMPLEMENTADO CON PRUEBAS",
+      "evidence_notes": "Tested in test_end_to_end.py and test_formats.py."
+    },
+    {
+      "module_path": "src/nolvus_translator/formats/aux_parsers.py",
+      "subsystem": "formats",
+      "classes": [],
+      "functions": ["parse_ini_localization_bytes", "parse_xml_localization_bytes", "parse_json_localization_bytes"],
+      "responsibilities": "Read-only parsers for localization .ini, SkyUI/HUD .xml, and narrative/structured .json files.",
+      "internal_dependencies": ["nolvus_translator.classification.classifier.LinguisticTechnicalClassifier", "nolvus_translator.core.models"],
+      "classification": "IMPLEMENTADO CON PRUEBAS",
+      "evidence_notes": "parse_ini_localization_bytes and parse_xml_localization_bytes tested in test_end_to_end.py; parse_json_localization_bytes is implemented in aux_parsers.py but not wired into ProjectService.scan_and_extract."
+    },
+    {
+      "module_path": "src/nolvus_translator/formats/bsa_archive.py",
+      "subsystem": "formats",
+      "classes": ["BsaArchivedFileInfo", "BsaArchiveHeader", "BsaArchiveReader"],
+      "functions": ["build_synthetic_bsa_v105"],
+      "responsibilities": "Read-only parser and in-memory extractor for Bethesda BSA v103/v104/v105 archives with zlib and LZ4 decompression.",
+      "internal_dependencies": ["nolvus_translator.core.exceptions.BinaryFormatError", "nolvus_translator.core.lz4_codec.decompress_bsa_lz4"],
+      "classification": "IMPLEMENTADO CON PRUEBAS",
+      "evidence_notes": "Tested in test_formats.py and test_end_to_end.py."
+    },
+    {
+      "module_path": "src/nolvus_translator/formats/esp_parser.py",
+      "subsystem": "formats",
+      "classes": ["PluginHeaderInfo", "EspPluginParser"],
+      "functions": ["build_synthetic_esp_bytes"],
+      "responsibilities": "Read-only binary parser for Skyrim .esp/.esm/.esl plugins supporting GRUP recursion, zlib record decompression, localized uint32 StringID lookup, and inline text extraction.",
+      "internal_dependencies": ["nolvus_translator.classification.classifier.LinguisticTechnicalClassifier", "nolvus_translator.core.exceptions.BinaryFormatError", "nolvus_translator.core.models"],
+      "classification": "IMPLEMENTADO CON PRUEBAS",
+      "evidence_notes": "Tested in test_formats.py and test_end_to_end.py."
+    },
+    {
+      "module_path": "src/nolvus_translator/formats/mcm_parser.py",
+      "subsystem": "formats",
+      "classes": [],
+      "functions": ["parse_mcm_translation_txt", "rebuild_mcm_translation_txt", "parse_mcm_json"],
+      "responsibilities": "Parser and UTF-16LE rebuilder for SkyUI MCM Interface/Translations/*.txt files and parser for MCM Helper config.json files.",
+      "internal_dependencies": ["nolvus_translator.classification.classifier.LinguisticTechnicalClassifier", "nolvus_translator.core.models"],
+      "classification": "IMPLEMENTADO CON PRUEBAS",
+      "evidence_notes": "Tested in test_formats.py and test_end_to_end.py."
+    },
+    {
+      "module_path": "src/nolvus_translator/formats/pex_parser.py",
+      "subsystem": "formats",
+      "classes": ["PexInspectionReport", "PexParser"],
+      "functions": ["build_synthetic_pex_bytes"],
+      "responsibilities": "Binary parser, AST/opcode usage analyzer, and safe binary rebuilder for compiled Papyrus .pex v3.2 scripts with strict identifier table protection.",
+      "internal_dependencies": [
+        "nolvus_translator.classification.classifier.LinguisticTechnicalClassifier",
+        "nolvus_translator.core.exceptions.BinaryFormatError",
+        "nolvus_translator.core.exceptions.PexIdentifierProtectionError",
+        "nolvus_translator.core.models"
+      ],
+      "classification": "IMPLEMENTADO CON PRUEBAS",
+      "evidence_notes": "Tested in test_formats.py and test_end_to_end.py."
+    },
+    {
+      "module_path": "src/nolvus_translator/formats/strings_table.py",
+      "subsystem": "formats",
+      "classes": ["StringsTableEntry", "StringsTableParser"],
+      "functions": [],
+      "responsibilities": "Binary parser and rebuilder for Bethesda .STRINGS, .DLSTRINGS, and .ILSTRINGS localization tables.",
+      "internal_dependencies": ["nolvus_translator.core.exceptions.BinaryFormatError"],
+      "classification": "IMPLEMENTADO CON PRUEBAS",
+      "evidence_notes": "Tested in test_formats.py and test_end_to_end.py."
+    },
+    {
+      "module_path": "src/nolvus_translator/lore/context_engine.py",
+      "subsystem": "lore",
+      "classes": ["NarrativeContextPacket", "ContextEngine"],
+      "functions": [],
+      "responsibilities": "Groups extracted strings into contextual batches by context_group_id and attaches matching Master Glossary rules and ES-419 style guidelines.",
+      "internal_dependencies": ["nolvus_translator.core.models.GlossaryTerm", "nolvus_translator.lore.glossary.GlossaryManager", "nolvus_translator.lore.seed_data.ES419_STYLE_GUIDELINES"],
+      "classification": "IMPLEMENTADO CON PRUEBAS",
+      "evidence_notes": "Tested via TranslationPipeline in test_end_to_end.py."
+    },
+    {
+      "module_path": "src/nolvus_translator/lore/glossary.py",
+      "subsystem": "lore",
+      "classes": ["GlossaryManager"],
+      "functions": [],
+      "responsibilities": "Manages the persistent Master Lore Glossary in SQLite with initial seeding, conflict protection, word-boundary term matching, and JSON/CSV import-export.",
+      "internal_dependencies": ["nolvus_translator.core.database.DatabaseManager", "nolvus_translator.core.exceptions.GlossaryConflictError", "nolvus_translator.core.models", "nolvus_translator.lore.seed_data.INITIAL_MASTER_GLOSSARY"],
+      "classification": "IMPLEMENTADO CON PRUEBAS",
+      "evidence_notes": "Tested in test_protector_glossary_tm.py and test_end_to_end.py."
+    },
+    {
+      "module_path": "src/nolvus_translator/lore/seed_data.py",
+      "subsystem": "lore",
+      "classes": [],
+      "functions": [],
+      "responsibilities": "Defines 47 canonical Elder Scrolls / Skyrim AE / Nolvus glossary terms and the ES419_STYLE_GUIDELINES dict.",
+      "internal_dependencies": ["nolvus_translator.core.models.GlossaryCategory", "nolvus_translator.core.models.TranslationRule"],
+      "classification": "IMPLEMENTADO CON PRUEBAS",
+      "evidence_notes": "Verified through GlossaryManager tests."
+    },
+    {
+      "module_path": "src/nolvus_translator/memory/tm_engine.py",
+      "subsystem": "memory",
+      "classes": ["TranslationMemoryMatch", "TranslationMemoryEngine"],
+      "functions": ["normalize_source_text", "compute_source_hash", "compute_context_signature"],
+      "responsibilities": "Persistent Translation Memory engine with exact SHA-256 lookup, contextual signature matching, fuzzy similarity search, version history, inconsistency detection, and strict blocking of community translations.",
+      "internal_dependencies": ["nolvus_translator.core.database.DatabaseManager", "nolvus_translator.core.exceptions.CommunityTranslationBlockError"],
+      "classification": "IMPLEMENTADO CON PRUEBAS",
+      "evidence_notes": "Tested in test_protector_glossary_tm.py and test_end_to_end.py."
+    },
+    {
+      "module_path": "src/nolvus_translator/mo2/detector.py",
+      "subsystem": "mo2",
+      "classes": ["NolvusInstallationDetector"],
+      "functions": [],
+      "responsibilities": "Read-only detector for Nolvus Awakening 6.0.21, STOCK GAME SkyrimSE.exe PE version, SKSE plugins, Address Library, Dynamic String Distributor, and MO2 profiles.",
+      "internal_dependencies": ["nolvus_translator.core.models.RuntimeEnvironmentReport", "nolvus_translator.core.pe_inspector"],
+      "classification": "IMPLEMENTADO CON PRUEBAS",
+      "evidence_notes": "Tested in test_end_to_end.py."
+    },
+    {
+      "module_path": "src/nolvus_translator/mo2/vfs.py",
+      "subsystem": "mo2",
+      "classes": ["VfsResolutionOutput", "Mo2VirtualFileSystemResolver"],
+      "functions": ["classify_file_format", "_fast_file_sha256"],
+      "responsibilities": "Read-only parser for MO2 modlist.txt, plugins.txt, and loadorder.txt, resolving virtual file system priorities across loose files and BSA archives.",
+      "internal_dependencies": ["nolvus_translator.core.models", "nolvus_translator.formats.bsa_archive.BsaArchiveReader"],
+      "classification": "IMPLEMENTADO CON PRUEBAS",
+      "evidence_notes": "Tested in test_end_to_end.py."
+    },
+    {
+      "module_path": "src/nolvus_translator/quality/protector.py",
+      "subsystem": "quality",
+      "classes": ["VariableProtector"],
+      "functions": [],
+      "responsibilities": "Deterministic masking (⟦PH_00⟧) and strict 1:1 restoration/verification of engine variables, HTML/Scaleform tags, MCM keys, and control escapes.",
+      "internal_dependencies": ["nolvus_translator.core.exceptions.PlaceholderIntegrityError", "nolvus_translator.core.models"],
+      "classification": "IMPLEMENTADO CON PRUEBAS",
+      "evidence_notes": "Tested in test_protector_glossary_tm.py and test_end_to_end.py."
+    },
+    {
+      "module_path": "src/nolvus_translator/quality/validator.py",
+      "subsystem": "quality",
+      "classes": ["TranslationQualityValidator"],
+      "functions": [],
+      "responsibilities": "Post-translation quality validator checking placeholder integrity, XML/HTML tag balance, Master Glossary compliance, ES-419 neutrality, residual English ratio, and UI length limits.",
+      "internal_dependencies": ["nolvus_translator.core.models", "nolvus_translator.lore.glossary.GlossaryManager", "nolvus_translator.quality.protector.VariableProtector"],
+      "classification": "IMPLEMENTADO CON PRUEBAS",
+      "evidence_notes": "Tested in test_protector_glossary_tm.py and test_end_to_end.py."
+    },
+    {
+      "module_path": "src/nolvus_translator/export/dsd_exporter.py",
+      "subsystem": "export",
+      "classes": ["DynamicStringDistributorExporter"],
+      "functions": [],
+      "responsibilities": "Generates non-destructive Dynamic String Distributor (DSD) JSON replacement files under SKSE/Plugins/DynamicStringDistributor/<Plugin.esp>/.",
+      "internal_dependencies": [],
+      "classification": "IMPLEMENTADO CON PRUEBAS",
+      "evidence_notes": "Tested via Mo2ModPackager in test_end_to_end.py."
+    },
+    {
+      "module_path": "src/nolvus_translator/export/mo2_packager.py",
+      "subsystem": "export",
+      "classes": ["PlannedExportFile", "ExportExecutionResult", "Mo2ModPackager"],
+      "functions": [],
+      "responsibilities": "Builds and executes non-destructive MO2 mod packages with meta.ini, manifest.json (SHA-256), automatic backups, and rollback.",
+      "internal_dependencies": [
+        "nolvus_translator.core.database.DatabaseManager",
+        "nolvus_translator.core.exceptions.assert_safe_write_path",
+        "nolvus_translator.export.dsd_exporter.DynamicStringDistributorExporter",
+        "nolvus_translator.formats.mcm_parser.rebuild_mcm_translation_txt",
+        "nolvus_translator.formats.pex_parser.PexParser",
+        "nolvus_translator.formats.strings_table.StringsTableParser"
+      ],
+      "classification": "IMPLEMENTADO CON PRUEBAS",
+      "evidence_notes": "Exports DSD JSON, .STRINGS, MCM .txt, and .pex; tested in test_end_to_end.py. Does not yet rebuild mcm_json, ini_loc, mcm_xml, or json_other."
+    },
+    {
+      "module_path": "src/nolvus_translator/reports/cost_estimator.py",
+      "subsystem": "reports",
+      "classes": ["VolumeAnalysisResult", "CostEstimator"],
+      "functions": ["estimate_tokens_from_chars"],
+      "responsibilities": "Local token and batch volume estimator with zero external API calls.",
+      "internal_dependencies": ["nolvus_translator.core.database.DatabaseManager", "nolvus_translator.core.models"],
+      "classification": "IMPLEMENTADO CON PRUEBAS",
+      "evidence_notes": "Tested in test_end_to_end.py."
+    },
+    {
+      "module_path": "src/nolvus_translator/reports/coverage.py",
+      "subsystem": "reports",
+      "classes": ["CoverageBreakdown", "SnapshotCoverageReport", "CoverageReportGenerator"],
+      "functions": [],
+      "responsibilities": "Generates global, per-mod, per-format, and per-domain coverage reports and exports them to Markdown, JSON, and Excel (.xlsx).",
+      "internal_dependencies": ["nolvus_translator.core.database.DatabaseManager", "nolvus_translator.core.models"],
+      "classification": "IMPLEMENTADO CON PRUEBAS",
+      "evidence_notes": "Tested in test_end_to_end.py."
+    },
+    {
+      "module_path": "src/nolvus_translator/services/demo_fixture.py",
+      "subsystem": "services",
+      "classes": [],
+      "functions": ["create_demo_nolvus_sandbox"],
+      "responsibilities": "Generates a complete synthetic Nolvus Awakening 6.0.21 + STOCK GAME 1.5.97.0 + MO2 sandbox on disk for offline verification.",
+      "internal_dependencies": [
+        "nolvus_translator.core.pe_inspector.build_minimal_pe_with_version",
+        "nolvus_translator.formats.bsa_archive.build_synthetic_bsa_v105",
+        "nolvus_translator.formats.esp_parser.build_synthetic_esp_bytes",
+        "nolvus_translator.formats.pex_parser.build_synthetic_pex_bytes"
+      ],
+      "classification": "IMPLEMENTADO CON PRUEBAS",
+      "evidence_notes": "Used as the test fixture in test_end_to_end.py."
+    },
+    {
+      "module_path": "src/nolvus_translator/services/project_service.py",
+      "subsystem": "services",
+      "classes": ["ProjectService"],
+      "functions": [],
+      "responsibilities": "High-level application orchestrator coordinating runtime verification, VFS scanning, multi-format extraction, simulated translation, review updates, diffing, and MO2 export.",
+      "internal_dependencies": [
+        "nolvus_translator.classification.classifier.LinguisticTechnicalClassifier",
+        "nolvus_translator.core.config.ConfigManager",
+        "nolvus_translator.core.database.DatabaseManager",
+        "nolvus_translator.export.mo2_packager.Mo2ModPackager",
+        "nolvus_translator.lore.context_engine.ContextEngine",
+        "nolvus_translator.lore.glossary.GlossaryManager",
+        "nolvus_translator.memory.tm_engine.TranslationMemoryEngine",
+        "nolvus_translator.mo2.detector.NolvusInstallationDetector",
+        "nolvus_translator.mo2.vfs.Mo2VirtualFileSystemResolver",
+        "nolvus_translator.quality.protector.VariableProtector",
+        "nolvus_translator.quality.validator.TranslationQualityValidator",
+        "nolvus_translator.reports.cost_estimator.CostEstimator",
+        "nolvus_translator.reports.coverage.CoverageReportGenerator",
+        "nolvus_translator.translation.pipeline.TranslationPipeline",
+        "nolvus_translator.updates.diff_engine.UpdateDiffEngine"
+      ],
+      "classification": "PARCIAL",
+      "evidence_notes": "Core orchestration is implemented and tested in test_end_to_end.py, but scan_and_extract currently skips .pex inside .bsa when len(vfs_out.files) > 500 (lines 299-300) and omits FileFormat.JSON_OTHER extraction."
+    },
+    {
+      "module_path": "src/nolvus_translator/translation/future_stubs.py",
+      "subsystem": "translation",
+      "classes": [
+        "_BlockedPaidProviderBase",
+        "GeminiFutureProviderStub",
+        "OpenAIFutureProviderStub",
+        "DeepLFutureProviderStub",
+        "LocalLlmFutureProviderStub"
+      ],
+      "functions": ["get_provider_registry"],
+      "responsibilities": "Stub classes for future paid/local API providers that raise PaidApiBlockedError while PHASE_1_PAID_API_LOCK is active.",
+      "internal_dependencies": ["nolvus_translator.core.exceptions.PaidApiBlockedError", "nolvus_translator.translation.interfaces.BaseTranslationProvider"],
+      "classification": "STUB/MOCK",
+      "evidence_notes": "Intentional architectural stubs tested for PaidApiBlockedError enforcement in test_end_to_end.py."
+    },
+    {
+      "module_path": "src/nolvus_translator/translation/interfaces.py",
+      "subsystem": "translation",
+      "classes": ["BaseTranslationProvider"],
+      "functions": [],
+      "responsibilities": "Abstract base class defining the contract for interchangeable translation providers (provider_id, display_name, is_simulated, requires_paid_api, translate_batch).",
+      "internal_dependencies": ["nolvus_translator.core.models.TranslationBatchItem", "nolvus_translator.core.models.TranslationBatchResult"],
+      "classification": "IMPLEMENTADO CON PRUEBAS",
+      "evidence_notes": "Implemented by MockTranslationProvider and future stubs; tested in test_end_to_end.py."
+    },
+    {
+      "module_path": "src/nolvus_translator/translation/mock_provider.py",
+      "subsystem": "translation",
+      "classes": ["MockTranslationProvider"],
+      "functions": [],
+      "responsibilities": "Offline deterministic rule-based ES-419 simulator used to verify the translation pipeline without external APIs.",
+      "internal_dependencies": ["nolvus_translator.core.models", "nolvus_translator.translation.interfaces.BaseTranslationProvider"],
+      "classification": "IMPLEMENTADO CON PRUEBAS",
+      "evidence_notes": "Tested in test_end_to_end.py; used exclusively for simulation (is_simulated=True)."
+    },
+    {
+      "module_path": "src/nolvus_translator/translation/pipeline.py",
+      "subsystem": "translation",
+      "classes": ["PipelineExecutionSummary", "TranslationPipeline"],
+      "functions": [],
+      "responsibilities": "Batch translation pipeline handling TM lookup, proper-noun copying, variable protection, provider invocation, quality validation, and SQLite checkpointing.",
+      "internal_dependencies": [
+        "nolvus_translator.core.config.PHASE_1_PAID_API_LOCK",
+        "nolvus_translator.core.database.DatabaseManager",
+        "nolvus_translator.core.exceptions.PaidApiBlockedError",
+        "nolvus_translator.core.models",
+        "nolvus_translator.lore.context_engine.ContextEngine",
+        "nolvus_translator.lore.glossary.GlossaryManager",
+        "nolvus_translator.memory.tm_engine.TranslationMemoryEngine",
+        "nolvus_translator.quality.protector.VariableProtector",
+        "nolvus_translator.quality.validator.TranslationQualityValidator",
+        "nolvus_translator.translation.interfaces.BaseTranslationProvider"
+      ],
+      "classification": "IMPLEMENTADO CON PRUEBAS",
+      "evidence_notes": "Synchronous in-memory batch pipeline tested in test_end_to_end.py; lacks asynchronous file-based Antigravity batch export/collect and micro-batch retry generation."
+    },
+    {
+      "module_path": "src/nolvus_translator/ui/app.py",
+      "subsystem": "ui",
+      "classes": ["NolvusTranslatorApp"],
+      "functions": ["launch_desktop_app"],
+      "responsibilities": "9-tab Tkinter desktop GUI (Dashboard, Scan, Translations, Glossary, TM, Review, Updates, Export, Reports, Config) with background worker threads.",
+      "internal_dependencies": ["nolvus_translator.services.project_service.ProjectService", "nolvus_translator.ui.theme"],
+      "classification": "IMPLEMENTADO",
+      "evidence_notes": "Statically verified in full (1,403 lines); not covered by automated GUI tests."
+    },
+    {
+      "module_path": "src/nolvus_translator/ui/theme.py",
+      "subsystem": "ui",
+      "classes": [],
+      "functions": ["apply_nordic_slate_theme"],
+      "responsibilities": "Nordic Slate dark color palette and ttk style configuration.",
+      "internal_dependencies": [],
+      "classification": "IMPLEMENTADO",
+      "evidence_notes": "Statically verified in full (159 lines)."
+    },
+    {
+      "module_path": "src/nolvus_translator/updates/diff_engine.py",
+      "subsystem": "updates",
+      "classes": ["ModDiffEntry", "SnapshotDiffReport", "UpdateDiffEngine"],
+      "functions": [],
+      "responsibilities": "Compares two scan snapshots to detect added/removed/updated mods and automatically propagates valid translations while flagging modified strings.",
+      "internal_dependencies": ["nolvus_translator.core.database.DatabaseManager", "nolvus_translator.core.models.ReviewStatus"],
+      "classification": "IMPLEMENTADO CON PRUEBAS",
+      "evidence_notes": "Tested in test_end_to_end.py (test_incremental_update_diff_and_propagation)."
+    }
+  ],
+  "antigravity_integration_23_components": [
+    {
+      "item_number": 1,
+      "component_name": "Contrato de intercambio JSON/JSONL",
+      "classification": "PARCIAL",
+      "existing_code_locations": [
+        "src/nolvus_translator/core/models.py (TranslationBatchItem, TranslationBatchResult)",
+        "src/nolvus_translator/lore/context_engine.py (NarrativeContextPacket)"
+      ],
+      "verified_facts": "In-memory dataclasses exist for batch items and results, but there is no JSON/JSONL serializer/deserializer implementing BatchRequestEnvelope/BatchResponseEnvelope with schema_version, seq_id, and source_hash.",
+      "action_required": "Create exchange schema serializer/deserializer supporting 01_INPUT/batch_<id>_input.jsonl and 02_OUTPUT/batch_<id>_output.jsonl."
+    },
+    {
+      "item_number": 2,
+      "component_name": "Generador de manifiestos de lotes",
+      "classification": "PARCIAL",
+      "existing_code_locations": [
+        "src/nolvus_translator/lore/context_engine.py (ContextEngine.group_rows_into_batches)",
+        "src/nolvus_translator/export/mo2_packager.py (manifest.json builder)"
+      ],
+      "verified_facts": "ContextEngine builds contextual packets in memory and Mo2ModPackager writes export manifests, but no generator writes 01_INPUT/batch_<id>_meta.json for Antigravity exchange jobs.",
+      "action_required": "Implement batch_<id>_meta.json generator containing job_id, batch_id, target_model, input_sha256, item_count, glossary_rules, and style_profile."
+    },
+    {
+      "item_number": 3,
+      "component_name": "Exportador de lotes con identificadores estables",
+      "classification": "PARCIAL",
+      "existing_code_locations": [
+        "src/nolvus_translator/formats/esp_parser.py",
+        "src/nolvus_translator/formats/mcm_parser.py",
+        "src/nolvus_translator/formats/pex_parser.py",
+        "src/nolvus_translator/translation/pipeline.py"
+      ],
+      "verified_facts": "Format parsers generate deterministic string_uid values and TranslationPipeline persists batch records in SQLite translation_batches, but there is no exporter writing JSONL files to an external exchange workspace.",
+      "action_required": "Implement AntigravityBatchExporter writing 01_INPUT/batch_<id>_input.jsonl with sequential seq_id and deterministic string_uid."
+    },
+    {
+      "item_number": 4,
+      "component_name": "Hashes SHA-256 de entradas y salidas",
+      "classification": "PARCIAL",
+      "existing_code_locations": [
+        "src/nolvus_translator/memory/tm_engine.py (compute_source_hash)",
+        "src/nolvus_translator/core/pe_inspector.py (compute_sha256)",
+        "src/nolvus_translator/mo2/vfs.py (_fast_file_sha256)"
+      ],
+      "verified_facts": "SHA-256 helpers exist for source strings, PE files, VFS files, and MO2 exports, but SHA-256 hashing of batch input/output JSONL files and manifests is absent.",
+      "action_required": "Compute and verify SHA-256 hashes for batch_<id>_meta.json, batch_<id>_input.jsonl, and batch_<id>_output.jsonl."
+    },
+    {
+      "item_number": 5,
+      "component_name": "Adaptador de intercambio Antigravity",
+      "classification": "AUSENTE",
+      "existing_code_locations": [
+        "src/nolvus_translator/translation/interfaces.py",
+        "src/nolvus_translator/translation/future_stubs.py"
+      ],
+      "verified_facts": "No AntigravityFileExchangeProvider exists in src/nolvus_translator/translation/. Furthermore, ConfigManager.save and TranslationPipeline.__init__ block any provider other than 'mock' while PHASE_1_PAID_API_LOCK is True.",
+      "action_required": "Implement AntigravityExchangeAdapter (requires_paid_api=False, is_simulated=False) and update config/pipeline provider routing."
+    },
+    {
+      "item_number": 6,
+      "component_name": "Receptor de resultados JSONL",
+      "classification": "AUSENTE",
+      "existing_code_locations": [],
+      "verified_facts": "No parser or collector exists to read 02_OUTPUT/batch_<id>_output.jsonl or 03_STATUS/batch_<id>.done.",
+      "action_required": "Implement atomic JSONL result collector reading completed batch output files from the exchange workspace."
+    },
+    {
+      "item_number": 7,
+      "component_name": "Validación de esquema y estructura",
+      "classification": "PARCIAL",
+      "existing_code_locations": [
+        "src/nolvus_translator/core/config.py (Pydantic AppConfig)",
+        "src/nolvus_translator/quality/validator.py"
+      ],
+      "verified_facts": "Pydantic is available and used for AppConfig, but no schema validator exists for JSON/JSONL batch exchange envelopes.",
+      "action_required": "Define strict Pydantic models or JSON schema validators for each line of batch_<id>_output.jsonl."
+    },
+    {
+      "item_number": 8,
+      "component_name": "Comprobación exacta del conjunto de IDs",
+      "classification": "PARCIAL",
+      "existing_code_locations": [
+        "src/nolvus_translator/translation/pipeline.py (lines 286-301)"
+      ],
+      "verified_facts": "TranslationPipeline checks results_map.get(uid) for each expected item in a batch, but does not verify exact set equality (missing vs extra/invented IDs) at the batch envelope level and still marks the batch 'completed' when items are missing.",
+      "action_required": "Enforce strict set equality (expected_uids == received_uids) and monotonic seq_id verification in Gatekeeper."
+    },
+    {
+      "item_number": 9,
+      "component_name": "Detección de omisiones y duplicados",
+      "classification": "PARCIAL",
+      "existing_code_locations": [
+        "src/nolvus_translator/translation/pipeline.py",
+        "src/nolvus_translator/memory/tm_engine.py"
+      ],
+      "verified_facts": "Missing UIDs per batch are detected in pipeline.py and TM deduplicates previously translated strings, but duplicate seq_id/string_uid detection in provider output and pre-batch WorkUnit deduplication before batch creation are absent.",
+      "action_required": "Add duplicate seq_id/string_uid rejection in Gatekeeper and pre-batch WorkUnit deduplication by (source_hash, context_sig)."
+    },
+    {
+      "item_number": 10,
+      "component_name": "Validación de placeholders y variables protegidas",
+      "classification": "IMPLEMENTADO CON PRUEBAS",
+      "existing_code_locations": [
+        "src/nolvus_translator/quality/protector.py (VariableProtector)",
+        "tests/test_protector_glossary_tm.py"
+      ],
+      "verified_facts": "VariableProtector masks 10 pattern categories into ⟦PH_00⟧ tokens and verifies exact 1:1 presence, count, and absence of invented tokens or residual brackets.",
+      "action_required": "Reuse directly in Gatekeeper; persist token mapping in local SQLite/vault rather than exposing original tokens in external exchange files."
+    },
+    {
+      "item_number": 11,
+      "component_name": "Validación de etiquetas HTML/XML",
+      "classification": "IMPLEMENTADO CON PRUEBAS",
+      "existing_code_locations": [
+        "src/nolvus_translator/quality/protector.py",
+        "src/nolvus_translator/quality/validator.py",
+        "tests/test_protector_glossary_tm.py"
+      ],
+      "verified_facts": "VariableProtector masks <font>, <p>, <br>, <img>, <b>, <i>, <u>, [pagebreak] and verifies open/close tag balance upon restoration.",
+      "action_required": "Reuse directly in Gatekeeper."
+    },
+    {
+      "item_number": 12,
+      "component_name": "Protección de claves MCM y otros identificadores no traducibles",
+      "classification": "IMPLEMENTADO CON PRUEBAS",
+      "existing_code_locations": [
+        "src/nolvus_translator/formats/mcm_parser.py",
+        "src/nolvus_translator/formats/pex_parser.py",
+        "src/nolvus_translator/quality/protector.py",
+        "src/nolvus_translator/classification/classifier.py",
+        "tests/test_formats.py"
+      ],
+      "verified_facts": "MCM $Key identifiers are separated from values, $ tokens inside values are masked or classified as PURE_VARIABLE, and Papyrus .pex identifier indices are locked with PexIdentifierProtectionError.",
+      "action_required": "Reuse directly."
+    },
+    {
+      "item_number": 13,
+      "component_name": "Validación del Glosario Maestro",
+      "classification": "IMPLEMENTADO CON PRUEBAS",
+      "existing_code_locations": [
+        "src/nolvus_translator/lore/glossary.py",
+        "src/nolvus_translator/quality/validator.py",
+        "tests/test_protector_glossary_tm.py"
+      ],
+      "verified_facts": "GlossaryManager matches canonical terms by word boundary and TranslationQualityValidator verifies their approved translation or preserved original form in the output.",
+      "action_required": "Reuse in Gatekeeper; optionally refine morphological/plural matching rules."
+    },
+    {
+      "item_number": 14,
+      "component_name": "Validación de reglas ES-419",
+      "classification": "IMPLEMENTADO CON PRUEBAS",
+      "existing_code_locations": [
+        "src/nolvus_translator/quality/validator.py (_PENINSULAR_FORMS_RE)",
+        "src/nolvus_translator/lore/seed_data.py (ES419_STYLE_GUIDELINES)",
+        "src/nolvus_translator/memory/tm_engine.py (ALLOWED_ORIGIN_TYPES)",
+        "tests/test_protector_glossary_tm.py"
+      ],
+      "verified_facts": "Validator deterministically rejects peninsular pronouns/conjugations (vosotros, habéis, coged, etc.) and TM blocks third-party community translations.",
+      "action_required": "Reuse in Gatekeeper."
+    },
+    {
+      "item_number": 15,
+      "component_name": "Sistema de cuarentena",
+      "classification": "PARCIAL",
+      "existing_code_locations": [
+        "src/nolvus_translator/translation/pipeline.py (lines 286-346)"
+      ],
+      "verified_facts": "Failed strings are marked ReviewStatus.REJECTED with empty translated_text in string_entries, and dubious strings go to the Review tab, but there is no file/line quarantine directory or quarantine table isolating invalid external JSONL lines before DB ingestion.",
+      "action_required": "Add 03_STATUS/batch_<id>_quarantine.json and a local quarantine table/log for rejected JSONL items."
+    },
+    {
+      "item_number": 16,
+      "component_name": "Generación de micro-lotes de reintento",
+      "classification": "AUSENTE",
+      "existing_code_locations": [
+        "src/nolvus_translator/translation/pipeline.py (lines 250-285)"
+      ],
+      "verified_facts": "TranslationPipeline only retries the entire batch on provider exception and does not generate targeted retry micro-batches for individual quarantined or omitted strings.",
+      "action_required": "Implement retry micro-batch generator (batch_<id>_retry1_input.jsonl) exclusively for quarantined/missing UIDs."
+    },
+    {
+      "item_number": 17,
+      "component_name": "Idempotencia para impedir doble ingesta",
+      "classification": "PARCIAL",
+      "existing_code_locations": [
+        "src/nolvus_translator/core/database.py (UNIQUE constraints on string_entries and translation_batches)"
+      ],
+      "verified_facts": "SQLite tables have UNIQUE constraints on (snapshot_id, string_uid) and (job_id, batch_index), but there is no ingested artifact SHA-256 ledger to prevent re-importing the same output JSONL file.",
+      "action_required": "Record output_sha256 and ingestion timestamp in batch ledger to reject duplicate ingestion of already-committed batches."
+    },
+    {
+      "item_number": 18,
+      "component_name": "Base de datos aislada de pruebas",
+      "classification": "PARCIAL",
+      "existing_code_locations": [
+        "src/nolvus_translator/core/database.py (DatabaseManager)",
+        "src/nolvus_translator/services/project_service.py (ProjectService)",
+        "tests/test_end_to_end.py"
+      ],
+      "verified_facts": "DatabaseManager and ProjectService accept arbitrary isolated paths and tests run in tempfile.TemporaryDirectory(), but there is no dedicated benchmark/smoke-test DB initializer that clones a read-only sample from the production snapshot while locking the production DB.",
+      "action_required": "Add CLI/service helper to initialize an isolated benchmark SQLite DB from a read-only sample of Snapshot #1."
+    },
+    {
+      "item_number": 19,
+      "component_name": "Historial de resultados por lote y modelo",
+      "classification": "PARCIAL",
+      "existing_code_locations": [
+        "src/nolvus_translator/core/database.py (string_entries, translation_batches, tm_versions)"
+      ],
+      "verified_facts": "string_entries stores only the latest translation and provider_id (overwriting previous values on re-run), and translation_batches does not store model_id or per-model benchmark comparisons.",
+      "action_required": "Add model_id tracking and a benchmark/attempt results table to store side-by-side outputs from Gemini 4 Argon, Claude Sonnet 5.5, and Claude Opus 5.5."
+    },
+    {
+      "item_number": 20,
+      "component_name": "Gatekeeper CLI local",
+      "classification": "AUSENTE",
+      "existing_code_locations": [
+        "src/nolvus_translator/__main__.py"
+      ],
+      "verified_facts": "__main__.py only launches the Tkinter GUI; no headless Gatekeeper CLI exists yet.",
+      "action_required": "Create headless CLI module (cli.py / gatekeeper) executable outside the Antigravity workspace."
+    },
+    {
+      "item_number": 21,
+      "component_name": "Mecanismos de recuperación ante interrupciones",
+      "classification": "PARCIAL",
+      "existing_code_locations": [
+        "src/nolvus_translator/translation/pipeline.py (resume_job_id, stop_after_batches, cancel_event)",
+        "tests/test_end_to_end.py"
+      ],
+      "verified_facts": "Batch-level synchronous checkpointing and resumption in SQLite WAL is implemented and tested, but recovery of partially written external JSONL files in an asynchronous agent exchange is absent.",
+      "action_required": "Extend recovery logic to inspect external JSONL lines, salvage valid prefix items, or generate a delta micro-batch."
+    },
+    {
+      "item_number": 22,
+      "component_name": "Controles para impedir la escritura en la base productiva",
+      "classification": "PARCIAL",
+      "existing_code_locations": [
+        "src/nolvus_translator/core/exceptions.py (assert_safe_write_path)",
+        "src/nolvus_translator/core/config.py (PHASE_1_PAID_API_LOCK)"
+      ],
+      "verified_facts": "assert_safe_write_path blocks writes to STOCK GAME, Nolvus, and MO2 directories, and PHASE_1_PAID_API_LOCK blocks external APIs, but there is no explicit read-only guard preventing benchmark/smoke-test runs from mutating the production workspace_data/nolvus_translator.db.",
+      "action_required": "Add an explicit production-DB write lock (PRODUCTION_DB_READ_ONLY_LOCK) when running in benchmark/smoke-test or exchange validation mode."
+    },
+    {
+      "item_number": 23,
+      "component_name": "Mecanismos para separar el contenido del juego de instrucciones dirigidas al agente",
+      "classification": "AUSENTE",
+      "existing_code_locations": [
+        "src/nolvus_translator/lore/context_engine.py (NarrativeContextPacket.to_prompt_summary)"
+      ],
+      "verified_facts": "Strings extracted from mods are passed as plain strings without untrusted-content delimiters or prompt-injection sanitization, and ProtectionEnvelope in memory holds original tokens that must not be written to external manifests.",
+      "action_required": "Enclose source_masked in strict data-only JSONL fields, add explicit protocol rules in 00_PROTOCOL.md treating source_masked as untrusted literal data, and keep ProtectionEnvelope token maps strictly inside the local vault."
+    }
+  ]
+}

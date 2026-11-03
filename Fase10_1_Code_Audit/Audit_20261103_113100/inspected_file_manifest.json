@@ -1,0 +1,557 @@
+{
+  "manifest_schema_version": "1.0.0",
+  "audit_phase": "10.1-A",
+  "audit_execution_id": "AUDIT-10.1A-20261103-113100",
+  "audit_timestamp_utc": "2026-11-03T16:31:00Z",
+  "audit_mode": "STATIC_READ_ONLY",
+  "privacy_assertion": "Relative paths only; zero local absolute paths, zero OS usernames, zero secrets, zero corpus payloads.",
+  "summary": {
+    "source_repository_files_inspected": 57,
+    "source_repository_total_bytes": 401802,
+    "source_repository_total_lines": 8716,
+    "reference_documentation_files_inspected": 10,
+    "reference_documentation_total_bytes": 137623,
+    "reference_documentation_total_lines": 1321,
+    "uninspected_files_count": 0
+  },
+  "source_repository_files": [
+    {
+      "relative_path": "pyproject.toml",
+      "category": "project_metadata",
+      "size_bytes": 674,
+      "lines": 27,
+      "sha256": "d7e856317fffb163ccffbb445c0b7026bc29f0f308b8636cbf61877d54125922",
+      "inspection_status": "INSPECTED_COMPLETE_READ_ONLY"
+    },
+    {
+      "relative_path": ".gitignore",
+      "category": "project_metadata",
+      "size_bytes": 376,
+      "lines": 31,
+      "sha256": "305e6b466ed120e615f5cab1a990d32d5bb9658ab0f9fca7930f3615c49d24b4",
+      "inspection_status": "INSPECTED_COMPLETE_READ_ONLY"
+    },
+    {
+      "relative_path": "launch_gui.bat",
+      "category": "launcher_script",
+      "size_bytes": 200,
+      "lines": 9,
+      "sha256": "723df75968d702ba5943e550af12fd82291384442f0a6a582d6399caf80f9816",
+      "inspection_status": "INSPECTED_COMPLETE_READ_ONLY"
+    },
+    {
+      "relative_path": "src/nolvus_translator/__init__.py",
+      "category": "package_entrypoint",
+      "size_bytes": 155,
+      "lines": 4,
+      "sha256": "46cef58669a44f92d86a55101a873c78aae501f796129d79659ce743320e23f5",
+      "inspection_status": "INSPECTED_COMPLETE_READ_ONLY"
+    },
+    {
+      "relative_path": "src/nolvus_translator/__main__.py",
+      "category": "package_entrypoint",
+      "size_bytes": 660,
+      "lines": 26,
+      "sha256": "d77d4b79e4f1ae9b807376316aae43838f34bc686b56ef832bfc07ceb270013d",
+      "inspection_status": "INSPECTED_COMPLETE_READ_ONLY"
+    },
+    {
+      "relative_path": "src/nolvus_translator/classification/__init__.py",
+      "category": "package_init",
+      "size_bytes": 69,
+      "lines": 1,
+      "sha256": "5b334f11fc3fc00963039d0c388ac7a424088929e907b89f03554bc1f72650a2",
+      "inspection_status": "INSPECTED_COMPLETE_READ_ONLY"
+    },
+    {
+      "relative_path": "src/nolvus_translator/classification/classifier.py",
+      "category": "classification",
+      "size_bytes": 8838,
+      "lines": 173,
+      "sha256": "55e7d8f496cf32dd1f6a061e50d5de1befda7a9e115cd871b650e7229988dd8a",
+      "inspection_status": "INSPECTED_COMPLETE_READ_ONLY"
+    },
+    {
+      "relative_path": "src/nolvus_translator/core/__init__.py",
+      "category": "package_init",
+      "size_bytes": 60,
+      "lines": 1,
+      "sha256": "ca7a140d363b46d8513fc69fc8da8780a402e00dbddeb1f9771ea5d84a3df055",
+      "inspection_status": "INSPECTED_COMPLETE_READ_ONLY"
+    },
+    {
+      "relative_path": "src/nolvus_translator/core/config.py",
+      "category": "core_infrastructure",
+      "size_bytes": 4043,
+      "lines": 94,
+      "sha256": "e09164d6db5377960a8be7d29d4d0adf752824bd8b3c54d3dad4632b9aae9e96",
+      "inspection_status": "INSPECTED_COMPLETE_READ_ONLY"
+    },
+    {
+      "relative_path": "src/nolvus_translator/core/database.py",
+      "category": "core_infrastructure",
+      "size_bytes": 13698,
+      "lines": 367,
+      "sha256": "f773644748117438eac92a25d55d2aaa9f1f508fc5b1a80e34973567de16efda",
+      "inspection_status": "INSPECTED_COMPLETE_READ_ONLY"
+    },
+    {
+      "relative_path": "src/nolvus_translator/core/exceptions.py",
+      "category": "core_infrastructure",
+      "size_bytes": 2172,
+      "lines": 52,
+      "sha256": "57bea518bb01409c75d2aecf27b2db7143a00ffea7c81703cb8e16e3a1634bb8",
+      "inspection_status": "INSPECTED_COMPLETE_READ_ONLY"
+    },
+    {
+      "relative_path": "src/nolvus_translator/core/logging_manager.py",
+      "category": "core_infrastructure",
+      "size_bytes": 3332,
+      "lines": 101,
+      "sha256": "2f5a47639fc3770589c6d6444811e7d235fbb826d9184bce208f12c14332e6c9",
+      "inspection_status": "INSPECTED_COMPLETE_READ_ONLY"
+    },
+    {
+      "relative_path": "src/nolvus_translator/core/lz4_codec.py",
+      "category": "core_infrastructure",
+      "size_bytes": 9701,
+      "lines": 282,
+      "sha256": "fa94a9b8211ee02bc6ca589e4bbb5409950337ce515bd5926c3d92768439ea52",
+      "inspection_status": "INSPECTED_COMPLETE_READ_ONLY"
+    },
+    {
+      "relative_path": "src/nolvus_translator/core/models.py",
+      "category": "core_infrastructure",
+      "size_bytes": 8755,
+      "lines": 253,
+      "sha256": "4c302a0dccf1e87affe6b35fd835587c58039d043ffd7ab6570f3ca21e4d1081",
+      "inspection_status": "INSPECTED_COMPLETE_READ_ONLY"
+    },
+    {
+      "relative_path": "src/nolvus_translator/core/pe_inspector.py",
+      "category": "core_infrastructure",
+      "size_bytes": 6303,
+      "lines": 147,
+      "sha256": "a04db777d525a89f403c4d6f61f3e48dd312b53af68ce3f262f96d5bbb3fb0f6",
+      "inspection_status": "INSPECTED_COMPLETE_READ_ONLY"
+    },
+    {
+      "relative_path": "src/nolvus_translator/export/__init__.py",
+      "category": "package_init",
+      "size_bytes": 93,
+      "lines": 1,
+      "sha256": "7aa47d06feca8461a6b7636b08c68c58499ba290e847b4a082cf9a517c173aa4",
+      "inspection_status": "INSPECTED_COMPLETE_READ_ONLY"
+    },
+    {
+      "relative_path": "src/nolvus_translator/export/dsd_exporter.py",
+      "category": "export_packaging",
+      "size_bytes": 3254,
+      "lines": 77,
+      "sha256": "f7367d2abed1ecb72c8507b329f60bf35b15a84dbae1c23eb46c75340a21f5f0",
+      "inspection_status": "INSPECTED_COMPLETE_READ_ONLY"
+    },
+    {
+      "relative_path": "src/nolvus_translator/export/mo2_packager.py",
+      "category": "export_packaging",
+      "size_bytes": 16054,
+      "lines": 371,
+      "sha256": "fadf0eb83dcb2a5f1655e095c2ae7a6d62397f0f615ca78a29b202fbb218116c",
+      "inspection_status": "INSPECTED_COMPLETE_READ_ONLY"
+    },
+    {
+      "relative_path": "src/nolvus_translator/formats/__init__.py",
+      "category": "package_init",
+      "size_bytes": 86,
+      "lines": 1,
+      "sha256": "38edf372c2a798aa19b485be7f8d22f30cf36bd520f19bf7ecf59b2a79df2d49",
+      "inspection_status": "INSPECTED_COMPLETE_READ_ONLY"
+    },
+    {
+      "relative_path": "src/nolvus_translator/formats/aux_parsers.py",
+      "category": "format_parsers",
+      "size_bytes": 10136,
+      "lines": 256,
+      "sha256": "8f1ada7e1a679b39a67b0e22750d6e77700942b00386fe5a3377b8837b886e24",
+      "inspection_status": "INSPECTED_COMPLETE_READ_ONLY"
+    },
+    {
+      "relative_path": "src/nolvus_translator/formats/bsa_archive.py",
+      "category": "format_parsers",
+      "size_bytes": 7959,
+      "lines": 193,
+      "sha256": "465403871997959ae26bf9469e8989006a6901c5a2079439a1d399c292d1c238",
+      "inspection_status": "INSPECTED_COMPLETE_READ_ONLY"
+    },
+    {
+      "relative_path": "src/nolvus_translator/formats/esp_parser.py",
+      "category": "format_parsers",
+      "size_bytes": 21320,
+      "lines": 491,
+      "sha256": "2a195de2ed964bb7562bd6708a4636119460398695801f682857bf292b2f4cb1",
+      "inspection_status": "INSPECTED_COMPLETE_READ_ONLY"
+    },
+    {
+      "relative_path": "src/nolvus_translator/formats/mcm_parser.py",
+      "category": "format_parsers",
+      "size_bytes": 8049,
+      "lines": 201,
+      "sha256": "c0c92be67e8684d663001093b0d2a585861c08b7dc2e5d84cefefeaba6030bd7",
+      "inspection_status": "INSPECTED_COMPLETE_READ_ONLY"
+    },
+    {
+      "relative_path": "src/nolvus_translator/formats/pex_parser.py",
+      "category": "format_parsers",
+      "size_bytes": 21092,
+      "lines": 566,
+      "sha256": "cd544cf7ecb994ce2f6764824db566a29759504898afa05bf3f66d2ca3c66205",
+      "inspection_status": "INSPECTED_COMPLETE_READ_ONLY"
+    },
+    {
+      "relative_path": "src/nolvus_translator/formats/strings_table.py",
+      "category": "format_parsers",
+      "size_bytes": 4217,
+      "lines": 111,
+      "sha256": "6c04b4eb5363a1a3e93b5e0e9d32a04b6d8977a6182b98685e5a6e371fdc7185",
+      "inspection_status": "INSPECTED_COMPLETE_READ_ONLY"
+    },
+    {
+      "relative_path": "src/nolvus_translator/lore/__init__.py",
+      "category": "package_init",
+      "size_bytes": 90,
+      "lines": 1,
+      "sha256": "e40107c2519f23d9401bf5946a6f0b13701ce562b72dc90c11f15869512f6d6e",
+      "inspection_status": "INSPECTED_COMPLETE_READ_ONLY"
+    },
+    {
+      "relative_path": "src/nolvus_translator/lore/context_engine.py",
+      "category": "lore_and_glossary",
+      "size_bytes": 4304,
+      "lines": 95,
+      "sha256": "add6b85df81cfa3d48b77680f00186ace5a98a2e7c6da4d07292a5f0e442f568",
+      "inspection_status": "INSPECTED_COMPLETE_READ_ONLY"
+    },
+    {
+      "relative_path": "src/nolvus_translator/lore/glossary.py",
+      "category": "lore_and_glossary",
+      "size_bytes": 14452,
+      "lines": 304,
+      "sha256": "7afc94e7629a0abe827cca4540f2e85b67692a779347913491f03b06a2aa9ab2",
+      "inspection_status": "INSPECTED_COMPLETE_READ_ONLY"
+    },
+    {
+      "relative_path": "src/nolvus_translator/lore/seed_data.py",
+      "category": "lore_and_glossary",
+      "size_bytes": 22018,
+      "lines": 186,
+      "sha256": "a8fb354a26772312b159375e5563e7c027987a8f411a5296635d1920810b0eef",
+      "inspection_status": "INSPECTED_COMPLETE_READ_ONLY"
+    },
+    {
+      "relative_path": "src/nolvus_translator/memory/__init__.py",
+      "category": "package_init",
+      "size_bytes": 53,
+      "lines": 1,
+      "sha256": "2cc4582d873ab67c000dff06726655acedbc649e07b2a11ba84d44b4de4d6cc0",
+      "inspection_status": "INSPECTED_COMPLETE_READ_ONLY"
+    },
+    {
+      "relative_path": "src/nolvus_translator/memory/tm_engine.py",
+      "category": "translation_memory",
+      "size_bytes": 11550,
+      "lines": 289,
+      "sha256": "f7b83c2b74b279f78be4699c7c1a847a3992b3f6546d34cb3e81cbcb48459a22",
+      "inspection_status": "INSPECTED_COMPLETE_READ_ONLY"
+    },
+    {
+      "relative_path": "src/nolvus_translator/mo2/__init__.py",
+      "category": "package_init",
+      "size_bytes": 87,
+      "lines": 1,
+      "sha256": "278b03f6fd162d0a49230fa50fa7aa58f97434432e0a2d8140c778f0b513412e",
+      "inspection_status": "INSPECTED_COMPLETE_READ_ONLY"
+    },
+    {
+      "relative_path": "src/nolvus_translator/mo2/detector.py",
+      "category": "mo2_vfs",
+      "size_bytes": 10228,
+      "lines": 252,
+      "sha256": "05638e8e4be3b8cf6f20cd8d1707b3df1a18e7ddc4f07607c83ff62e73426f4c",
+      "inspection_status": "INSPECTED_COMPLETE_READ_ONLY"
+    },
+    {
+      "relative_path": "src/nolvus_translator/mo2/vfs.py",
+      "category": "mo2_vfs",
+      "size_bytes": 20746,
+      "lines": 481,
+      "sha256": "797ab2c2a521bf0c0f857d49446bac51084e16b2618189de2df662d787bc7913",
+      "inspection_status": "INSPECTED_COMPLETE_READ_ONLY"
+    },
+    {
+      "relative_path": "src/nolvus_translator/quality/__init__.py",
+      "category": "package_init",
+      "size_bytes": 88,
+      "lines": 1,
+      "sha256": "f13780b8105d55c536e5e459e45269055fb579f7bcd7254886729e2b5f901bac",
+      "inspection_status": "INSPECTED_COMPLETE_READ_ONLY"
+    },
+    {
+      "relative_path": "src/nolvus_translator/quality/protector.py",
+      "category": "quality_and_protection",
+      "size_bytes": 5967,
+      "lines": 141,
+      "sha256": "9ff1bafa841ea15108be6c74ee54023b9a18b2623ad46c904989fac98b4f5e01",
+      "inspection_status": "INSPECTED_COMPLETE_READ_ONLY"
+    },
+    {
+      "relative_path": "src/nolvus_translator/quality/validator.py",
+      "category": "quality_and_protection",
+      "size_bytes": 8069,
+      "lines": 187,
+      "sha256": "4c7aa1e4511058c9e142ae259e5b758178ed67a44c0af5c89f0bffbb11f038a0",
+      "inspection_status": "INSPECTED_COMPLETE_READ_ONLY"
+    },
+    {
+      "relative_path": "src/nolvus_translator/reports/__init__.py",
+      "category": "package_init",
+      "size_bytes": 82,
+      "lines": 1,
+      "sha256": "8bc29ded29f77e742639fce553c387c2feb2f4a8c0978216fdb9573df0982ddb",
+      "inspection_status": "INSPECTED_COMPLETE_READ_ONLY"
+    },
+    {
+      "relative_path": "src/nolvus_translator/reports/cost_estimator.py",
+      "category": "reporting",
+      "size_bytes": 8574,
+      "lines": 197,
+      "sha256": "1d23748f07f26c8b25b017c3f4b8e66193a4929668d0e8f87659572230b2e546",
+      "inspection_status": "INSPECTED_COMPLETE_READ_ONLY"
+    },
+    {
+      "relative_path": "src/nolvus_translator/reports/coverage.py",
+      "category": "reporting",
+      "size_bytes": 14159,
+      "lines": 292,
+      "sha256": "f8bfcb5d633d265f3860e4e138521cb6fa31ca81925d14708a1324cd1d21280b",
+      "inspection_status": "INSPECTED_COMPLETE_READ_ONLY"
+    },
+    {
+      "relative_path": "src/nolvus_translator/services/__init__.py",
+      "category": "package_init",
+      "size_bytes": 67,
+      "lines": 1,
+      "sha256": "a4b95fdeea8d8f92bace6e23e47df388db76254d2834f50bc204051ea47b8ef1",
+      "inspection_status": "INSPECTED_COMPLETE_READ_ONLY"
+    },
+    {
+      "relative_path": "src/nolvus_translator/services/demo_fixture.py",
+      "category": "services",
+      "size_bytes": 18399,
+      "lines": 467,
+      "sha256": "fda8829fc10bd4d1230c5c74b76d1893f95d2174dcfe9b1c41244df13800585e",
+      "inspection_status": "INSPECTED_COMPLETE_READ_ONLY"
+    },
+    {
+      "relative_path": "src/nolvus_translator/services/project_service.py",
+      "category": "services",
+      "size_bytes": 27258,
+      "lines": 596,
+      "sha256": "4f0a95ddb2d329e701d0e801f6641226517b14da45ce058d08cf33d6085d2deb",
+      "inspection_status": "INSPECTED_COMPLETE_READ_ONLY"
+    },
+    {
+      "relative_path": "src/nolvus_translator/translation/__init__.py",
+      "category": "package_init",
+      "size_bytes": 70,
+      "lines": 1,
+      "sha256": "ec32d5b0245906aaf5f1c2221d32a849b54e1eb4e59abf1d686567ed3ac0f3cd",
+      "inspection_status": "INSPECTED_COMPLETE_READ_ONLY"
+    },
+    {
+      "relative_path": "src/nolvus_translator/translation/future_stubs.py",
+      "category": "translation_engine",
+      "size_bytes": 1929,
+      "lines": 53,
+      "sha256": "74a08f2dcf24fe101814e234ddf38ba74192defbebd010776ce87e377ad4b42f",
+      "inspection_status": "INSPECTED_COMPLETE_READ_ONLY"
+    },
+    {
+      "relative_path": "src/nolvus_translator/translation/interfaces.py",
+      "category": "translation_engine",
+      "size_bytes": 1861,
+      "lines": 64,
+      "sha256": "08951c430220e90473867441994de5e629c4d6bfa43a3f3230c40e2ab9756e91",
+      "inspection_status": "INSPECTED_COMPLETE_READ_ONLY"
+    },
+    {
+      "relative_path": "src/nolvus_translator/translation/mock_provider.py",
+      "category": "translation_engine",
+      "size_bytes": 5626,
+      "lines": 128,
+      "sha256": "e8b2231c65349d514f54ee7388cbf2d84bffffd4989a7a76a1a5cabb22d4a5a9",
+      "inspection_status": "INSPECTED_COMPLETE_READ_ONLY"
+    },
+    {
+      "relative_path": "src/nolvus_translator/translation/pipeline.py",
+      "category": "translation_engine",
+      "size_bytes": 23424,
+      "lines": 568,
+      "sha256": "2363036845714740cd5f881862d4c8618b574eeca1c45cb094f11c87a6c99535",
+      "inspection_status": "INSPECTED_COMPLETE_READ_ONLY"
+    },
+    {
+      "relative_path": "src/nolvus_translator/ui/__init__.py",
+      "category": "package_init",
+      "size_bytes": 102,
+      "lines": 1,
+      "sha256": "918d6192dcf6c64d59590424aabfced55a6f6ba051f517b2a1b79ffeb88d1798",
+      "inspection_status": "INSPECTED_COMPLETE_READ_ONLY"
+    },
+    {
+      "relative_path": "src/nolvus_translator/ui/app.py",
+      "category": "desktop_ui",
+      "size_bytes": 64658,
+      "lines": 1403,
+      "sha256": "e8cba9f10427ccbe655824ee68f163e886a3749a64fe59e71c5fb8358d403e8e",
+      "inspection_status": "INSPECTED_COMPLETE_READ_ONLY"
+    },
+    {
+      "relative_path": "src/nolvus_translator/ui/theme.py",
+      "category": "desktop_ui",
+      "size_bytes": 4885,
+      "lines": 159,
+      "sha256": "d810a31ce117a0ae21a4e99f8cd90aeb6c5c6eae75805d9d0848aefad7908ee3",
+      "inspection_status": "INSPECTED_COMPLETE_READ_ONLY"
+    },
+    {
+      "relative_path": "src/nolvus_translator/updates/__init__.py",
+      "category": "package_init",
+      "size_bytes": 96,
+      "lines": 1,
+      "sha256": "39348c5bfa6bc2cd163fd5932d3739429b5dc7bcf46b039d26a52589b5396f01",
+      "inspection_status": "INSPECTED_COMPLETE_READ_ONLY"
+    },
+    {
+      "relative_path": "src/nolvus_translator/updates/diff_engine.py",
+      "category": "incremental_updates",
+      "size_bytes": 8795,
+      "lines": 208,
+      "sha256": "e70b11f5b7e4207a2560114108af96d35fd8b4ba02fc94a27164d1cc0df17e2f",
+      "inspection_status": "INSPECTED_COMPLETE_READ_ONLY"
+    },
+    {
+      "relative_path": "tests/__init__.py",
+      "category": "automated_tests",
+      "size_bytes": 263,
+      "lines": 10,
+      "sha256": "b2e6b1c660085917e9574c64531aa017b57f02446bced347bb562600414e5beb",
+      "inspection_status": "INSPECTED_COMPLETE_READ_ONLY"
+    },
+    {
+      "relative_path": "tests/test_end_to_end.py",
+      "category": "automated_tests",
+      "size_bytes": 9332,
+      "lines": 185,
+      "sha256": "09e7712b3a74145c0f9a937ac9c3c96ef8f3f6a6b7f13ad018c02160600c8285",
+      "inspection_status": "INSPECTED_COMPLETE_READ_ONLY"
+    },
+    {
+      "relative_path": "tests/test_formats.py",
+      "category": "automated_tests",
+      "size_bytes": 10172,
+      "lines": 211,
+      "sha256": "6873cdeaf391fe3663139a2b36344aad1a58be68f21f4cbbcaaef92d3a8b23ed",
+      "inspection_status": "INSPECTED_COMPLETE_READ_ONLY"
+    },
+    {
+      "relative_path": "tests/test_protector_glossary_tm.py",
+      "category": "automated_tests",
+      "size_bytes": 8863,
+      "lines": 199,
+      "sha256": "769eca11644c374665c379fc5c5cce7eb2350c1610f9478fdd551cd1dbefaa7f",
+      "inspection_status": "INSPECTED_COMPLETE_READ_ONLY"
+    }
+  ],
+  "reference_documentation_inspected": [
+    {
+      "relative_path": "README.md",
+      "repository": "Antigravity-MD-Skyrim (origin/main @ 24600a3)",
+      "size_bytes": 4534,
+      "lines": 53,
+      "sha256": "f65d734ae92c9230ee507d2b8e710a6693dacb9cc97caa6fb9fa88978e89958d",
+      "inspection_status": "INSPECTED_COMPLETE_READ_ONLY"
+    },
+    {
+      "relative_path": "CURRENT_PROJECT_STATE.md",
+      "repository": "Antigravity-MD-Skyrim (origin/main @ 24600a3)",
+      "size_bytes": 10092,
+      "lines": 114,
+      "sha256": "98e254a4ba24cb22e265ba6a61e5a750cc92ecf24159b910d29c6fef59adda91",
+      "inspection_status": "INSPECTED_COMPLETE_READ_ONLY"
+    },
+    {
+      "relative_path": "DOCUMENTATION_POLICY.md",
+      "repository": "Antigravity-MD-Skyrim (origin/main @ 24600a3)",
+      "size_bytes": 2474,
+      "lines": 31,
+      "sha256": "762ad39986a3cb0d1b37d19ea8ca4ba3d25962aea7938e57bc52dbd9edb218eb",
+      "inspection_status": "INSPECTED_COMPLETE_READ_ONLY"
+    },
+    {
+      "relative_path": "DOCUMENTATION_CLEANUP_REPORT.md",
+      "repository": "Antigravity-MD-Skyrim (origin/main @ 24600a3)",
+      "size_bytes": 8206,
+      "lines": 104,
+      "sha256": "39eb920e5e9efd3f8bf8a25630842ddfa440d20fdcb439e8032a441669f921ce",
+      "inspection_status": "INSPECTED_COMPLETE_READ_ONLY"
+    },
+    {
+      "relative_path": "Fase10_Antigravity_Architecture/PHASE10_FINAL_REPORT.md",
+      "repository": "Antigravity-MD-Skyrim (origin/main @ 24600a3)",
+      "size_bytes": 7046,
+      "lines": 92,
+      "sha256": "e47aeb0c2f095e8b3425fedaf6fab4a2ac590b8da28bec33dd8555f4b9fac339",
+      "inspection_status": "INSPECTED_COMPLETE_READ_ONLY"
+    },
+    {
+      "relative_path": "Fase10_Antigravity_Architecture/ANTIGRAVITY_INTEGRATION_ARCHITECTURE.md",
+      "repository": "Antigravity-MD-Skyrim (origin/main @ 24600a3)",
+      "size_bytes": 10587,
+      "lines": 176,
+      "sha256": "78e9725afd3a63bdc894222deb39262a242e8bf132d093974299453e7a743889",
+      "inspection_status": "INSPECTED_COMPLETE_READ_ONLY"
+    },
+    {
+      "relative_path": "Fase10_Antigravity_Architecture/DUAL_PROVIDER_ARCHITECTURE.md",
+      "repository": "Antigravity-MD-Skyrim (origin/main @ 24600a3)",
+      "size_bytes": 15895,
+      "lines": 197,
+      "sha256": "020d5fa8b121075610fb76a5e2b977fe0ca217c5ae1cf0de9a44cfb1fa7c2837",
+      "inspection_status": "INSPECTED_COMPLETE_READ_ONLY"
+    },
+    {
+      "relative_path": "Fase10_Antigravity_Architecture/TRANSLATION_EXECUTION_ENGINE.md",
+      "repository": "Antigravity-MD-Skyrim (origin/main @ 24600a3)",
+      "size_bytes": 38572,
+      "lines": 281,
+      "sha256": "f4532dfa613674afad8d8c5228c9590bfaf94f47874d6b896bd0bddf0b32e65c",
+      "inspection_status": "INSPECTED_COMPLETE_READ_ONLY"
+    },
+    {
+      "relative_path": "Fase10_Antigravity_Architecture/BENCHMARK_PLAN_ANTIGRAVITY.md",
+      "repository": "Antigravity-MD-Skyrim (origin/main @ 24600a3)",
+      "size_bytes": 25961,
+      "lines": 166,
+      "sha256": "4c127465f55b43eb4c1e98a60ba1cddd03bedc205f3cd3b2a93796efa7129f88",
+      "inspection_status": "INSPECTED_COMPLETE_READ_ONLY"
+    },
+    {
+      "relative_path": "Fase10_Antigravity_Architecture/SCALABILITY_AND_RISK_ASSESSMENT.md",
+      "repository": "Antigravity-MD-Skyrim (origin/main @ 24600a3)",
+      "size_bytes": 14256,
+      "lines": 107,
+      "sha256": "83f16a918fe2e0bd926acbc74714384d35fc62836262faf1645ec987d1233c1b",
+      "inspection_status": "INSPECTED_COMPLETE_READ_ONLY"
+    }
+  ]
+}

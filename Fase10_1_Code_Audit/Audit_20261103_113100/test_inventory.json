@@ -1,0 +1,285 @@
+{
+  "schema_version": "1.0.0",
+  "audit_phase": "10.1-A",
+  "audit_execution_id": "AUDIT-10.1A-20261103-113100",
+  "audit_mode": "STATIC_READ_ONLY",
+  "execution_policy_note": "Pursuant to Section 3 and Section 5 (Area G) of the Phase 10.1-A audit protocol, automated tests were inspected statically in read-only mode and were NOT executed during this session. Historical test results from Phases 0-6 are recorded separately from static verification.",
+  "summary": {
+    "test_files_count": 4,
+    "test_suites_count": 3,
+    "test_cases_count": 8,
+    "executed_in_current_session": 0,
+    "statically_verified_test_cases": 8,
+    "framework": "unittest (standard library)",
+    "isolation_mechanism": "tempfile.TemporaryDirectory()"
+  },
+  "test_files": [
+    {
+      "relative_path": "tests/__init__.py",
+      "sha256": "b2e6b1c660085917e9574c64531aa017b57f02446bced347bb562600414e5beb",
+      "size_bytes": 263,
+      "lines": 10,
+      "role": "Test package initializer; inserts src/ into sys.path for local package discovery.",
+      "test_classes": []
+    },
+    {
+      "relative_path": "tests/test_end_to_end.py",
+      "sha256": "09e7712b3a74145c0f9a937ac9c3c96ef8f3f6a6b7f13ad018c02160600c8285",
+      "size_bytes": 9332,
+      "lines": 185,
+      "role": "End-to-end integration tests for synthetic Nolvus/MO2 sandbox scanning, simulated translation with batch interruption/resumption, MO2 package export/rollback, and snapshot diff propagation.",
+      "dependencies": [
+        "nolvus_translator.core.config.AppConfig",
+        "nolvus_translator.core.models.ReviewStatus",
+        "nolvus_translator.services.demo_fixture.create_demo_nolvus_sandbox",
+        "nolvus_translator.services.project_service.ProjectService",
+        "nolvus_translator.translation.future_stubs.GeminiFutureProviderStub",
+        "nolvus_translator.translation.pipeline.TranslationPipeline"
+      ],
+      "test_classes": [
+        {
+          "class_name": "TestEndToEndIntegration",
+          "base_class": "unittest.TestCase",
+          "test_methods": [
+            {
+              "method_name": "test_full_workflow_scan_translate_resume_export_and_rollback",
+              "lines": "21-125",
+              "classification": "IMPLEMENTADO CON PRUEBAS",
+              "static_verification_status": "VERIFIED_STATIC_IN_SESSION",
+              "current_session_execution_status": "NOT_EXECUTED_STATIC_AUDIT_ONLY",
+              "historical_reported_status": "PASSED (Reported in Phase 6 / Phase 7 documentation)",
+              "apparent_functional_coverage": [
+                "Synthetic Nolvus/STOCK GAME/MO2 sandbox creation via create_demo_nolvus_sandbox",
+                "Runtime PE inspection of synthetic SkyrimSE.exe (1.5.97.0)",
+                "MO2 VFS priority resolution (Mod B overriding Mod A and Base Game)",
+                "Multi-format extraction (ESP localized/non-localized, BSA, STRINGS, MCM TXT/JSON, INI, XML, PEX)",
+                "Paid API lock verification (GeminiFutureProviderStub blocked by TranslationPipeline)",
+                "Batch checkpoint interruption (stop_after_batches=1) and seamless job resumption (resume_job_id)",
+                "Master Glossary compliance on simulated strings (Whiterun -> Carrera Blanca, Dragonborn -> Sangre de Dragón)",
+                "Non-destructive MO2 package export, manifest.json generation, backup creation on re-export, and rollback",
+                "Source tree immutability verification via pre/post SHA-256 comparison of STOCK GAME and MO2 mods",
+                "Coverage and Phase 8 volume/token estimation report generation"
+              ],
+              "coverage_gaps_noted": [
+                "Does not test FileFormat.JSON_OTHER extraction (absent in ProjectService.scan_and_extract)",
+                "Does not test .pex extraction inside .bsa when total VFS files > 500",
+                "Does not test asynchronous file-based Antigravity batch exchange or Gatekeeper CLI"
+              ]
+            },
+            {
+              "method_name": "test_incremental_update_diff_and_propagation",
+              "lines": "127-180",
+              "classification": "IMPLEMENTADO CON PRUEBAS",
+              "static_verification_status": "VERIFIED_STATIC_IN_SESSION",
+              "current_session_execution_status": "NOT_EXECUTED_STATIC_AUDIT_ONLY",
+              "historical_reported_status": "PASSED (Reported in Phase 6 documentation)",
+              "apparent_functional_coverage": [
+                "Snapshot #1 scan, simulated translation, and manual approval of a string row",
+                "Modification of synthetic plugin (QuestB.esp) with 1 modified record and 1 new record",
+                "Snapshot #2 scan and UpdateDiffEngine comparison",
+                "Automatic propagation of unchanged approved translations from Snapshot #1 to Snapshot #2",
+                "Flagging of modified strings as ReviewStatus.PENDING requiring re-translation"
+              ],
+              "coverage_gaps_noted": [
+                "Tests propagation within the same SQLite database; does not test cross-database migration"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "relative_path": "tests/test_formats.py",
+      "sha256": "6873cdeaf391fe3663139a2b36344aad1a58be68f21f4cbbcaaef92d3a8b23ed",
+      "size_bytes": 10172,
+      "lines": 211,
+      "role": "Binary and structured format parser/rebuilder tests for .STRINGS/.DLSTRINGS/.ILSTRINGS, ESP/ESM/ESL plugins, BSA v105+LZ4 archives, Papyrus .pex v3.2 scripts, and MCM TXT/JSON files.",
+      "dependencies": [
+        "nolvus_translator.core.models.StringClassification",
+        "nolvus_translator.formats.bsa_archive.BsaArchiveReader",
+        "nolvus_translator.formats.bsa_archive.build_synthetic_bsa_v105",
+        "nolvus_translator.formats.esp_parser.EspPluginParser",
+        "nolvus_translator.formats.esp_parser.build_synthetic_esp_bytes",
+        "nolvus_translator.formats.mcm_parser.parse_mcm_json",
+        "nolvus_translator.formats.mcm_parser.parse_mcm_translation_txt",
+        "nolvus_translator.formats.mcm_parser.rebuild_mcm_translation_txt",
+        "nolvus_translator.formats.pex_parser.PexParser",
+        "nolvus_translator.formats.pex_parser.build_synthetic_pex_bytes",
+        "nolvus_translator.formats.strings_table.StringsTableParser",
+        "nolvus_translator.services.demo_fixture._encode_ilstrings_entry",
+        "nolvus_translator.services.demo_fixture._encode_strings_entry"
+      ],
+      "test_classes": [
+        {
+          "class_name": "TestFormatsAndBinaryParsers",
+          "base_class": "unittest.TestCase",
+          "test_methods": [
+            {
+              "method_name": "test_strings_and_ilstrings_roundtrip",
+              "lines": "30-55",
+              "classification": "IMPLEMENTADO CON PRUEBAS",
+              "static_verification_status": "VERIFIED_STATIC_IN_SESSION",
+              "current_session_execution_status": "NOT_EXECUTED_STATIC_AUDIT_ONLY",
+              "historical_reported_status": "PASSED (Reported in Phase 3 / Phase 6 documentation)",
+              "apparent_functional_coverage": [
+                "Parsing and binary reconstruction of null-terminated .STRINGS and length-prefixed .ILSTRINGS",
+                "UTF-8 encoding roundtrip with Spanish diacritics and inverted punctuation (¡¿)"
+              ],
+              "coverage_gaps_noted": [
+                "Does not test malformed Windows-1252 sequences such as 0xEF 0xBF 0xBD 0x27 found in 3DNPC.esp during Phase 9"
+              ]
+            },
+            {
+              "method_name": "test_esp_non_localized_and_localized_resolution",
+              "lines": "57-105",
+              "classification": "IMPLEMENTADO CON PRUEBAS",
+              "static_verification_status": "VERIFIED_STATIC_IN_SESSION",
+              "current_session_execution_status": "NOT_EXECUTED_STATIC_AUDIT_ONLY",
+              "historical_reported_status": "PASSED (Reported in Phase 3 / Phase 6 documentation)",
+              "apparent_functional_coverage": [
+                "Inline text extraction from non-localized ESP records (QUST, BOOK, NPC_, INFO)",
+                "4-byte uint32 StringID resolution in localized ESPs against .STRINGS and .ILSTRINGS tables"
+              ],
+              "coverage_gaps_noted": [
+                "Tests uncompressed synthetic records; zlib-compressed records are supported in EspPluginParser._parse_record_block but not explicitly exercised in this test method"
+              ]
+            },
+            {
+              "method_name": "test_bsa_v105_lz4_reader",
+              "lines": "107-123",
+              "classification": "IMPLEMENTADO CON PRUEBAS",
+              "static_verification_status": "VERIFIED_STATIC_IN_SESSION",
+              "current_session_execution_status": "NOT_EXECUTED_STATIC_AUDIT_ONLY",
+              "historical_reported_status": "PASSED (Reported in Phase 3 / Phase 6 documentation)",
+              "apparent_functional_coverage": [
+                "BSA v105 header parsing, folder/file record reading, and pure-Python LZ4 frame decompression"
+              ],
+              "coverage_gaps_noted": [
+                "Tests LZ4 frame format; raw LZ4 block fallback is implemented in lz4_codec.py"
+              ]
+            },
+            {
+              "method_name": "test_pex_parser_protects_identifiers_and_rebuilds_only_user_messages",
+              "lines": "125-171",
+              "classification": "IMPLEMENTADO CON PRUEBAS",
+              "static_verification_status": "VERIFIED_STATIC_IN_SESSION",
+              "current_session_execution_status": "NOT_EXECUTED_STATIC_AUDIT_ONLY",
+              "historical_reported_status": "PASSED (Reported in Phase 3 / Phase 6 documentation)",
+              "apparent_functional_coverage": [
+                "Papyrus .pex v3.2 string table inspection and AST/opcode usage analysis",
+                "Protection of script/state/function/event/property identifiers and RegisterForModEvent args",
+                "Extraction and binary rebuilding of Debug.Notification user-facing strings",
+                "Strict raise of PexIdentifierProtectionError when attempting to modify a protected identifier index"
+              ],
+              "coverage_gaps_noted": [
+                "Tests big-endian magic 0xFA57C0DE; little-endian 0xDEC057FA is also supported in pex_parser.py"
+              ]
+            },
+            {
+              "method_name": "test_mcm_txt_and_json_key_protection",
+              "lines": "173-206",
+              "classification": "IMPLEMENTADO CON PRUEBAS",
+              "static_verification_status": "VERIFIED_STATIC_IN_SESSION",
+              "current_session_execution_status": "NOT_EXECUTED_STATIC_AUDIT_ONLY",
+              "historical_reported_status": "PASSED (Reported in Phase 3 / Phase 6 documentation)",
+              "apparent_functional_coverage": [
+                "UTF-16LE BOM parsing and rebuilding of MCM $Key\\tValue files preserving $Key intact",
+                "MCM helper config.json parsing classifying $ token values as PURE_VARIABLE and literal labels as TRANSLATABLE"
+              ],
+              "coverage_gaps_noted": [
+                "Does not test rebuild/export of MCM JSON, INI, or XML files (currently absent in mo2_packager.py)"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "relative_path": "tests/test_protector_glossary_tm.py",
+      "sha256": "769eca11644c374665c379fc5c5cce7eb2350c1610f9478fdd551cd1dbefaa7f",
+      "size_bytes": 8863,
+      "lines": 199,
+      "role": "Unit and component tests for VariableProtector, GlossaryManager, TranslationMemoryEngine, and TranslationQualityValidator.",
+      "dependencies": [
+        "nolvus_translator.core.database.DatabaseManager",
+        "nolvus_translator.core.exceptions.CommunityTranslationBlockError",
+        "nolvus_translator.core.exceptions.GlossaryConflictError",
+        "nolvus_translator.core.exceptions.PlaceholderIntegrityError",
+        "nolvus_translator.core.models.ContentDomain",
+        "nolvus_translator.core.models.GlossaryCategory",
+        "nolvus_translator.core.models.GlossaryTerm",
+        "nolvus_translator.core.models.TranslationRule",
+        "nolvus_translator.lore.glossary.GlossaryManager",
+        "nolvus_translator.memory.tm_engine.TranslationMemoryEngine",
+        "nolvus_translator.quality.protector.VariableProtector",
+        "nolvus_translator.quality.validator.TranslationQualityValidator"
+      ],
+      "test_classes": [
+        {
+          "class_name": "TestProtectorGlossaryAndTM",
+          "base_class": "unittest.TestCase",
+          "test_methods": [
+            {
+              "method_name": "test_variable_protector_masks_and_restores_all_patterns",
+              "lines": "32-72",
+              "classification": "IMPLEMENTADO CON PRUEBAS",
+              "static_verification_status": "VERIFIED_STATIC_IN_SESSION",
+              "current_session_execution_status": "NOT_EXECUTED_STATIC_AUDIT_ONLY",
+              "historical_reported_status": "PASSED (Reported in Phase 5 / Phase 6 documentation)",
+              "apparent_functional_coverage": [
+                "Masking and exact restoration of <Alias=...>, <mag>, <dur>, %.0f, %s, {0}, <font...>, <br>, [pagebreak]",
+                "Detection and rejection of missing placeholders via PlaceholderIntegrityError",
+                "Detection and rejection of invented placeholders (⟦PH_99⟧) via PlaceholderIntegrityError"
+              ],
+              "coverage_gaps_noted": []
+            },
+            {
+              "method_name": "test_glossary_seeding_conflict_protection_and_term_matching",
+              "lines": "74-131",
+              "classification": "IMPLEMENTADO CON PRUEBAS",
+              "static_verification_status": "VERIFIED_STATIC_IN_SESSION",
+              "current_session_execution_status": "NOT_EXECUTED_STATIC_AUDIT_ONLY",
+              "historical_reported_status": "PASSED (Reported in Phase 4 / Phase 6 documentation)",
+              "apparent_functional_coverage": [
+                "Master Glossary seeding (>=40 canonical Elder Scrolls terms)",
+                "Word-boundary matching in source text (Whiterun, Dragonborn, Jarl, Thu'um)",
+                "GlossaryConflictError raised when attempting to overwrite an approved term without allow_override_approved=True",
+                "Explicit override allowed when allow_override_approved=True"
+              ],
+              "coverage_gaps_noted": []
+            },
+            {
+              "method_name": "test_tm_blocks_community_origin_and_versions_updates",
+              "lines": "133-169",
+              "classification": "IMPLEMENTADO CON PRUEBAS",
+              "static_verification_status": "VERIFIED_STATIC_IN_SESSION",
+              "current_session_execution_status": "NOT_EXECUTED_STATIC_AUDIT_ONLY",
+              "historical_reported_status": "PASSED (Reported in Phase 4 / Phase 6 documentation)",
+              "apparent_functional_coverage": [
+                "Strict rejection of third-party community translations via CommunityTranslationBlockError",
+                "Exact and contextual lookup in TranslationMemoryEngine",
+                "Version history tracking in tm_versions upon updating an approved translation",
+                "Fuzzy similarity search via search_similar()"
+              ],
+              "coverage_gaps_noted": []
+            },
+            {
+              "method_name": "test_quality_validator_detects_glossary_and_peninsular_forms",
+              "lines": "171-194",
+              "classification": "IMPLEMENTADO CON PRUEBAS",
+              "static_verification_status": "VERIFIED_STATIC_IN_SESSION",
+              "current_session_execution_status": "NOT_EXECUTED_STATIC_AUDIT_ONLY",
+              "historical_reported_status": "PASSED (Reported in Phase 5 / Phase 6 documentation)",
+              "apparent_functional_coverage": [
+                "Glossary violation detection when canonical translations (Carrera Blanca, Sangre de Dragón) are omitted",
+                "Peninsular Spanish form detection (vosotros, habéis) flagging es419_neutral_ok=False",
+                "Full approval when placeholders, tags, glossary terms, and ES-419 neutrality are respected"
+              ],
+              "coverage_gaps_noted": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
