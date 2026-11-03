@@ -1,3 +1,7 @@
+> **POLÍTICA DE GLOSARIO — FUENTE CANÓNICA:** Este archivo es la fuente documental para reglas terminológicas y tratamiento de nombres propios. La existencia de una regla aquí no demuestra que todos sus términos estén cargados o aprobados en la base de datos actual. Comprobar el Glosario Maestro real y su estado antes de preparar cada paquete de contexto.
+
+---
+
 # POLÍTICA DEL GLOSARIO MAESTRO Y BASE DE CONOCIMIENTO DE THE ELDER SCROLLS
 **Proyecto**: NOLVUS AI TRANSLATOR — Nolvus Awakening 6.0.21  
 **Implementación**: [`GlossaryTerm`](file:///c:/Skyrim%20proyecto%20traducci%C3%B3n/src/nolvus_translator/core/models.py#L204-L220), [`GlossaryManager`](file:///c:/Skyrim%20proyecto%20traducci%C3%B3n/src/nolvus_translator/lore/glossary.py), [`seed_data.py`](file:///c:/Skyrim%20proyecto%20traducci%C3%B3n/src/nolvus_translator/lore/seed_data.py)  
