@@ -116,3 +116,37 @@ Todos los documentos solicitados en la **Sección 10** se han creado en la carpe
 El siguiente paso lógico, una vez que revises y apruebes este diseño, es **autorizar únicamente la preparación y ejecución de la Etapa 1 (Prueba Pequeña de Funcionamiento de `25` cadenas) y la Etapa 2 (Benchmark Controlado de `300` cadenas)** con los tres modelos de tu selector (**`Gemini 4 Argon`**, **`Claude Sonnet 5.5`** y **`Claude Opus 5.5`**), utilizando una base de datos aislada de benchmark sin tocar la base de datos principal de producción.
 
 **El sistema se detiene en este punto exacto en cumplimiento de la Sección 12.** No se ha ejecutado el benchmark, no se ha modificado el código fuente y no se ha iniciado ninguna traducción.
+
+
+---
+
+## ADENDA DE REVISIÓN — 2026-11-03
+
+**Estado actualizado:** diseño documental completo; validación operativa pendiente. No se ha ejecutado el smoke test, no se ha realizado el benchmark y no se ha implementado el adaptador ni el Gatekeeper.
+
+### Conclusión técnica consolidada
+
+La opción preferida para la primera validación es **intercambio supervisado de archivos JSON/JSONL + Gatekeeper local**, sin automatizar clics de interfaz, sin hot-folder autónomo y sin dar al agente acceso a SQLite. El agente lee los archivos de entrada y escribe una salida completa en staging; un proceso local independiente valida y, solo en pruebas, ingresa resultados a una base aislada.
+
+### Correcciones obligatorias al diseño original
+
+- No asumir que `write_file(..., Append=True)` esté soportado. No se encontró ese contrato en la documentación oficial consultada.
+- No calificar JSONL como recuperación al 100 %. Solo las líneas completas y válidas son recuperables; una línea parcial debe ir a cuarentena y reintentarse.
+- No permitir que el agente ejecute la ingesta en DB ni otorgarle permisos de escritura a DB, glosario o memoria de producción. El Gatekeeper se ejecuta por separado con acceso mínimo.
+- Para Windows, verificar los permisos reales de la versión instalada; la documentación del sistema de permisos actualizado advierte que su disponibilidad puede variar por sistema operativo.
+- Antes de cada prueba, confirmar `AI Credit Overages = Never`. Las cuotas de Antigravity son variables y sujetas a cambios; el valor de cuenta debe confirmarse en Settings y registrarse en la bitácora.
+
+### Secuencia autorizada para la siguiente evaluación
+
+1. Preflight de permisos, carpeta de staging, modelo seleccionable y ajuste de excedentes.
+2. Smoke test de 25 cadenas reales en una base de datos aislada.
+3. Solo tras revisar y superar el resultado del smoke test, benchmark de 300 cadenas con cada modelo disponible.
+4. Piloto de un mod y pruebas de continuidad/recuperación, cada una con revisión independiente.
+
+La infraestructura de API permanece conservada como alternativa. Esta adenda no habilita facturación, llamadas API, descargas, modificaciones a Nolvus/MO2 ni traducción global.
+
+### Fuentes oficiales de Antigravity consultadas
+
+- [Permisos y herramientas de workspace](https://antigravity.google/docs/permissions)
+- [Configuración del agente y diferencias por sistema operativo](https://antigravity.google/docs/agent-settings)
+- [Cuotas base y AI Credit Overages](https://antigravity.google/docs/plans)
