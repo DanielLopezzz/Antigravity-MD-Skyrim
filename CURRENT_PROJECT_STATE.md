@@ -2,7 +2,7 @@
 
 **Última revisión documental:** 2026-11-03  
 **Fuente de estado del entorno:** informe final de Fase 9 incluido en este repositorio.  
-**Estado del proyecto:** diseño de Fase 10 completado; validación operativa y benchmark todavía pendientes.
+**Estado del proyecto:** diseño de Fase 10 completado; auditoría estática 10.1-A y reconciliación documental completadas; especificación 10.1-B preparada, pero la implementación de código aún no ha comenzado ni está autorizada.
 
 > Este documento es la fuente de verdad para el estado vigente del proyecto. Los informes de fases anteriores conservan sus cifras y conclusiones como evidencia histórica. Cuando un informe histórico difiera de este estado, prevalecen el último corte de auditoría y las decisiones posteriores documentadas aquí.
 
@@ -95,6 +95,8 @@ Los umbrales numéricos del plan de benchmark son criterios propuestos de acepta
 La decisión de migrar a API solo se toma cuando haya datos de las pruebas y una nueva estimación de costes con las tarifas vigentes. Las estimaciones económicas de Fase 8 son históricas y no autorizan gasto.
 
 ## 7. Jerarquía documental
+
+La auditoría del código 10.1-A y su reconciliación están disponibles en [PHASE10_1_CODE_AUDIT_REPORT.md](./Fase10_1_Code_Audit/Audit_20261103_113100/PHASE10_1_CODE_AUDIT_REPORT.md) y [AUDIT_10_1A_RECONCILIATION.md](./Fase10_1_Code_Audit/AUDIT_10_1A_RECONCILIATION.md). La especificación de la siguiente implementación se encuentra en [PHASE10_1B_IMPLEMENTATION_SPEC.md](./Fase10_Antigravity_Architecture/PHASE10_1B_IMPLEMENTATION_SPEC.md). Esta especificación no equivale a autorización para modificar el código.
 
 | Documento | Función única |
 |---|---|
