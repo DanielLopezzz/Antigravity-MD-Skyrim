@@ -22,6 +22,12 @@ La Fase 10 está **completada en diseño**. El benchmark y el adaptador de inter
 - [TRANSLATION_EXECUTION_ENGINE.md](./Fase10_Antigravity_Architecture/TRANSLATION_EXECUTION_ENGINE.md) — unidades de trabajo, lotes, QA, reintentos y trazabilidad.
 - [SCALABILITY_AND_RISK_ASSESSMENT.md](./Fase10_Antigravity_Architecture/SCALABILITY_AND_RISK_ASSESSMENT.md) — pruebas progresivas, cuotas, riesgos y decisión de escala.
 
+### Fase 10.1 — Auditoría de código e implementación Antigravity
+
+- [Informe de auditoría técnica 10.1-A](./Fase10_1_Code_Audit/Audit_20261103_113100/PHASE10_1_CODE_AUDIT_REPORT.md) — inspección estática del código fuente.
+- [Reconciliación 10.1-A](./Fase10_1_Code_Audit/AUDIT_10_1A_RECONCILIATION.md) — contadores corregidos de módulos, componentes y pruebas.
+- [Especificación de implementación 10.1-B](./Fase10_Antigravity_Architecture/PHASE10_1B_IMPLEMENTATION_SPEC.md) — alcance, arquitectura, archivos previstos, pruebas y puertas de aceptación. La implementación sigue pendiente de autorización.
+
 ## Fase 9 — Auditoría integral
 
 - [PHASE9_FULL_AUDIT_REPORT.md](./Fase9_Full_Audit/PHASE9_FULL_AUDIT_REPORT.md) — evidencia detallada del inventario y extracción.
