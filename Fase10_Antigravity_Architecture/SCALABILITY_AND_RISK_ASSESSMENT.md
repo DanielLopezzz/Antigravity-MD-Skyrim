@@ -11,7 +11,7 @@
 
 ## 1. VOLUMEN REAL DE REFERENCIA VERIFICADO EN LA FASE 9 (HECHOS COMPROBADOS)
 
-Toda evaluación de escalabilidad parte exclusivamente de las cifras auditadas y verificadas en la **Fase 9** ([PHASE9_FULL_AUDIT_REPORT.md](file:///c:/Skyrim%20proyecto%20traducci%C3%B3n/PHASE9_FULL_AUDIT_REPORT.md)):
+Toda evaluación de escalabilidad parte exclusivamente de las cifras auditadas y verificadas en la **Fase 9** (`c:/Skyrim proyecto traducción/PHASE9_FULL_AUDIT_REPORT.md` (referencia local no incluida en este repositorio)):
 
 | Métrica de Volumen Verificada (Fase 9) | Cantidad Exacta | Naturaleza del Dato |
 |---|---:|---|
