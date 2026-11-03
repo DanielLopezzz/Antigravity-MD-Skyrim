@@ -17,8 +17,8 @@ Queda estrictamente prohibido en el motor de extracción, en la Memoria de Tradu
 1. **Reutilizar paquetes comunitarios en español** incluidos dentro de mods de terceros (como archivos `Interface/Translations/<Mod>_spanish.txt` o tablas `<Mod>_Spanish.*STRINGS` no oficiales).
 2. **Adaptar o parafrasear traducciones de español de España (`es-ES`)** realizadas por terceros para mods.
 3. **Copiar cadenas traducidas de Nexus Mods**, repositorios externos o parches de traducción de otros autores.
-4. **Importar memorias de traducción (TMX/CSV/JSON) de terceros**: el motor [`TranslationMemoryEngine.store_approved()`](file:///c:/Skyrim%20proyecto%20traducci%C3%B3n/src/nolvus_translator/memory/tm_engine.py#L46-L95) bloquea por código (`ValueError`) cualquier intento de insertar registros con origen `'community'`.
-5. **Procesar archivos MCM en otros idiomas extranjeros** (`_chinese.txt`, `_czech.txt`, `_french.txt`, `_german.txt`, `_italian.txt`, `_japanese.txt`, `_polish.txt`, `_russian.txt`, `_turkish.txt`, etc.): el extractor [`ProjectService.scan_and_extract()`](file:///c:/Skyrim%20proyecto%20traducci%C3%B3n/src/nolvus_translator/services/project_service.py#L285-L291) procesa exclusivamente los archivos fuente originales `*_english.txt`.
+4. **Importar memorias de traducción (TMX/CSV/JSON) de terceros**: el motor `src/nolvus_translator/memory/tm_engine.py` (ruta de código local; el código fuente no está publicado aquí) bloquea por código (`ValueError`) cualquier intento de insertar registros con origen `'community'`.
+5. **Procesar archivos MCM en otros idiomas extranjeros** (`_chinese.txt`, `_czech.txt`, `_french.txt`, `_german.txt`, `_italian.txt`, `_japanese.txt`, `_polish.txt`, `_russian.txt`, `_turkish.txt`, etc.): el extractor `src/nolvus_translator/services/project_service.py` (ruta de código local; el código fuente no está publicado aquí) procesa exclusivamente los archivos fuente originales `*_english.txt`.
 
 ---
 
@@ -33,7 +33,7 @@ Se conserva provisionalmente la localización oficial de Bethesda ya instalada e
 - Los **74 plugins oficiales de Creation Club** (`cc*.esm` y `cc*.esl`, `5.717` ocurrencias ganadoras)
 
 ### Reglas de Separación Estricta
-1. **Inventario Separado**: Estas **57.261 ocurrencias** (`48.147` cadenas únicas) se registran bajo la razón explícita `"Localización oficial de Bethesda preexistente (Skyrim + DLCs + Creation Club)"` y se contabilizan en el indicador dedicado `official_bethesda_occurrences` del informe de cobertura ([`CoverageReporter`](file:///c:/Skyrim%20proyecto%20traducci%C3%B3n/src/nolvus_translator/reports/coverage.py#L50-L135)).
+1. **Inventario Separado**: Estas **57.261 ocurrencias** (`48.147` cadenas únicas) se registran bajo la razón explícita `"Localización oficial de Bethesda preexistente (Skyrim + DLCs + Creation Club)"` y se contabilizan en el indicador dedicado `official_bethesda_occurrences` del informe de cobertura (`src/nolvus_translator/reports/coverage.py` (ruta de código local; el código fuente no está publicado aquí)).
 2. **No Mezcla Automática en Memoria ES-419**: La localización oficial de Bethesda (redactada originalmente en español peninsular) puede consultarse como referencia contextual (`tm_origin_type = 'official_bethesda_reference'`), pero **nunca se mezcla automáticamente** como si fuera producción propia `es-419` (`tm_origin_type = 'own_es419'`) ni se descuenta silenciosamente de las cadenas pendientes de los mods.
 3. **Registros Base Sobrescritos por Mods de Terceros (`37.159` ocurrencias)**: Cuando un mod de terceros en inglés (p. ej. `Unofficial Skyrim Special Edition Patch.esp`, `WACCF`, `Mysticism`, `Gourmet`) sobrescribe un registro cuyo maestro original (`origin_plugin`) es `Skyrim.esm` o un DLC, el registro ganador queda en inglés dentro del orden de carga de MO2. Esas `37.159` ocurrencias se clasifican como `translatable` para que nuestra plataforma las traduzca y distribuya limpiamente en `es-419` mediante Dynamic String Distributor (DSD), evitando la mezcla de inglés/español en partida.
 
@@ -74,7 +74,7 @@ El objetivo lingüístico es un **español latinoamericano neutro, natural, lite
 
 ## 4. Protección Innegociable de Sintaxis Técnica
 
-Ninguna regla estilística puede alterar ni eliminar tokens técnicos. El módulo [`VariableProtector`](file:///c:/Skyrim%20proyecto%20traducci%C3%B3n/src/nolvus_translator/quality/protector.py) y el validador [`TranslationQualityValidator`](file:///c:/Skyrim%20proyecto%20traducci%C3%B3n/src/nolvus_translator/quality/validator.py) aplican rechazo automático inmediato (`passed_hard_gates = False`) si se altera cualquier:
+Ninguna regla estilística puede alterar ni eliminar tokens técnicos. El módulo `src/nolvus_translator/quality/protector.py` (ruta de código local; el código fuente no está publicado aquí) y el validador `src/nolvus_translator/quality/validator.py` (ruta de código local; el código fuente no está publicado aquí) aplican rechazo automático inmediato (`passed_hard_gates = False`) si se altera cualquier:
 - Variable de motor/misión: `<Alias=...>`, `<Global=...>`, `<mag>`, `<dur>`, `<area>`, `<1>`, `<2>`.
 - Especificador de formato: `%s`, `%d`, `%.0f`, `%.1f%%`, `{0}`, `{1}`.
 - Etiqueta Scaleform/HTML o paginación de libros: `<font ...>`, `</font>`, `<p align='...'>`, `<img ...>`, `[pagebreak]`.
