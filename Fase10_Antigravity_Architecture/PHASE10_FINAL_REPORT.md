@@ -35,18 +35,17 @@ En cumplimiento estricto de la **Sección 11**, se diferencia con total transpar
 
 ### 3.1. Método de Integración Más Viable y Por Qué (Objetivo B)
 Se recomienda la **Arquitectura Híbrida «Transactional JSONL Maildrop + Local CLI Gatekeeper»** (detallada en [ANTIGRAVITY_INTEGRATION_ARCHITECTURE.md](file:///c:/Skyrim%20proyecto%20traducci%C3%B3n/NolvusAIT_Design/Fase10_Antigravity_Architecture/ANTIGRAVITY_INTEGRATION_ARCHITECTURE.md)):
-1. **`Nolvus AI Translator` prepara Supertandas de lotes** en `workspace_data/antigravity_exchange/01_inbox_pending/`, donde cada lote consta de un manifiesto de contexto de solo lectura (`batch_NNNN_meta.json`) y un archivo de cadenas enmascaradas en formato **JSON Lines (`batch_NNNN_input.jsonl`)**.
-2. **El Agente de Antigravity procesa los lotes** con el modelo seleccionado por el usuario y escribe las traducciones en `03_outbox_ready/batch_NNNN_output.jsonl` (un objeto JSON autocontenido por línea).
-3. **Tras cada lote, el Agente invoca el Gatekeeper CLI local** (`python -m nolvus_translator.cli ingest-batch NNNN`), el cual verifica determinísticamente:
-   - Que estén presentes el `100 %` de los `seq_id` y `uid` solicitados.
-   - Que `VariableProtector.restore_and_verify()` apruebe el `100 %` de los placeholders `⟦VAR_i⟧` y etiquetas HTML/Scaleform.
-   - Que `TranslationQualityValidator` verifique el Glosario Maestro y la ausencia de formas peninsulares (`vosotros/os/habéis`).
-4. **Persistencia Parcial y Micro-Reintento Aislado:** Si 48 de 50 líneas son válidas y 2 tienen un defecto técnico, las **48 líneas válidas se guardan inmediatamente en SQLite WAL y en la Memoria de Traducción**, y el Gatekeeper genera un micro-lote con solo las **2 líneas defectuosas** para que el agente las corrija en el acto antes de pasar al lote siguiente.
+1. **`Nolvus AI Translator` prepara lotes de prueba** en `workspace_data/antigravity_exchange/01_inbox_pending/`, con un manifiesto de contexto JSON y un archivo JSONL de entrada con IDs/hash y texto protegido.
+2. **El agente de Antigravity procesa los archivos** usando el modelo seleccionado y escribe un archivo JSONL de salida completo en `03_outbox_ready/`. No se presupone escritura incremental ni `Append=True`.
+3. **El usuario o proceso local controlado ejecuta el Gatekeeper** por separado. Durante smoke test y benchmark, el Gatekeeper valida e ingresa exclusivamente en una DB aislada. El agente no ejecuta la ingesta ni recibe permisos de escritura a SQLite, glosario, TM o rutas originales.
+4. **Validación y recuperación por registro:** el Gatekeeper comprueba esquema, conjunto exacto de IDs, hashes, placeholders, etiquetas, claves y reglas ES-419. Solo los registros completos y válidos pueden rescatarse; líneas defectuosas/truncadas se ponen en cuarentena y sus IDs se solicitan de nuevo.
+5. **Cierre del lote:** el lote de prueba se marca completo únicamente cuando todos los IDs esperados tienen una respuesta válida. La persistencia parcial en una DB productiva no forma parte de esta etapa.
+
 
 #### ¿Por qué este método es superior a las demás alternativas?
 - **Resiliencia total por línea:** A diferencia de un archivo JSON monolítico (que se invalida entero si se corta en la última línea) o de un CSV (que se rompe con saltos de línea e incrustaciones HTML de libros de Skyrim), un archivo `.jsonl` permite rescatar hasta la última línea escrita antes de cualquier corte.
-- **Seguridad absoluta para SQLite:** El agente de IA jamás escribe directamente en `nolvus_translator.db`; solo el Gatekeeper determinista en Python inserta registros tras validar las Puertas Duras.
-- **Cero fricción de permisos:** Al operar dentro de `workspace_data/antigravity_exchange/`, todas las lecturas, escrituras y validaciones funcionan dentro del sandbox estándar de Antigravity.
+- **Separación de permisos para SQLite:** El agente no recibe escritura a la base de datos. El Gatekeeper local escribe solo en la DB de prueba durante esta validación; cualquier ingesta productiva requerirá autorización y un procedimiento posterior.
+- **Permisos a verificar:** El workspace puede permitir las operaciones de archivo, pero las reglas concretas dependen de la versión de Antigravity y del sistema operativo. Verificar los permisos Windows de lectura/escritura por carpeta; no depender de permisos automáticos.
 
 ---
 
