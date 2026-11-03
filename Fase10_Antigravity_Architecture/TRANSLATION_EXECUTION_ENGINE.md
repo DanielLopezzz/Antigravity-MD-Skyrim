@@ -29,7 +29,7 @@ Cada ocurrencia en `string_entries` posee dos identificadores inmutables:
    - Agrupa todas las ocurrencias que tienen exactamente el mismo texto original en inglés **y** la misma firma de contexto (`content_domain|record_type|subrecord_type|speaker_hint`).
 
 ### 2.2. Atributos Auditables por Cadena y Historial Completo de Cambios
-En el código actual ([core/database.py](file:///c:/Skyrim%20proyecto%20traducci%C3%B3n/src/nolvus_translator/core/database.py)), `string_entries` guarda el último estado y `tm_versions` guarda el historial de entradas ya aprobadas en la Memoria de Traducción. Para cumplir íntegramente los 10 requisitos de trazabilidad de la **Sección 6.1** (incluyendo intentos fallidos, cambios de modelo y auditoría por lote), se diseña la tabla complementaria `string_translation_history`:
+En el código actual (`src/nolvus_translator/core/database.py` (ruta de código local; el código fuente no está publicado aquí)), `string_entries` guarda el último estado y `tm_versions` guarda el historial de entradas ya aprobadas en la Memoria de Traducción. Para cumplir íntegramente los 10 requisitos de trazabilidad de la **Sección 6.1** (incluyendo intentos fallidos, cambios de modelo y auditoría por lote), se diseña la tabla complementaria `string_translation_history`:
 
 | Campo Requerido (Sección 6.1) | Ubicación en Esquema SQLite | Descripción Técnica |
 |---|---|---|
@@ -88,7 +88,7 @@ El validador local (`BatchIngestionGatekeeper`) ejecuta seis comprobaciones sobr
 
 ## 4. PROTECCIÓN DE CONTENIDO Y SALVAGUARDAS DE FASE 9 (SECCIÓN 6.3)
 
-Se conserva íntegro el motor [VariableProtector](file:///c:/Skyrim%20proyecto%20traducci%C3%B3n/src/nolvus_translator/quality/protector.py) y se incorporan las reglas de protección verificadas en la auditoría de la Fase 9:
+Se conserva íntegro el motor `src/nolvus_translator/quality/protector.py` (ruta de código local; el código fuente no está publicado aquí) y se incorporan las reglas de protección verificadas en la auditoría de la Fase 9:
 
 | Elemento a Proteger | Mecanismo de Protección Determinista | Verificación Post-Traducción |
 |---|---|---|
@@ -123,7 +123,7 @@ Cada ocurrencia en `string_entries` posee dos identificadores inmutables:
    - Agrupa todas las ocurrencias que tienen exactamente el mismo texto original en inglés **y** la misma firma de contexto (`content_domain|record_type|subrecord_type|speaker_hint`).
 
 ### 2.2. Atributos Auditables por Cadena y Historial Completo de Cambios
-En el código actual ([core/database.py](file:///c:/Skyrim%20proyecto%20traducci%C3%B3n/src/nolvus_translator/core/database.py)), `string_entries` guarda el último estado y `tm_versions` guarda el historial de entradas ya aprobadas en la Memoria de Traducción. Para cumplir íntegramente los 10 requisitos de trazabilidad de la **Sección 6.1** (incluyendo intentos fallidos, cambios de modelo y auditoría por lote), se diseña la tabla complementaria `string_translation_history`:
+En el código actual (`src/nolvus_translator/core/database.py` (ruta de código local; el código fuente no está publicado aquí)), `string_entries` guarda el último estado y `tm_versions` guarda el historial de entradas ya aprobadas en la Memoria de Traducción. Para cumplir íntegramente los 10 requisitos de trazabilidad de la **Sección 6.1** (incluyendo intentos fallidos, cambios de modelo y auditoría por lote), se diseña la tabla complementaria `string_translation_history`:
 
 | Campo Requerido (Sección 6.1) | Ubicación en Esquema SQLite | Descripción Técnica |
 |---|---|---|
@@ -182,7 +182,7 @@ El validador local (`BatchIngestionGatekeeper`) ejecuta seis comprobaciones sobr
 
 ## 4. PROTECCIÓN DE CONTENIDO Y SALVAGUARDAS DE FASE 9 (SECCIÓN 6.3)
 
-Se conserva íntegro el motor [VariableProtector](file:///c:/Skyrim%20proyecto%20traducci%C3%B3n/src/nolvus_translator/quality/protector.py) y se incorporan las reglas de protección verificadas en la auditoría de la Fase 9:
+Se conserva íntegro el motor `src/nolvus_translator/quality/protector.py` (ruta de código local; el código fuente no está publicado aquí) y se incorporan las reglas de protección verificadas en la auditoría de la Fase 9:
 
 | Elemento a Proteger | Mecanismo de Protección Determinista | Verificación Post-Traducción |
 |---|---|---|
@@ -213,10 +213,10 @@ Sin embargo, tal como advierte la **Sección 6.4**, **no toda cadena con el mism
      - **Jamás se reutilizan automáticamente entre contextos distintos.**
      - Generan `TranslationWorkUnit` independientes para cada `context_signature` (una unidad para `"Fire"` en `SPEL:FULL` y otra unidad distinta para `"Fire"` en `INFO:NAM1` o `MCM_TXT`), enviando a cada lote su contexto específico para que el modelo traduzca *"Fuego"* en el hechizo y *"¡Disparen!"* en el diálogo.
   2. **Oraciones completas no ambiguas ($> 5$ palabras y $> 35$ caracteres):**
-     - Si existe una traducción aprobada en la Memoria de Traducción pero con distinto `speaker_hint` o `record_type`, el motor aplica la regla ya implementada en [pipeline.py](file:///c:/Skyrim%20proyecto%20traducci%C3%B3n/src/nolvus_translator/translation/pipeline.py#L490-L504): reutiliza la traducción con estado `ReviewStatus.DUBIOUS` (`confidence_score = 0.78`) e inserta una alerta explícita para verificación rápida, evitando tanto el trabajo redundante como la propagación silenciosa de un posible matiz de hablante.
+     - Si existe una traducción aprobada en la Memoria de Traducción pero con distinto `speaker_hint` o `record_type`, el motor aplica la regla ya implementada en `src/nolvus_translator/translation/pipeline.py` (ruta de código local; el código fuente no está publicado aquí): reutiliza la traducción con estado `ReviewStatus.DUBIOUS` (`confidence_score = 0.78`) e inserta una alerta explícita para verificación rápida, evitando tanto el trabajo redundante como la propagación silenciosa de un posible matiz de hablante.
 
 ### 5.3. Caso 3: Cadenas Similares (`Fuzzy Matches` en Memoria de Traducción)
-- **Condición:** Una cadena nueva tiene una similitud de entre el **`85 %` y el `99 %`** (calculada localmente con `FTS5` + `RapidFuzz` en [tm_engine.py](file:///c:/Skyrim%20proyecto%20traducci%C3%B3n/src/nolvus_translator/memory/tm_engine.py#L195-L231)) respecto a una cadena ya aprobada en la TM (ej. `"Potion of Minor Stamina"` cuando ya está aprobada `"Potion of Extreme Stamina"` → `"Poción de aguante extremo"`).
+- **Condición:** Una cadena nueva tiene una similitud de entre el **`85 %` y el `99 %`** (calculada localmente con `FTS5` + `RapidFuzz` en `src/nolvus_translator/memory/tm_engine.py` (ruta de código local; el código fuente no está publicado aquí)) respecto a una cadena ya aprobada en la TM (ej. `"Potion of Minor Stamina"` cuando ya está aprobada `"Potion of Extreme Stamina"` → `"Poción de aguante extremo"`).
 - **Acción:** Nunca se sustituye automáticamente; en su lugar, se adjunta en el campo `tm_fuzzy_hint` del ítem dentro del lote para que el modelo mantenga exactamente la misma plantilla sintáctica y terminológica.
 
 ---
