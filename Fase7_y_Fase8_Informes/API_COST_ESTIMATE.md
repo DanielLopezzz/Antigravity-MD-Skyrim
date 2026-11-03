@@ -5,13 +5,13 @@
 # ESTIMACIÓN ECONÓMICA Y COMPARATIVA DE PROVEEDORES IA — FASE 8 (`ES-419`)
 **Proyecto**: NOLVUS AI TRANSLATOR — Nolvus Awakening 6.0.21  
 **Política Aplicada**: Localización 100 % propia en español latinoamericano neutro (`es-419`) desde el inglés original, conservando separada la localización oficial de Bethesda y excluyendo el 100 % de las traducciones comunitarias.  
-**Restricción de Seguridad**: Ninguna API de pago ha sido activada. Este estudio se realizó en modo de simulación y cálculo matemático local mediante [`CostEstimator`](file:///c:/Skyrim%20proyecto%20traducci%C3%B3n/src/nolvus_translator/reports/cost_estimator.py).
+**Restricción de Seguridad**: Ninguna API de pago ha sido activada. Este estudio se realizó en modo de simulación y cálculo matemático local mediante `src/nolvus_translator/reports/cost_estimator.py` (código fuente local no publicado en este repositorio).
 
 ---
 
 ## 1. Volumen Real Auditado Base de Cálculo (`Snapshot #1` Depurado)
 
-Los cálculos siguientes se fundamentan en el inventario real auditado de `Snapshot #1` en [`nolvus_translator.db`](file:///c:/Skyrim%20proyecto%20traducci%C3%B3n/workspace_data/nolvus_translator.db) (con comparativa adicional para el Corte C que incluye los `.pex` dentro de `.bsa` de mods):
+Los cálculos siguientes se fundamentan en el inventario real auditado de `Snapshot #1` en `c:/Skyrim proyecto traducción/workspace_data/nolvus_translator.db` (ruta/artefacto local no incluido en GitHub) (con comparativa adicional para el Corte C que incluye los `.pex` dentro de `.bsa` de mods):
 
 | Métrica de Volumen | Valor Exacto (`Corte B` Base) | Valor Ampliado (`Corte C` con `.pex` en `.bsa`) |
 | :--- | ---: | ---: |
@@ -91,7 +91,7 @@ Tu equipo cuenta con una GPU **AMD Radeon RX 9070 XT (arquitectura RDNA 4, 16 GB
 
 - **Evaluación Técnica**:
   - **Viabilidad**: **100 % viable** para modelos de **12B a 14B parámetros en `Q5_K_M`** (Gemma 3 12B IT / Qwen 2.5 14B Instruct) que caben holgadamente dentro de los **16 GB de VRAM** de tu RX 9070 XT sin tocar la RAM del sistema.
-  - **Fortalezas**: Costo de facturación **\$0,00 USD**, privacidad total, sin límites de cuota por minuto (*rate limits*), y perfectamente compatible con nuestro sistema de **Checkpoints y Pausa/Reanudación por lote** ([`TranslationPipeline`](file:///c:/Skyrim%20proyecto%20traducci%C3%B3n/src/nolvus_translator/translation/pipeline.py)).
+  - **Fortalezas**: Costo de facturación **\$0,00 USD**, privacidad total, sin límites de cuota por minuto (*rate limits*), y perfectamente compatible con nuestro sistema de **Checkpoints y Pausa/Reanudación por lote** (`src/nolvus_translator/translation/pipeline.py` (código fuente local no publicado en este repositorio)).
   - **Limitaciones frente a API Cloud**: En textos literarios largos y complejos (los `1.400` libros de lore de más de `1.000` caracteres y los diálogos con juegos de palabras o poesía de bardos), un modelo local de 12B–14B tiene menor riqueza estilística y adherencia simultánea a múltiples restricciones del glosario que un modelo frontera como `Gemini 2.5 Pro` o `GPT-4.1`.
 
 ---
