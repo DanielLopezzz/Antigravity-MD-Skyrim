@@ -1,3 +1,7 @@
+> **GUÍA DE USUARIO — DOCUMENTO HISTÓRICO:** Esta guía describe la interfaz y los flujos de la aplicación durante las fases iniciales. Sus nombres de vistas, indicadores, rutas y procedimientos no se han revalidado contra el ejecutable actual. Para el estado vigente, restricciones y próximos pasos, consulta [CURRENT_PROJECT_STATE.md](../../CURRENT_PROJECT_STATE.md) y [ROADMAP.md](./ROADMAP.md). No tomes los pasos de activación/exportación de este documento como autorización para modificar MO2 o Nolvus.
+
+---
+
 # GUÍA DE USUARIO Y OPERACIÓN SEGURA (`USER_GUIDE.md`)
 
 **Manual paso a paso para operar `NOLVUS AI TRANSLATOR` con Nolvus Awakening 6.0.21 y Mod Organizer 2.**
