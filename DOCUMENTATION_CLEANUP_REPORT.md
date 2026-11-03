@@ -10,17 +10,17 @@ Consolidar la documentación del proyecto Nolvus AI Translator, separar estado v
 
 ## 2. Decisión técnica resultante
 
-La ruta preferida para validar Antigravity es **intercambio supervisado JSON + JSONL con un Gatekeeper local separado**:
+La ruta preferida para validar Antigravity es **intercambio supervisado JSON + JSONL desde un workspace físicamente separado del proyecto, con un Gatekeeper local separado**:
 
-1. El núcleo exporta un manifiesto JSON y un JSONL de entrada con IDs estables, hashes, contexto y texto protegido.
-2. El agente Antigravity solo lee el protocolo/entrada y escribe un archivo JSONL completo en staging.
+1. El núcleo exporta un manifiesto JSON y un JSONL de entrada con IDs estables, hashes, contexto y texto protegido a una carpeta de intercambio independiente.
+2. El usuario abre solo esa carpeta como workspace de Antigravity. El agente no comparte workspace con el código ni con la DB del traductor; solo lee protocolo/entrada y escribe un JSONL completo en staging.
 3. No se depende de `write_file(..., Append=True)`, hot-folder autónomo ni automatización de clics.
 4. El usuario o un proceso local controlado ejecuta el Gatekeeper por separado. Durante pruebas solo se permite ingesta a DB aislada.
 5. El Gatekeeper revisa esquema, IDs esperados, hashes, duplicados, placeholders, etiquetas, claves no traducibles, glosario y ES-419.
 6. Solo las líneas completas y válidas pueden rescatarse. Las líneas parciales o defectuosas se ponen en cuarentena y se reintentan por UID.
 7. El agente nunca recibe permisos de escritura sobre DB principal, glosario, memoria de traducción, STOCK GAME, mods originales ni exportación productiva.
 
-**Por qué es la mejor opción para esta fase:** minimiza permisos, no requiere API ni automatización de interfaz, conserva trazabilidad y permite probar recuperación sin conceder al agente acceso a SQLite. JSONL facilita recuperar registros completos por línea, pero no es una transacción ni garantiza por sí solo recuperación del 100 %.
+**Por qué es la mejor opción para esta fase:** minimiza exposición de datos mediante separación física del workspace, no requiere API ni automatización de interfaz, conserva trazabilidad y permite probar recuperación sin conceder al agente acceso a SQLite, al código del traductor ni a rutas de Nolvus. JSONL facilita recuperar registros completos por línea, pero no es una transacción ni garantiza por sí solo recuperación del 100 %.
 
 ## 3. Cuotas y permisos de Antigravity
 
@@ -39,7 +39,7 @@ Fuentes:
 
 - README: dejó de publicar el resumen incorrecto de Fase 9 (`2.587` mods/`2.371` plugins/`464.597` cadenas) y ahora enlaza cifras del informe Fase 9: `3.700` mods activos, `3.717` plugins, `583` BSA, `1.168.337` elementos, `328.485` ocurrencias de Corte C y `240.244` únicas pendientes + unas `440` JSON 4A adicionales.
 - Roadmap: dejó de decir que la Fase 9 era el piloto de traducción. Ahora refleja Fase 9 como auditoría completada, Fase 10 como diseño documental completado y las pruebas como pendientes.
-- Fase 10: se retiraron afirmaciones de soporte de `Append=True`, recuperación garantizada del 100 %, ejecución del Gatekeeper por el agente y permisos automáticos universales.
+- Fase 10: se retiraron afirmaciones de soporte de `Append=True`, recuperación garantizada del 100 %, ejecución del Gatekeeper por el agente y permisos automáticos universales. Se adoptó como regla abrir Antigravity en una carpeta de intercambio físicamente separada, no en la raíz del proyecto.
 - Escalabilidad: los valores de cadenas/día, sesiones, Workpacks y umbrales de decisión se identifican como hipótesis/estimaciones; ya no activan API automáticamente.
 - Benchmark, motor y arquitectura dual: se identifican como planes/diseños pendientes de validación de código y corpus, no como sistemas operativos certificados por esta revisión.
 - Fases 7–8 y documentos base 0–6: se marcaron como históricos cuando sus números, modelos, precios, versiones o instrucciones pueden estar sustituidos.
