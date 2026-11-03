@@ -1,3 +1,7 @@
+> **ESTADO: DISEÑO PROPUESTO, NO IMPLEMENTACIÓN CERTIFICADA.** Este documento especifica cómo debería comportarse el motor. Las garantías descritas (reanudación, persistencia, QA, propagación TM y exportación) son contratos objetivo; el repositorio publicado contiene documentación y no incluye el código fuente ni la DB para reejecutar sus pruebas. No presentar estos controles como verificados en el runtime actual hasta inspeccionar código y pruebas vigentes.
+
+---
+
 # MOTOR DE EJECUCIÓN DE TRADUCCIÓN: LOTES, PROTECCIÓN, DEDUPLICACIÓN, RECUPERACIÓN Y OPTIMIZACIÓN
 **Documento:** `TRANSLATION_EXECUTION_ENGINE.md`  
 **Fase:** Fase 10 — Objetivo D (Lógica de Procesamiento) y Objetivo E (Evaluación Crítica de Estrategia Óptima)  
@@ -92,7 +96,101 @@ Se conserva íntegro el motor [VariableProtector](file:///c:/Skyrim%20proyecto%2
 | **Etiquetas de motor Skyrim (`<Alias=...>`, `<Global=...>`, `<mag>`, `<dur>`, `<area>`, `<1>`)** | Regex `skyrim_alias_global` y `skyrim_magic_token` → `⟦VAR_i⟧`. | Restauración exacta 1:1; prohibido traducir el nombre del alias interno (`<Alias=Player>` jamás pasa a `<Alias=Jugador>`). |
 | **Etiquetas HTML/Scaleform (`<font face='$HandwrittenFont' size='22'>`, `<p align='center'>`, `<img src='...'>`, `[pagebreak]`)** | Cada etiqueta de apertura o cierre se enmascara individualmente como `⟦VAR_i⟧`, dejando expuesto solo el texto visible entre etiquetas. | Restauración 1:1 + verificación de balance de etiquetas abiertas/cerradas. |
 | **Especificadores `printf` (`%s`, `%d`, `%.1f`, `%.0f%%`) y llaves (`{0}`, `{1}`)** | Regex `printf_specifier` y `brace_placeholder` → `⟦VAR_i⟧`. | Restauración exacta 1:1. |
-| **Claves `\$` en archivos `Interface/Translations/*.txt` y `MCM/Config/*/config.json`** | En `mcm_parser.py`, la columna izquierda (`$KeyName`) se separa estructuralmente por el tabulador `\t` y **nunca se envía como texto traducible** (queda en `editor_id`). Si dentro del valor derecho aparece una referencia `$OtraClave`, `mcm_dollar_token` la enmascara como `⟦VAR_i⟧`. | Al exportar en `build_mcm_translation_txt_bytes`, se reconstruye `editor_id + "\t" + translated_text` en `UTF-16LE BOM`, garantizando `0 %` de claves `\$` alteradas. |
+| **Claves `\$` en archivos `Interface/Translations/*.txt` y `MCM/Config/*/config.json`** | En `mcm_parser.py`, la columna izquierda (`$KeyName`) se separa estructuralmente por el tabulador `\t` y **nunca se envía como texto traducible** (queda en `editor_id`). Si dentro del valor derecho aparece una referencia `$OtraClave`, `mcm_dollar_token` la enmascara como `⟦VAR_i⟧`. | Al exportar en `build_mcm_translation_txt_bytes`, se reconstruye `editor_id + "\t" + translated_text` en `UTF-16LE BOM`, con objetivo de `0` claves `\# MOTOR DE EJECUCIÓN DE TRADUCCIÓN: LOTES, PROTECCIÓN, DEDUPLICACIÓN, RECUPERACIÓN Y OPTIMIZACIÓN
+**Documento:** `TRANSLATION_EXECUTION_ENGINE.md`  
+**Fase:** Fase 10 — Objetivo D (Lógica de Procesamiento) y Objetivo E (Evaluación Crítica de Estrategia Óptima)  
+**Estado:** Diseño Técnico Completo (Modo de Solo Diseño)
+
+---
+
+## 1. PREMISA DE INGENIERÍA: GESTIÓN DEL RIESGO RESIDUAL (SECCIÓN 6)
+
+En sistemas distribuidos o asistidos por modelos de lenguaje que procesan `240.684` cadenas únicas (`328.485+` ocurrencias), **ningún componente de IA es infalible**. Los modelos pueden omitir una línea, truncar una salida larga, alucinar una explicación o alterar un marcador; asimismo, la aplicación cliente o el servidor del agente pueden cerrarse a mitad de un lote.
+
+Por tanto, esta arquitectura no asume que el modelo responderá siempre bien, sino que **asume que ocurrirán fallos parciales y diseña controles deterministas en cada etapa** para que ningún fallo corrompa la base de datos ni provoque pérdida del trabajo ya validado.
+
+---
+
+## 2. GESTIÓN DE REGISTROS Y TRAZABILIDAD HISTÓRICA (SECCIÓN 6.1)
+
+### 2.1. Identificación Estable de Cada Cadena y Unidad de Trabajo
+Cada ocurrencia en `string_entries` posee dos identificadores inmutables:
+1. **`string_uid` (Identificador Estructural de Ocurrencia):** Identifica de forma única la ubicación física/lógica del texto en Nolvus Awakening:
+   - En plugins: `<PluginActivo>:<PluginOrigen>:<FormIDHex>:<RecordType>:<SubrecordType>:<SubIndex>` (ej. `3DNPC.esp:3DNPC.esp:0029C112:INFO:NAM1:0`).
+   - En archivos MCM/INI/PEX/JSON: `<Formato>:<RutaVirtualNormalizada>:<ClaveOIndice>`.
+2. **`work_unit_id` (Identificador de Unidad de Traducción Deduplicada):**
+   - Calculado como `SHA-256(source_hash + "|" + context_signature)`.
+   - Agrupa todas las ocurrencias que tienen exactamente el mismo texto original en inglés **y** la misma firma de contexto (`content_domain|record_type|subrecord_type|speaker_hint`).
+
+### 2.2. Atributos Auditables por Cadena y Historial Completo de Cambios
+En el código actual ([core/database.py](file:///c:/Skyrim%20proyecto%20traducci%C3%B3n/src/nolvus_translator/core/database.py)), `string_entries` guarda el último estado y `tm_versions` guarda el historial de entradas ya aprobadas en la Memoria de Traducción. Para cumplir íntegramente los 10 requisitos de trazabilidad de la **Sección 6.1** (incluyendo intentos fallidos, cambios de modelo y auditoría por lote), se diseña la tabla complementaria `string_translation_history`:
+
+| Campo Requerido (Sección 6.1) | Ubicación en Esquema SQLite | Descripción Técnica |
+|---|---|---|
+| **1. Identificador estable** | `string_entries.string_uid` / `work_unit_id` | Clave única determinista e inmutable entre sesiones. |
+| **2. Texto original** | `string_entries.source_text` / `source_hash` | Texto original en inglés + hash SHA-256. |
+| **3. Origen** | `mod_name`, `virtual_path`, `plugin_name`, `origin_plugin`, `form_id_hex`, `record_type`, `subrecord_type` | Trazabilidad completa hasta el mod de MO2 y el subregistro binario exacto. |
+| **4. Contexto** | `content_domain`, `context_group_id`, `quest_id`, `topic_id`, `speaker_hint`, `call_context` | Metadatos narrativos y funcionales asociados al registro. |
+| **5. Estado** | `classification` + `review_status` | Estado en el flujo (`unprocessed`, `exported`, `approved`, `dubious`, `rejected`, `requires_lore_research`). |
+| **6. Lote** | `batch_id` + `job_id` (en `string_translation_history`) | Vínculo exacto con el lote (`batch_NNNN`) en que fue procesada. |
+| **7. Modelo utilizado** | `provider_id` + `model_id` | Ej.: `antigravity:claude-sonnet-5.5`, `antigravity:gemini-4-argon`, `antigravity:claude-opus-5.5`. |
+| **8. Fecha de procesamiento** | `processed_at_utc` (`ISO-8601 UTC`) | Marca temporal exacta de recepción y validación. |
+| **9. Resultado y Estado de QA** | `translated_text`, `confidence_score`, `quality_json` | Texto traducido restaurado + desglose completo de Puertas Duras y criterios de `TranslationQualityValidator`. |
+| **10. Historial de cambios** | Tabla `string_translation_history` + `tm_versions` | Registro append-only de cada versión generada, reintento de QA, cambio de modelo o edición manual del revisor humano. |
+
+---
+
+## 3. GESTIÓN DE LOTES Y MÁQUINA DE ESTADOS ESTRICTA (SECCIÓN 6.2)
+
+### 3.1. Ciclo de Vida de un Lote (Prohibición de Autocompletado Ciego)
+Tal como exige la **Sección 6.2**, *"El sistema no debe marcar como completado un lote solamente porque el agente haya terminado su ejecución. Debe comprobar que todos los registros esperados tengan una respuesta válida."*
+
+```mermaid
+stateDiagram-v2
+    [*] --> PENDING: Lote creado en SQLite (sin duplicados)
+    PENDING --> EXPORTED: Archivos _meta.json y _input.jsonl escritos en 01_inbox_pending/
+    EXPORTED --> IN_PROGRESS: Agente toma el lote
+    IN_PROGRESS --> RAW_OUTPUT_WRITTEN: Agente escribe _output.jsonl en 03_outbox_ready/
+    RAW_OUTPUT_WRITTEN --> VALIDATING_QA: Gatekeeper CLI verifica línea por línea
+    VALIDATING_QA --> COMPLETED: 100% de registros presentes y 100% superan Hard Gates
+    VALIDATING_QA --> PARTIAL_RETRY: N registros válidos (guardados en SQLite) + M defectuosos/faltantes
+    PARTIAL_RETRY --> VALIDATING_QA: Reintento focalizado solo sobre los M registros defectuosos (máx. 3 intentos)
+    VALIDATING_QA --> QUARANTINED_HUMAN: Supera máx. reintentos en los M registros restantes -> Cola de Supervisión Humana
+```
+
+### 3.2. Los 6 Controles Deterministas antes de Marcar un Lote como `COMPLETED`
+El validador local (`BatchIngestionGatekeeper`) ejecuta seis comprobaciones sobre `batch_NNNN_output.jsonl`:
+1. **Control de Existencia y No Vacío:** El archivo de salida existe en `03_outbox_ready/` y tiene tamaño `> 0` bytes.
+2. **Control de Sintaxis JSONL Línea por Línea:** Cada línea no vacía se parsea individualmente con `json.loads()`. Si una línea está truncada o malformada, se registra el número de línea exacto sin abortar la lectura de las demás líneas válidas.
+3. **Control de Biyección Exacta de Identificadores (`Completeness Check`):**
+   - Se verifica que para cada `(seq_id, uid)` presente en `batch_NNNN_input.jsonl` exista exactamente una entrada correspondiente en `batch_NNNN_output.jsonl`.
+   - Cualquier `uid` omitido por el agente impide que el lote pase a `COMPLETED`.
+4. **Control de Puertas Duras Técnicas (`VariableProtector.restore_and_verify()`):**
+   - Conteo exacto `1:1` de todos los marcadores `⟦VAR_0⟧`..`⟦VAR_k⟧`.
+   - Ausencia de marcadores inventados (`⟦VAR_99⟧`) o caracteres residuales `⟦` / `⟧`.
+   - Balance exacto de etiquetas HTML/Scaleform (`<font>`, `<p>`, `<b>`, `<i>`, `<u>`, `[pagebreak]`).
+   - Compatibilidad de codificación de destino (`UTF-16LE` para `mcm_txt`, `UTF-8` para `DSD`/`STRINGS`/`PEX`).
+5. **Control de No-Traducción Accidental (`Untranslated Echo Check`):**
+   - Si la cadena original tiene $\ge 3$ palabras traducibles (y no es un nombre propio protegido) pero el modelo devolvió exactamente el mismo texto en inglés (`translated_text.strip() == source_text.strip()`), se rechaza como omisión encubierta.
+6. **Persistencia Parcial Inmediata y Micro-Reintento Aislado (`Fault Isolation`):**
+   - Si en un lote de `50` cadenas, `48` superan todos los controles y `2` fallan (por ejemplo, una línea omitida y una con un placeholder `⟦VAR_0⟧` faltante):
+     - Las **`48` cadenas válidas se guardan y aprueban inmediatamente en SQLite WAL y en la Memoria de Traducción**, quedando aseguradas en disco.
+     - El lote pasa a estado `PARTIAL_RETRY` y el Gatekeeper genera automáticamente un micro-lote (`batch_NNNN_retry1_input.jsonl`) que contiene **únicamente las `2` cadenas pendientes** junto con el mensaje de error específico (ej. *"Error previo en seq=19: omitiste el marcador obligatorio ⟦VAR_0⟧"*).
+     - Se permite un máximo configurable de `max_retries = 3` micro-reintentos por lote. Si tras 3 intentos una cadena individual sigue fallando, esa cadena aislada pasa a `QUARANTINED_HUMAN` (`review_status = 'rejected'`) para revisión manual en la GUI, sin bloquear jamás a los demás lotes.
+
+---
+
+## 4. PROTECCIÓN DE CONTENIDO Y SALVAGUARDAS DE FASE 9 (SECCIÓN 6.3)
+
+Se conserva íntegro el motor [VariableProtector](file:///c:/Skyrim%20proyecto%20traducci%C3%B3n/src/nolvus_translator/quality/protector.py) y se incorporan las reglas de protección verificadas en la auditoría de la Fase 9:
+
+| Elemento a Proteger | Mecanismo de Protección Determinista | Verificación Post-Traducción |
+|---|---|---|
+| **Referencias `FormID\|Plugin.esp` (DSD/INI)** | Regex `dsd_form_ref` → enmascarado como `⟦VAR_i⟧`. | Restauración exacta 1:1. |
+| **Etiquetas de motor Skyrim (`<Alias=...>`, `<Global=...>`, `<mag>`, `<dur>`, `<area>`, `<1>`)** | Regex `skyrim_alias_global` y `skyrim_magic_token` → `⟦VAR_i⟧`. | Restauración exacta 1:1; prohibido traducir el nombre del alias interno (`<Alias=Player>` jamás pasa a `<Alias=Jugador>`). |
+| **Etiquetas HTML/Scaleform (`<font face='$HandwrittenFont' size='22'>`, `<p align='center'>`, `<img src='...'>`, `[pagebreak]`)** | Cada etiqueta de apertura o cierre se enmascara individualmente como `⟦VAR_i⟧`, dejando expuesto solo el texto visible entre etiquetas. | Restauración 1:1 + verificación de balance de etiquetas abiertas/cerradas. |
+| **Especificadores `printf` (`%s`, `%d`, `%.1f`, `%.0f%%`) y llaves (`{0}`, `{1}`)** | Regex `printf_specifier` y `brace_placeholder` → `⟦VAR_i⟧`. | Restauración exacta 1:1. |
+| **Claves `\$` en archivos `Interface/Translations/*.txt` y `MCM/Config/*/config.json`** | En `mcm_parser.py`, la columna izquierda (`$KeyName`) se separa estructuralmente por el tabulador `\t` y **nunca se envía como texto traducible** (queda en `editor_id`). Si dentro del valor derecho aparece una referencia `$OtraClave`, `mcm_dollar_token` la enmascara como `⟦VAR_i⟧`. | Al exportar en `build_mcm_translation_txt_bytes`, se reconstruye `editor_id + "\t" + translated_text` en `UTF-16LE BOM`,  alteradas; el resultado debe comprobarse con pruebas de ida y vuelta. |
 | **Nombres propios puros (`NPC_:FULL`, `NPC_:SHRT` con `classification = protected_proper_noun`)** | `8.667` ocurrencias (`4.931` únicas) se resuelven directamente en el Paso 1 local (`translated_text = source_text`, `provider_id = 'glossary_protection'`) **sin enviarlas a ningún modelo de IA**. | `0` riesgo de hispanización accidental de nombres propios puros. |
 | **Normalización previa de los `38` apóstrofes corruptos de `3DNPC.esp` (Hallazgo Fase 9)** | Filtro determinista pre-enmascarado que convierte la secuencia corrupta Windows-1252 `\ufffd'` (ej. `I\ufffd've`, `don\ufffd't`) en apóstrofe estándar ASCII `'` (`I've`, `don't`). | Elimina el artefacto `\ufffd` antes de que llegue al modelo o al archivo final. |
 
@@ -166,7 +264,7 @@ A continuación respondemos a cada una de las 10 preguntas críticas de la **Sec
 | **3. ¿Podemos gestionar los lotes con mayor fiabilidad?** | **Sí: Tamaño de Lote Adaptativo por Presupuesto de Caracteres/Tokens (`Adaptive Token-Budget Batching`) en vez de un número fijo de 25 cadenas.** Un lote de 25 libros de `6.000` caracteres (`150.000` chars) desbordaría la salida del modelo y causaría truncamiento, mientras que un lote de 25 nombres de espadas de `18` caracteres (`450` chars) desaprovecha el turno. La solución superior es fijar un **doble límite por lote**: `máximo N cadenas (hasta 80 en textos cortos)` **Y** `máximo 12.000 caracteres (~3.200 tokens de salida)` por archivo `.jsonl`. |
 | **4. ¿Es conveniente separar los lotes por mod, categoría o complejidad?** | **Sí, es crítico.** Mezclar en un mismo lote una línea de diálogo de un bandido, el nombre de una poción, una opción técnica de MCM y un párrafo de un libro religioso obliga al modelo a cambiar constantemente de registro lingüístico y degrada la calidad. La estrategia óptima es una **Jerarquía de Agrupación en 3 Niveles**: `1º Dominio Funcional` → `2º Mod / Misión / Hablante (context_group_id)` → `3º Complejidad (Estándar vs Literaria)`. |
 | **5. ¿Conviene utilizar un modelo general y escalar únicamente los casos difíciles?** | **Sí (`Tiered Model Routing`).** En Nolvus Awakening, el **`~86 %` del volumen** son textos cortos o estructurados (armas, armaduras, efectos mágicos, objetivos breves, menús MCM y diálogos directos) que el modelo más ágil y de mayor cuota en Antigravity (p. ej. `Gemini 4 Argon` o `Claude Sonnet 5.5`, según confirme el benchmark) puede procesar a alta velocidad. El **`~14 %` restante** (`BOOK:DESC`, entradas del Bestiario, diálogos filosóficos de *3DNPC*/*Vigilant*/*Inigo* y las cadenas de `pending_research`) se reserva para el modelo de máxima capacidad literaria (`Claude Opus 5.5` o el ganador literario del benchmark). Esto preserva la cuota del modelo más pesado donde realmente aporta valor diferencial. |
-| **6. ¿Podemos aprovechar mejor la Memoria de Traducción?** | **Sí: Propagación Pre-Lote + Diccionario de Plantillas Modulares (`Template Pattern Acceleration`).** En Skyrim/Nolvus existen más de `25.000` nombres de objetos del tipo `<Material> <Objeto> of <Encantamiento>` (ej. *Iron Sword of Fire*, *Steel Sword of Fire*, *Dwarven Sword of Fire*, *Elven Boots of Major Stamina*). Al traducir primero los lotes de términos base y encantamientos, la TM alimenta como `tm_fuzzy_hint` las combinaciones exactas a los lotes siguientes de herrería/encantamiento, logrando consistencia del `100 %`. |
+| **6. ¿Podemos aprovechar mejor la Memoria de Traducción?** | **Sí: Propagación Pre-Lote + Diccionario de Plantillas Modulares (`Template Pattern Acceleration`).** En Skyrim/Nolvus existen más de `25.000` nombres de objetos del tipo `<Material> <Objeto> of <Encantamiento>` (ej. *Iron Sword of Fire*, *Steel Sword of Fire*, *Dwarven Sword of Fire*, *Elven Boots of Major Stamina*). Al traducir primero los lotes de términos base y encantamientos, la TM alimenta como `tm_fuzzy_hint` las combinaciones exactas a los lotes siguientes de herrería/encantamiento, con el objetivo de mejorar la consistencia; el porcentaje real debe medirse. |
 | **7. ¿Cómo mantener la consistencia terminológica entre cientos de lotes?** | **Mediante el "Glosario Evolutivo Auto-Enriquecido por Mod" (`Mod-Scoped Glossary Pinning`).** Antes de traducir los diálogos y libros de un mod grande (ej. *Beyond Skyrim - Bruma* o *Wyrmstooth*), el sistema programa **primero** un lote pequeño con todos los registros de nombres de lugares (`CELL:FULL`, `LCTN:FULL`), facciones (`FACT:FULL`) y objetos clave de ese mod. Una vez validado ese primer lote, esas traducciones se anclan automáticamente como términos de glosario del mod para todos los lotes siguientes de diálogos y misiones de ese mismo mod. |
 | **8. ¿Qué información contextual es necesaria y cuál genera consumo innecesario?** | **Necesaria:** `mod_name`, `content_domain`, `record_type:subrecord_type`, `speaker_hint` (cuando existe), tipo gramatical de `⟦VAR_i⟧` y **únicamente los términos del glosario que hacen match real en las cadenas de ese lote**. **Consumo innecesario que debe eliminarse:** Enviar el Glosario Maestro completo (`200+` términos) en cada lote cuando solo aparecen `3` términos en esas 50 cadenas, o repetir las instrucciones extensas del sistema dentro de cada archivo `.jsonl` en lugar de alojarlas una sola vez en la *Skill* local (`00_protocol/ANTIGRAVITY_TRANSLATOR_SKILL.md`). |
 | **9. ¿Qué partes deberían ejecutarse localmente sin intervención de modelos?** | **Deben ejecutarse 100 % en local en Python (`0` consumo de modelo):** (1) Filtrado y copia directa de los `8.667` nombres propios protegidos (`protected_proper_noun`), (2) Deduplicación y propagación de las `88.241` ocurrencias repetidas del mismo contexto, (3) Normalización de los `38` apóstrofes corruptos `\ufffd'` de `3DNPC.esp`, (4) Enmascaramiento y restauración de `⟦VAR_i⟧`, (5) Coincidencias exactas del `100 %` con el Glosario Maestro (cuando una cadena de `CELL:FULL` o `LCTN:FULL` es literalmente igual a un término aprobado del glosario, como `"Whiterun"` → `"Carrera Blanca"`), y (6) Toda la validación determinista de QA y reconstrucción de archivos binarios. |
