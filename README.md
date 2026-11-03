@@ -13,7 +13,7 @@ Documentación del proyecto para localizar **Nolvus Awakening 6.0.21** al españ
 
 ## Fase 10 — Diseño Antigravity-first y arquitectura dual
 
-La Fase 10 está **completada en diseño**. El benchmark y el adaptador de intercambio todavía no se han ejecutado/implementado.
+La Fase 10 está **completada en diseño**, y la **Fase 10.1-B.1** (implementación aislada del coordinador de intercambio, bóveda, Gatekeeper y CLI) está **implementada y verificada en el repositorio local de código** (`23/23` pruebas en verde; puertas `B1–B7` superadas). El smoke test real de 25 cadenas (`10.2`) y el benchmark (`10.3`) permanecen pendientes de autorización.
 
 - [PHASE10_FINAL_REPORT.md](./Fase10_Antigravity_Architecture/PHASE10_FINAL_REPORT.md) — decisiones y alcance del diseño, con una adenda de validación técnica.
 - [BENCHMARK_PLAN_ANTIGRAVITY.md](./Fase10_Antigravity_Architecture/BENCHMARK_PLAN_ANTIGRAVITY.md) — benchmark de 300 cadenas, tres modelos y rúbrica.
@@ -26,7 +26,8 @@ La Fase 10 está **completada en diseño**. El benchmark y el adaptador de inter
 
 - [Informe de auditoría técnica 10.1-A](./Fase10_1_Code_Audit/Audit_20261103_113100/PHASE10_1_CODE_AUDIT_REPORT.md) — inspección estática del código fuente.
 - [Reconciliación 10.1-A](./Fase10_1_Code_Audit/AUDIT_10_1A_RECONCILIATION.md) — contadores corregidos de módulos, componentes y pruebas.
-- [Especificación de implementación 10.1-B](./Fase10_Antigravity_Architecture/PHASE10_1B_IMPLEMENTATION_SPEC.md) — alcance, arquitectura, archivos previstos, pruebas y puertas de aceptación. La implementación sigue pendiente de autorización.
+- [Especificación de implementación 10.1-B](./Fase10_Antigravity_Architecture/PHASE10_1B_IMPLEMENTATION_SPEC.md) — alcance, arquitectura, archivos previstos, pruebas y puertas de aceptación.
+- [Informe de implementación y verificación 10.1-B.1](./Fase10_Antigravity_Architecture/PHASE10_1B1_IMPLEMENTATION_REPORT.md) — registro de cambios en rama local `feat/phase10-1b-antigravity-exchange` (`8ff5bf78`), resultados de las 23 pruebas automatizadas y cumplimiento de puertas `B1–B7`.
 
 ## Fase 9 — Auditoría integral
 

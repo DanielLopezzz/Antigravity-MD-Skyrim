@@ -2,7 +2,7 @@
 
 **Última revisión documental:** 2026-11-03  
 **Fuente de estado del entorno:** informe final de Fase 9 incluido en este repositorio.  
-**Estado del proyecto:** diseño de Fase 10 completado; auditoría estática 10.1-A y reconciliación documental completadas; especificación 10.1-B preparada, pero la implementación de código aún no ha comenzado ni está autorizada.
+**Estado del proyecto:** diseño de Fase 10 completado; auditoría estática 10.1-A y reconciliación documental completadas; especificación 10.1-B aprobada e **implementación aislada 10.1-B.1 completada y verificada localmente** (`23/23` pruebas en verde; puertas `B1–B7` superadas en rama `feat/phase10-1b-antigravity-exchange`). El preflight y smoke test de 25 cadenas (`10.2`) sigue pendiente de autorización.
 
 > Este documento es la fuente de verdad para el estado vigente del proyecto. Los informes de fases anteriores conservan sus cifras y conclusiones como evidencia histórica. Cuando un informe histórico difiera de este estado, prevalecen el último corte de auditoría y las decisiones posteriores documentadas aquí.
 
@@ -57,11 +57,11 @@ Se recomienda un **intercambio supervisado JSON + JSONL desde un workspace Antig
 
 ## 4. Orden de validación
 
-La validación se ejecuta por puertas; no se salta a traducción global por superar un benchmark pequeño. El adaptador Antigravity y el Gatekeeper todavía requieren inspección del código e implementación mínima en entorno aislado, si no existen ya.
+La validación se ejecuta por puertas; no se salta a traducción global por superar un benchmark pequeño. La etapa de implementación aislada (`10.1-B.1`) ya fue completada y verificada con pruebas automatizadas locales; las etapas con modelos reales (`10.2` en adelante) permanecen pendientes de autorización.
 
 | Etapa | Alcance | Condición de salida |
 |---|---|---|
-| Implementación aislada | Completar o adaptar el exportador JSON/JSONL, Gatekeeper y DB de prueba | Contrato y controles probados sin escribir en producción |
+| Implementación aislada (10.1-B.1) | Exportador JSON/JSONL, bóveda local, Gatekeeper, microlotes y DB de prueba | **Completada localmente** (`23/23` pruebas OK; puertas `B1–B7` superadas) |
 | Preflight | Confirmar modelos, permisos Windows, carpeta de workspace y AI Credit Overages = Never | Sin gasto automático y sin acceso a originales/DB productiva |
 | Smoke test | 25 cadenas reales con el protocolo de archivos y base aislada | IDs, estructura, QA y recuperación demostrados |
 | Benchmark | 300 cadenas × 3 modelos, entradas idénticas y sesiones aisladas | Comparación ciega de calidad y métricas operativas |
@@ -96,7 +96,7 @@ La decisión de migrar a API solo se toma cuando haya datos de las pruebas y una
 
 ## 7. Jerarquía documental
 
-La auditoría del código 10.1-A y su reconciliación están disponibles en [PHASE10_1_CODE_AUDIT_REPORT.md](./Fase10_1_Code_Audit/Audit_20261103_113100/PHASE10_1_CODE_AUDIT_REPORT.md) y [AUDIT_10_1A_RECONCILIATION.md](./Fase10_1_Code_Audit/AUDIT_10_1A_RECONCILIATION.md). La especificación de la siguiente implementación se encuentra en [PHASE10_1B_IMPLEMENTATION_SPEC.md](./Fase10_Antigravity_Architecture/PHASE10_1B_IMPLEMENTATION_SPEC.md). Esta especificación no equivale a autorización para modificar el código.
+La auditoría del código 10.1-A y su reconciliación están disponibles en [PHASE10_1_CODE_AUDIT_REPORT.md](./Fase10_1_Code_Audit/Audit_20261103_113100/PHASE10_1_CODE_AUDIT_REPORT.md) y [AUDIT_10_1A_RECONCILIATION.md](./Fase10_1_Code_Audit/AUDIT_10_1A_RECONCILIATION.md). La especificación de implementación se encuentra en [PHASE10_1B_IMPLEMENTATION_SPEC.md](./Fase10_Antigravity_Architecture/PHASE10_1B_IMPLEMENTATION_SPEC.md) y el informe de su implementación y verificación en [PHASE10_1B1_IMPLEMENTATION_REPORT.md](./Fase10_Antigravity_Architecture/PHASE10_1B1_IMPLEMENTATION_REPORT.md).
 
 | Documento | Función única |
 |---|---|
@@ -110,6 +110,8 @@ La auditoría del código 10.1-A y su reconciliación están disponibles en [PHA
 | `DUAL_PROVIDER_ARCHITECTURE.md` | Separación Antigravity/API |
 | `TRANSLATION_EXECUTION_ENGINE.md` | Lotes, QA, reintentos y trazabilidad |
 | `SCALABILITY_AND_RISK_ASSESSMENT.md` | Cuotas, escalabilidad y decisión de escala |
+| `PHASE10_1B_IMPLEMENTATION_SPEC.md` | Especificación técnica de implementación 10.1-B |
+| `PHASE10_1B1_IMPLEMENTATION_REPORT.md` | Evidencia de implementación y pruebas 10.1-B.1 |
 | `TRANSLATION_POLICY_ES419.md` | Política lingüística canónica |
 | `GLOSSARY_POLICY.md` | Política terminológica canónica |
 
