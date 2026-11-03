@@ -1,3 +1,7 @@
+> **FORMATOS SOPORTADOS — MATRIZ BASE HISTÓRICA:** La matriz refleja el alcance y las pruebas documentadas durante las fases iniciales. No prueba por sí sola que todas las funciones sigan implementadas ni que los hallazgos pendientes de Fase 9 ya estén incorporados en el extractor. Para incluir los `.pex` dentro de BSA y JSON 4A, revisa el informe de Fase 9 y el estado vigente; no marques esas capacidades como integradas hasta verificar el código y sus pruebas.
+
+---
+
 # Formatos Soportados, Reglas de Extracción Segura y Limitaciones Transparentes
 
 **NOLVUS AI TRANSLATOR** declara un formato como **soportado** únicamente cuando dispone de parser estructural determinista, validador de integridad y pruebas automatizadas que lo demuestran.
