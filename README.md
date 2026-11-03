@@ -16,7 +16,8 @@ Documentación del proyecto para localizar **Nolvus Awakening 6.0.21** al españ
 
 ## Evidencia por fase (informes históricos preservados)
 
-### Fase 10.3-A — Preparación Offline del Primer Piloto (`GPT-6 Luna` · 25 cadenas reales)
+### Fase 10.3 — Preparación Offline (10.3-A) y Auditoría Preflight de Solo Lectura (10.3-B)
+- [Auditoría preflight de solo lectura para Fase 10.3-B (credenciales, modelo, candado API, presupuesto, aislamiento y discrepancias)](./Fase10_Antigravity_Architecture/PHASE10_3B_READONLY_PREFLIGHT_AUDIT_REPORT.md)
 - [Informe técnico de preparación offline Fase 10.3-A (25 cadenas reales 5×5, bóveda de 37 placeholders, payload `/v1/responses` y verificación de Gatekeeper)](./Fase10_Antigravity_Architecture/PHASE10_3A_OFFLINE_PILOT_PREPARATION_REPORT.md)
 
 ### Fase 10.2 — Infraestructura OpenAI API-First y Control Presupuestario Local
