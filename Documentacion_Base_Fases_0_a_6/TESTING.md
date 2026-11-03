@@ -1,3 +1,7 @@
+> **TESTING — EVIDENCIA DE FASES INICIALES:** Este plan describe fixtures y pruebas de la etapa inicial. Sus comandos, nombres de tests y resultados deben contrastarse con el repositorio de código vigente; este repositorio documental no incluye el código fuente ni permite reejecutar la suite. No asumir que un resultado histórico equivale a una ejecución reciente.
+
+---
+
 # ESTRATEGIA Y GUÍA DE PRUEBAS AUTOMATIZADAS (`TESTING.md`)
 
 ---
