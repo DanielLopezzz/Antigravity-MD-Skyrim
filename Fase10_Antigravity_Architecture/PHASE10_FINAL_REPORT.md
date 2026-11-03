@@ -43,7 +43,7 @@ Se recomienda la **Arquitectura Híbrida «Transactional JSONL Maildrop + Local 
 
 
 #### ¿Por qué este método es superior a las demás alternativas?
-- **Resiliencia total por línea:** A diferencia de un archivo JSON monolítico (que se invalida entero si se corta en la última línea) o de un CSV (que se rompe con saltos de línea e incrustaciones HTML de libros de Skyrim), un archivo `.jsonl` permite rescatar hasta la última línea escrita antes de cualquier corte.
+- **Recuperación por registros completos:** JSONL permite parsear líneas individualmente y recuperar solo las que estén completas y superen el esquema. No garantiza recuperar una escritura interrumpida ni la última línea truncada; estos casos se ponen en cuarentena y se reintentan.
 - **Separación de permisos para SQLite:** El agente no recibe escritura a la base de datos. El Gatekeeper local escribe solo en la DB de prueba durante esta validación; cualquier ingesta productiva requerirá autorización y un procedimiento posterior.
 - **Permisos a verificar:** El workspace puede permitir las operaciones de archivo, pero las reglas concretas dependen de la versión de Antigravity y del sistema operativo. Verificar los permisos Windows de lectura/escritura por carpeta; no depender de permisos automáticos.
 
