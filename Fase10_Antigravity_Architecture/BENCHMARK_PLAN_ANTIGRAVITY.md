@@ -1,3 +1,7 @@
+> **ESTADO: PLAN NO EJECUTADO.** El corpus de 300 cadenas todavía debe extraerse y verificarse desde la DB y el snapshot local. Este repositorio publica el plan, no el corpus, ni la DB ni los scripts de construcción. Las afirmaciones de que ciertos validadores ya están implementados proceden de los informes previos y deben revalidarse en el código actual. Reconfirmar los modelos del selector antes de cada corrida.
+
+---
+
 # PLAN DE BENCHMARK REDISEÑADO PARA GOOGLE ANTIGRAVITY SIN API (`ES-419`)
 **Documento:** `BENCHMARK_PLAN_ANTIGRAVITY.md`  
 **Fase:** Fase 10 — Análisis, Diseño y Arquitectura sin API  
@@ -134,7 +138,7 @@ Dado que el objetivo central es determinar si **Google Antigravity puede actuar 
 | **7** | **Intervenciones humanas necesarias** | Conteo de acciones humanas / lote | Número exacto de mensajes, confirmaciones o correcciones manuales que el usuario tuvo que realizar por lote o por tanda. |
 | **8** | **Errores del agente** | Conteo y tipo de error | Fallos al invocar herramientas (`write_file`, `edit_file`, `run_command`), confusión de rutas o comentarios añadidos fuera de formato. |
 | **9** | **Interrupciones** | Conteo y causa | Cortes de generación, timeouts de herramienta, desconexiones o reinicios del servidor de Antigravity durante la corrida. |
-| **10** | **Capacidad de recuperación** | Tiempo (`s`) y `%` de datos salvados | Prueba real de reanudación tras interrupción: verificar que las líneas JSONL ya escritas y los lotes previos se conservan al `100 %`. |
+| **10** | **Capacidad de recuperación** | Tiempo (`s`) y `%` de datos salvados | Prueba real de reanudación tras interrupción: medir qué líneas completas y válidas sobreviven a la interrupción; reintentar los IDs faltantes y poner en cuarentena cualquier línea parcial. |
 | **11** | **Cuotas o límites encontrados** | Observación empírica documentada | Registro fiel de cualquier aviso de límite de mensajes, enfriamiento temporal (*cooldown*), degradación de prioridad o bloqueo de modelo en la interfaz de Antigravity. **No se presupone ninguna cifra previa.** |
 | **12** | **Comportamiento ante solicitudes extensas** | Observación sobre Lote 5 (Libros) y Lote 6 (`100` cadenas) | Verificar si el agente divide la escritura en varios pasos, si trunca textos largos (`BOOK:DESC` de `8.000` chars) o si mantiene la integridad completa. |
 | **13** | **Estabilidad al procesar varios lotes consecutivos** | Evolución del Lote 1 al Lote 6 | Medir si la precisión terminológica, el respeto a placeholders o la velocidad se degradan conforme avanza la conversación del agente. |

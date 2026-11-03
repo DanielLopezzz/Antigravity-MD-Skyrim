@@ -1,3 +1,7 @@
+> **ESTADO: DISEÑO PROPUESTO, NO IMPLEMENTACIÓN CERTIFICADA.** El repositorio documental no contiene los módulos Python/DB que permitirían verificar las afirmaciones de reutilización al `100 %`. Los stubs API descritos se conservan como referencia documental; no equivalen a conectores funcionales listos para uso. Confirmar cada clase, migración y test en el código de trabajo antes de implementar el adaptador.
+
+---
+
 # ARQUITECTURA DUAL INDEPENDIENTE DEL PROVEEDOR (ANTIGRAVITY + API FUTURA)
 **Documento:** `DUAL_PROVIDER_ARCHITECTURE.md`  
 **Fase:** Fase 10 — Objetivo C: Diseñar una Arquitectura Independiente del Proveedor  

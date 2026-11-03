@@ -1,3 +1,7 @@
+> **ESTIMACIÓN DE COSTES V2 — HISTÓRICA:** Esta estimación fue elaborada en la Fase 8 con modelos, tarifas, promociones, disponibilidad y volúmenes de aquel corte. **No es una cotización vigente ni una autorización de gasto.** Antes de activar cualquier API, volver a verificar precios oficiales, modalidad Standard/Batch, límites de cuenta, facturación e impuestos/condiciones aplicables a Colombia; después recalcular desde el volumen canónico de [CURRENT_PROJECT_STATE.md](../../CURRENT_PROJECT_STATE.md). La vía API permanece preservada como alternativa.
+
+---
+
 # ESTIMACIÓN ECONÓMICA Y COMPARATIVA DE PROVEEDORES IA — VERSIÓN 2 CORREGIDA (`FASE 8`)
 **Proyecto**: NOLVUS AI TRANSLATOR — Nolvus Awakening 6.0.21  
 **Documento Previo Conservado**: [API_COST_ESTIMATE.md](file:///c:/Skyrim%20proyecto%20traducci%C3%B3n/API_COST_ESTIMATE.md) *(Versión 1 conservada para trazabilidad histórica)*  

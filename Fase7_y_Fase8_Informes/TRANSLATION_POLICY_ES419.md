@@ -1,3 +1,7 @@
+> **POLÍTICA LINGÜÍSTICA — FUENTE CANÓNICA:** Este archivo sigue siendo la fuente documental de la política ES-419. La afirmación histórica de que está activa en una versión concreta de código/base de datos no se vuelve a certificar por el solo hecho de conservar este documento. La sincronización de implementación debe comprobarse contra el código y los datos actuales antes de cada ejecución.
+
+---
+
 # POLÍTICA DE LOCALIZACIÓN AL ESPAÑOL LATINOAMERICANO NEUTRO (`ES-419`)
 **Proyecto**: NOLVUS AI TRANSLATOR — Nolvus Awakening 6.0.21  
 **Estado**: Definitiva y Activa en Código y Base de Datos (`schema_version = 1.1.0`)  

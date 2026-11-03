@@ -1,3 +1,7 @@
+> **COMPATIBILIDAD — NOTA DE VIGENCIA:** Este documento fue creado como matriz de compatibilidad en una fase inicial y su título hace referencia a Skyrim 1.7.104.0. **No debe interpretarse como la versión actual de STOCK GAME.** El informe de Fase 9 del 2026-11-03 reporta `SkyrimSE.exe 1.5.97.0` para el corte auditado. La versión efectiva debe volver a leerse del ejecutable real antes de cualquier prueba o exportación. Las afirmaciones sobre SKSE, Address Library y DSD deben confirmarse contra ese runtime y las versiones instaladas.
+
+---
+
 # Matriz de Compatibilidad Técnica: Skyrim 1.7.104.0, Nolvus Awakening 6.0.21 y MO2
 
 Este documento establece las reglas técnicas verificadas sobre compatibilidad en tiempo de ejecución, codificación de archivos y seguridad sobre la instalación de **Nolvus Awakening 6.0.21**.

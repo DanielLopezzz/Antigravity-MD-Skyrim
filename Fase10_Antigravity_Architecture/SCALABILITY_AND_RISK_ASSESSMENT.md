@@ -1,3 +1,7 @@
+> **ESTADO: ESTIMACIÓN Y PLAN DE PRUEBAS — NO SON MEDICIONES.** Las tasas de cadenas/día, sesiones, tamaños medios de lote, turnos de Workpack y umbrales de 8.000–10.000 o 2.500 cadenas/día son hipótesis/umbrales propuestos, no límites medidos de la cuenta del usuario. Las cuotas de Antigravity varían según el esfuerzo de la tarea y pueden cambiar. Ninguna condición activa API automáticamente: cualquier gasto o cambio de proveedor requiere nueva estimación y autorización expresa.
+
+---
+
 # EVALUACIÓN DE ESCALABILIDAD, CUOTAS, RIESGOS Y PRUEBAS PROGRESIVAS
 **Documento:** `SCALABILITY_AND_RISK_ASSESSMENT.md`  
 **Fase:** Fase 10 — Sección 8: Evaluación de Escalabilidad y Condiciones de Transición a API  
@@ -45,7 +49,7 @@ $$\text{Horas de Sesión Activa} = \frac{240.684\text{ cadenas}}{V_{\text{efecti
 
 - **Escenario Hipotético A (Alta cadencia sin bloqueo de cuota: p. ej. si $V_{\text{efectiva}} = 3.000\text{ cadenas/hora}$):** Requeriría `~80,2 horas` de ejecución supervisada (`~20 sesiones` de 4 horas).
 - **Escenario Hipotético B (Cadencia media o con pausas de enfriamiento de suscripción: p. ej. si $V_{\text{efectiva}} = 1.200\text{ cadenas/hora}$):** Requeriría `~200,5 horas` (`~50 sesiones` de 4 horas).
-- **Escenario Hipotético C (Restricción severa de cuota en suscripción: p. ej. si la suscripción limitara a $< 3.000$ cadenas/día):** Requeriría `> 80 días` para el 100 % del volumen, lo que activaría automáticamente la **Estrategia Mixta (Antigravity para el 14 % narrativo crítico + API Batch para el 86 % masivo)** descrita en la Sección 5.
+- **Escenario Hipotético C (Restricción severa de cuota en suscripción: p. ej. si la suscripción limitara a $< 3.000$ cadenas/día):** Requeriría `> 80 días` para el 100 % del volumen, lo que justificaría evaluar, sin activación automática y sujeto a autorización expresa, la **Estrategia Mixta (Antigravity para el 14 % narrativo crítico + API Batch para el 86 % masivo)** descrita en la Sección 5.
 
 ---
 
@@ -70,7 +74,7 @@ flowchart LR
 | **2. Benchmark Controlado de 300 Cadenas** | `300` cadenas × `3` modelos (`900` evaluaciones) | Comparar `Gemini 4 Argon`, `Claude Sonnet 5.5` y `Claude Opus 5.5` en las `11` categorías y en `3` tamaños de lote (`25`, `50`, `100`), midiendo las 12 dimensiones de calidad y las 14 métricas operativas. | Identificar el modelo ganador general, el modelo ganador literario y el tamaño óptimo de lote. |
 | **3. Prueba Piloto Representativa (1 Mod Completo)** | `~1.100` a `1.500` cadenas (ej. *Clockwork* o *The Wheels of Lull*) | Probar la estrategia completa **"Anclas Primero" (`Locations/Items` → `Quests/Dialogues` → `Books`)** sobre un mod real completo y generar su paquete MO2 de prueba. | Coherencia terminológica del `100 %` entre objetos, objetivos de misión y diálogos del mod piloto. |
 | **4. Prueba de Continuidad y Estrés de Sesión** | `12` a `15` lotes consecutivos en un solo turno (`~750`–`1.000` cadenas) | Observar empíricamente si el agente procesa una Supertanda completa sin degradar la calidad en los últimos lotes y detectar dónde aparecen los primeros avisos de límite/cuota de la suscripción. | Determinar el tamaño máximo seguro de Supertanda ($N_{\text{max\_batches}}$) y la cuota real por ventana horaria. |
-| **5. Prueba de Recuperación (*Chaos & Recovery Test*)** | `3` lotes con fallos inyectados deliberadamente | (a) Interrumpir manualmente al agente a mitad de escritura de un `.jsonl`; (b) Inyectar una línea con `⟦VAR_0⟧` faltante y un JSON truncado; (c) Cambiar de modelo a mitad de lote. | Verificar que se rescatan el `100 %` de las líneas válidas previas y que el micro-reintento repara únicamente las líneas defectuosas. |
+| **5. Prueba de Recuperación (*Chaos & Recovery Test*)** | `3` lotes con fallos inyectados deliberadamente | (a) Interrumpir manualmente al agente a mitad de escritura de un `.jsonl`; (b) Inyectar una línea con `⟦VAR_0⟧` faltante y un JSON truncado; (c) Cambiar de modelo a mitad de lote. | Medir cuántas líneas completas y válidas se recuperan; poner en cuarentena la línea truncada y comprobar que el micro-reintento solo incluye los IDs pendientes. |
 | **6. Evaluación de Capacidad Operativa y Viabilidad Global** | Proyección basada en datos reales de las Etapas 1–5 | Calcular con datos empíricos medidos ($V_{\text{efectiva}}$, cuota real observada, tasa de reintentos) el tiempo real para las `240.684` cadenas y tomar la decisión de producción. | Elección documentada entre: **Modo A (100 % Antigravity)**, **Modo B (Híbrido Antigravity + API Batch)** o **Modo C (Conmutación a API Batch)**. |
 
 ---
@@ -93,7 +97,7 @@ flowchart LR
 Aunque la prioridad actual es aprovechar al máximo Google Antigravity sin coste adicional de API, el proyecto define **5 criterios objetivos de decisión** (que se evaluarán al finalizar la Etapa 4 de las pruebas progresivas) para determinar cuándo mantener el `100 %` en Antigravity y cuándo activar el adaptador API (o un esquema híbrido):
 
 1. **Disparador de Cuota / Velocidad Sostenida (`Throughput Trigger`):**
-   - Si tras medir la Etapa 4 se comprueba que las cuotas de la suscripción de Antigravity permiten procesar cómodamente **$\ge 8.000$–$10.000$ cadenas únicas por jornada de uso** sin bloqueos prolongados, **el proyecto completo (`240.684` cadenas) es 100 % viable dentro de Antigravity** en unas `24`–`30` sesiones.
+   - Si tras medir la Etapa 4 se comprueba que las cuotas de la suscripción de Antigravity permiten procesar cómodamente **$\ge 8.000$–$10.000$ cadenas únicas por jornada de uso** sin bloqueos prolongados, **podría ser viable estudiar el modo 100 % Antigravity**; `24`–`30` sesiones es una proyección aritmética condicional, no una predicción operacional.
    - Si, por el contrario, las cuotas de suscripción limitaran el rendimiento efectivo a **$< 2.500$ cadenas/día** (lo que alargaría el proyecto a más de 3 meses de trabajo manual diario), se recomendará activar el **Modo Híbrido**:
      - **En Antigravity (`\$0,00 USD` adicional):** Traducir con **`Claude Opus 5.5` / `Claude Sonnet 5.5` / `Gemini 4 Argon`** el **`12 %–15 %` de mayor valor narrativo y dificultad literaria** (todos los libros `BOOK:DESC`, el Bestiario, las misiones principales y los grandes mods de compañeros como *Inigo*, *Remiel*, *Lucien*, *3DNPC*, *Bruma*, *Vigilant* y *LotD*).
      - **En API Batch (vía `CloudApiTranslationProvider`):** Procesar en segundo plano el **`85 %` restante de cadenas cortas/estructuradas** (armas, armaduras, pociones, menús MCM y diálogos genéricos cortos), cuyo coste total en modalidad Batch (según se calculó en `API_COST_ESTIMATE_V2.md`) es de apenas **`\$3,00` a `\$14,00 USD`**.

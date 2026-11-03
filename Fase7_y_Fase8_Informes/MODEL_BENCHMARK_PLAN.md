@@ -1,3 +1,7 @@
+> **BENCHMARK ORIGINAL — SUSTITUIDO:** Este plan de 90 cadenas corresponde a una estrategia anterior orientada a APIs y modelos locales. Ha sido sustituido para la evaluación Antigravity-first por [BENCHMARK_PLAN_ANTIGRAVITY.md](../../Fase10_Antigravity_Architecture/BENCHMARK_PLAN_ANTIGRAVITY.md), que define el corpus y los candidatos confirmados para aquel diseño. Conservar este archivo únicamente como antecedente; no mezclar sus modelos, muestras, costes ni criterios con el benchmark vigente.
+
+---
+
 # PLAN DE BENCHMARK LINGÜÍSTICO Y TÉCNICO DE MODELOS (`ES-419`)
 **Proyecto**: NOLVUS AI TRANSLATOR — Nolvus Awakening 6.0.21  
 **Estado**: Diseñado y Listo para Revisión (0 llamadas a APIs externas realizadas; 0 modelos locales descargados)  
