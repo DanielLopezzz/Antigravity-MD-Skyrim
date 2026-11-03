@@ -43,6 +43,7 @@ Fuentes:
 - Escalabilidad: los valores de cadenas/día, sesiones, Workpacks y umbrales de decisión se identifican como hipótesis/estimaciones; ya no activan API automáticamente.
 - Benchmark, motor y arquitectura dual: se identifican como planes/diseños pendientes de validación de código y corpus, no como sistemas operativos certificados por esta revisión.
 - Fases 7–8 y documentos base 0–6: se marcaron como históricos cuando sus números, modelos, precios, versiones o instrucciones pueden estar sustituidos.
+- En los documentos depurados se reemplazaron enlaces `file:///` no portables: se usan enlaces relativos cuando el destino está en GitHub y referencias de ruta local no incluida cuando el código/artefacto permanece en el PC.
 - Políticas ES-419 y glosario: se mantienen como fuentes documentales, sin afirmar que el estado actual de DB/código esté sincronizado hasta comprobarlo.
 
 ## 5. Documentos actualizados
