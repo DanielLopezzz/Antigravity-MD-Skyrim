@@ -1,60 +1,42 @@
 # Nolvus AI Translator — Documentación central (ES-419)
 
-Documentación del proyecto para localizar **Nolvus Awakening 6.0.21** al español latinoamericano neutro (**ES-419**).
+Documentación del proyecto para localizar **Nolvus Awakening 6.0.21** al español latinoamericano neutro (**ES-419**). Este repositorio contiene solo documentación; el código fuente vive en un repositorio local separado.
 
-> **Punto de entrada:** consulta primero [Estado actual del proyecto](./CURRENT_PROJECT_STATE.md). Este archivo concentra las decisiones y cifras vigentes. Los informes de auditoría son evidencia del corte en que se generaron; no deben tratarse como métricas vivas.
+## Empieza aquí
 
-## Estado y reglas documentales
+| Documento | Para qué sirve |
+|---|---|
+| [PROJECT_STATUS.md](./PROJECT_STATUS.md) | **Fuente única de verdad**: estado de cada fase y subsistema, rama/commits, pruebas, cobertura, riesgos y próxima puerta. |
+| [CHANGELOG.md](./CHANGELOG.md) | Historial cronológico de trabajo verificado (fases, archivos, commits, pruebas, resultados). |
+| [ROADMAP.md](./ROADMAP.md) | Solo trabajo futuro y puertas pendientes (10.2 → Producción). |
+| [DECISIONS.md](./DECISIONS.md) | Decisiones técnicas y operativas vigentes, con fecha y motivo. |
+| [DOCUMENTATION_POLICY.md](./DOCUMENTATION_POLICY.md) | Reglas de mantenimiento documental. |
 
-- [CURRENT_PROJECT_STATE.md](./CURRENT_PROJECT_STATE.md) — cifras vigentes del corte de Fase 9, decisiones, controles y estado actual.
-- [DOCUMENTATION_POLICY.md](./DOCUMENTATION_POLICY.md) — jerarquía, mantenimiento y tratamiento de documentos históricos.
-- [DOCUMENTATION_CLEANUP_REPORT.md](./DOCUMENTATION_CLEANUP_REPORT.md) — cambios aplicados, validación realizada y pendientes.
-- [ROADMAP.md](./Documentacion_Base_Fases_0_a_6/ROADMAP.md) — hitos concluidos y puertas de validación pendientes.
+**Estado en una línea (2026-11-03):** Fases 0–10.1-B.1 y consolidación técnica completadas; 27/27 pruebas en verde en la rama `feat/phase10-1b-antigravity-exchange`; 0 cadenas traducidas; la siguiente puerta es la **Fase 10.2 (smoke test de 25 cadenas)**, pendiente de autorización.
 
-## Fase 10 — Diseño Antigravity-first y arquitectura dual
+## Evidencia por fase (informes históricos preservados)
 
-La Fase 10 está **completada en diseño**, y la **Fase 10.1-B.1** (implementación aislada del coordinador de intercambio, bóveda, Gatekeeper y CLI) está **implementada y verificada en el repositorio local de código** (`23/23` pruebas en verde; puertas `B1–B7` superadas). El smoke test real de 25 cadenas (`10.2`) y el benchmark (`10.3`) permanecen pendientes de autorización.
+### Fase 10 — Antigravity-first y arquitectura dual
+- [PHASE10_FINAL_REPORT.md](./Fase10_Antigravity_Architecture/PHASE10_FINAL_REPORT.md) · [ANTIGRAVITY_INTEGRATION_ARCHITECTURE.md](./Fase10_Antigravity_Architecture/ANTIGRAVITY_INTEGRATION_ARCHITECTURE.md) · [DUAL_PROVIDER_ARCHITECTURE.md](./Fase10_Antigravity_Architecture/DUAL_PROVIDER_ARCHITECTURE.md) · [TRANSLATION_EXECUTION_ENGINE.md](./Fase10_Antigravity_Architecture/TRANSLATION_EXECUTION_ENGINE.md) · [SCALABILITY_AND_RISK_ASSESSMENT.md](./Fase10_Antigravity_Architecture/SCALABILITY_AND_RISK_ASSESSMENT.md) · [BENCHMARK_PLAN_ANTIGRAVITY.md](./Fase10_Antigravity_Architecture/BENCHMARK_PLAN_ANTIGRAVITY.md)
 
-- [PHASE10_FINAL_REPORT.md](./Fase10_Antigravity_Architecture/PHASE10_FINAL_REPORT.md) — decisiones y alcance del diseño, con una adenda de validación técnica.
-- [BENCHMARK_PLAN_ANTIGRAVITY.md](./Fase10_Antigravity_Architecture/BENCHMARK_PLAN_ANTIGRAVITY.md) — benchmark de 300 cadenas, tres modelos y rúbrica.
-- [ANTIGRAVITY_INTEGRATION_ARCHITECTURE.md](./Fase10_Antigravity_Architecture/ANTIGRAVITY_INTEGRATION_ARCHITECTURE.md) — contrato de intercambio JSON/JSONL, permisos y Gatekeeper.
-- [DUAL_PROVIDER_ARCHITECTURE.md](./Fase10_Antigravity_Architecture/DUAL_PROVIDER_ARCHITECTURE.md) — núcleo común y vías Antigravity/API desacopladas.
-- [TRANSLATION_EXECUTION_ENGINE.md](./Fase10_Antigravity_Architecture/TRANSLATION_EXECUTION_ENGINE.md) — unidades de trabajo, lotes, QA, reintentos y trazabilidad.
-- [SCALABILITY_AND_RISK_ASSESSMENT.md](./Fase10_Antigravity_Architecture/SCALABILITY_AND_RISK_ASSESSMENT.md) — pruebas progresivas, cuotas, riesgos y decisión de escala.
+### Fase 10.1 — Auditoría de código, especificación e implementación
+- [Auditoría 10.1-A](./Fase10_1_Code_Audit/Audit_20261103_113100/PHASE10_1_CODE_AUDIT_REPORT.md) · [Reconciliación 10.1-A](./Fase10_1_Code_Audit/AUDIT_10_1A_RECONCILIATION.md)
+- [Especificación 10.1-B](./Fase10_Antigravity_Architecture/PHASE10_1B_IMPLEMENTATION_SPEC.md)
+- [Informe de implementación 10.1-B.1 (consolidado y reconciliado)](./Fase10_Antigravity_Architecture/PHASE10_1B1_IMPLEMENTATION_REPORT.md)
 
-### Fase 10.1 — Auditoría de código e implementación Antigravity
+### Fase 9 — Auditoría integral de mods
+- [PHASE9_FULL_AUDIT_REPORT.md](./Fase9_Full_Audit/PHASE9_FULL_AUDIT_REPORT.md)
 
-- [Informe de auditoría técnica 10.1-A](./Fase10_1_Code_Audit/Audit_20261103_113100/PHASE10_1_CODE_AUDIT_REPORT.md) — inspección estática del código fuente.
-- [Reconciliación 10.1-A](./Fase10_1_Code_Audit/AUDIT_10_1A_RECONCILIATION.md) — contadores corregidos de módulos, componentes y pruebas.
-- [Especificación de implementación 10.1-B](./Fase10_Antigravity_Architecture/PHASE10_1B_IMPLEMENTATION_SPEC.md) — alcance, arquitectura, archivos previstos, pruebas y puertas de aceptación.
-- [Informe de implementación y verificación 10.1-B.1](./Fase10_Antigravity_Architecture/PHASE10_1B1_IMPLEMENTATION_REPORT.md) — registro de cambios en rama local `feat/phase10-1b-antigravity-exchange` (`8ff5bf78`), resultados de las 23 pruebas automatizadas y cumplimiento de puertas `B1–B7`.
+### Fases 7–8 — Escaneo real y estimación económica (histórico)
+- [AUDIT_PHASE7.md](./Fase7_y_Fase8_Informes/AUDIT_PHASE7.md) · [coverage_snapshot_1.md](./Fase7_y_Fase8_Informes/coverage_snapshot_1.md) · [API_COST_ESTIMATE_V2.md](./Fase7_y_Fase8_Informes/API_COST_ESTIMATE_V2.md) · [API_COST_ESTIMATE.md](./Fase7_y_Fase8_Informes/API_COST_ESTIMATE.md) · [MODEL_BENCHMARK_PLAN.md](./Fase7_y_Fase8_Informes/MODEL_BENCHMARK_PLAN.md)
 
-## Fase 9 — Auditoría integral
+### Políticas lingüísticas vigentes
+- [TRANSLATION_POLICY_ES419.md](./Fase7_y_Fase8_Informes/TRANSLATION_POLICY_ES419.md) · [GLOSSARY_POLICY.md](./Fase7_y_Fase8_Informes/GLOSSARY_POLICY.md)
 
-- [PHASE9_FULL_AUDIT_REPORT.md](./Fase9_Full_Audit/PHASE9_FULL_AUDIT_REPORT.md) — evidencia detallada del inventario y extracción.
-- **Cifras clave del informe:** 3.700 mods activos, 3.717 plugins activos, 583 BSA, 1.168.337 elementos inventariados; 328.485 ocurrencias traducibles en Corte C, 240.244 cadenas únicas pendientes y unas 440 cadenas únicas narrativas adicionales del JSON 4A. El volumen recomendado se expresa como **~240.684**, porque el componente JSON adicional es aproximado.
+### Fases 0–6 — Documentación base (histórico; contrastar con el código actual)
+- [ARCHITECTURE.md](./Documentacion_Base_Fases_0_a_6/ARCHITECTURE.md) · [SUPPORTED_FORMATS.md](./Documentacion_Base_Fases_0_a_6/SUPPORTED_FORMATS.md) · [TECHNICAL_DECISIONS.md](./Documentacion_Base_Fases_0_a_6/TECHNICAL_DECISIONS.md) · [COMPATIBILITY.md](./Documentacion_Base_Fases_0_a_6/COMPATIBILITY.md) · [TESTING.md](./Documentacion_Base_Fases_0_a_6/TESTING.md) · [USER_GUIDE.md](./Documentacion_Base_Fases_0_a_6/USER_GUIDE.md) · [LICENSES_AND_THIRD_PARTY.md](./Documentacion_Base_Fases_0_a_6/LICENSES_AND_THIRD_PARTY.md)
 
-## Políticas lingüísticas y terminológicas vigentes
-
-- [TRANSLATION_POLICY_ES419.md](./Fase7_y_Fase8_Informes/TRANSLATION_POLICY_ES419.md) — español latinoamericano neutro, separación de traducción propia y oficial, protección técnica.
-- [GLOSSARY_POLICY.md](./Fase7_y_Fase8_Informes/GLOSSARY_POLICY.md) — decisiones terminológicas y tratamiento de nombres propios.
-
-## Evidencia histórica de Fases 7–8
-
-- [AUDIT_PHASE7.md](./Fase7_y_Fase8_Informes/AUDIT_PHASE7.md)
-- [coverage_snapshot_1.md](./Fase7_y_Fase8_Informes/coverage_snapshot_1.md)
-- [MODEL_BENCHMARK_PLAN.md](./Fase7_y_Fase8_Informes/MODEL_BENCHMARK_PLAN.md) — benchmark anterior, sustituido por el plan de Fase 10.
-- [API_COST_ESTIMATE_V2.md](./Fase7_y_Fase8_Informes/API_COST_ESTIMATE_V2.md) — estimación histórica; no es una cotización vigente.
-- [API_COST_ESTIMATE.md](./Fase7_y_Fase8_Informes/API_COST_ESTIMATE.md) — versión histórica anterior.
-
-## Documentación base de Fases 0–6
-
-Los documentos de esta carpeta describen el diseño y las pruebas de las fases iniciales. Sus versiones de runtime, rutas, interfaz o estado de funciones deben contrastarse con Fase 9 y con el código actual antes de usarse como instrucciones operativas.
-
-- [ARCHITECTURE.md](./Documentacion_Base_Fases_0_a_6/ARCHITECTURE.md)
-- [SUPPORTED_FORMATS.md](./Documentacion_Base_Fases_0_a_6/SUPPORTED_FORMATS.md)
-- [TECHNICAL_DECISIONS.md](./Documentacion_Base_Fases_0_a_6/TECHNICAL_DECISIONS.md)
-- [COMPATIBILITY.md](./Documentacion_Base_Fases_0_a_6/COMPATIBILITY.md)
-- [TESTING.md](./Documentacion_Base_Fases_0_a_6/TESTING.md)
-- [USER_GUIDE.md](./Documentacion_Base_Fases_0_a_6/USER_GUIDE.md)
-- [LICENSES_AND_THIRD_PARTY.md](./Documentacion_Base_Fases_0_a_6/LICENSES_AND_THIRD_PARTY.md)
+### Documentos de transición (sustituidos, conservados por trazabilidad)
+- [CURRENT_PROJECT_STATE.md](./CURRENT_PROJECT_STATE.md) — estado y decisiones previos a la centralización; su función pasa a `PROJECT_STATUS.md` y `DECISIONS.md`.
+- [Documentacion_Base_Fases_0_a_6/ROADMAP.md](./Documentacion_Base_Fases_0_a_6/ROADMAP.md) — roadmap anterior; sustituido por `ROADMAP.md` (raíz).
+- [DOCUMENTATION_CLEANUP_REPORT.md](./DOCUMENTATION_CLEANUP_REPORT.md) — registro de la depuración documental anterior.

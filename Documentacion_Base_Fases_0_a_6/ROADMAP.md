@@ -1,5 +1,7 @@
 # Plan de hitos verificables — Nolvus AI Translator
 
+> **Nota de supersesión (2026-11-03):** Este roadmap fue sustituido por [ROADMAP.md](../ROADMAP.md) en la raíz (solo trabajo futuro). El estado vigente está en [PROJECT_STATUS.md](../PROJECT_STATUS.md) y el historial en [CHANGELOG.md](../CHANGELOG.md). Se conserva sin cambios de contenido por trazabilidad.
+
 **Última consolidación documental:** 2026-11-03  
 **Fuente de estado y métricas actuales:** [CURRENT_PROJECT_STATE.md](../../CURRENT_PROJECT_STATE.md)
 

@@ -1,5 +1,7 @@
 # Estado actual y decisiones vigentes — Nolvus AI Translator
 
+> **Nota de supersesión (2026-11-03):** Desde la revisión integral posterior a la Fase 10.1-B.1, la fuente única de estado es [PROJECT_STATUS.md](./PROJECT_STATUS.md) y las decisiones vigentes se registran en [DECISIONS.md](./DECISIONS.md). Este documento se conserva por trazabilidad; sus menciones a `23/23` pruebas corresponden al commit `8ff5bf7`. El estado actual es `27/27` pruebas en verde (`HEAD` `0b4ff8d`).
+
 **Última revisión documental:** 2026-11-03  
 **Fuente de estado del entorno:** informe final de Fase 9 incluido en este repositorio.  
 **Estado del proyecto:** diseño de Fase 10 completado; auditoría estática 10.1-A y reconciliación documental completadas; especificación 10.1-B aprobada e **implementación aislada 10.1-B.1 completada y verificada localmente** (`23/23` pruebas en verde; puertas `B1–B7` superadas en rama `feat/phase10-1b-antigravity-exchange`). El preflight y smoke test de 25 cadenas (`10.2`) sigue pendiente de autorización.
