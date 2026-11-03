@@ -6,6 +6,44 @@
 
 ---
 
+## [2026-11-03] — Fase 10.2: Implementación de infraestructura OpenAI API-First, Coordinador Batch y Controlador Local de Presupuesto (Commit `2766b73`)
+
+- **Fase / Subtarea:** Fase 10.2 — Infraestructura OpenAI API-First, seguridad de credenciales, enrutador Luna/Sol/Argon, coordinador Batch, control económico local y estimación offline del primer piloto.
+- **Qué se hizo:**
+  1. **Cambio arquitectónico a OpenAI API-First (`model_router.py`, `config.py`, `future_stubs.py`):**
+     - Configuración de `gpt-6-luna` (`GPT-6 Luna`) como proveedor principal de traducción masiva (`openai_luna`), `gpt-6.1-sol` (`GPT-6.1 Sol`) como proveedor de escalamiento selectivo bajo reglas verificables (`EscalationRuleCode`) y permiso explícito (`allow_sol_escalation`), y `gemini-4-argon` (`Antigravity Argon`) como vía complementaria por archivos.
+     - Exclusión explícita de `Claude` (`claude-sonnet-5.5`, `claude-opus-5.5`, `claude*`) del flujo principal y del enrutamiento automático.
+     - Prohibición en código de enviar una misma cadena a Luna y Sol simultáneamente y de usar Sol como fallback ante errores técnicos/HTTP de Luna.
+  2. **Regla «Las API solo traducen» (`openai_provider.py`, `openai_credentials.py`):**
+     - Imposición obligatoria de `tools=[]`, `tool_choice="none"` y `store=False` en todas las solicitudes OpenAI (`assert_translation_only_payload`), más inspección recursiva que bloquea cualquier filtración de rutas locales (`C:\...`, `STOCK GAME`, `ModOrganizer.ini`, `.db`).
+  3. **Integración de Responses API (`/v1/responses`) y Gatekeeper (`openai_provider.py`):**
+     - Implementación de `GPT6LunaAdapter`, `GPT61SolAdapter`, `OpenAIResponsesRequest` (con esquema JSON estricto `nolvus_es419_translation_batch`), `BlockedNetworkTransport`, `RealHttpOpenAITransport` y `MockOpenAITransport`, conectados de extremo a extremo con `VariableProtector`, `PlaceholderVault`, `ExchangeStateStore` y `LocalGatekeeper` (12 puertas deterministas).
+  4. **Coordinador de OpenAI Batch API (`openai_batch_coordinator.py`):**
+     - Construcción de archivos `.jsonl` para `/v1/files` y `/v1/batches` estrictamente separados por modelo (`gpt-6-luna` vs `gpt-6.1-sol`), correlación biyectiva `custom_id`, reserva presupuestaria previa por línea, persistencia SQLite (`openai_batch_jobs`, `openai_batch_items`) para recuperación tras cierre de la aplicación (`list_recoverable_batch_jobs`), cancelación con liberación de presupuesto (`cancel_batch_job`), reconciliación de errores parciales/duplicados/faltantes y limpieza remota (`cleanup_remote_files`).
+  5. **Controlador Local de Presupuesto (`budget_control.py`):**
+     - Implementación de `BudgetController` sobre SQLite con transacciones `BEGIN IMMEDIATE` y `threading.RLock`, cálculo previo de tokens (fuente + instrucciones + glosario + esquema JSON), tope físico `max_output_tokens`, reserva atómica sobre tarifa Standard (`$0.10/$0.50` por 1M para Luna; `$2.00/$10.00` por 1M para Sol) más margen de seguridad del `+15 %` (`1.15x`), reconciliación con `usage` real, detención inmediata ante sobrecosto (`HALTED_OVERRUN`) o falta de `usage` (`HALTED_UNKNOWN_COST`), liberación de reservas no enviadas y recuperación tras caída (`recover_after_interruption`).
+  6. **Estimador offline del primer piloto (`pilot_estimator.py`):**
+     - Extracción en modo solo lectura inmutable (`mode=ro&immutable=1`) de muestras reales estratificadas de `workspace_data/nolvus_translator.db` (`25`, `100` y `250` cadenas en 5 categorías) sin tocar la base de datos (`0` bytes alterados) ni enviar un solo byte a OpenAI.
+- **Archivos afectados (repositorio de código):**
+  - `src/nolvus_translator/core/exceptions.py`
+  - `src/nolvus_translator/core/config.py`
+  - `src/nolvus_translator/translation/future_stubs.py`
+  - `src/nolvus_translator/translation/budget_control.py` (nuevo)
+  - `src/nolvus_translator/translation/openai_credentials.py` (nuevo)
+  - `src/nolvus_translator/translation/model_router.py` (nuevo)
+  - `src/nolvus_translator/translation/openai_provider.py` (nuevo)
+  - `src/nolvus_translator/translation/openai_batch_coordinator.py` (nuevo)
+  - `src/nolvus_translator/reports/pilot_estimator.py` (nuevo)
+  - `tests/test_openai_budget_control.py` (nuevo)
+  - `tests/test_openai_provider_and_router.py` (nuevo)
+  - `tests/test_openai_batch_coordinator.py` (nuevo)
+  - `tests/test_openai_security_and_isolation.py` (nuevo)
+- **Commit:** `2766b73` en rama `feat/phase10-2-openai-api-first`.
+- **Pruebas ejecutadas:** `python -m unittest discover -s tests -t . -v` (**48/48 pruebas en verde en `5.482s`**, `0` llamadas HTTP reales, `$0.00 USD` consumidos).
+- **Resultado:** `COMPLETADO`.
+
+---
+
 ## [2026-11-03] — Revisión técnica integral, resolución de cobertura Fase 9 y consolidación post-Fase 10.1-B.1
 
 ### 1. Reconciliación documental y reorganización centralizada (Partes I–III)
@@ -48,7 +86,7 @@
   2. **Hallazgo `F9-02` (`FileFormat.JSON_OTHER` Subgrupo 4A vs 4B):** Se implementó `parse_narrative_json_other()` (y el alias `parse_json_localization_bytes`) en `src/nolvus_translator/formats/aux_parsers.py` con lista blanca para JSON narrativos/subtítulos/customskills (Subgrupo 4A) y lista negra estricta para configuraciones técnicas OAR/DAR/Racemenu/BodySlide/SRD/SPID/KID (Subgrupo 4B), conectándolo a `ProjectService.scan_and_extract()`.
   3. **Hallazgo `F9-03` (Exportadores no destructivos para formatos auxiliares):** Se implementaron `build_mcm_helper_json_bytes()` en `mcm_parser.py` y `build_localization_ini_bytes()`, `build_selective_xml_bytes()` y `build_narrative_json_bytes()` en `aux_parsers.py`, conectándolos a `Mo2ModPackager.build_export_plan()`.
   4. **Hallazgo `F9-04` (Normalización focalizada de codificación en `3DNPC.esp`):** Se implementó `normalize_targeted_plugin_encoding()` en `strings_table.py` y se integró en `EspPluginParser` (`esp_parser.py`) para corregir de forma focalizada y reversible las secuencias CP1252/mojibake de `3DNPC.esp` sin reemplazos globales indiscriminados.
-  5. **Optimización de escala SQLite (`M-03`):** Se implementaron `TranslationMemoryEngine.store_approved_batch()` y `load_own_es419_index()`. La prueba sintética de escala (2.500 cadenas, 2 lotes de 250 ítems + propagación a 1.000 filas aprobadas) excedía el umbral de 15 s (`15,68 s`) antes de la optimización; tras ella, la suite completa de 27 pruebas se ejecuta en `3,746 s`.
+  5. **Optimización de escala SQLite (`M-03`):** Se implementaron `TranslationMemoryEngine.store_approved_batch()` y `load_own_es419_index()`. La prueba sintética de escala (2.500 cadenas, 2 lotes de 250 ítems + propagación a 1.000 filas aprobadas) excedía el umbral de 15 s (`15,68 s`) antes de la optimización; tras ella, la suite completa de 27 pruebas se ejecutó en `3,746 s`.
 - **Archivos afectados (repositorio de código):**
   - `src/nolvus_translator/formats/strings_table.py`
   - `src/nolvus_translator/formats/esp_parser.py`
@@ -96,7 +134,7 @@
 
 - **Fase / Subtarea:** Fase 10.0 (Arquitectura y plan de benchmark sin API externa).
 - **Qué se hizo:**
-  - Diseño de la arquitectura de intercambio supervisado por archivos para evaluar `Gemini 4 Argon`, `Claude Sonnet 5.5` y `Claude Opus 5.5` en Google Antigravity sin llamadas HTTP externas ni consumo de créditos API, manteniendo la vía API bloqueada como contingencia futura.
+  - Diseño de la arquitectura de intercambio supervisado por archivos para evaluar modelos en Google Antigravity sin llamadas HTTP externas ni consumo de créditos API, manteniendo la vía API bloqueada como contingencia futura (posteriormente evolucionada a API-first en la Fase 10.2).
 - **Archivos generados:** `PHASE10_FINAL_REPORT.md`, `ANTIGRAVITY_INTEGRATION_ARCHITECTURE.md`, `BENCHMARK_PLAN_ANTIGRAVITY.md`, `DUAL_PROVIDER_ARCHITECTURE.md`, `TRANSLATION_EXECUTION_ENGINE.md`, `SCALABILITY_AND_RISK_ASSESSMENT.md`.
 - **Resultado:** `COMPLETADO`.
 
@@ -107,7 +145,7 @@
 - **Fase / Subtarea:** Fases 7, 8 y 9 (Auditorías de solo lectura sobre la instancia real `Nolvus Awakening 6.0.21`).
 - **Qué se hizo:**
   - **Fase 7 (`AUDIT_PHASE7.md`):** Primer escaneo real de solo lectura de la instalación Nolvus Awakening 6.0.21.
-  - **Fase 8 (`API_COST_ESTIMATE.md`, `API_COST_ESTIMATE_V2.md`):** Estimación económica multi-proveedor (posteriormente archivada como contingencia tras priorizar Antigravity).
+  - **Fase 8 (`API_COST_ESTIMATE.md`, `API_COST_ESTIMATE_V2.md`):** Estimación económica multi-proveedor.
   - **Fase 9 (`PHASE9_FULL_AUDIT_REPORT.md`):** Auditoría integral del corte Fase 9 (`3.700` mods activos, `3.717` plugins activos, `583` BSA, `1.168.337` elementos inventariados), estableciendo **328.485 ocurrencias traducibles** y **240.244 cadenas únicas (Corte C)** más **~440 cadenas únicas en JSON narrativos (Subgrupo 4A)**.
 - **Resultado:** `COMPLETADO`.
 

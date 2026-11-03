@@ -6,23 +6,26 @@ Documentación del proyecto para localizar **Nolvus Awakening 6.0.21** al españ
 
 | Documento | Para qué sirve |
 |---|---|
-| [PROJECT_STATUS.md](./PROJECT_STATUS.md) | **Fuente única de verdad**: estado de cada fase y subsistema, rama/commits, pruebas, cobertura, riesgos y próxima puerta. |
+| [PROJECT_STATUS.md](./PROJECT_STATUS.md) | **Fuente única de verdad**: estado de cada fase y subsistema, rama/commits, pruebas, cobertura, control económico, riesgos y próxima puerta. |
 | [CHANGELOG.md](./CHANGELOG.md) | Historial cronológico de trabajo verificado (fases, archivos, commits, pruebas, resultados). |
-| [ROADMAP.md](./ROADMAP.md) | Solo trabajo futuro y puertas pendientes (10.2 → Producción). |
-| [DECISIONS.md](./DECISIONS.md) | Decisiones técnicas y operativas vigentes, con fecha y motivo. |
+| [ROADMAP.md](./ROADMAP.md) | Solo trabajo futuro y puertas pendientes (10.3 Piloto Real → Producción). |
+| [DECISIONS.md](./DECISIONS.md) | Decisiones técnicas y operativas vigentes e históricas, con fecha y motivo. |
 | [DOCUMENTATION_POLICY.md](./DOCUMENTATION_POLICY.md) | Reglas de mantenimiento documental. |
 
-**Estado en una línea (2026-11-03):** Fases 0–10.1-B.1 y consolidación técnica completadas; 27/27 pruebas en verde en la rama `feat/phase10-1b-antigravity-exchange`; 0 cadenas traducidas; la siguiente puerta es la **Fase 10.2 (smoke test de 25 cadenas)**, pendiente de autorización.
+**Estado en una línea (2026-11-03):** Fases 0–10.2 completadas; infraestructura **OpenAI API-First** (`GPT-6 Luna` principal, `GPT-6.1 Sol` escalamiento selectivo, `Antigravity Argon` complementario, `BudgetController` y `OpenAIBatchCoordinator`) implementada y probada con **48/48 pruebas en verde** en la rama `feat/phase10-2-openai-api-first`; candado de gasto activo (`PHASE_1_PAID_API_LOCK = True`, `$0.00 USD` gastados, `0` cadenas traducidas); la siguiente puerta es la **Fase 10.3 (primer piloto real con `gpt-6-luna`)**, pendiente de autorización presupuestaria expresa.
 
 ## Evidencia por fase (informes históricos preservados)
 
-### Fase 10 — Antigravity-first y arquitectura dual
-- [PHASE10_FINAL_REPORT.md](./Fase10_Antigravity_Architecture/PHASE10_FINAL_REPORT.md) · [ANTIGRAVITY_INTEGRATION_ARCHITECTURE.md](./Fase10_Antigravity_Architecture/ANTIGRAVITY_INTEGRATION_ARCHITECTURE.md) · [DUAL_PROVIDER_ARCHITECTURE.md](./Fase10_Antigravity_Architecture/DUAL_PROVIDER_ARCHITECTURE.md) · [TRANSLATION_EXECUTION_ENGINE.md](./Fase10_Antigravity_Architecture/TRANSLATION_EXECUTION_ENGINE.md) · [SCALABILITY_AND_RISK_ASSESSMENT.md](./Fase10_Antigravity_Architecture/SCALABILITY_AND_RISK_ASSESSMENT.md) · [BENCHMARK_PLAN_ANTIGRAVITY.md](./Fase10_Antigravity_Architecture/BENCHMARK_PLAN_ANTIGRAVITY.md)
+### Fase 10.2 — Infraestructura OpenAI API-First y Control Presupuestario Local
+- [Informe de implementación Fase 10.2 (OpenAI API-First, BudgetController, Batch API y estimación de piloto)](./Fase10_Antigravity_Architecture/PHASE10_2_OPENAI_API_FIRST_REPORT.md)
 
-### Fase 10.1 — Auditoría de código, especificación e implementación
+### Fase 10.1 — Auditoría de código, especificación e implementación de intercambio Antigravity
 - [Auditoría 10.1-A](./Fase10_1_Code_Audit/Audit_20261103_113100/PHASE10_1_CODE_AUDIT_REPORT.md) · [Reconciliación 10.1-A](./Fase10_1_Code_Audit/AUDIT_10_1A_RECONCILIATION.md)
 - [Especificación 10.1-B](./Fase10_Antigravity_Architecture/PHASE10_1B_IMPLEMENTATION_SPEC.md)
 - [Informe de implementación 10.1-B.1 (consolidado y reconciliado)](./Fase10_Antigravity_Architecture/PHASE10_1B1_IMPLEMENTATION_REPORT.md)
+
+### Fase 10.0 — Antigravity-first y arquitectura dual (antecedente histórico)
+- [PHASE10_FINAL_REPORT.md](./Fase10_Antigravity_Architecture/PHASE10_FINAL_REPORT.md) · [ANTIGRAVITY_INTEGRATION_ARCHITECTURE.md](./Fase10_Antigravity_Architecture/ANTIGRAVITY_INTEGRATION_ARCHITECTURE.md) · [DUAL_PROVIDER_ARCHITECTURE.md](./Fase10_Antigravity_Architecture/DUAL_PROVIDER_ARCHITECTURE.md) · [TRANSLATION_EXECUTION_ENGINE.md](./Fase10_Antigravity_Architecture/TRANSLATION_EXECUTION_ENGINE.md) · [SCALABILITY_AND_RISK_ASSESSMENT.md](./Fase10_Antigravity_Architecture/SCALABILITY_AND_RISK_ASSESSMENT.md) · [BENCHMARK_PLAN_ANTIGRAVITY.md](./Fase10_Antigravity_Architecture/BENCHMARK_PLAN_ANTIGRAVITY.md)
 
 ### Fase 9 — Auditoría integral de mods
 - [PHASE9_FULL_AUDIT_REPORT.md](./Fase9_Full_Audit/PHASE9_FULL_AUDIT_REPORT.md)
