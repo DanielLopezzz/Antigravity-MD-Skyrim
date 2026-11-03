@@ -132,4 +132,4 @@ Se certifica que durante toda la ejecución de la auditoría `AUDIT-10.1A-202611
 - **No se modificó** ningún archivo de código fuente ni de configuración de `Nolvus AI Translator`.
 - **No se modificó** la base de datos SQLite principal, el Glosario Maestro ni la Memoria de Traducción.
 - **No se modificó** ningún archivo de `Nolvus Awakening 6.0.21`, `STOCK GAME` ni `Mod Organizer 2`.
-- **No se modificó** ningún documento existente en la rama `main` del repositorio documental.
+- **No se modificó** ningún documento existente en la rama `main` durante la ejecución original de auditoría. Los ajustes documentales posteriores están identificados en [AUDIT_10_1A_RECONCILIATION.md](../AUDIT_10_1A_RECONCILIATION.md).
