@@ -1,3 +1,7 @@
+> **LICENCIAS — INVESTIGACIÓN HISTÓRICA:** Esta evaluación pertenece a la investigación inicial de Fase 0. Las licencias y versiones de dependencias pueden cambiar. Antes de distribuir código, binarios o paquetes, volver a verificar los archivos de licencia y avisos de las versiones exactas incorporadas. No usar este informe histórico como asesoría legal ni como garantía actual de compatibilidad/licencia.
+
+---
+
 # Auditoría de Licencias, Herramientas Existentes y Componentes de Terceros
 
 Este documento registra la investigación legal y técnica realizada durante la **Fase 0** del proyecto **NOLVUS AI TRANSLATOR**, evaluando las herramientas existentes en el ecosistema de localización de *The Elder Scrolls V: Skyrim* y las dependencias de software utilizadas.
