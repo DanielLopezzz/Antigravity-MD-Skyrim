@@ -24,9 +24,9 @@
 ## 10.3-B — Ejecución real del lote preparado `batch_pilot_10_3a_001` (`25` cadenas reales) con `gpt-6-luna`
 
 **Estado previo ya completado en Fase 10.3-A ([PHASE10_3A_OFFLINE_PILOT_PREPARATION_REPORT.md](./Fase10_Antigravity_Architecture/PHASE10_3A_OFFLINE_PILOT_PREPARATION_REPORT.md)):**
-- Copia SQLite aislada lista (`pilot_10_3a_work_db.sqlite3`, `25` cadenas `unprocessed`, `87` términos de glosario ES-419, `0` entradas TM).
-- Bóveda de placeholders lista (`pilot_10_3a_exchange_store.sqlite3`, `25` sobres, `37` placeholders protegidos).
-- Payload `/v1/responses` listo (`batch_pilot_10_3a_001_responses_request.json`, `1.989` tokens de entrada est., `max_output_tokens = 2.198`, coste máximo Standard `$0.001298 USD`, coste máximo con margen `+15 %`: **`$0.001493 USD`**).
+- Copia SQLite aislada lista (`isolated_dbs/pilot_10_3a_work_db.sqlite3`, `25` cadenas `unprocessed`, `1.538` caracteres de origen, `87` términos de glosario ES-419, `0` entradas TM).
+- Bóveda de placeholders lista (`isolated_dbs/pilot_10_3a_exchange_store.sqlite3`, `25` sobres, `37` placeholders protegidos).
+- Payload `/v1/responses` listo (`staging_payloads/batch_batch_pilot_10_3a_001_openai_responses_request.json`, `1.989` tokens de entrada est., `1.758` salida esperada / `2.198` tope `max_output_tokens`; coste Standard esperado `$0.001078 USD` [`$0.001240 USD` con `+15 %`] y máximo `$0.001298 USD` [**`$0.001493 USD`** reserva oficial con `+15 %`]; coste Batch `-50 %` esperado `$0.000539 USD` [`$0.000620 USD` con `+15 %`] y máximo `$0.000649 USD` [`$0.000746 USD` con `+15 %`]).
 
 **Preflight obligatorio antes de ejecutar la llamada real en Fase 10.3-B:**
 1. Confirmar que el usuario ha autorizado expresamente el presupuesto del trabajo (`max_job_budget_usd = $0.05 USD`, `project_budget_usd = $0.25 USD`) y el levantamiento controlado del candado para `job_pilot_10_3a_luna25`.

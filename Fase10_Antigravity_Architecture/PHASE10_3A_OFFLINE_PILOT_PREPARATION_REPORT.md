@@ -35,7 +35,7 @@ Se ha completado y verificado de extremo a extremo la preparación técnica **10
 
 ## 2. Lista Completa de las 25 Cadenas Seleccionadas (`5 × 5`)
 
-Las 25 cadenas fueron extraídas en modo solo lectura de `workspace_data/nolvus_translator.db` aplicando estratificación determinista sobre las 5 categorías requeridas (`5` cadenas por categoría, **`0` duplicados por `string_uid`**, **`0` duplicados por `(source_sha256, context_signature)`**, **`1.576` caracteres totales de origen**):
+Las 25 cadenas fueron extraídas en modo solo lectura de `workspace_data/nolvus_translator.db` aplicando estratificación determinista sobre las 5 categorías requeridas (`5` cadenas por categoría, **`0` duplicados por `string_uid`**, **`0` duplicados por `(source_sha256, context_signature)`**, **`1.538` caracteres totales de origen (`source_chars`)** y **`1.384` caracteres totales enmascarados (`source_masked`)**):
 
 ### 2.1 Categoría 1 — Diálogos y misiones (`dialogues_and_quests` · 5 cadenas)
 
@@ -87,6 +87,21 @@ Las 25 cadenas fueron extraídas en modo solo lectura de `workspace_data/nolvus_
 | **24** | `PEX:scripts/refreshquestlogscript.pex:RefreshQuestLogScript:busy:OnOptionHighlight:inst2:arg4` | Quest Journal Limit Bug Fixer (`pex`) | `scripts` (`OnOptionHighlight`) | `scripts\|\|\|` | `39` | `b839001119a3...` | `Refreshing all active quest objectives.` | `Refreshing all active quest objectives.` | `0` ph |
 | **25** | `PEX:scripts/apdialogueplayer.pex:APDialoguePlayer::MenuOpen:inst18:arg4` | Alternate Perspective - Alternate Start (`pex`) | `scripts` (`MenuOpen`) | `scripts\|\|\|` | `90` | `ce53714b4ea2...` | `[Alternate Perspective] \n Missing JContainers. Only default start options will be available.` | `[Alternate Perspective] \n Missing JContainers. Only default start options will be available.` | `0` ph |
 
+### 2.6 Recuento verificado de caracteres por categoría (Manifiesto JSON vs. JSONL de entrada)
+
+Recalculado directamente desde `staging_manifest_10_3a.json` (`items[*].source_chars`), `pilot_10_3a_work_db.sqlite3` (`len(source_text)`) y `batch_batch_pilot_10_3a_001_input.jsonl` (`len(source_masked)`):
+
+| Categoría (`pilot_category`) | Cadenas (`seq_id`) | Desglose `source_chars` por ítem | Total `source_chars` (origen) | Total `source_masked` (JSONL protegido) |
+|---|---|---|---:|---:|
+| `dialogues_and_quests` | `#1` a `#5` | `42 + 50 + 41 + 54 + 72` | `259` | `237` |
+| `mcm_and_ui` | `#6` a `#10` | `72 + 78 + 28 + 16 + 22` | `216` | `266` |
+| `items_spells_perks` | `#11` a `#15` | `22 + 24 + 76 + 20 + 39` | `181` | `185` |
+| `books_and_notes` | `#16` a `#20` | `85 + 112 + 138 + 153 + 151` | `639` | `453` |
+| `scripts_and_other` | `#21` a `#25` | `54 + 30 + 30 + 39 + 90` | `243` | `243` |
+| **Total exacto (`25` cadenas)** | **`#1` a `#25`** | **Suma directa de `items[*].source_chars`** | **`1.538`** | **`1.384`** |
+
+> **Nota de reconciliación de caracteres:** En la primera edición del informe se consignó `1.576` como total de caracteres porque se habían contabilizado los `38` saltos de línea con su escape visual de dos caracteres (`\n` → `\\n`, `1.538 + 38 = 1.576`). La suma directa de los 25 valores `source_chars` en `staging_manifest_10_3a.json` y `len(source_text)` en `pilot_10_3a_work_db.sqlite3` es exactamente **`1.538` caracteres de origen** (y **`1.384` caracteres** en el campo `source_masked` de `batch_batch_pilot_10_3a_001_input.jsonl`).
+
 ---
 
 ## 3. Resumen de Placeholders Protegidos y Glosario ES-419 Aplicado
@@ -120,7 +135,7 @@ El motor de glosario (`GlossaryManager.find_matching_terms_in_texts`) cruzó las
 
 ## 4. Construcción y Verificación del Payload de Responses API en Staging Local
 
-El payload exacto para **OpenAI Responses API (`/v1/responses`)** fue construido en modo offline mediante `GPT6LunaAdapter.build_responses_request()` y serializado en `NolvusAIT_PilotStaging/Phase10_3A_Luna25/staging_payloads/batch_pilot_10_3a_001_responses_request.json` (`SHA-256: aed55a99e06ff44c69c1fadafd5be07e94a1dcb8e0da8b572b7fb7588cea66b5`).
+El payload exacto para **OpenAI Responses API (`/v1/responses`)** fue construido en modo offline mediante `GPT6LunaAdapter.build_responses_request()` y serializado en `NolvusAIT_PilotStaging/Phase10_3A_Luna25/staging_payloads/batch_batch_pilot_10_3a_001_openai_responses_request.json` (`SHA-256: aed55a99e06ff44c69c1fadafd5be07e94a1dcb8e0da8b572b7fb7588cea66b5`).
 
 ### 4.1 Propiedades estructurales y de seguridad verificadas sobre el payload
 
@@ -138,26 +153,39 @@ El payload exacto para **OpenAI Responses API (`/v1/responses`)** fue construido
 
 ---
 
-## 5. Cálculo de Tokens y Estimación de Coste Máximo (Tarifa Standard + Margen `+15 %`)
+## 5. Cálculo de Tokens y Estimación Económica (Tarifa Standard y Batch `-50 %`, Escenarios Esperado y Máximo)
 
-El cálculo fue ejecutado por `BudgetController.estimate_batch()` aplicando la tarifa **Standard** de `gpt-6-luna` (**`$0.10 USD / 1M` tokens de entrada** y **`$0.50 USD / 1M` tokens de salida**), sin asumir descuentos de Batch API ni caché de prompts para el techo de seguridad:
+### 5.1 Desglose de tokens de entrada y salida (`batch_pilot_10_3a_001`)
 
-| Métrica de tokens y coste (`batch_pilot_10_3a_001`) | Valor exacto | Notas de cálculo |
+| Métrica de tokens (`batch_pilot_10_3a_001`) | Valor exacto | Notas de cálculo |
 |---|---:|---|
-| Cantidad de cadenas en el lote (`item_count`) | `25` | `5` categorías × `5` cadenas (`1.576` caracteres totales de origen) |
+| Cantidad de cadenas en el lote (`item_count`) | `25` | `5` categorías × `5` cadenas (`1.538` caracteres totales de origen; `1.384` caracteres enmascarados en JSONL) |
 | Tokens de cadenas de origen (`source_strings_tokens`) | `564` | Texto enmascarado con `⟦VAR_n⟧` |
 | Tokens de instrucciones del sistema ES-419 (`instructions_tokens`) | `465` | Reglas de español neutro ES-419, prohibición de voseo/vosotros, preservación de `⟦VAR_n⟧` |
 | Tokens de subconjunto de glosario y firmas de contexto (`glossary_and_context_tokens`) | `40` | `3` términos de glosario activos + metadatos de registro (`QUST:NNAM`, `MGEF:DNAM`, etc.) |
 | Tokens de enmarcado JSON y esquema de respuesta (`json_framing_input_tokens`) | `920` | Estructura JSONL de entrada + definición `json_schema` estricta |
-| **Total estimado de tokens de entrada (`estimated_input_tokens`)** | **`1.989`** | Suma total de entrada enviada a `/v1/responses` |
-| Tokens de salida esperados (`estimated_output_tokens`) | `1.758` | Expansión lingüística EN→ES-419 (`1.22x`) + envoltura JSON de salida |
-| **Tope físico de tokens de salida (`max_output_tokens_cap`)** | **`2.198`** | Límite duro inyectado en el parámetro `max_output_tokens` del payload |
-| **Coste máximo base con tarifa Standard (al tope `max_output_tokens = 2.198`)** | **`$0.001298 USD`** (`$0.0012979`) | `(1.989 × $0,10 / 1M) + (2.198 × $0,50 / 1M)` |
-| Factor de margen de seguridad (`safety_margin_factor`) | `1.15x` (`+15 %`) | Margen obligatorio del `BudgetController` |
-| **Coste máximo reservable con margen de seguridad (`+15 %`)** | **`$0.001493 USD`** (`$0.00149259`) | **`~0,15 centavos de dólar`** (`33,5 veces menor` que el tope de referencia de `$0.05 USD` por trabajo) |
-| Coste orientativo si se ejecutara por Batch API (`50 %` dto., no asumido por seguridad) | `$0.000539 USD` (`$0.000620 USD` con `+15 %`) | Calculado únicamente como referencia comparativa |
-| Presupuesto de referencia por trabajo (`reference_max_job_budget_usd`, aún no autorizado) | `$0.050000 USD` | `within_reference_job_budget = True` (`$0.001493 USD <= $0.050000 USD`) |
-| Presupuesto de referencia del proyecto (`reference_project_budget_usd`, aún no autorizado) | `$0.250000 USD` | Reserva actual en base de datos: **`$0.000000 USD`** |
+| **Total estimado de tokens de entrada (`estimated_input_tokens`)** | **`1.989`** | Suma total de entrada (`564 + 465 + 40 + 920`) |
+| **Tokens de salida en escenario esperado (`estimated_output_tokens`)** | **`1.758`** | Expansión lingüística EN→ES-419 (`1.22x`) + envoltura JSON de salida |
+| **Tokens de salida en escenario máximo (`max_output_tokens_cap`)** | **`2.198`** | Tope duro físico inyectado en `max_output_tokens` del payload |
+
+### 5.2 Comparativa completa de costes y reservas (`+15 %`) en ambos escenarios (Standard vs. Batch `-50 %`)
+
+Tarifas de referencia para **`gpt-6-luna`**:
+- **Tarifa Standard (`/v1/responses` síncrono):** Entrada **`$0.10 USD / 1M`** tokens · Salida **`$0.50 USD / 1M`** tokens.
+- **Tarifa Batch API (`/v1/batches` asíncrono con descuento del `50 %`):** Entrada **`$0.05 USD / 1M`** tokens · Salida **`$0.25 USD / 1M`** tokens.
+- **Margen de seguridad del `BudgetController`:** **`+15 %` (`× 1.15`)**. Por política de seguridad (`D-20`), `BudgetController` realiza la reserva previa atómica tomando siempre el **Escenario Máximo con Tarifa Standard + 15 % (`$0.001493 USD`)**, sin asumir descuentos Batch.
+
+| Modalidad y escenario | Tokens de entrada | Tokens de salida | Fórmula coste base | Coste base (`USD`) | Reserva con margen `+15 %` (`× 1.15`, `USD`) |
+|---|---:|---:|---|---:|---:|
+| **Standard — Escenario esperado** | `1.989` | `1.758` | `(1.989 × $0,10 + 1.758 × $0,50) / 1M` | **`$0.001078 USD`** (`$0.00107790`) | **`$0.001240 USD`** (`$0.00123959`) |
+| **Standard — Escenario máximo (tope `max_output_tokens`)** | `1.989` | `2.198` | `(1.989 × $0,10 + 2.198 × $0,50) / 1M` | **`$0.001298 USD`** (`$0.00129790`) | **`$0.001493 USD`** (`$0.00149259`) *(reserva oficial `BudgetController`)* |
+| **Batch (`-50 %`) — Escenario esperado** | `1.989` | `1.758` | `(1.989 × $0,05 + 1.758 × $0,25) / 1M` | **`$0.000539 USD`** (`$0.00053895`) | **`$0.000620 USD`** (`$0.00061979` / `$0.00061980`) |
+| **Batch (`-50 %`) — Escenario máximo (tope `max_output_tokens`)** | `1.989` | `2.198` | `(1.989 × $0,05 + 2.198 × $0,25) / 1M` | **`$0.000649 USD`** (`$0.00064895`) | **`$0.000746 USD`** (`$0.00074629`) |
+
+| Control presupuestario de referencia (todavía no autorizado) | Importe (`USD`) | Estado de verificación |
+|---|---:|---|
+| Presupuesto máximo de referencia por trabajo (`reference_max_job_budget_usd`) | `$0.050000 USD` | `within_reference_job_budget = True` (el techo máximo Standard con `+15 %` de `$0.001493 USD` representa solo el **`2,99 %`** del tope de `$0.05 USD`) |
+| Presupuesto interno de referencia del proyecto (`reference_project_budget_usd`) | `$0.250000 USD` | Reserva actual en base de datos: **`$0.000000 USD`** · Consumido: **`$0.000000 USD`** |
 
 ---
 
@@ -167,12 +195,12 @@ Todos los artefactos para el futuro piloto quedaron preparados y verificados en 
 
 | Artefacto aislado en `NolvusAIT_PilotStaging/Phase10_3A_Luna25/` | Rol técnico | Integridad SQLite / Formato | Hash `SHA-256` completo |
 |---|---|---|---|
-| `pilot_10_3a_work_db.sqlite3` | Copia SQLite de trabajo aislada con `scan_snapshots` (`1`), `scanned_mods` (`8`), `scanned_files` (`9`), `string_entries` (`25` en estado `unprocessed`), `glossary_terms` (`87` términos oficiales ES-419) y `translation_memory` (`0` entradas iniciales). | `PRAGMA integrity_check = ok` | `f6d5baec6f5b83892a2976d3062a08f1c863590e629a024d088d198428fcf00f` |
-| `pilot_10_3a_exchange_store.sqlite3` | Almacén SQLite independiente de intercambio (`ExchangeStateStore`) con el trabajo `job_pilot_10_3a_luna25`, el lote `batch_pilot_10_3a_001` en estado `AWAITING_AGENT` y los **25 sobres de bóveda** (`placeholder_vault`) con los `37` placeholders protegidos. | `PRAGMA integrity_check = ok` | `8f1f0010118ef0cd60b97c3e2f1979090218db3b81ea5c3eb6eed71189dc7b90` |
-| `pilot_10_3a_budget_store.sqlite3` | Almacén SQLite del `BudgetController` inicializado con los topes de referencia (`$0.05 USD` / `$0.25 USD`), `$0.000000 USD` reservados y `$0.000000 USD` consumidos. | `PRAGMA integrity_check = ok` | `df5210bfd247fe3bb7af2c375329e24d54ca6d656e3fbbc7a96e0e21a03aa36a` |
-| `exchange_workspace/outbox/batch_pilot_10_3a_001/manifest.json` | Manifiesto versionado (`1.0.0`) del lote exportado para `gpt-6-luna`. | JSON válido (`UTF-8`) | `f036d564398542aca64bc66b7dcffd0a606d758cf3df9dc717cf6129a284a4e7` |
-| `exchange_workspace/outbox/batch_pilot_10_3a_001/input.jsonl` | Las 25 líneas `InputBatchItemV1` con texto enmascarado (`⟦VAR_n⟧`), hash de origen y glosario por ítem. | JSONL válido (`25` líneas) | `22493486b8f8b274517ca4196815727d82cfbf17261c41a8dea92a69d76b5306` |
-| `staging_payloads/batch_pilot_10_3a_001_responses_request.json` | Payload completo de **OpenAI Responses API (`/v1/responses`)** listo para envío futuro. | JSON válido (`UTF-8`) | `aed55a99e06ff44c69c1fadafd5be07e94a1dcb8e0da8b572b7fb7588cea66b5` |
+| `isolated_dbs/pilot_10_3a_work_db.sqlite3` | Copia SQLite de trabajo aislada con `scan_snapshots` (`1`), `scanned_mods` (`8`), `scanned_files` (`9`), `string_entries` (`25` en estado `unprocessed`), `glossary_terms` (`87` términos oficiales ES-419) y `translation_memory` (`0` entradas iniciales). | `PRAGMA integrity_check = ok` | `f6d5baec6f5b83892a2976d3062a08f1c863590e629a024d088d198428fcf00f` |
+| `isolated_dbs/pilot_10_3a_exchange_store.sqlite3` | Almacén SQLite independiente de intercambio (`ExchangeStateStore`) con el trabajo `job_pilot_10_3a_luna25`, el lote `batch_pilot_10_3a_001` en estado `AWAITING_AGENT` y los **25 sobres de bóveda** (`placeholder_vault`) con los `37` placeholders protegidos. | `PRAGMA integrity_check = ok` | `8f1f0010118ef0cd60b97c3e2f1979090218db3b81ea5c3eb6eed71189dc7b90` |
+| `isolated_dbs/pilot_10_3a_budget_store.sqlite3` | Almacén SQLite del `BudgetController` inicializado con los topes de referencia (`$0.05 USD` / `$0.25 USD`), `$0.000000 USD` reservados y `$0.000000 USD` consumidos. | `PRAGMA integrity_check = ok` | `df5210bfd247fe3bb7af2c375329e24d54ca6d656e3fbbc7a96e0e21a03aa36a` |
+| `staging_payloads/batch_batch_pilot_10_3a_001_meta.json` | Manifiesto versionado (`1.0.0`) del lote exportado para `gpt-6-luna`. | JSON válido (`UTF-8`) | `f036d564398542aca64bc66b7dcffd0a606d758cf3df9dc717cf6129a284a4e7` |
+| `staging_payloads/batch_batch_pilot_10_3a_001_input.jsonl` | Las 25 líneas `InputBatchItemV1` con texto enmascarado (`⟦VAR_n⟧`), hash de origen y glosario por ítem (`1.384` caracteres en `source_masked`). | JSONL válido (`25` líneas) | `22493486b8f8b274517ca4196815727d82cfbf17261c41a8dea92a69d76b5306` |
+| `staging_payloads/batch_batch_pilot_10_3a_001_openai_responses_request.json` | Payload completo de **OpenAI Responses API (`/v1/responses`)** listo para envío futuro. | JSON válido (`UTF-8`) | `aed55a99e06ff44c69c1fadafd5be07e94a1dcb8e0da8b572b7fb7588cea66b5` |
 | `staging_payloads/staging_manifest_10_3a.json` | Auditoría completa JSON con controles, métricas de tokens/coste, hashes e inventario de las 25 cadenas. | JSON válido (`UTF-8`) | Generado en cada corrida determinista |
 
 ---
@@ -202,4 +230,4 @@ El proyecto se detiene en este punto. Para pasar en el futuro a la **Fase 10.3-B
 - [x] **Coste máximo calculado con tarifa Standard + margen `+15 %`:** **`$0.001493 USD`** (dentro del presupuesto de referencia de `$0.05 USD` por trabajo).
 - [x] **Paso obligatorio por `LocalGatekeeper` (12 puertas) verificado** antes de cualquier escritura en `translation_memory`.
 - [x] **Suite completa de pruebas en verde:** **`49/49 OK`** (`tests/test_pilot_offline_staging.py` incluida).
-- [ ] **Pendiente de decisión del usuario (Puerta Fase 10.3-B):** Autorización explícita para habilitar el presupuesto (`max_job_budget_usd = $0.05 USD`), configurar `OPENAI_API_KEY` y enviar la solicitud preparada `batch_pilot_10_3a_001_responses_request.json` a `gpt-6-luna`.
+- [ ] **Pendiente de decisión del usuario (Puerta Fase 10.3-B):** Autorización explícita para habilitar el presupuesto (`max_job_budget_usd = $0.05 USD`), configurar `OPENAI_API_KEY` y enviar la solicitud preparada `staging_payloads/batch_batch_pilot_10_3a_001_openai_responses_request.json` a `gpt-6-luna`.

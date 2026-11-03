@@ -42,7 +42,7 @@ Clasificación canónica aplicada:
 | 13 | **Especificación técnica de Fase 10.1-B** | Fase 10.1-B | `COMPLETADO` | Especificación de contratos, aislamiento, bóveda, Gatekeeper de 12 puertas, recuperación y CLI publicada en `PHASE10_1B_IMPLEMENTATION_SPEC.md`. |
 | 14 | **Infraestructura de intercambio Antigravity y Gatekeeper de 12 puertas** (`exchange_contract.py`, `exchange_store.py`, `gatekeeper.py`, `exchange_service.py`, `cli.py`) | Fase 10.1-B.1 | `COMPLETADO` | Implementado y consolidado (commits `8ff5bf7`, `844aa1b`, `0b4ff8d`). Conservado íntegro como núcleo de validación local (`LocalGatekeeper`) para las respuestas de OpenAI y como ruta complementaria de intercambio con `Antigravity Argon`. |
 | 15 | **Infraestructura OpenAI API-First, Coordinador Batch y Control Presupuestario Local** (`openai_provider.py`, `openai_batch_coordinator.py`, `budget_control.py`, `model_router.py`, `openai_credentials.py`, `pilot_estimator.py`) | Fase 10.2 | `COMPLETADO` | Implementado en la rama `feat/phase10-2-openai-api-first` (commit `2766b73`). Incluye `GPT6LunaAdapter`, `GPT61SolAdapter`, `OpenAIBatchCoordinator`, `BudgetController` con reserva atómica SQLite (`BEGIN IMMEDIATE` + margen `1.15x` sobre tarifa Standard), `ModelRouter`, aislamiento `tools=[]`/`tool_choice="none"` y 21 pruebas automatizadas. Permanece con candado `PHASE_1_PAID_API_LOCK = True` hasta autorización presupuestaria. |
-| 16 | **Preparación Offline del Primer Piloto `gpt-6-luna` (25 cadenas reales 5×5)** (`pilot_offline_staging.py`, `test_pilot_offline_staging.py`) | Fase 10.3-A | `COMPLETADO` | Implementado y ejecutado en modo 100 % offline (commit `d2b75a5`, **49/49 pruebas en verde**). Extrae 25 cadenas reales (`5 × 5`), protege `37` placeholders en bóveda local (`PlaceholderVault`), inyecta el subconjunto del Glosario Maestro ES-419, construye el payload `/v1/responses` (`batch_pilot_10_3a_001_responses_request.json`, `max_output_tokens = 2198`, coste máximo con `+15 %`: **`$0.001493 USD`**) y verifica en clon efímero el paso obligatorio por `LocalGatekeeper`. |
+| 16 | **Preparación Offline del Primer Piloto `gpt-6-luna` (25 cadenas reales 5×5)** (`pilot_offline_staging.py`, `test_pilot_offline_staging.py`) | Fase 10.3-A | `COMPLETADO` | Implementado y ejecutado en modo 100 % offline (commit `d2b75a5`, **49/49 pruebas en verde**). Extrae 25 cadenas reales (`5 × 5`, `1.538` caracteres de origen / `1.384` enmascarados), protege `37` placeholders en bóveda local (`PlaceholderVault`), inyecta el subconjunto del Glosario Maestro ES-419, construye el payload `/v1/responses` (`batch_batch_pilot_10_3a_001_openai_responses_request.json`, `max_output_tokens = 2198`, coste máximo Standard con `+15 %`: **`$0.001493 USD`**) y verifica en clon efímero el paso obligatorio por `LocalGatekeeper`. |
 
 ### 1.2 Elementos bloqueados, complementarios, aplazados o descartados por política
 
@@ -109,13 +109,24 @@ Clasificación canónica aplicada:
 
 ## 4. Lote real preparado en Fase 10.3-A (`batch_pilot_10_3a_001`) y estimación económica
 
-Preparado en modo 100 % offline (`mode=ro&immutable=1`) sobre `workspace_data/nolvus_translator.db` en el entorno aislado `NolvusAIT_PilotStaging/Phase10_3A_Luna25/`:
+Preparado en modo 100 % offline (`mode=ro&immutable=1`) sobre `workspace_data/nolvus_translator.db` en el entorno aislado `NolvusAIT_PilotStaging/Phase10_3A_Luna25/` (`25` cadenas `5×5`, **`1.538` caracteres totales de origen** en `source_chars` y **`1.384` caracteres enmascarados** en `source_masked`, `37` placeholders protegidos en `11/25` cadenas):
 
-| Lote / Escalón | Cadenas / Lotes | Placeholders protegidos | Tokens entrada est. | Tokens salida est. / Tope físico | Costo máx. Standard (`$0.10/$0.50` / 1M) | Costo máx. con margen (`+15 %`) | Costo potencial Batch API (`50 %` dto.) | Presupuesto de referencia (`max_job_budget_usd`) |
-|---|---:|---:|---:|---:|---:|---:|---:|---:|
-| **`batch_pilot_10_3a_001` (Preparado en Fase 10.3-A)** | **`25` (`5×5`)** | **`37` en `11/25` cadenas** | **`1.989`** | **`1.758` / `2.198`** | **`$0.001298 USD`** | **`$0.001493 USD`** | `$0.000539 USD` | **`$0.05 USD`** (no autorizado aún) |
-| **Escalón 2 (Ampliación a 100 cadenas)** | `100` (`4×25`) | — | `7.711` | `6.829` / `8.539` | `$0.005041 USD` | **`$0.005797 USD`** | `$0.002093 USD` | **`$0.05 USD`** |
-| **Escalón 3 (Ampliación a 250 cadenas)** | `250` (`10×25`) | — | `20.573` | `18.781` / `23.480` | `$0.013797 USD` | **`$0.015867 USD`** | `$0.005724 USD` | **`$0.05 USD`** |
+### 4.1 Desglose de escenarios del lote `batch_pilot_10_3a_001` (`25` cadenas) — Tarifa Standard vs. Batch (`-50 %`)
+
+| Modalidad y escenario (`batch_pilot_10_3a_001`) | Tokens entrada | Tokens salida | Coste base (`USD`) | Reserva con margen `+15 %` (`× 1.15`, `USD`) |
+|---|---:|---:|---:|---:|
+| **Standard (`/v1/responses`) — Escenario esperado** | `1.989` | `1.758` | `$0.001078 USD` (`$0.00107790`) | **`$0.001240 USD`** (`$0.00123959`) |
+| **Standard (`/v1/responses`) — Escenario máximo (`max_output_tokens`)** | `1.989` | `2.198` | **`$0.001298 USD`** (`$0.00129790`) | **`$0.001493 USD`** (`$0.00149259`) *(reserva oficial `BudgetController`)* |
+| **Batch (`-50 %`, `/v1/batches`) — Escenario esperado** | `1.989` | `1.758` | `$0.000539 USD` (`$0.00053895`) | **`$0.000620 USD`** (`$0.00061979` / `$0.00061980`) |
+| **Batch (`-50 %`, `/v1/batches`) — Escenario máximo (`max_output_tokens`)** | `1.989` | `2.198` | `$0.000649 USD` (`$0.00064895`) | **`$0.000746 USD`** (`$0.00074629`) |
+
+### 4.2 Escalones comparativos del piloto (`25`, `100` y `250` cadenas)
+
+| Lote / Escalón | Cadenas / Lotes | Caracteres origen / Placeholders | Tokens entrada est. | Tokens salida (esp. / máx.) | Coste máx. Standard (`2.198` out) / Reserva `+15 %` | Coste Batch `-50 %` esp. (`+15 %`) / máx. (`+15 %`) | Presupuesto de referencia (`max_job_budget_usd`) |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| **`batch_pilot_10_3a_001` (Preparado en Fase 10.3-A)** | **`25` (`5×5`)** | **`1.538` chars / `37` ph** | **`1.989`** | **`1.758` / `2.198`** | **`$0.001298` / `$0.001493 USD`** | `$0.000539` (`$0.000620`) / `$0.000649` (`$0.000746 USD`) | **`$0.05 USD`** (no autorizado aún) |
+| **Escalón 2 (Ampliación a 100 cadenas)** | `100` (`4×25`) | — | `7.711` | `6.829` / `8.539` | `$0.005041` / **`$0.005797 USD`** | `$0.002093` (`$0.002407 USD`) / — | **`$0.05 USD`** |
+| **Escalón 3 (Ampliación a 250 cadenas)** | `250` (`10×25`) | — | `20.573` | `18.781` / `23.480` | `$0.013797` / **`$0.015867 USD`** | `$0.005724` (`$0.006583 USD`) / — | **`$0.05 USD`** |
 
 ---
 
