@@ -4,7 +4,7 @@
 
 # POLÍTICA DEL GLOSARIO MAESTRO Y BASE DE CONOCIMIENTO DE THE ELDER SCROLLS
 **Proyecto**: NOLVUS AI TRANSLATOR — Nolvus Awakening 6.0.21  
-**Implementación**: [`GlossaryTerm`](file:///c:/Skyrim%20proyecto%20traducci%C3%B3n/src/nolvus_translator/core/models.py#L204-L220), [`GlossaryManager`](file:///c:/Skyrim%20proyecto%20traducci%C3%B3n/src/nolvus_translator/lore/glossary.py), [`seed_data.py`](file:///c:/Skyrim%20proyecto%20traducci%C3%B3n/src/nolvus_translator/lore/seed_data.py)  
+**Implementación**: `src/nolvus_translator/core/models.py` (ruta de código local; el código fuente no está publicado aquí), `src/nolvus_translator/lore/glossary.py` (ruta de código local; el código fuente no está publicado aquí), `src/nolvus_translator/lore/seed_data.py` (ruta de código local; el código fuente no está publicado aquí)  
 
 ---
 
@@ -13,19 +13,19 @@
 En una lista masiva como **Nolvus Awakening (3.700 mods activos)**, cientos de mods distintos hacen referencia a las mismas ciudades, facciones, deidades, artefactos, personajes y conceptos mágicos de Tamriel. El **Glosario Maestro** garantiza que:
 1. Ningún nombre propio protegido sea traducido literalmente por error (p. ej., evitar que *Delphine* pase a *Delfina* o *Winterhold* sea traducido de tres formas distintas en diferentes mods).
 2. Todos los mods compartan exactamente la misma terminología aprobada en conviviencia armónica con el mundo base de Skyrim.
-3. Cualquier término ya confirmado (`approval_status = 'approved'`) quede bloqueado contra modificaciones automáticas silenciosas ([`GlossaryConflictError`](file:///c:/Skyrim%20proyecto%20traducci%C3%B3n/src/nolvus_translator/lore/glossary.py#L16-L18)).
+3. Cualquier término ya confirmado (`approval_status = 'approved'`) quede bloqueado contra modificaciones automáticas silenciosas (`src/nolvus_translator/lore/glossary.py` (ruta de código local; el código fuente no está publicado aquí)).
 
 ---
 
 ## 2. Estructura Obligatoria de 10 Campos por Entrada
 
-Cada registro de la tabla `glossary_terms` en SQLite ([`database.py`](file:///c:/Skyrim%20proyecto%20traducci%C3%B3n/src/nolvus_translator/core/database.py#L114-L129)) y del modelo [`GlossaryTerm`](file:///c:/Skyrim%20proyecto%20traducci%C3%B3n/src/nolvus_translator/core/models.py#L204-L220) almacena obligatoriamente los siguientes **10 atributos auditables**:
+Cada registro de la tabla `glossary_terms` en SQLite (`src/nolvus_translator/core/database.py` (ruta de código local; el código fuente no está publicado aquí)) y del modelo `src/nolvus_translator/core/models.py` (ruta de código local; el código fuente no está publicado aquí) almacena obligatoriamente los siguientes **10 atributos auditables**:
 
 | # | Campo en Base de Datos / Modelo | Descripción Funcional | Ejemplo (`city_whiterun`) |
 | :-: | :--- | :--- | :--- |
 | 1 | `source_term` | Término original exacto en inglés o lengua del lore. | `Whiterun` |
 | 2 | `approved_translation` | Traducción `ES-419` aprobada (o el término invariable si se conserva). | `Carrera Blanca` |
-| 3 | `category` | Categoría ontológica dentro del universo de The Elder Scrolls ([`GlossaryCategory`](file:///c:/Skyrim%20proyecto%20traducci%C3%B3n/src/nolvus_translator/core/models.py#L77-L97)). | `city` |
+| 3 | `category` | Categoría ontológica dentro del universo de The Elder Scrolls (`src/nolvus_translator/core/models.py` (ruta de código local; el código fuente no está publicado aquí)). | `city` |
 | 4 | `definition` | Definición concisa de la entidad dentro del mundo del juego. | `Comarca y capital central de Skyrim` |
 | 5 | `context_notes` | Contexto narrativo e histórico dentro del lore de Tamriel. | `Comarca central gobernada por el Jarl Balgruuf el Grande, sede de Cuenca del Dragón y Jorrvaskr.` |
 | 6 | `usage_rule` / `translation_rule` | Regla operativa de aplicación sintáctica y técnica (`preserve_untranslated`, `use_official_translation`, `translate_rank`, `contextual_translate`). | `Aplicar siempre la traducción canónica establecida en el juego base Skyrim...` (`use_official_translation`) |
@@ -70,6 +70,6 @@ El sistema clasifica el conocimiento de The Elder Scrolls en **17 categorías es
 - Los topónimos que en la localización oficial de Skyrim se mantuvieron invariables (*Riften*, *Markarth*, *Falkreath*, *Morthal*, *Solstheim*, *Tamriel*, *Skyrim*) se mantienen invariables (`keep_original = True`).
 
 ### Regla 3: Topónimos y Nombres Propios Nuevos Introducidos por Mods (`PENDING_RESEARCH` / `REQUIRES_LORE_RESEARCH`)
-- Cuando el clasificador [`StringClassifier`](file:///c:/Skyrim%20proyecto%20traducci%C3%B3n/src/nolvus_translator/classification/classifier.py#L144-L169) o el validador [`TranslationQualityValidator`](file:///c:/Skyrim%20proyecto%20traducci%C3%B3n/src/nolvus_translator/quality/validator.py) detecta un topónimo o término propio de lore en registros `LCTN`, `CELL`, `WRLD`, `FACT` o `BOOK` que no figura en el Glosario Maestro (por ejemplo, *Unslaad*, *Bruma*, *Clockwork Castle*, *Wyrmstooth*), el sistema:
+- Cuando el clasificador `src/nolvus_translator/classification/classifier.py` (ruta de código local; el código fuente no está publicado aquí) o el validador `src/nolvus_translator/quality/validator.py` (ruta de código local; el código fuente no está publicado aquí) detecta un topónimo o término propio de lore en registros `LCTN`, `CELL`, `WRLD`, `FACT` o `BOOK` que no figura en el Glosario Maestro (por ejemplo, *Unslaad*, *Bruma*, *Clockwork Castle*, *Wyrmstooth*), el sistema:
   1. **No inventa contexto ni traduce a ciegas**.
   2. Lo marca con estado `pending_research` / `requires_lore_research` (`718` ocurrencias / `352` términos únicos detectados en `Snapshot #1`) para revisión y alta controlada en el Glosario Maestro antes de su traducción definitiva.
