@@ -8,6 +8,7 @@ Documentación del proyecto para localizar **Nolvus Awakening 6.0.21** al españ
 
 - [CURRENT_PROJECT_STATE.md](./CURRENT_PROJECT_STATE.md) — cifras vigentes del corte de Fase 9, decisiones, controles y estado actual.
 - [DOCUMENTATION_POLICY.md](./DOCUMENTATION_POLICY.md) — jerarquía, mantenimiento y tratamiento de documentos históricos.
+- [DOCUMENTATION_CLEANUP_REPORT.md](./DOCUMENTATION_CLEANUP_REPORT.md) — cambios aplicados, validación realizada y pendientes.
 - [ROADMAP.md](./Documentacion_Base_Fases_0_a_6/ROADMAP.md) — hitos concluidos y puertas de validación pendientes.
 
 ## Fase 10 — Diseño Antigravity-first y arquitectura dual

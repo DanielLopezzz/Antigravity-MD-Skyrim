@@ -84,7 +84,7 @@ En una instalación de Nolvus Awakening existen dos fuentes preexistentes de tex
 2. Archivos de **traducción comunitaria de terceros** empaquetados dentro de algunos mods (`69` archivos `*_spanish.txt` de MCM y `5` tablas `_Spanish.*STRINGS` de mods no oficiales), además de `558` archivos MCM en otros idiomas extranjeros (`_chinese.txt`, `_czech.txt`, `_french.txt`, `_german.txt`, etc.).
 
 ### Decisión
-1. **Exclusión del 100 % de Traducciones Comunitarias**: [`ProjectService.scan_and_extract()`](file:///c:/Skyrim%20proyecto%20traducci%C3%B3n/src/nolvus_translator/services/project_service.py) ignora todos los archivos `*_spanish.txt` y tablas `_Spanish.*STRINGS` de mods de terceros, así como los `558` archivos MCM en idiomas extranjeros, extrayendo exclusivamente el texto original en inglés (`*_english.txt` y registros en inglés) como `translatable` hacia `es-419`.
+1. **Exclusión del 100 % de Traducciones Comunitarias**: `src/nolvus_translator/services/project_service.py` (código fuente local no publicado en este repositorio) ignora todos los archivos `*_spanish.txt` y tablas `_Spanish.*STRINGS` de mods de terceros, así como los `558` archivos MCM en idiomas extranjeros, extrayendo exclusivamente el texto original en inglés (`*_english.txt` y registros en inglés) como `translatable` hacia `es-419`.
 2. **Separación Estricta de la Localización Oficial de Bethesda**: Las `57.261` ocurrencias oficiales de Bethesda se conservan provisionalmente y se reportan en un indicador dedicado (`official_bethesda_occurrences`), sin mezclarlas automáticamente en la Memoria de Traducción `es-419` ni descontarlas silenciosamente del volumen pendiente de los mods (`unique_pending_net = unique_translatable_total - unique_approved_es419`).
 
 ---
@@ -92,15 +92,15 @@ En una instalación de Nolvus Awakening existen dos fuentes preexistentes de tex
 ## ADR-007: Glosario Maestro de 10 Campos y Separación de Origen en Memoria de Traducción (`schema_version = 1.1.0`)
 
 ### Decisión
-1. Ampliar [`GlossaryTerm`](file:///c:/Skyrim%20proyecto%20traducci%C3%B3n/src/nolvus_translator/core/models.py#L204-L220) y la tabla `glossary_terms` en [`database.py`](file:///c:/Skyrim%20proyecto%20traducci%C3%B3n/src/nolvus_translator/core/database.py#L114-L129) para exigir los **10 atributos auditables**: `source_term`, `approved_translation`, `category`, `definition`, `context_notes` (contexto de lore), `usage_rule`, `translation_rule`, `keep_original`, `justification`, `source_reference` y `approval_status`.
-2. Añadir la columna `tm_origin_type` (`'own_es419'` vs `'official_bethesda_reference'`) en `translation_memory` ([`tm_engine.py`](file:///c:/Skyrim%20proyecto%20traducci%C3%B3n/src/nolvus_translator/memory/tm_engine.py#L46-L95)), rechazando con `ValueError` cualquier intento de importar memorias comunitarias (`'community'`) y asegurando que `lookup_exact(..., only_own_es419=True)` solo aplique automáticamente traducciones propias `es-419` aprobadas.
+1. Ampliar `src/nolvus_translator/core/models.py` (código fuente local no publicado en este repositorio) y la tabla `glossary_terms` en `src/nolvus_translator/core/database.py` (código fuente local no publicado en este repositorio) para exigir los **10 atributos auditables**: `source_term`, `approved_translation`, `category`, `definition`, `context_notes` (contexto de lore), `usage_rule`, `translation_rule`, `keep_original`, `justification`, `source_reference` y `approval_status`.
+2. Añadir la columna `tm_origin_type` (`'own_es419'` vs `'official_bethesda_reference'`) en `translation_memory` (`src/nolvus_translator/memory/tm_engine.py` (código fuente local no publicado en este repositorio)), rechazando con `ValueError` cualquier intento de importar memorias comunitarias (`'community'`) y asegurando que `lookup_exact(..., only_own_es419=True)` solo aplique automáticamente traducciones propias `es-419` aprobadas.
 
 ---
 
 ## ADR-008: Resolución Exacta de Prioridades de Archivos `.bsa` (`skyrim.ini` + `loadorder.txt` + `modlist.txt`)
 
 ### Decisión
-Actualizar [`Mo2VfsScanner.scan()`](file:///c:/Skyrim%20proyecto%20traducci%C3%B3n/src/nolvus_translator/mo2/vfs.py#L389-L435) para ordenar los `583` contenedores `.bsa` siguiendo exactamente la jerarquía del motor `BSResource` de Skyrim:
+Actualizar `src/nolvus_translator/mo2/vfs.py` (código fuente local no publicado en este repositorio) para ordenar los `583` contenedores `.bsa` siguiendo exactamente la jerarquía del motor `BSResource` de Skyrim:
 1. Primero los archivos base listados en `sResourceArchiveList` y `sResourceArchiveList2` de `skyrim.ini` (`18` BSAs).
 2. Segundo los archivos `.bsa` emparejados con plugins activos según su `load_order_index` en `loadorder.txt` / `plugins.txt` (`562` BSAs, ordenando `<PluginStem>.bsa` seguido de `<PluginStem> - Textures.bsa`).
 3. Tercero `vfs_priority` de `modlist.txt` como desempate para BSAs sin plugin homónimo directo (`3` BSAs), garantizando siempre que cualquier archivo suelto (*loose file*, `18.132` archivos) sobrescribe a cualquier archivo empaquetado en `.bsa` (`57.166` archivos).

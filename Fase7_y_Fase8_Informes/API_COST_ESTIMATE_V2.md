@@ -4,10 +4,10 @@
 
 # ESTIMACIÓN ECONÓMICA Y COMPARATIVA DE PROVEEDORES IA — VERSIÓN 2 CORREGIDA (`FASE 8`)
 **Proyecto**: NOLVUS AI TRANSLATOR — Nolvus Awakening 6.0.21  
-**Documento Previo Conservado**: [API_COST_ESTIMATE.md](file:///c:/Skyrim%20proyecto%20traducci%C3%B3n/API_COST_ESTIMATE.md) *(Versión 1 conservada para trazabilidad histórica)*  
-**Libro de Cálculo Comparativo**: [API_COST_COMPARISON_V2.xlsx](file:///c:/Skyrim%20proyecto%20traducci%C3%B3n/API_COST_COMPARISON_V2.xlsx)  
-**Plan de Benchmark Lingüístico y Técnico**: [MODEL_BENCHMARK_PLAN.md](file:///c:/Skyrim%20proyecto%20traducci%C3%B3n/MODEL_BENCHMARK_PLAN.md)  
-**Motor de Cálculo en Código**: [`CostEstimator`](file:///c:/Skyrim%20proyecto%20traducci%C3%B3n/src/nolvus_translator/reports/cost_estimator.py)  
+**Documento Previo Conservado**: `c:/Skyrim proyecto traducción/API_COST_ESTIMATE.md` (ruta/artefacto local no incluido en GitHub) *(Versión 1 conservada para trazabilidad histórica)*  
+**Libro de Cálculo Comparativo**: `c:/Skyrim proyecto traducción/API_COST_COMPARISON_V2.xlsx` (ruta/artefacto local no incluido en GitHub)  
+**Plan de Benchmark Lingüístico y Técnico**: `c:/Skyrim proyecto traducción/MODEL_BENCHMARK_PLAN.md` (ruta/artefacto local no incluido en GitHub)  
+**Motor de Cálculo en Código**: `src/nolvus_translator/reports/cost_estimator.py` (código fuente local no publicado en este repositorio)  
 
 ---
 
@@ -25,7 +25,7 @@
    - En esta Versión 2 se recalcula mediante $\text{Tokens Totales de Salida} / \text{Tokens Generados por Segundo}$, sumando además el **tiempo de procesamiento de contexto (*prefill*)**, **tiempo de carga del modelo** y **tiempo de validación QA + escritura en SQLite WAL**, tanto sin margen como con el margen del `+15 %`.
    - Para `55–70 tokens/s` teóricos, el tiempo real de generación pura es de **`37,80 a 48,10 horas` sin margen** (**`43,46 a 55,32 horas` con margen `+15 %`**), y el tiempo total de ejecución incluyendo contexto y almacenamiento es de **`40,98 a 52,60 horas` sin margen** (**`47,13 a 60,48 horas` con margen `+15 %`**). Además, se deja explícito que estas velocidades son **estimaciones teóricas** y que la velocidad real en tu **RX 9070 XT** queda pendiente de medición práctica autorizada.
 4. **Eliminación de Calificaciones Subjetivas de Calidad sin Benchmark (Sección 4)**:
-   - Se eliminan etiquetas subjetivas previas (*"buena"*, *"muy buena"*, *"excelente"*) y se diseña el protocolo formal de evaluación comparativa en [MODEL_BENCHMARK_PLAN.md](file:///c:/Skyrim%20proyecto%20traducci%C3%B3n/MODEL_BENCHMARK_PLAN.md).
+   - Se eliminan etiquetas subjetivas previas (*"buena"*, *"muy buena"*, *"excelente"*) y se diseña el protocolo formal de evaluación comparativa en `c:/Skyrim proyecto traducción/MODEL_BENCHMARK_PLAN.md` (ruta/artefacto local no incluido en GitHub).
 5. **Revisión Técnica de *Structured Outputs* y Validación Post-Respuesta (Sección 5)**:
    - Se corrige la afirmación de que los *Structured Outputs* JSON garantizan "cero errores": una respuesta puede ser sintácticamente válida en JSON y cumplir el esquema (`json_schema`), pero fallar por truncamiento (`finish_reason = length`), rechazo de filtro de seguridad (`refusal`), omisión de IDs del lote, mutación de variables `<Alias=...>` o traducción semánticamente errónea.
 6. **Precisión Regional y Comercial de DeepL para Colombia (Sección 6)**:
@@ -151,7 +151,7 @@ Por ejemplo, para **Corte B con margen del +15 %** (`10.953.105` tokens de salid
 
 ## 4. Evaluación Objetiva de Calidad Lingüística
 
-En lugar de asignar calificativos subjetivos predefinidos (*"buena"*, *"muy buena"* o *"excelente"*) sin evidencia empírica sobre las cadenas reales de Nolvus Awakening, el desempeño lingüístico de cada candidato se determina exclusivamente mediante el **Benchmark Estandarizado de 9 Dominios y 8 Dimensiones** especificado en **[MODEL_BENCHMARK_PLAN.md](file:///c:/Skyrim%20proyecto%20traducci%C3%B3n/MODEL_BENCHMARK_PLAN.md)**.
+En lugar de asignar calificativos subjetivos predefinidos (*"buena"*, *"muy buena"* o *"excelente"*) sin evidencia empírica sobre las cadenas reales de Nolvus Awakening, el desempeño lingüístico de cada candidato se determina exclusivamente mediante el **Benchmark Estandarizado de 9 Dominios y 8 Dimensiones** especificado en **`c:/Skyrim proyecto traducción/MODEL_BENCHMARK_PLAN.md` (ruta/artefacto local no incluido en GitHub)**.
 
 Ningún modelo recibirá una etiqueta de calidad definitiva hasta que autorices la ejecución controlada del conjunto de prueba (`90` cadenas estratificadas / `~3.800` tokens) y se midan sus puntuaciones reales en:
 1. Naturalidad `ES-419` (ausencia total de voseo regional, españolismos peninsulares y calcos robóticos).
@@ -171,13 +171,13 @@ Se corrige de forma expresa la afirmación de la Versión 1 según la cual el us
 
 ### 5.1. Distinción de los 5 Niveles de Fallo en Respuestas de Modelos IA
 
-| Nivel Técnico | ¿Lo garantiza `json_schema` / *Structured Outputs*? | Modos de Fallo Reales que `json_schema` NO Evita | Validación Posterior Implementada en Nuestro Pipeline ([`TranslationPipeline`](file:///c:/Skyrim%20proyecto%20traducci%C3%B3n/src/nolvus_translator/translation/pipeline.py) + [`TranslationQualityValidator`](file:///c:/Skyrim%20proyecto%20traducci%C3%B3n/src/nolvus_translator/quality/validator.py)) |
+| Nivel Técnico | ¿Lo garantiza `json_schema` / *Structured Outputs*? | Modos de Fallo Reales que `json_schema` NO Evita | Validación Posterior Implementada en Nuestro Pipeline (`src/nolvus_translator/translation/pipeline.py` (código fuente local no publicado en este repositorio) + `src/nolvus_translator/quality/validator.py` (código fuente local no publicado en este repositorio)) |
 | :--- | :---: | :--- | :--- |
 | **1. Validez sintáctica JSON** | Sí *(salvo truncamiento)* | Si el modelo alcanza `max_output_tokens` (`finish_reason = "length"`), el flujo JSON se corta a mitad de cadena produciendo un `JSONDecodeError`. | Verificación de `finish_reason == "stop"` antes de parsear; si ocurre truncamiento, el lote se divide automáticamente a la mitad (*batch splitting*) y se reintenta. |
 | **2. Cumplimiento del esquema (`schema`)** | Sí *(estructural)* | La gramática libre de contexto obliga a devolver `{"items": [{"id": "...", "translation": "..."}]}`, pero **no impide** que el modelo devuelva menos elementos de los enviados (p. ej. 23 de 25), duplique un `id` o invente un `id` inexistente. | Cruce biyectivo estricto de conjuntos: `set(returned_ids) == set(requested_ids)` y `len(returned_items) == len(requested_items)`. Cualquier omisión o desfase de ID rechaza el ítem faltante y lo reencola. |
 | **3. Respuesta rechazada o truncada (`refusal` / `safety`)** | **No** | Textos oscuros propios de Skyrim (asesinatos de la Hermandad Oscura, sacrificios daédricos de Molag Bal/Boethiah, canibalismo de Namira, desmembramientos) pueden disparar un `refusal` o bloqueo `PROHIBITED_CONTENT`. | Detección explícita de bandera `refusal` / `safety_ratings`; aislamiento de la cadena individual conflictiva fuera del lote de 25 para no perder las otras 24 cadenas, y marcado para revisión o proveedor local sin censura. |
-| **4. Integridad de variables y etiquetas técnicas** | **No** | Dentro de un string JSON perfectamente válido, el modelo puede omitir `⟦VAR_0⟧`, alterar `<Alias=Player>` a `<Alias=Jugador>`, romper `<font face='$EverywhereMediumFont'>` o borrar `[pagebreak]`. | Puerta dura (`Hard Gate`) en [`VariableProtector.restore_and_verify()`](file:///c:/Skyrim%20proyecto%20traducci%C3%B3n/src/nolvus_translator/quality/protector.py): conteo exacto de cada token `⟦VAR_i⟧`, balanceo de etiquetas XML/Scaleform y verificación de codificación. Si falla, la traducción se rechaza automáticamente (`passed_hard_gates = False`). |
-| **5. Traducción semántica y lingüísticamente correcta** | **No** | Un JSON válido puede contener una cadena vacía `""`, devolver el texto en inglés sin traducir, usar *"vosotros habéis"*, traducir *Delphine* como *Delfina* o alucinar texto adicional. | Auditoría post-respuesta en [`TranslationQualityValidator.validate()`](file:///c:/Skyrim%20proyecto%20traducci%C3%B3n/src/nolvus_translator/quality/validator.py): detector de español peninsular (`vosotros/os/habéis`), verificador de términos obligatorios del Glosario Maestro, detector de texto idéntico al inglés y control de ratio de longitud ($0,35\times \le \text{ratio} \le 2,20\times$). |
+| **4. Integridad de variables y etiquetas técnicas** | **No** | Dentro de un string JSON perfectamente válido, el modelo puede omitir `⟦VAR_0⟧`, alterar `<Alias=Player>` a `<Alias=Jugador>`, romper `<font face='$EverywhereMediumFont'>` o borrar `[pagebreak]`. | Puerta dura (`Hard Gate`) en `src/nolvus_translator/quality/protector.py` (código fuente local no publicado en este repositorio): conteo exacto de cada token `⟦VAR_i⟧`, balanceo de etiquetas XML/Scaleform y verificación de codificación. Si falla, la traducción se rechaza automáticamente (`passed_hard_gates = False`). |
+| **5. Traducción semántica y lingüísticamente correcta** | **No** | Un JSON válido puede contener una cadena vacía `""`, devolver el texto en inglés sin traducir, usar *"vosotros habéis"*, traducir *Delphine* como *Delfina* o alucinar texto adicional. | Auditoría post-respuesta en `src/nolvus_translator/quality/validator.py` (código fuente local no publicado en este repositorio): detector de español peninsular (`vosotros/os/habéis`), verificador de términos obligatorios del Glosario Maestro, detector de texto idéntico al inglés y control de ratio de longitud ($0,35\times \le \text{ratio} \le 2,20\times$). |
 
 ---
 
@@ -206,7 +206,7 @@ Se corrige de forma expresa la afirmación de la Versión 1 según la cual el us
 
 ## 7. Recomendación Final Comparativa y Criterios de Justificación
 
-Sin elegir automáticamente la opción más barata, a continuación se comparan las **5 categorías estratégicas** y qué evidencia empírica concreta del benchmark ([MODEL_BENCHMARK_PLAN.md](file:///c:/Skyrim%20proyecto%20traducci%C3%B3n/MODEL_BENCHMARK_PLAN.md)) se requiere para justificar cada una:
+Sin elegir automáticamente la opción más barata, a continuación se comparan las **5 categorías estratégicas** y qué evidencia empírica concreta del benchmark (`c:/Skyrim proyecto traducción/MODEL_BENCHMARK_PLAN.md` (ruta/artefacto local no incluido en GitHub)) se requiere para justificar cada una:
 
 | Categoría Estratégica | Candidato(s) Principales | Costo Corte B (Sin / **Con +15%**) | Costo Corte C (Sin / **Con +15%**) | ¿Qué Resultados Reales en el Benchmark Justificarían Elegir esta Opción? |
 | :--- | :--- | :---: | :---: | :--- |

@@ -49,7 +49,7 @@ Todos los archivos de configuración, ejecutables y manifiestos de perfil fueron
 | **Política de localización objetivo** | Español Latinoamericano Neutro (`ES-419`) desde inglés | `TRANSLATION_POLICY_ES419.md` (`0 %` reutilización comunitaria) |
 
 ### 2.2. Hashes SHA-256 de referencia de los manifiestos y ejecutables
-El registro íntegro se encuentra en [manifest_hashes.json](file:///c:/Skyrim%20proyecto%20traducci%C3%B3n/NolvusAIT_Audit/Fase9_20261103_020500/manifest_hashes.json):
+El registro íntegro se encuentra en `c:/Skyrim proyecto traducción/NolvusAIT_Audit/Fase9_20261103_020500/manifest_hashes.json` (artefacto local de auditoría; no incluido en GitHub):
 
 | Archivo | Ruta Física | Tamaño (Bytes) | Hash SHA-256 |
 |---|---|---:|---|
@@ -71,7 +71,7 @@ El registro íntegro se encuentra en [manifest_hashes.json](file:///c:/Skyrim%20
 
 ## 3. INVENTARIO TOTAL DE MODS (ACTIVOS, DESACTIVADOS Y SEPARADORES)
 
-El manifiesto completo de los `3.847` registros de `modlist.txt` y su cruce contra las carpetas físicas de `C:\Nolvus\Instances\Nolvus Awakening\MODS\mods` se ha guardado en [manifest_mods.json](file:///c:/Skyrim%20proyecto%20traducci%C3%B3n/NolvusAIT_Audit/Fase9_20261103_020500/manifest_mods.json) y en la tabla `audit_mods` de [phase9_audit.db](file:///c:/Skyrim%20proyecto%20traducci%C3%B3n/NolvusAIT_Audit/Fase9_20261103_020500/phase9_audit.db).
+El manifiesto completo de los `3.847` registros de `modlist.txt` y su cruce contra las carpetas físicas de `C:\Nolvus\Instances\Nolvus Awakening\MODS\mods` se ha guardado en `c:/Skyrim proyecto traducción/NolvusAIT_Audit/Fase9_20261103_020500/manifest_mods.json` (artefacto local de auditoría; no incluido en GitHub) y en la tabla `audit_mods` de `c:/Skyrim proyecto traducción/NolvusAIT_Audit/Fase9_20261103_020500/phase9_audit.db` (artefacto local de auditoría; no incluido en GitHub).
 
 | Categoría de Mod / Entrada | Cantidad | Con Carpeta Física en `MODS\mods` | Observaciones Técnicas |
 |---|---:|---:|---|
@@ -86,7 +86,7 @@ El manifiesto completo de los `3.847` registros de `modlist.txt` y su cruce cont
 
 ## 4. INVENTARIO TOTAL DE PLUGINS (`.ESM`, `.ESL`, `.ESP` Y `ESPFE`)
 
-El inventario completo de los `3.717` plugins con sus flags binarios de cabecera `TES4` (`0x0001` ESM, `0x0080` Localized, `0x0200` ESL/Light) se encuentra en [manifest_plugins.json](file:///c:/Skyrim%20proyecto%20traducci%C3%B3n/NolvusAIT_Audit/Fase9_20261103_020500/manifest_plugins.json) y en la tabla `audit_plugins` de [phase9_audit.db](file:///c:/Skyrim%20proyecto%20traducci%C3%B3n/NolvusAIT_Audit/Fase9_20261103_020500/phase9_audit.db).
+El inventario completo de los `3.717` plugins con sus flags binarios de cabecera `TES4` (`0x0001` ESM, `0x0080` Localized, `0x0200` ESL/Light) se encuentra en `c:/Skyrim proyecto traducción/NolvusAIT_Audit/Fase9_20261103_020500/manifest_plugins.json` (artefacto local de auditoría; no incluido en GitHub) y en la tabla `audit_plugins` de `c:/Skyrim proyecto traducción/NolvusAIT_Audit/Fase9_20261103_020500/phase9_audit.db` (artefacto local de auditoría; no incluido en GitHub).
 
 | Tipo de Plugin | Activos en `loadorder.txt` | Inactivos en `loadorder.txt` | Con Flag `LOCALIZED` (`0x80`) | Explicación Técnica |
 |---|---:|---:|---:|---|
@@ -101,7 +101,7 @@ El inventario completo de los `3.717` plugins con sus flags binarios de cabecera
 
 ## 5. INVENTARIO TOTAL DE ARCHIVOS COMPRIMIDOS `.BSA`
 
-Se auditaron los **`583` archivos `.bsa`** presentes en el VFS activo (registrados en [manifest_bsa.json](file:///c:/Skyrim%20proyecto%20traducci%C3%B3n/NolvusAIT_Audit/Fase9_20261103_020500/manifest_bsa.json) y en la tabla `audit_bsa` de [phase9_audit.db](file:///c:/Skyrim%20proyecto%20traducci%C3%B3n/NolvusAIT_Audit/Fase9_20261103_020500/phase9_audit.db)):
+Se auditaron los **`583` archivos `.bsa`** presentes en el VFS activo (registrados en `c:/Skyrim proyecto traducción/NolvusAIT_Audit/Fase9_20261103_020500/manifest_bsa.json` (artefacto local de auditoría; no incluido en GitHub) y en la tabla `audit_bsa` de `c:/Skyrim proyecto traducción/NolvusAIT_Audit/Fase9_20261103_020500/phase9_audit.db` (artefacto local de auditoría; no incluido en GitHub)):
 
 | Métrica de Auditoría `.BSA` | Valor Exacto | Detalle de Verificación |
 |---|---:|---|
@@ -179,7 +179,7 @@ Sobre los **`75.298` archivos textuales, scripts y contenedores candidatos ganad
 
 ## 8. OCURRENCIAS TOTALES DE TEXTO Y 9–10. CADENAS ÚNICAS TRADUCIBLES Y NETAS PENDIENTES (TAREAS 4 Y 7)
 
-A continuación se presenta la **Matriz Maestra de Conciliación Matemática** entre la Fase 7, la Fase 8 (Cortes A, B y C) y los hallazgos adicionales de la Fase 9 (Corte D), verificada directamente sobre la base de datos y guardada en [reconciliation_phases_7_8_9.json](file:///c:/Skyrim%20proyecto%20traducci%C3%B3n/NolvusAIT_Audit/Fase9_20261103_020500/reconciliation_phases_7_8_9.json) y en la tabla `audit_reconciliation` de [phase9_audit.db](file:///c:/Skyrim%20proyecto%20traducci%C3%B3n/NolvusAIT_Audit/Fase9_20261103_020500/phase9_audit.db):
+A continuación se presenta la **Matriz Maestra de Conciliación Matemática** entre la Fase 7, la Fase 8 (Cortes A, B y C) y los hallazgos adicionales de la Fase 9 (Corte D), verificada directamente sobre la base de datos y guardada en `c:/Skyrim proyecto traducción/NolvusAIT_Audit/Fase9_20261103_020500/reconciliation_phases_7_8_9.json` (artefacto local de auditoría; no incluido en GitHub) y en la tabla `audit_reconciliation` de `c:/Skyrim proyecto traducción/NolvusAIT_Audit/Fase9_20261103_020500/phase9_audit.db` (artefacto local de auditoría; no incluido en GitHub):
 
 | Corte / Etapa | Ocurrencias Totales | Ocurrencias Traducibles (`translatable` + `pending_research`) | Cadenas Únicas Traducibles (`source_hash`) | Cadenas Únicas Netas Pendientes | Ocurrencias Oficiales Bethesda (`STOCK GAME`) | Ocurrencias Comunitarias Usadas | Explicación Matemática Exacta |
 |---|---:|---:|---:|---:|---:|---:|---|
@@ -256,7 +256,7 @@ Dentro de las **`403.922` ocurrencias** del `Snapshot #1` depurado (Corte B), **
 
 ## 16. DESGLOSE POR MOD (TOP 40 MODS POR CADENAS ÚNICAS TRADUCIBLES)
 
-La lista completa se encuentra en [audit_plugin_records_and_top_mods.json](file:///c:/Skyrim%20proyecto%20traducci%C3%B3n/NolvusAIT_Audit/Fase9_20261103_020500/audit_plugin_records_and_top_mods.json). Los **40 mods con mayor volumen de cadenas únicas traducibles** son:
+La lista completa se encuentra en `c:/Skyrim proyecto traducción/NolvusAIT_Audit/Fase9_20261103_020500/audit_plugin_records_and_top_mods.json` (artefacto local de auditoría; no incluido en GitHub). Los **40 mods con mayor volumen de cadenas únicas traducibles** son:
 
 | # | Nombre del Mod en MO2 | Ocurrencias Totales | Ocurrencias Traducibles | Cadenas Únicas Traducibles |
 |---:|---|---:|---:|---:|
@@ -342,22 +342,14 @@ Además de la tabla maestra de la Sección 8, la Fase 9 midió el impacto exacto
 ---
 
 ### 20. Diagnóstico 3: Archivos de Interfaz Scaleform `.SWF` (`678` archivos)
-El informe completo archivo por archivo se ha guardado en [audit_swf_results.json](file:///c:/Skyrim%20proyecto%20traducci%C3%B3n/NolvusAIT_Audit/Fase9_20261103_020500/audit_swf_results.json) y en la tabla `audit_swf_inspection` de [phase9_audit.db](file:///c:/Skyrim%20proyecto%20traducci%C3%B3n/NolvusAIT_Audit/Fase9_20261103_020500/phase9_audit.db).
+El informe completo archivo por archivo se ha guardado en `c:/Skyrim proyecto traducción/NolvusAIT_Audit/Fase9_20261103_020500/audit_swf_results.json` (artefacto local de auditoría; no incluido en GitHub) y en la tabla `audit_swf_inspection` de `c:/Skyrim proyecto traducción/NolvusAIT_Audit/Fase9_20261103_020500/phase9_audit.db` (artefacto local de auditoría; no incluido en GitHub).
 
 1. **Cantidad de archivos encontrados:** **`678` archivos `.swf` ganadores** (`617` sueltos + `61` dentro de `.bsa`). El `100 %` fue descomprimido (`FWS`/`CWS` zlib) y analizado a nivel de etiquetas binarias (`DefineText`, `DefineEditText`, `DefineFontName`, `DoAction` y `ActionConstantPool`) con **`0` errores de lectura**.
 2. **Clasificación exacta de los `678` archivos `.swf`:**
    - **`536` archivos (`79,06 %`) — Puros gráficos, iconos, fuentes o widgets sin texto:** Iconos de inventario (SkyUI/I4), brújula, medidores de salud/magia/aguante, retículas, fuentes vectoriales (`fonts_en.swf`, `skyui_icons_psychosteve.swf`), efectos visuales de menú.
    - **`94` archivos (`13,86 %`) — Con claves dinámicas `$Variable` (`1.878` claves):** Archivos como `quest_journal.swf`, `inventorymenu.swf`, `magicmenu.swf`, `map.swf`, `mcm.swf`, `skyui/*.swf`, `wheeler/*.swf`, `truehud.swf`, `lootmenu.swf`. Utilizan variables con prefijo `\$` (ej. `\$INVENTORY`, `\$MAGIC`, `\$FAVORITES`, `\$Take All`, `\$Steal`) que Scaleform resuelve automáticamente en tiempo real leyendo `Interface/Translations/*_english.txt` / `*_spanish.txt`.
    - **`96` archivos (`14,16 %`) — Con etiquetas `DefineEditText` (`523` cadenas iniciales):** La inmensa mayoría de estas `523` cadenas son textos de posición/maquetación (`Dummy/Placeholder Text`) que los diseñadores dejaron en Adobe Flash y que el código C++/ActionScript sobrescribe en el primer fotograma al abrir el menú (ej. `"Reference Text"` en `book.swf`, `"creation name"` y `"Descriptions go in here"` en `creationclubmenu.swf`, `"Player Name"` o `"999"` en widgets de HUD), o bien textos legales de menús deshabilitados (`bethesdanetlogin.swf`).
-   - **`121` archivos (`17,85 %`) — Con cadenas en `ActionScript ConstantPool` (`945` cadenas con espacios):** Al inspeccionar las `945` cadenas, más del `90 %` son mensajes internos de depuración del framework Scaleform CLIK (`"[Scaleform UIComponent"`, `"is not registered a TextField name."`, `"is not registered a MovieClip name."`) que nunca se muestran al jugador, y el resto son unas pocas etiquetas por defecto de widgets (`"Active Effects"`, `" Locations Discovered"`, `" Days Passed"`) que la mayoría de los mods ya sobrescriben mediante sus archivos `.txt` o `.ini`.
-3. **Riesgo de no modificar binarios `.swf`:** **Muy bajo.** Modificar directamente el bytecode ActionScript o las etiquetas `DefineEditText` dentro de un `.swf` conlleva riesgo de desajustar offsets de saltos de bytecode o romper firmas esperadas por plugins SKSE (`wheeler.dll`, `TrueHUD.dll`, `ScaleformTranslationPP.dll`). Además, gracias a `Scaleform Translation Plus Plus (STPP)` incluido en Nolvus, las cadenas con `\$` e incluso claves anidadas se traducen de forma limpia y segura desde `Interface/Translations/*.txt`.
-4. **Complejidad técnica de soporte directo en binario `.swf`:** Media-Alta.
-5. **Recomendación:** **Opcional para Fase Posterior (No tocar los binarios `.swf` en la primera versión de la traducción).** Toda la localización de interfaz debe realizarse a través de `Interface/Translations/*.txt`, `MCM/Config/*/config.json` y los `.ini` de los widgets.
-
----
-
-### 21. Diagnóstico 4: Archivos `JSON` adicionales (`JSON_OTHER` — `1.890` archivos)
-El listado completo de las `2.047` cadenas encontradas se ha guardado en [audit_json_other_findings.json](file:///c:/Skyrim%20proyecto%20traducci%C3%B3n/NolvusAIT_Audit/Fase9_20261103_020500/audit_json_other_findings.json) y en la tabla `audit_json_other_findings` de [phase9_audit.db](file:///c:/Skyrim%20proyecto%20traducci%C3%B3n/NolvusAIT_Audit/Fase9_20261103_020500/phase9_audit.db).
+   - **`121` archivos (`17,85 %`) — Con cadenas en `ActionScript ConstantPool` (`945` cadenas con espacios):** Al inspeccionar las `945` cadenas, más del `90 %` son mensajes internos de depuración del framework Scaleform CLIK (`"`c:/Skyrim proyecto traducción/NolvusAIT_Audit/Fase9_20261103_020500/audit_json_other_findings.json` (artefacto local de auditoría; no incluido en GitHub) y en la tabla `audit_json_other_findings` de `c:/Skyrim proyecto traducción/NolvusAIT_Audit/Fase9_20261103_020500/phase9_audit.db` (artefacto local de auditoría; no incluido en GitHub).
 
 1. **Cantidad de archivos encontrados:** **`1.890` archivos `json_other`** en el VFS ganador (`1.889` sueltos + `1` en `.bsa`), adicionales a los `42` archivos `mcm_json` de MCM Helper que ya están extraídos.
 2. **Clasificación exacta de los `1.890` archivos `json_other`:**
@@ -394,7 +386,7 @@ El listado completo de las `2.047` cadenas encontradas se ha guardado en [audit_
 1. **Complementos `.DLL` (`SKSE/Plugins/*.dll` — `211` archivos ganadores, `252,78 MB`):**
    - **Análisis:** De las `211` DLLs activas de SKSE, **`160` (`75,83 %`)** cuentan con archivos externos de configuración o traducción (`.ini`, `.json`, `.toml` o `Interface/Translations/*_english.txt`), que es por donde exponen sus textos configurables. Las **`51` DLLs restantes (`24,17 %`)** son parches puros de motor/memoria/renderizado (ej. `EngineFixes.dll`, `po3_Tweaks.dll`, `ScrambledBugs.dll`, `PriorityMod.dll`, `ShaderTools.dll`) que no muestran texto al jugador.
    - **Riesgo y Recomendación:** Modificar cadenas en la sección `.rdata` de un binario `.dll` compilado en C++ altera offsets de punteros o longitudes de buffer y provoca cierres al escritorio (`CTD`) inmediatos. **Recomendación: Ignorar con justificación técnica el parcheo binario de `.dll`.**
-2. **Imágenes/Texturas con posible texto incrustado (`.dds`, `.png`, `.tga` — `7.089` archivos inventariados en [audit_potential_text_images.json](file:///c:/Skyrim%20proyecto%20traducci%C3%B3n/NolvusAIT_Audit/Fase9_20261103_020500/audit_potential_text_images.json)):**
+2. **Imágenes/Texturas con posible texto incrustado (`.dds`, `.png`, `.tga` — `7.089` archivos inventariados en `c:/Skyrim proyecto traducción/NolvusAIT_Audit/Fase9_20261103_020500/audit_potential_text_images.json` (artefacto local de auditoría; no incluido en GitHub)):**
    - **Análisis:** Incluye texturas ubicadas en rutas de interfaz, mapas del mundo, portadas de libros, carteles de posadas/tiendas (`roadsigns`, `shopsigns`) y pantallas de carga.
    - **Riesgo y Recomendación:** Las texturas `.dds` comprimidas en BC1/BC3/BC7 son activos artísticos rasterizados, no cadenas de texto. Su localización requeriría edición gráfica (Photoshop/GIMP + re-renderizado de fuentes tipográficas sobre texturas). **Recomendación: Ignorar en el flujo de traducción textual (Opcional para una futura fase artística independiente si el usuario algún día desea localizar carteles de posadas en texturas `.dds`).**
 
@@ -448,14 +440,14 @@ Se ejecutaron los **15 controles de calidad obligatorios** sobre los datos extra
 
 Todos los artefactos de la Fase 9 han sido almacenados de forma independiente en `c:\Skyrim proyecto traducción\NolvusAIT_Audit\Fase9_20261103_020500\` sin tocar la base de datos de producción:
 
-1. [phase9_audit.db](file:///c:/Skyrim%20proyecto%20traducci%C3%B3n/NolvusAIT_Audit/Fase9_20261103_020500/phase9_audit.db) — Base de datos SQLite independiente con las tablas `audit_mods`, `audit_plugins`, `audit_bsa`, `audit_swf_inspection`, `audit_json_other_findings` y `audit_reconciliation`.
-2. [phase9_master_summary.json](file:///c:/Skyrim%20proyecto%20traducci%C3%B3n/NolvusAIT_Audit/Fase9_20261103_020500/phase9_master_summary.json) — Resumen maestro estructurado de las Tareas 1 a 8.
-3. [manifest_hashes.json](file:///c:/Skyrim%20proyecto%20traducci%C3%B3n/NolvusAIT_Audit/Fase9_20261103_020500/manifest_hashes.json) — Hashes SHA-256 y tamaños de los ejecutables y manifiestos de perfil.
-4. [manifest_mods.json](file:///c:/Skyrim%20proyecto%20traducci%C3%B3n/NolvusAIT_Audit/Fase9_20261103_020500/manifest_mods.json) — Manifiesto completo de las `3.847` entradas de `modlist.txt` y las `3.770` carpetas físicas.
-5. [manifest_plugins.json](file:///c:/Skyrim%20proyecto%20traducci%C3%B3n/NolvusAIT_Audit/Fase9_20261103_020500/manifest_plugins.json) — Manifiesto completo de los `3.717` plugins activos con flags binarios `TES4`.
-6. [manifest_bsa.json](file:///c:/Skyrim%20proyecto%20traducci%C3%B3n/NolvusAIT_Audit/Fase9_20261103_020500/manifest_bsa.json) — Manifiesto completo de los `583` archivos `.bsa` activos y sus `563.522` miembros internos.
-7. [audit_swf_results.json](file:///c:/Skyrim%20proyecto%20traducci%C3%B3n/NolvusAIT_Audit/Fase9_20261103_020500/audit_swf_results.json) — Inspección interna de los `678` archivos `.swf`.
-8. [audit_json_other_findings.json](file:///c:/Skyrim%20proyecto%20traducci%C3%B3n/NolvusAIT_Audit/Fase9_20261103_020500/audit_json_other_findings.json) — Las `2.047` ocurrencias detectadas en los `547` archivos `JSON_OTHER` con texto.
-9. [audit_plugin_records_and_top_mods.json](file:///c:/Skyrim%20proyecto%20traducci%C3%B3n/NolvusAIT_Audit/Fase9_20261103_020500/audit_plugin_records_and_top_mods.json) — Desglose por `RECORD:SUBRECORD`, deduplicación entre parches, `.psc` huérfanos y Top 40 mods.
-10. [audit_potential_text_images.json](file:///c:/Skyrim%20proyecto%20traducci%C3%B3n/NolvusAIT_Audit/Fase9_20261103_020500/audit_potential_text_images.json) — Muestra estructurada de las `7.089` texturas en rutas de interfaz/carteles/mapas/libros.
-11. [reconciliation_phases_7_8_9.json](file:///c:/Skyrim%20proyecto%20traducci%C3%B3n/NolvusAIT_Audit/Fase9_20261103_020500/reconciliation_phases_7_8_9.json) — Tabla de conciliación matemática entre las Fases 7, 8 y 9.
+1. `c:/Skyrim proyecto traducción/NolvusAIT_Audit/Fase9_20261103_020500/phase9_audit.db` (artefacto local de auditoría; no incluido en GitHub) — Base de datos SQLite independiente con las tablas `audit_mods`, `audit_plugins`, `audit_bsa`, `audit_swf_inspection`, `audit_json_other_findings` y `audit_reconciliation`.
+2. `c:/Skyrim proyecto traducción/NolvusAIT_Audit/Fase9_20261103_020500/phase9_master_summary.json` (artefacto local de auditoría; no incluido en GitHub) — Resumen maestro estructurado de las Tareas 1 a 8.
+3. `c:/Skyrim proyecto traducción/NolvusAIT_Audit/Fase9_20261103_020500/manifest_hashes.json` (artefacto local de auditoría; no incluido en GitHub) — Hashes SHA-256 y tamaños de los ejecutables y manifiestos de perfil.
+4. `c:/Skyrim proyecto traducción/NolvusAIT_Audit/Fase9_20261103_020500/manifest_mods.json` (artefacto local de auditoría; no incluido en GitHub) — Manifiesto completo de las `3.847` entradas de `modlist.txt` y las `3.770` carpetas físicas.
+5. `c:/Skyrim proyecto traducción/NolvusAIT_Audit/Fase9_20261103_020500/manifest_plugins.json` (artefacto local de auditoría; no incluido en GitHub) — Manifiesto completo de los `3.717` plugins activos con flags binarios `TES4`.
+6. `c:/Skyrim proyecto traducción/NolvusAIT_Audit/Fase9_20261103_020500/manifest_bsa.json` (artefacto local de auditoría; no incluido en GitHub) — Manifiesto completo de los `583` archivos `.bsa` activos y sus `563.522` miembros internos.
+7. `c:/Skyrim proyecto traducción/NolvusAIT_Audit/Fase9_20261103_020500/audit_swf_results.json` (artefacto local de auditoría; no incluido en GitHub) — Inspección interna de los `678` archivos `.swf`.
+8. `c:/Skyrim proyecto traducción/NolvusAIT_Audit/Fase9_20261103_020500/audit_json_other_findings.json` (artefacto local de auditoría; no incluido en GitHub) — Las `2.047` ocurrencias detectadas en los `547` archivos `JSON_OTHER` con texto.
+9. `c:/Skyrim proyecto traducción/NolvusAIT_Audit/Fase9_20261103_020500/audit_plugin_records_and_top_mods.json` (artefacto local de auditoría; no incluido en GitHub) — Desglose por `RECORD:SUBRECORD`, deduplicación entre parches, `.psc` huérfanos y Top 40 mods.
+10. `c:/Skyrim proyecto traducción/NolvusAIT_Audit/Fase9_20261103_020500/audit_potential_text_images.json` (artefacto local de auditoría; no incluido en GitHub) — Muestra estructurada de las `7.089` texturas en rutas de interfaz/carteles/mapas/libros.
+11. `c:/Skyrim proyecto traducción/NolvusAIT_Audit/Fase9_20261103_020500/reconciliation_phases_7_8_9.json` (artefacto local de auditoría; no incluido en GitHub) — Tabla de conciliación matemática entre las Fases 7, 8 y 9.
