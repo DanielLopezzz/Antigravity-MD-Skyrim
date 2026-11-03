@@ -98,6 +98,6 @@ Los informes detallados de Fase 9 y los snapshots se preservan como evidencia; n
 
 ## 8. Siguiente puerta técnica
 
-Antes del benchmark, ejecutar solo un **preflight + smoke test de 25 cadenas en un workspace y DB aislados**. Comprobar modelos visibles en el selector, AI Credit Overages = Never, permisos Windows, integridad del JSONL, funcionamiento real del Gatekeeper y recuperación ante interrupción. Si el smoke test falla, corregir el protocolo antes de comparar modelos.
+Antes del smoke test, inspeccionar el código local e implementar o completar —con autorización— el adaptador JSON/JSONL y Gatekeeper en entorno aislado. Después ejecutar preflight y 25 cadenas en una DB de prueba; comprobar modelo, AI Credit Overages = Never, permisos Windows, integridad JSONL y recuperación ante interrupción. Solo si supera esta puerta avanzar al benchmark de 300 cadenas.
 
 La rama requiere revisión antes de fusionarse en `main`.
