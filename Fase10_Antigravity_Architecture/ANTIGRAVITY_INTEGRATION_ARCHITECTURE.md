@@ -60,21 +60,21 @@ c:\Skyrim proyecto traducción\workspace_data\antigravity_exchange\
 ```
 
 - **Ventajas:**
-  - **Cero fricción con el Sandbox de Antigravity:** Al ubicarse dentro de `c:\Skyrim proyecto traducción\workspace_data\antigravity_exchange\`, el agente tiene permiso automático de lectura y escritura sin pedir confirmación de fuera del workspace.
+  - **Permisos dependientes de la configuración:** Estar dentro del workspace no debe interpretarse como garantía universal de autorización. Verificar la política efectiva de la versión Windows instalada y conceder solo lectura a `00_protocol/` y `01_inbox_pending/`, y escritura únicamente a `03_outbox_ready/`.
   - **Separación estricta de permisos:** El agente **solo lee** de `00_protocol/` y `01_inbox_pending/` y **solo escribe** en `03_outbox_ready/`. El agente **jamás** abre ni escribe directamente en `workspace_data/nolvus_translator.db`.
   - **Identificación inequívoca:** Cada archivo lleva en su nombre y en su cabecera el `job_id`, `batch_id`, `batch_index` y `sha256` del lote de entrada.
 
 ---
 
 ### 2.3. Alternativa 3: Automatización Supervisada mediante Agente (`Agent-Driven Supervised Batch Loop`)
-En este modelo, el agente de Antigravity no solo traduce un archivo aislado cuando el usuario se lo pega en el chat, sino que coordina el procesamiento secuencial de una **Supertanda (`Workpack`)** de varios lotes depositados en `01_inbox_pending/` y ejecuta tras cada lote el comando local de validación de `Nolvus AI Translator`.
+En este modelo, el agente de Antigravity procesa secuencialmente una **Supertanda (`Workpack`)** de varios lotes depositados en `01_inbox_pending/`. El agente no ejecuta el Gatekeeper ni escribe en la base de datos: el usuario o un proceso local controlado inicia la validación por separado.
 
-- **Capacidades reales disponibles en Antigravity que lo permiten (Comprobadas):**
-  1. El agente puede listar los lotes pendientes en `01_inbox_pending/`, leer `batch_NNNN_meta.json` y `batch_NNNN_input.jsonl` con `read_file`.
-  2. El agente puede escribir `03_outbox_ready/batch_NNNN_output.jsonl` con `write_file`.
-  3. El agente puede ejecutar en el sandbox `.venv\Scripts\python.exe -m nolvus_translator.cli verify_batch --batch-id NNNN` mediante `run_command`.
-  4. Si `verify_batch` devuelve código `0` (`100 % PASS`), el propio script mueve el lote a `04_validated_archive/` e ingresa las traducciones aprobadas en SQLite de forma transaccional, y el agente pasa al lote `NNNN + 1`.
-  5. Si `verify_batch` devuelve código `!= 0` (por ejemplo, en la línea 12 falta `⟦VAR_0⟧` o se omitió un `uid`), el script imprime únicamente las líneas con error; el agente corrige esas líneas específicas en `batch_NNNN_output.jsonl` y vuelve a ejecutar `verify_batch` hasta obtener `PASS`.
+- **Operaciones que debe realizar el flujo (pendientes de prueba en Windows):**
+  1. El agente lee los lotes pendientes y los manifiestos mediante las herramientas de archivo del workspace.
+  2. El agente escribe un archivo de salida completo por lote en `03_outbox_ready/`; no se depende de `Append=True` ni de escritura incremental.
+  3. El usuario o un proceso local controlado ejecuta el Gatekeeper contra una DB aislada. El Gatekeeper verifica esquema, cantidad y conjunto de IDs, duplicados, hashes, placeholders, etiquetas, glosario y reglas ES-419.
+  4. Si faltan registros o una línea está truncada/malformada, el Gatekeeper genera un reporte acotado en `05_quarantine_retry/`. El agente lee ese reporte y produce una respuesta corregida para los IDs pendientes.
+  5. El Gatekeeper repite la validación y finaliza el lote de prueba solo cuando se cumplen todos los controles. La ingesta productiva queda deshabilitada en esta etapa.
 - **Limitaciones reales que deben respetarse:**
   - Un turno del agente tiene un límite práctico de pasos de herramientas y de ventana de contexto acumulada. Si el usuario le pidiera procesar `1.000` lotes en un solo turno, el contexto de la conversación se saturaría o alcanzaría el límite de cuota de la suscripción. Por tanto, el procesamiento debe acotarse a **Supertandas supervisadas (`Workpacks` de `5` a `15` lotes por instrucción del usuario, equivalentes a `250`–`750` cadenas por turno)**.
 
@@ -84,11 +84,11 @@ En este modelo, el agente de Antigravity no solo traduce un archivo aislado cuan
 
 | Criterio de Evaluación | Alt. 1 Pura (Intercambio manual archivo a archivo) | Alt. 2 Pura (Carpeta compartida sin validador en bucle) | Alt. 3 Pura (Agente libre escribiendo en BD) | **Arquitectura Híbrida Recomendada (Alt. 1 + Alt. 2 + Alt. 3 con Gatekeeper CLI)** |
 |---|---|---|---|---|
-| **Fiabilidad e Integridad de Datos** | Alta, pero propensa a olvidos manuales de archivos. | Alta en almacenamiento, pero detecta errores tarde. | **Riesgosa** si el agente tocara SQLite directamente. | **Máxima.** El agente solo escribe `.jsonl` en `03_outbox_ready/` y el Gatekeeper determinista en Python valida antes de tocar SQLite. |
+| **Fiabilidad e Integridad de Datos** | Alta, pero propensa a olvidos manuales de archivos. | Alta en almacenamiento, pero detecta errores tarde. | **Riesgosa** si el agente tocara SQLite directamente. | **Alta, condicionada a pruebas.** El agente solo escribe `.jsonl` en `03_outbox_ready/`; el Gatekeeper local y separado valida contra una DB aislada. |
 | **Trazabilidad** | Media | Alta | Baja | **Total** (hashes SHA-256, logs por lote, `model_id` y `session_id` registrados). |
-| **Facilidad de Recuperación ante Cortes** | Alta | Alta | Baja | **Inmediata** (a nivel de línea `.jsonl` individual y por lote en `01_inbox_pending/`). |
+| **Facilidad de Recuperación ante Cortes** | Alta | Alta | Baja | **Parcial y verificable:** solo se recuperan líneas completas y válidas; las incompletas se ponen en cuarentena y se reintentan. |
 | **Intervención Humana Necesaria** | **Muy Alta** (1 acción por cada lote de 25–50 cadenas = `~4.800` a `9.600` acciones). | Media-Alta | Baja, pero sin control de calidad intermedio. | **Mínima y Controlada** (1 instrucción supervisada por cada Supertanda de `10`–`15` lotes, con autorreparación inmediata de `Hard Gates`). |
-| **Riesgo de Corrupción de Base de Datos** | `0 %` | `0 %` | Medio-Alto | **`0 %`** (solo `DatabaseManager` en Python escribe en SQLite WAL tras superar todas las validaciones). |
+| **Riesgo de Corrupción de Base de Datos** | `0 %` | `0 %` | Medio-Alto | **Bajo, sujeto a pruebas** (el Gatekeeper es el único escritor de la DB de prueba; la DB productiva permanece fuera de alcance). |
 
 ---
 
@@ -101,33 +101,32 @@ Se recomienda e institucionaliza la **Arquitectura Híbrida (combinación de las
 ```mermaid
 sequenceDiagram
     autonumber
-    actor User as Usuario (Supervisor)
-    participant App as Nolvus AI Translator (Core Python + SQLite WAL)
-    participant FS as Carpeta Compartida (antigravity_exchange/)
-    participant Agent as Agente Antigravity (Gemini 4 Argon / Claude 5.5)
-    participant Gate as CLI Gatekeeper Local (verify_and_ingest.py)
+    actor User as Usuario Supervisor
+    participant App as Nolvus AI Translator
+    participant FS as Workspace de intercambio
+    participant Agent as Agente Antigravity
+    participant Gate as Gatekeeper local
+    participant TestDB as DB aislada de prueba
 
-    User->>App: 1. Solicita preparar Supertanda (ej. 10 lotes = 500 cadenas únicas)
-    App->>App: 2. Deduplica por (source_hash, context_sig), aplica TM y protege ⟦VAR_i⟧
-    App->>FS: 3. Escribe atómicamente batch_0001..0010_meta.json + _input.jsonl en 01_inbox_pending/
-    User->>Agent: 4. Selecciona modelo en Antigravity e indica: "Procesa la tanda activa en 01_inbox_pending/"
-    loop Para cada lote NNNN en la Supertanda (0001..0010)
-        Agent->>FS: 5. Lee batch_NNNN_meta.json y batch_NNNN_input.jsonl
-        Agent->>FS: 6. Escribe traducciones ES-419 en 03_outbox_ready/batch_NNNN_output.jsonl
-        Agent->>Gate: 7. Ejecuta en sandbox: python -m nolvus_translator.cli ingest-batch NNNN --model <id>
-        Gate->>FS: 8. Lee batch_NNNN_output.jsonl y verifica 100 % IDs + VariableProtector + Glosario + ES-419
-        alt 100 % de cadenas del lote superan las Puertas Duras
-            Gate->>App: 9a. Inserta traducciones en SQLite WAL + TM y propaga a duplicados
-            Gate->>FS: 9b. Mueve archivos del lote a 04_validated_archive/
-            Gate-->>Agent: 9c. Devuelve STATUS: PASS (50/50 aprobadas)
-        else Alguna línea presenta fallo de variable, etiqueta o ID faltante
-            Gate->>App: 10a. Guarda las líneas válidas (ej. 48/50) en SQLite WAL
-            Gate->>FS: 10b. Genera micro-lote de reparación (2/50) y reporta línea exacta del error
-            Gate-->>Agent: 10c. Devuelve STATUS: PARTIAL_RETRY (Detalle exacto de las 2 líneas)
-            Agent->>FS: 10d. Corrige únicamente las 2 líneas y reejecuta Gatekeeper -> PASS
-        end
+    User->>App: 1. Prepara un lote de prueba
+    App->>App: 2. Deduplica, aplica contexto y protege variables
+    App->>FS: 3. Escribe meta.json e input.jsonl en 01_inbox_pending/
+    User->>Agent: 4. Selecciona modelo y solicita procesar el lote
+    Agent->>FS: 5. Lee manifiesto y JSONL de entrada
+    Agent->>FS: 6. Escribe JSONL completo en 03_outbox_ready/
+    User->>Gate: 7. Ejecuta validación local por separado
+    Gate->>FS: 8. Verifica esquema, IDs, hashes, variables, etiquetas y ES-419
+    alt Todos los registros esperados son válidos
+        Gate->>TestDB: 9. Guarda el resultado de prueba
+        Gate->>FS: 10. Archiva entrada, salida y hash
+        Gate-->>User: 11. PASS; lote de prueba cerrado
+    else Hay IDs ausentes o líneas defectuosas
+        Gate->>FS: 12. Escribe reporte de errores/IDs pendientes en cuarentena
+        Gate-->>User: 13. Requiere corrección
+        User->>Agent: 14. Solicita corregir solo los IDs indicados
+        Agent->>FS: 15. Escribe la salida corregida en staging
+        User->>Gate: 16. Repite validación local
     end
-    Agent-->>User: 11. Informa resumen final de la Supertanda (500/500 validadas e importadas)
 ```
 
 ---
