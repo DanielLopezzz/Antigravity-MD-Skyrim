@@ -14,7 +14,9 @@ Este roadmap reemplaza el plan inicial de nueve fases. Distingue el trabajo hist
 | 8 | Estimación económica y comparativa de proveedores | Completada como análisis histórico | Los precios, modelos y escenarios no son cotización actual. Recalcular antes de cualquier gasto. |
 | 9 | Auditoría integral y extracción de formatos pendientes | Completada según informe del 2026-11-03 | Ver [informe de Fase 9](../../Fase9_Full_Audit/PHASE9_FULL_AUDIT_REPORT.md). La base SQLite/manifiestos fuente no están publicados en este repositorio. |
 | 10 | Evaluación de estrategia Antigravity-first y arquitectura dual | Diseño documental completado | No se ha ejecutado benchmark ni se ha implementado el adaptador/Gatekeeper. Las correcciones están registradas en el informe final. |
-| 10.1 | Implementación mínima aislada del adaptador JSON/JSONL y Gatekeeper | Pendiente de autorización | Desarrollar únicamente en el workspace de pruebas, con DB aislada, permisos mínimos y sin tocar producción. |
+| 10.1-A | Auditoría estática del código y reconciliación de contadores | Completada | 57 archivos fuente inspeccionados; los contadores de módulos, 23 componentes y 11 métodos de prueba fueron reconciliados. Ver informe y nota de reconciliación. |
+| 10.1-B | Especificación de implementación del intercambio Antigravity | Preparada; implementación no iniciada ni autorizada | Ver `PHASE10_1B_IMPLEMENTATION_SPEC.md`. Requiere aprobación antes de modificar código. |
+| 10.1-B.1 | Implementación aislada de contrato, exportación, bóveda, Gatekeeper, reintentos y CLI | Pendiente de autorización | Desarrollar únicamente en rama de código separada, con almacenamiento y DB de prueba; no tocar producción. |
 | 10.2 | Preflight y smoke test aislado de 25 cadenas | Pendiente | Solo después de implementar y probar el contrato; confirmar cuota/overages, permisos Windows, escritura real y recuperación. |
 | 10.3 | Benchmark controlado de 300 cadenas × 3 modelos | Pendiente | Solo después de superar 10.2; comparar calidad y operación en sesiones aisladas. |
 | 10.4 | Piloto de un mod completo (~1.100–1.500 cadenas) | Pendiente | Solo después de revisar resultados del benchmark y aprobar modelo/protocolo. |
@@ -24,46 +26,59 @@ Este roadmap reemplaza el plan inicial de nueve fases. Distingue el trabajo hist
 
 ## Siguiente secuencia
 
-### 10.1 — Implementación mínima, aislada y autorizada
+### 10.1-A — Auditoría y reconciliación (completadas)
 
-Antes de ejecutar pruebas se necesita confirmar qué componentes del código actual ya existen. El repositorio publicado no contiene el código fuente, por lo que la inspección debe hacerse en el workspace local. Solo después de esa inspección y autorización se implementará lo que falte:
+- [Informe técnico](../../Fase10_1_Code_Audit/Audit_20261103_113100/PHASE10_1_CODE_AUDIT_REPORT.md).
+- [Reconciliación de contadores](../../Fase10_1_Code_Audit/AUDIT_10_1A_RECONCILIATION.md).
+- La clasificación detallada queda en 36 módulos funcionales y 23 componentes Antigravity; las 3 suites contienen 11 métodos inspeccionados estáticamente, no ejecutados durante la auditoría.
 
-- Adaptador de exportación/recepción JSON y JSONL.
-- Workspace de intercambio físicamente separado (por ejemplo, `C:\\NolvusAIT_Exchange\\job_<job_id>\\`), abierto como único workspace de Antigravity; no abrir la raíz del proyecto.
-- Contrato de lote versionado con IDs estables, hashes y contexto.
-- Gatekeeper local independiente, con DB de prueba y permisos mínimos.
-- Validadores para conteo, conjunto de IDs, duplicados, placeholders, etiquetas, claves, glosario y ES-419.
-- Cuarentena y micro-reintentos para líneas incompletas o rechazadas.
-- Pruebas unitarias y de recuperación sin acceder a la DB productiva.
+### 10.1-B — Especificación de implementación (preparada; no autorizada para ejecutar)
 
-No dar al agente acceso de escritura a DB principal, glosario, TM, STOCK GAME, MO2 ni mods originales. No activar proveedores API.
+Consultar [especificación técnica 10.1-B](../../Fase10_Antigravity_Architecture/PHASE10_1B_IMPLEMENTATION_SPEC.md). La decisión clave es utilizar un coordinador de intercambio supervisado, no fingir que el selector Antigravity es un proveedor API síncrono. El workspace Antigravity debe estar físicamente separado del traductor.
+
+### 10.1-B.1 — Implementación mínima aislada (pendiente de autorización)
+
+Antes de modificar archivos, inspeccionar el diff propuesto y confirmar exactamente qué componentes requieren cambios. La implementación prevista comprende:
+
+- Contrato JSON/JSONL versionado.
+- Workspace de intercambio físicamente separado.
+- Exportador y bóveda local de placeholders.
+- Almacenamiento aislado/ledger de lotes.
+- Colector JSONL y Gatekeeper local.
+- Cuarentena, reintentos e idempotencia.
+- CLI local manteniendo intacta la GUI.
+- Pruebas en carpetas temporales y DB de prueba.
+
+No migrar el esquema productivo ni modificar la DB principal. No habilitar proveedores API. El agente no recibe código, DB, glosario ni bóveda.
+
+**Criterio de salida:** todas las puertas B1–B7 de la especificación superadas; 11 pruebas existentes y todas las nuevas pruebas pasan en entorno temporal. La implementación termina con un PR de código separado y revisión humana.
 
 ### 10.2 — Preflight y smoke test de 25 cadenas
 
-Solo cuando 10.1 supere revisión:
-1. Confirmar modelos visibles en el selector en la fecha de la prueba.
+Solo tras completar y revisar 10.1-B.1:
+1. Confirmar modelos visibles en el selector en la fecha de prueba.
 2. Comprobar que **AI Credit Overages = Never**; si no puede confirmarse, no ejecutar solicitudes de modelos.
-3. Abrir solo el workspace de intercambio aislado y verificar los permisos reales de la versión Windows instalada; limitar la escritura del agente al directorio de salida de esa carpeta.
-4. Procesar 25 cadenas reales en una DB aislada.
-5. Interrumpir una escritura de prueba y comprobar que solo se recuperan líneas completas válidas; la línea incompleta se pone en cuarentena.
+3. Abrir únicamente el workspace de intercambio aislado y verificar los permisos reales de Windows.
+4. Procesar 25 cadenas en una DB aislada.
+5. Comprobar recuperación ante una interrupción controlada.
 
 **Criterio:** 25/25 IDs completos y válidos al cierre, cero defectos estructurales aceptados, ningún acceso a producción y recuperación documentada.
 
 ### 10.3 — Benchmark de 300 cadenas
 
-Ejecutar las mismas entradas/contexto con cada modelo que siga disponible, en sesiones separadas y con revisión ciega. Medir calidad, primera pasada, errores, latencia, cuota, reintentos y acciones humanas.
+Comparar las mismas entradas y contexto en sesiones separadas con los modelos disponibles ese día. Medir calidad, tiempos, cuota observada, errores, reintentos e intervención humana.
 
 ### 10.4 — Piloto de un mod completo
 
-Probar un mod representativo (~1.100–1.500 cadenas) solo después de revisar el benchmark y autorizar modelo/protocolo. Verificar coherencia terminológica entre nombres, objetivos, diálogos y libros.
+Probar un mod representativo (~1.100–1.500 cadenas) después de revisar el benchmark y aprobar el protocolo.
 
 ### 10.5 — Continuidad y recuperación
 
-Procesar 12–15 lotes consecutivos y ejecutar fallos controlados. Medir continuidad, truncamientos, tasa real de recuperación, reintentos y cuota.
+Procesar 12–15 lotes consecutivos y fallos controlados. Medir recuperación real y ritmo sostenible.
 
 ### 10.6 — Decisión de escala
 
-Calcular el ritmo sostenible con cadenas validadas por hora/día y cuota observada. Documentar una decisión entre Antigravity, híbrido o API. La conmutación a API requiere nueva cotización y autorización expresa.
+Elegir Antigravity, híbrido o API únicamente con datos medidos, nueva estimación de costes y autorización expresa.
 
 ## Invariantes de seguridad
 
