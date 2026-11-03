@@ -8,13 +8,16 @@ Documentación del proyecto para localizar **Nolvus Awakening 6.0.21** al españ
 |---|---|
 | [PROJECT_STATUS.md](./PROJECT_STATUS.md) | **Fuente única de verdad**: estado de cada fase y subsistema, rama/commits, pruebas, cobertura, control económico, riesgos y próxima puerta. |
 | [CHANGELOG.md](./CHANGELOG.md) | Historial cronológico de trabajo verificado (fases, archivos, commits, pruebas, resultados). |
-| [ROADMAP.md](./ROADMAP.md) | Solo trabajo futuro y puertas pendientes (10.3 Piloto Real → Producción). |
+| [ROADMAP.md](./ROADMAP.md) | Solo trabajo futuro y puertas pendientes (10.3-B Ejecución Piloto Real → Producción). |
 | [DECISIONS.md](./DECISIONS.md) | Decisiones técnicas y operativas vigentes e históricas, con fecha y motivo. |
 | [DOCUMENTATION_POLICY.md](./DOCUMENTATION_POLICY.md) | Reglas de mantenimiento documental. |
 
-**Estado en una línea (2026-11-03):** Fases 0–10.2 completadas; infraestructura **OpenAI API-First** (`GPT-6 Luna` principal, `GPT-6.1 Sol` escalamiento selectivo, `Antigravity Argon` complementario, `BudgetController` y `OpenAIBatchCoordinator`) implementada y probada con **48/48 pruebas en verde** en la rama `feat/phase10-2-openai-api-first`; candado de gasto activo (`PHASE_1_PAID_API_LOCK = True`, `$0.00 USD` gastados, `0` cadenas traducidas); la siguiente puerta es la **Fase 10.3 (primer piloto real con `gpt-6-luna`)**, pendiente de autorización presupuestaria expresa.
+**Estado en una línea (2026-11-03):** Fases 0–10.3-A completadas; infraestructura **OpenAI API-First** (`GPT-6 Luna` principal, `GPT-6.1 Sol` escalamiento selectivo, `Antigravity Argon` complementario, `BudgetController` y `OpenAIBatchCoordinator`) y **preparación offline del primer piloto real de 25 cadenas (`5 × 5`) para `gpt-6-luna`** implementadas y verificadas con **49/49 pruebas en verde** en la rama `feat/phase10-2-openai-api-first` (`HEAD` en `d2b75a5`); candado de gasto activo (`PHASE_1_PAID_API_LOCK = True`, `$0.00 USD` gastados, `0` cadenas traducidas); la siguiente puerta es la **Fase 10.3-B (ejecución real del lote preparado `batch_pilot_10_3a_001` con `gpt-6-luna`, coste máximo con margen `+15 %`: `$0.001493 USD`)**, pendiente de autorización presupuestaria expresa.
 
 ## Evidencia por fase (informes históricos preservados)
+
+### Fase 10.3-A — Preparación Offline del Primer Piloto (`GPT-6 Luna` · 25 cadenas reales)
+- [Informe técnico de preparación offline Fase 10.3-A (25 cadenas reales 5×5, bóveda de 37 placeholders, payload `/v1/responses` y verificación de Gatekeeper)](./Fase10_Antigravity_Architecture/PHASE10_3A_OFFLINE_PILOT_PREPARATION_REPORT.md)
 
 ### Fase 10.2 — Infraestructura OpenAI API-First y Control Presupuestario Local
 - [Informe de implementación Fase 10.2 (OpenAI API-First, BudgetController, Batch API y estimación de piloto)](./Fase10_Antigravity_Architecture/PHASE10_2_OPENAI_API_FIRST_REPORT.md)

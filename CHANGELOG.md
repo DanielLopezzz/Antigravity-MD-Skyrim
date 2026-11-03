@@ -6,6 +6,36 @@
 
 ---
 
+## [2026-11-03] — Fase 10.3-A: Preparación Offline del Primer Piloto `gpt-6-luna` de 25 cadenas reales (Commit `d2b75a5`)
+
+- **Fase / Subtarea:** Fase 10.3-A — Preparación técnica 100 % offline del primer lote piloto real de 25 cadenas (`5 × 5`) del corpus de Nolvus Awakening 6.0.21 para `gpt-6-luna` (`REQUEST_CONSTRUCTION`).
+- **Qué se hizo:**
+  1. **Extracción estratificada de solo lectura (`pilot_estimator.py`, `pilot_offline_staging.py`):**
+     - Lectura inmutable (`mode=ro&immutable=1`) de `workspace_data/nolvus_translator.db` seleccionando `5` cadenas por cada una de las `5` categorías funcionales (`dialogues_and_quests`, `mcm_and_ui`, `items_spells_perks`, `books_and_notes`, `scripts_and_other` = `25` cadenas, `1.576` caracteres totales, `0` duplicados), priorizando objetivos con `<Alias=...>`, llaves posicionales `{}` de MCM Helper, tokens mágicos `<dur>`/`<mag>`, etiquetas HTML de libros y mensajes de scripts `.pex`.
+  2. **Protección mejorada de placeholders y bóveda local (`protector.py`, `exchange_store.py`):**
+     - Actualización del patrón `brace_placeholder` en `VariableProtector` (`r"\{[A-Za-z0-9_.:%\-]*\}"`) para proteger llaves posicionales vacías `{}` en **MCM Helper** junto con `{0}`/`{name}`.
+     - Enmascaramiento de **37 placeholders** en `11/25` cadenas (`html_xml_tag`: 23, `escaped_control`: 7, `brace_placeholder`: 3, `skyrim_alias_global`: 2, `skyrim_magic_token`: 2), guardados en `pilot_10_3a_exchange_store.sqlite3` (`25` sobres en `placeholder_vault`).
+  3. **Construcción offline del payload de Responses API (`openai_provider.py`, `pilot_offline_staging.py`):**
+     - Inyección de instrucciones ES-419 y del subconjunto aplicable del Glosario Maestro (`Health -> Salud`, `Nocturnal -> Nocturnal`, `Soul Gem -> Gema de alma`).
+     - Generación del payload `batch_pilot_10_3a_001_responses_request.json` para `/v1/responses` con `model="gpt-6-luna"`, `tools=[]`, `tool_choice="none"`, `store=False`, `max_output_tokens=2198` y validación recursiva de hojas en `assert_translation_only_payload()`.
+  4. **Cálculo de tokens y coste máximo con tarifa Standard (`budget_control.py`):**
+     - `1.989` tokens de entrada estimados, `1.758` tokens de salida esperados (`2.198` tope físico), coste máximo base Standard **`$0.001298 USD`** y coste máximo con margen de seguridad (`+15 %`) **`$0.001493 USD`** (dentro del presupuesto de referencia de `$0.05 USD` por trabajo; `$0.00 USD` reservados y `$0.00 USD` consumidos).
+  5. **Verificación de paso obligatorio por `LocalGatekeeper` (`pilot_offline_staging.py`, `test_pilot_offline_staging.py`):**
+     - Demostración automatizada sobre un clon efímero de la copia aislada de que (a) la importación directa sin Gatekeeper es bloqueada (`ExchangeStateTransitionError`), (b) un placeholder corrupto es rechazado en `GATE_09_PLACEHOLDER_RESTORATION` (`0` filas en TM) y (c) un lote válido supera las 12 puertas, restaura los 37 placeholders e incorpora las 25 cadenas a `translation_memory`.
+- **Archivos afectados (repositorio de código):**
+  - `.gitignore`
+  - `src/nolvus_translator/quality/protector.py`
+  - `src/nolvus_translator/reports/pilot_estimator.py`
+  - `src/nolvus_translator/translation/budget_control.py`
+  - `src/nolvus_translator/translation/openai_provider.py`
+  - `src/nolvus_translator/translation/pilot_offline_staging.py` (nuevo)
+  - `tests/test_pilot_offline_staging.py` (nuevo)
+- **Commit:** `d2b75a5` en rama `feat/phase10-2-openai-api-first`.
+- **Pruebas ejecutadas:** `python -m unittest discover -s tests -t . -v` (**49/49 pruebas en verde en `5.682s`**, `0` llamadas HTTP reales, `$0.00 USD` consumidos).
+- **Resultado:** `COMPLETADO`.
+
+---
+
 ## [2026-11-03] — Fase 10.2: Implementación de infraestructura OpenAI API-First, Coordinador Batch y Controlador Local de Presupuesto (Commit `2766b73`)
 
 - **Fase / Subtarea:** Fase 10.2 — Infraestructura OpenAI API-First, seguridad de credenciales, enrutador Luna/Sol/Argon, coordinador Batch, control económico local y estimación offline del primer piloto.
