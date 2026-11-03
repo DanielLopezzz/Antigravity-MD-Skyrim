@@ -1,5 +1,7 @@
 # MANIFIESTO DE PUBLICACIÓN Y TRAZABILIDAD — AUDITORÍA FASE 10.1-A
 
+> **Nota de reconciliación posterior (2026-11-03):** los tamaños y hashes SHA-256 de la tabla de la Sección 2 documentan los cinco artefactos exactamente como fueron generados en la ejecución original `AUDIT-10.1A-20261103-113100`. Las correcciones de contadores de módulos, componentes Antigravity y pruebas se registran en `AUDIT_10_1A_RECONCILIATION.md` y en el PR de reconciliación. Por tanto, los hashes de esta tabla son evidencia de la versión original, no hashes de los contenidos corregidos actuales. Los originales permanecen recuperables en el historial Git.
+
 ## 1. Metadatos de Ejecución y Publicación
 
 | Campo | Valor verificado |
@@ -130,4 +132,4 @@ Se certifica que durante toda la ejecución de la auditoría `AUDIT-10.1A-202611
 - **No se modificó** ningún archivo de código fuente ni de configuración de `Nolvus AI Translator`.
 - **No se modificó** la base de datos SQLite principal, el Glosario Maestro ni la Memoria de Traducción.
 - **No se modificó** ningún archivo de `Nolvus Awakening 6.0.21`, `STOCK GAME` ni `Mod Organizer 2`.
-- **No se modificó** ningún documento existente en la rama `main` del repositorio documental.
+- **No se modificó** ningún documento existente en la rama `main` durante la ejecución original de auditoría. Los ajustes documentales posteriores están identificados en [AUDIT_10_1A_RECONCILIATION.md](../AUDIT_10_1A_RECONCILIATION.md).
