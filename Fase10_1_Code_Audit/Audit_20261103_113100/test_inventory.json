@@ -7,9 +7,9 @@
   "summary": {
     "test_files_count": 4,
     "test_suites_count": 3,
-    "test_cases_count": 8,
+    "test_cases_count": 11,
     "executed_in_current_session": 0,
-    "statically_verified_test_cases": 8,
+    "statically_verified_test_cases": 11,
     "framework": "unittest (standard library)",
     "isolation_mechanism": "tempfile.TemporaryDirectory()"
   },
@@ -281,5 +281,6 @@
         }
       ]
     }
-  ]
+  ],
+  "reconciliation_note": "Reconciled 2026-11-03: 11 test methods are present across the three unittest suites. They were statically inspected and none were executed during the audit session."
 }
