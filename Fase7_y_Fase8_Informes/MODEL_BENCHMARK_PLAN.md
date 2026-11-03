@@ -5,7 +5,7 @@
 # PLAN DE BENCHMARK LINGÜÍSTICO Y TÉCNICO DE MODELOS (`ES-419`)
 **Proyecto**: NOLVUS AI TRANSLATOR — Nolvus Awakening 6.0.21  
 **Estado**: Diseñado y Listo para Revisión (0 llamadas a APIs externas realizadas; 0 modelos locales descargados)  
-**Informe Económico Asociado**: [API_COST_ESTIMATE_V2.md](file:///c:/Skyrim%20proyecto%20traducci%C3%B3n/API_COST_ESTIMATE_V2.md) y [API_COST_COMPARISON_V2.xlsx](file:///c:/Skyrim%20proyecto%20traducci%C3%B3n/API_COST_COMPARISON_V2.xlsx)
+**Informe Económico Asociado**: `c:/Skyrim proyecto traducción/API_COST_ESTIMATE_V2.md` (ruta/artefacto local no incluido en GitHub) y `c:/Skyrim proyecto traducción/API_COST_COMPARISON_V2.xlsx` (ruta/artefacto local no incluido en GitHub)
 
 ---
 
@@ -14,7 +14,7 @@
 Evaluar de forma empírica, ciega, reproducible y cuantitativa a los modelos candidatos (`Gemini 3.5 Flash-Lite`, `Gemini 3.8 Flash`, `Gemini 4 Argon`, `GPT-6 Luna`, `GPT-6.1 Terra`, `GPT-6.1 Sol` y los modelos locales `Gemma 3 12B IT` / `Qwen 2.5 14B IT` en tu `RX 9070 XT`) sobre **un mismo corpus fijo de cadenas originales en inglés** extraídas de `Snapshot #1`, antes de comprometer presupuesto o tiempo de cómputo en las `235.326` cadenas de producción.
 
 > [!IMPORTANT]
-> **Garantía de Cumplimiento de Restricciones**: Este documento define el diseño completo de la prueba, las muestras reales extraídas de tu base de datos local ([`nolvus_translator.db`](file:///c:/Skyrim%20proyecto%20traducci%C3%B3n/workspace_data/nolvus_translator.db)) y la rúbrica matemática de calificación. **Ningún texto ha sido enviado a ningún proveedor externo ni se ha consumido ninguna API**.
+> **Garantía de Cumplimiento de Restricciones**: Este documento define el diseño completo de la prueba, las muestras reales extraídas de tu base de datos local (`c:/Skyrim proyecto traducción/workspace_data/nolvus_translator.db` (ruta/artefacto local no incluido en GitHub)) y la rúbrica matemática de calificación. **Ningún texto ha sido enviado a ningún proveedor externo ni se ha consumido ninguna API**.
 
 ---
 
@@ -110,9 +110,9 @@ Si una cadena falla cualquiera de estos dos criterios técnicos, su puntuación 
 | **2** | **Fidelidad al Original** | **15 %** | Precisión semántica completa: sin omisión de información, sin adición de datos inventados (*hallucinations*) y sin inversión del sentido condicional o numérico. | `-40 a -100 pts` según gravedad de la distorsión de significado. |
 | **3** | **Coherencia Narrativa y Registro** | **15 %** | Adecuación del tono al personaje y situación (`tú` vs `usted`, solemnidad en príncipes Daedra/Jarls, neutralidad de género para el protagonista en entradas de diario `QUST:CNAM`, concisión en UI/MCM). | `-30 pts` por pérdida de tono del personaje o asunción indebida de género del jugador. |
 | **4** | **Respeto al Lore de *The Elder Scrolls*** | **15 %** | Uso correcto de conceptos cosmológicos, históricos y mágicos de Tamriel (*Aetherius*, *Oblivion*, *Kalpa*, *CHIM*, *Thu'um*, *Draugr*, *Dwemer*) y desambiguación correcta en la Categoría 8. | `-40 pts` por error conceptual de lore o desambiguación fallida (*Fire* hechizo vs orden). |
-| **5** | **Consistencia del Glosario Maestro** | **15 %** | Verificación automática contra [`GlossaryManager.match_terms_in_text()`](file:///c:/Skyrim%20proyecto%20traducci%C3%B3n/src/nolvus_translator/lore/glossary.py#L196-L214): todo término del Glosario Maestro presente en la cadena original debe aparecer con su `approved_translation` exacta. | `-50 pts` por cada término obligatorio del glosario ignorado o traducido de forma divergente. |
+| **5** | **Consistencia del Glosario Maestro** | **15 %** | Verificación automática contra `src/nolvus_translator/lore/glossary.py` (código fuente local no publicado en este repositorio): todo término del Glosario Maestro presente en la cadena original debe aparecer con su `approved_translation` exacta. | `-50 pts` por cada término obligatorio del glosario ignorado o traducido de forma divergente. |
 | **6** | **Conservación de Nombres Propios** | **10 %** | Verificación automática de entidades con `keep_original = True` (*Delphine*, *Paarthurnax*, *Serana*, *Inigo*, *Lucien*, *Jorrvaskr*, *Sovngarde*, *Apocrypha*). | `-100 pts` en este criterio si se traduce o hispaniza un nombre propio protegido. |
-| **7** | **Protección de Variables y Etiquetas** | **5 %** *(+ Hard Gate)* | Verificación automática por [`VariableProtector.restore_and_verify()`](file:///c:/Skyrim%20proyecto%20traducci%C3%B3n/src/nolvus_translator/quality/protector.py). | **Eliminatorio** (marca la cadena como `INCORRECT` y exige reintento). |
+| **7** | **Protección de Variables y Etiquetas** | **5 %** *(+ Hard Gate)* | Verificación automática por `src/nolvus_translator/quality/protector.py` (código fuente local no publicado en este repositorio). | **Eliminatorio** (marca la cadena como `INCORRECT` y exige reintento). |
 | **8** | **Integridad del Formato de Salida** | **5 %** *(+ Hard Gate)* | Verificación de validez JSON, cumplimiento de esquema, completitud de IDs del lote, ausencia de truncamiento y ratio de longitud visual en UI ($\le 1,35\times$). | **Eliminatorio** si falta el ID o el JSON está roto; `-25 pts` si excede el límite visual de UI. |
 
 ---
@@ -120,7 +120,7 @@ Si una cadena falla cualquiera de estos dos criterios técnicos, su puntuación 
 ## 4. Protocolo de Ejecución Ciega (Solo cuando el Usuario lo Autorice)
 
 1. **Extracción Determinista del Corpus (`benchmark_dataset_90.json`)**:
-   - Se seleccionan las 90 cadenas reales desde `Snapshot #1` en [`nolvus_translator.db`](file:///c:/Skyrim%20proyecto%20traducci%C3%B3n/workspace_data/nolvus_translator.db) con su contexto completo (`record_type`, `subrecord_type`, `content_domain`, `speaker_hint`, términos aplicables del Glosario Maestro y tokens `⟦VAR_i⟧` enmascarados).
+   - Se seleccionan las 90 cadenas reales desde `Snapshot #1` en `c:/Skyrim proyecto traducción/workspace_data/nolvus_translator.db` (ruta/artefacto local no incluido en GitHub) con su contexto completo (`record_type`, `subrecord_type`, `content_domain`, `speaker_hint`, términos aplicables del Glosario Maestro y tokens `⟦VAR_i⟧` enmascarados).
 2. **Evaluación en Igualdad Estricta de Condiciones**:
    - Todos los modelos autorizados reciben **exactamente el mismo prompt de sistema `ES-419`**, **el mismo subconjunto del Glosario Maestro** y **la misma agrupación en lotes**.
    - Para los modelos locales en tu **RX 9070 XT** (si autorizas su prueba), se registran adicionalmente con cronómetro de alta resolución (`time.perf_counter()`):
@@ -129,7 +129,7 @@ Si una cadena falla cualquiera de estos dos criterios técnicos, su puntuación 
      - Velocidad real de generación en tokens/s ($R_{\text{gen}}$).
      - Uso pico real de VRAM en GB.
 3. **Evaluación Ciega (*Blind Review*)**:
-   - Las salidas de los modelos se anonimizan como `Modelo A`, `Modelo B`, `Modelo C`... antes de la calificación humana/asistida de los criterios 1 a 4, mientras que los criterios 5, 6, 7 y 8 se miden de forma 100 % determinista por [`TranslationQualityValidator`](file:///c:/Skyrim%20proyecto%20traducci%C3%B3n/src/nolvus_translator/quality/validator.py).
+   - Las salidas de los modelos se anonimizan como `Modelo A`, `Modelo B`, `Modelo C`... antes de la calificación humana/asistida de los criterios 1 a 4, mientras que los criterios 5, 6, 7 y 8 se miden de forma 100 % determinista por `src/nolvus_translator/quality/validator.py` (código fuente local no publicado en este repositorio).
 4. **Umbrales de Aprobación para Producción**:
    - **Tasa de integridad de variables y esquema JSON (Criterios 7 y 8)**: $\ge 99,0\,\%$ en primera pasada (`100 %` tras reintento automático).
    - **Cumplimiento de Glosario y Nombres Propios (Criterios 5 y 6)**: $\ge 97,0\,\%$.
