@@ -11,26 +11,26 @@
 
 ## 1. AUDITORÍA DE LA ARQUITECTURA ACTUAL EN EL CÓDIGO FUENTE (SECCIÓN 2 Y SECCIÓN 5)
 
-Antes de proponer cualquier ampliación, se inspeccionó el código real de `Nolvus AI Translator` en [src/nolvus_translator/](file:///c:/Skyrim%20proyecto%20traducci%C3%B3n/src/nolvus_translator) para determinar qué componentes ya cumplen la separación entre núcleo y proveedor, cuáles deben conservarse intactos y qué punto exacto requiere extensión para soportar tanto a **Google Antigravity sin API** como a **Proveedores API futuros**:
+Antes de proponer cualquier ampliación, se inspeccionó el código real de `Nolvus AI Translator` en `c:/Skyrim proyecto traducción/src/nolvus_translator` (referencia local no incluida en este repositorio) para determinar qué componentes ya cumplen la separación entre núcleo y proveedor, cuáles deben conservarse intactos y qué punto exacto requiere extensión para soportar tanto a **Google Antigravity sin API** como a **Proveedores API futuros**:
 
 ### 1.1. Componentes Existentes que Cumplen el Objetivo y se Reutilizan al `100 %` Sin Reconstruir
-1. **Base de Datos y Esquema Central ([core/database.py](file:///c:/Skyrim%20proyecto%20traducci%C3%B3n/src/nolvus_translator/core/database.py)):**
+1. **Base de Datos y Esquema Central (`src/nolvus_translator/core/database.py` (ruta de código local; el código fuente no está publicado aquí)):**
    - La tabla `string_entries` ya almacena `provider_id`, `is_simulated`, `review_status`, `confidence_score` y `quality_json` de forma completamente agnóstica del proveedor.
    - Las tablas `translation_jobs` y `translation_batches` ya modelan trabajos y lotes persistentes en SQLite WAL.
-2. **Glosario Maestro ([lore/glossary.py](file:///c:/Skyrim%20proyecto%20traducci%C3%B3n/src/nolvus_translator/lore/glossary.py)) y Motor de Contexto ([lore/context_engine.py](file:///c:/Skyrim%20proyecto%20traducci%C3%B3n/src/nolvus_translator/lore/context_engine.py)):**
+2. **Glosario Maestro (`src/nolvus_translator/lore/glossary.py` (ruta de código local; el código fuente no está publicado aquí)) y Motor de Contexto (`src/nolvus_translator/lore/context_engine.py` (ruta de código local; el código fuente no está publicado aquí)):**
    - `NarrativeContextPacket` ya encapsula el universo, el idioma objetivo (`es-419`), el grupo contextual (`context_group_id`), el hablante (`speaker_hint`), las reglas de estilo (`ES419_STYLE_GUIDELINES`) y el glosario filtrado (`applicable_glossary`) sin depender de ningún proveedor.
-3. **Memoria de Traducción ([memory/tm_engine.py](file:///c:/Skyrim%20proyecto%20traducci%C3%B3n/src/nolvus_translator/memory/tm_engine.py)):**
+3. **Memoria de Traducción (`src/nolvus_translator/memory/tm_engine.py` (ruta de código local; el código fuente no está publicado aquí)):**
    - Indexa por `(source_hash, context_signature)`, distingue coincidencias de mismo contexto vs contexto cruzado, registra historial en `tm_versions` y bloquea traducciones comunitarias (`ALLOWED_ORIGIN_TYPES = {"own_es419", "official_bethesda_reference"}`).
-4. **Protección de Variables ([quality/protector.py](file:///c:/Skyrim%20proyecto%20traducci%C3%B3n/src/nolvus_translator/quality/protector.py)) y Validador de QA ([quality/validator.py](file:///c:/Skyrim%20proyecto%20traducci%C3%B3n/src/nolvus_translator/quality/validator.py)):**
+4. **Protección de Variables (`src/nolvus_translator/quality/protector.py` (ruta de código local; el código fuente no está publicado aquí)) y Validador de QA (`src/nolvus_translator/quality/validator.py` (ruta de código local; el código fuente no está publicado aquí)):**
    - `VariableProtector` enmascara con `⟦VAR_0⟧`..`⟦VAR_n⟧` antes de tocar cualquier proveedor y restaura/verifica después de recibir la respuesta.
    - `TranslationQualityValidator` califica cualquier traducción entrante con las mismas reglas deterministas, sin importar quién la produjo.
-5. **Empaquetador para Mod Organizer 2 ([export/mo2_packager.py](file:///c:/Skyrim%20proyecto%20traducci%C3%B3n/src/nolvus_translator/export/mo2_packager.py)) y DSD ([export/dsd_exporter.py](file:///c:/Skyrim%20proyecto%20traducci%C3%B3n/src/nolvus_translator/export/dsd_exporter.py)):**
+5. **Empaquetador para Mod Organizer 2 (`src/nolvus_translator/export/mo2_packager.py` (ruta de código local; el código fuente no está publicado aquí)) y DSD (`src/nolvus_translator/export/dsd_exporter.py` (ruta de código local; el código fuente no está publicado aquí)):**
    - Exportan exclusivamente a partir de las filas con `review_status = 'approved'` en `string_entries`, siendo `100 %` independientes del motor de traducción utilizado.
-6. **Puerto Abstracto de Proveedor ([translation/interfaces.py](file:///c:/Skyrim%20proyecto%20traducci%C3%B3n/src/nolvus_translator/translation/interfaces.py)) y Registro de Stubs API ([translation/future_stubs.py](file:///c:/Skyrim%20proyecto%20traducci%C3%B3n/src/nolvus_translator/translation/future_stubs.py)):**
+6. **Puerto Abstracto de Proveedor (`src/nolvus_translator/translation/interfaces.py` (ruta de código local; el código fuente no está publicado aquí)) y Registro de Stubs API (`src/nolvus_translator/translation/future_stubs.py` (ruta de código local; el código fuente no está publicado aquí)):**
    - Ya existe la clase abstracta `TranslationProvider` con `TranslationBatchItem` y `TranslationBatchResult`, así como el catálogo `get_registered_providers()` que mantiene registrados los adaptadores futuros de API (`gemini_future`, `openai_future`, `deepl_future`, `local_llm_future`). **Esta infraestructura API existente se conserva íntegra.**
 
 ### 1.2. Limitación Específica Detectada en el Acoplamiento Actual de `TranslationPipeline`
-Al inspeccionar [translation/pipeline.py](file:///c:/Skyrim%20proyecto%20traducci%C3%B3n/src/nolvus_translator/translation/pipeline.py#L250-L284), se observa que `TranslationPipeline.run_or_resume()` invoca `self.provider.translate_batch(batch_items, context_packet)` dentro de un bucle `while attempt <= self.max_retries` **síncrono y en memoria**.
+Al inspeccionar `src/nolvus_translator/translation/pipeline.py` (ruta de código local; el código fuente no está publicado aquí), se observa que `TranslationPipeline.run_or_resume()` invoca `self.provider.translate_batch(batch_items, context_packet)` dentro de un bucle `while attempt <= self.max_retries` **síncrono y en memoria**.
 - Eso funciona de forma inmediata cuando el proveedor responde en milisegundos dentro del mismo proceso Python (`MockTranslationProvider` o una llamada HTTP REST directa).
 - Sin embargo, tanto el **Adaptador Antigravity sin API** (basado en intercambio transaccional de archivos `.jsonl` en `antigravity_exchange/`) como las **Modalidades Batch Asíncronas de API** (Gemini Batch API / OpenAI Batch API con archivos `.jsonl`) operan en **dos fases desacopladas en el tiempo**:
   1. **Fase de Despacho (`Prepare & Export Batch`):** El núcleo prepara, protege y exporta el lote o tanda de lotes, dejando el lote en estado `exported_awaiting_provider`.
@@ -103,7 +103,7 @@ flowchart TB
 
 ## 3. CONTRATOS CANÓNICOS DE ENTRADA Y SALIDA
 
-Para que el cambio entre Antigravity y cualquier API externa sea transparente, ambos adaptadores consumen y producen exactamente las mismas estructuras de datos tipadas (extensión limpia y retrocompatible de [translation/interfaces.py](file:///c:/Skyrim%20proyecto%20traducci%C3%B3n/src/nolvus_translator/translation/interfaces.py)):
+Para que el cambio entre Antigravity y cualquier API externa sea transparente, ambos adaptadores consumen y producen exactamente las mismas estructuras de datos tipadas (extensión limpia y retrocompatible de `src/nolvus_translator/translation/interfaces.py` (ruta de código local; el código fuente no está publicado aquí)):
 
 ### 3.1. Contrato de Entrada (`BatchRequestEnvelope`)
 ```python
@@ -170,7 +170,7 @@ class BatchResponseEnvelope:
    - Lee `03_outbox_ready/batch_{batch_index:04d}_output.jsonl` línea por línea, construye el `BatchResponseEnvelope` y lo entrega al Núcleo para la validación determinista de QA (`TranslationQualityValidator`).
 
 ### 4.2. Adaptador 2: `CloudApiTranslationProvider` (Vía Futura Recuperable)
-1. Conserva los registros en [translation/future_stubs.py](file:///c:/Skyrim%20proyecto%20traducci%C3%B3n/src/nolvus_translator/translation/future_stubs.py) protegidos por `PHASE_1_PAID_API_LOCK = True` mientras no exista autorización para usar APIs de pago.
+1. Conserva los registros en `src/nolvus_translator/translation/future_stubs.py` (ruta de código local; el código fuente no está publicado aquí) protegidos por `PHASE_1_PAID_API_LOCK = True` mientras no exista autorización para usar APIs de pago.
 2. Si en el futuro el usuario decide activar la vía API (para todo el proyecto o para los lotes restantes):
    - Recibe exactamente el mismo `BatchRequestEnvelope`.
    - En **modo Realtime REST**: serializa `envelope` al formato JSON del SDK de Gemini/OpenAI, recibe la respuesta y devuelve el mismo `BatchResponseEnvelope`.
