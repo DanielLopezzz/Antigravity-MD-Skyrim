@@ -203,3 +203,36 @@ El agente escribe en `03_outbox_ready/batch_0001_output.jsonl` una línea por ca
 1. **Doble llave de verificación (`seq` + `uid`):** El validador comprueba que `seq` y `uid` coincidan con la línea original, eliminando cualquier riesgo de desalineación (*off-by-one shift*) entre líneas consecutivas.
 2. **Transparencia de variables (`vars` de solo lectura):** Al mostrar al modelo en el campo `"vars"` de entrada que `⟦VAR_0⟧` representa `<Alias=BrumaCount>`, el modelo comprende la función gramatical del token (un nombre de persona/título tras la preposición *"de"*) y construye la oración española con concordancia gramatical natural sin poder alterar la etiqueta original `<Alias=BrumaCount>`.
 3. **Recuperación instantánea por línea:** Si un archivo se interrumpe en `"seq": 34`, las líneas `1` a `33` ya están completas en disco y listas para importarse.
+
+
+---
+
+## 5. ADENDA DE VALIDACIÓN TÉCNICA — 2026-11-03
+
+Esta adenda prevalece sobre cualquier afirmación anterior de esta propuesta que sugiera escritura incremental garantizada o recuperación automática al 100 %.
+
+### Decisión recomendada
+
+Se mantiene **Transactional JSONL Maildrop + Local Gatekeeper**, con estas precisiones:
+
+1. **Entrada:** un manifiesto JSON y un JSONL UTF-8 de solo lectura para el agente, con `job_id`, `batch_id`, secuencia, UID, hash y contrato de esquema.
+2. **Salida:** un archivo JSONL completo por lote, escrito por el agente en una carpeta de staging. No se usa `Append=True` ni una función de hot-folder no documentada.
+3. **Validación:** el Gatekeeper es un proceso local separado. El agente no recibe acceso de escritura a SQLite, DB principal, glosario, TM, archivos originales ni exportación productiva.
+4. **Recuperación:** cada línea se parsea y valida individualmente. Solo se recuperan registros completos y válidos; líneas truncadas, duplicadas, inesperadas o con IDs ausentes se ponen en cuarentena. Se verifica el conjunto de IDs esperado y los hashes antes de aceptar el lote.
+5. **Persistencia:** durante pruebas, ingesta únicamente en una DB aislada. La escritura en producción queda fuera del alcance de esta fase y requiere autorización posterior.
+
+### Permisos y cuotas de Antigravity
+
+- El sistema operativo de trabajo es Windows. La documentación oficial de Antigravity advierte que la experiencia actualizada de permisos descrita para macOS/Linux no debe asumirse idéntica en Windows; verificar los controles que realmente muestra la instalación del usuario.
+- Configurar y comprobar **AI Credit Overages = Never** antes de solicitar trabajo de modelos. Esta opción impide consumo automático de créditos al agotarse la cuota base; no aumenta la cuota incluida.
+- Las cuotas son dinámicas, correlacionadas con el esfuerzo de cada tarea y sujetas a cambios. Registrar el uso visible antes y después de cada corrida; no dimensionar capacidad con cifras fijas de un documento antiguo.
+- No se ha confirmado mediante este informe el estado actual del ajuste en la cuenta del usuario; debe verificarse manualmente en Settings.
+
+### Estado de validación
+
+La documentación oficial respalda los controles de permisos y el ajuste de excedentes descritos arriba. No documenta que `write_file` soporte `Append=True` como contrato estable. El intercambio por archivo completo con recuperación de líneas válidas es, por tanto, la alternativa más conservadora para probar primero. La arquitectura todavía requiere smoke test de 25 cadenas con una DB de prueba antes del benchmark de 300.
+
+Fuentes oficiales consultadas:
+- [Antigravity Permissions](https://antigravity.google/docs/permissions)
+- [Antigravity Agent Settings](https://antigravity.google/docs/agent-settings)
+- [Antigravity Plans and Overages](https://antigravity.google/docs/plans)
