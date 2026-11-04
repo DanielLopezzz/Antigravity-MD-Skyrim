@@ -2,13 +2,13 @@
 
 **Proyecto:** Nolvus AI Translator  
 **Objetivo:** Traducción propia de Nolvus Awakening 6.0.21 al español latinoamericano neutro (`ES-419`)  
-**Última actualización:** 2026-11-03  
-**Fase actual:** **Fase 10.3-A + Remediación Pre-Piloto Offline 10.3-B completadas (`58/58` pruebas en verde)** — Listo para puerta de autorización de **Fase 10.3-B (Ejecución real controlada del lote `batch_pilot_10_3a_001` con `gpt-6-luna`)**  
+**Última actualización:** 2026-11-04  
+**Fase actual:** **Fase 10.3-C completada con aceptación parcial** — 100/125 cadenas importadas al staging aislado; 23 candidatas retenidas por atomicidad y 2 en cuarentena. Siguiente puerta: remediación dirigida 10.3-D.  
 **Estrategia de proveedores vigente:** **API-First** (`gpt-6-luna` principal, `gpt-6.1-sol` escalamiento selectivo por regla verificable, `gemini-4-argon` vía complemento de intercambio de archivos; `Claude` excluido)  
 **Rama activa (repositorio de código):** `feat/phase10-2-openai-api-first` (`HEAD` en `10795fb`; rama previa `feat/phase10-1b-antigravity-exchange` en `0b4ff8d`; rama base `master` en `fdea297`)  
-**Estado de suite de pruebas:** **58/58 métodos de prueba en verde (`OK` en `13.618s`)**  
-**Candado de API de pago:** `PHASE_1_PAID_API_LOCK = True` (activo; `0` llamadas HTTP reales ejecutadas; `$0.00 USD` consumidos; `$0.00 USD` reservados)  
-**Traducciones reales ejecutadas sobre corpus de Nolvus:** **`0` cadenas** (`25` cadenas reales preparadas en staging local aislado `NolvusAIT_PilotStaging/Phase10_3A_Luna25/`, con presupuesto de trabajo `$0.05 USD` y proyecto `$0.25 USD` inicializados en `pilot_10_3a_budget_store.sqlite3`, pendientes de autorización explícita para la Fase 10.3-B)
+**Estado de suite de pruebas:** **63/63 métodos en verde en la última ejecución registrada anterior a los ajustes locales posteriores al piloto; pendiente repetir verificación tras esos ajustes**  
+**Candado de API de pago:** `PHASE_1_PAID_API_LOCK = True` restaurado tras el piloto; producción continúa bloqueada  
+**Traducciones reales en staging de prueba:** **100 aprobadas e importadas + 23 candidatas no importadas + 2 en cuarentena**; coste de la Fase 10.3-C: **`US$0.01134500`**. Traducciones promovidas a producción: `0`.
 
 ---
 
@@ -43,12 +43,13 @@ Clasificación canónica aplicada:
 | 14 | **Infraestructura de intercambio Antigravity y Gatekeeper de 12 puertas** (`exchange_contract.py`, `exchange_store.py`, `gatekeeper.py`, `exchange_service.py`, `cli.py`) | Fase 10.1-B.1 | `COMPLETADO` | Implementado y consolidado (commits `8ff5bf7`, `844aa1b`, `0b4ff8d`). Conservado íntegro como núcleo de validación local (`LocalGatekeeper`) para las respuestas de OpenAI y como ruta complementaria de intercambio con `Antigravity Argon`. |
 | 15 | **Infraestructura OpenAI API-First, Coordinador Batch y Control Presupuestario Local** (`openai_provider.py`, `openai_batch_coordinator.py`, `budget_control.py`, `model_router.py`, `openai_credentials.py`, `pilot_estimator.py`) | Fase 10.2 y Remediación Preflight 10.3-B | `COMPLETADO` | Implementado en la rama `feat/phase10-2-openai-api-first`. Incluye `GPT6LunaAdapter`, `GPT61SolAdapter`, `RealHttpOpenAITransport` (restringido a `POST https://api.openai.com/v1/responses` y `gpt-6-luna`), `OpenAIBatchCoordinator`, `BudgetController` con reserva atómica SQLite (`BEGIN IMMEDIATE` + margen `1.15x` sobre tarifa Standard), `ModelRouter`, aislamiento `tools=[]`/`tool_choice="none"`, resolución canónica de `NOLVUS_OPENAI_API_KEY` y `NOLVUS_OPENAI_PROJECT_ID` y liberación automática de reservas ante cualquier error previo al envío. Permanece con candado `PHASE_1_PAID_API_LOCK = True` hasta autorización expresa. |
 | 16 | **Preparación Offline del Primer Piloto `gpt-6-luna` (25 cadenas reales 5×5) y Remediación Pre-Piloto** (`pilot_offline_staging.py`, `test_pilot_offline_staging.py`) | Fase 10.3-A / 10.3-B Preflight | `COMPLETADO` | Implementado y verificado en modo 100 % offline (**58/58 pruebas en verde**). Extrae 25 cadenas reales (`5 × 5`, `1.538` caracteres de origen / `1.384` enmascarados), protege `37` placeholders en bóveda local (`PlaceholderVault`), siembra los `108` términos del Glosario Maestro ES-419, construye el payload `/v1/responses` (`batch_batch_pilot_10_3a_001_openai_responses_request.json`, `max_output_tokens = 2198`, coste máximo Standard con `+15 %`: **`$0.001493 USD`**), inicializa los presupuestos de proyecto (`$0.25 USD`) y trabajo (`$0.05 USD`) en `pilot_10_3a_budget_store.sqlite3` y verifica en clon efímero el paso obligatorio por `LocalGatekeeper`. |
+| 17 | **Pilotos reales 10.3-B/10.3-C y análisis lingüístico transversal** | Fases 10.3-B / 10.3-C | `COMPLETADO CON ACEPTACIÓN PARCIAL` | Informe 10.3-B conserva los dos intentos de 25 cadenas. Piloto 10.3-C: 5 lotes, 125 cadenas, 123 respuestas recibidas, 100 importadas en staging, 23 candidatas retenidas y 2 cuarentenadas por glosario; coste real `US$0.01134500`. Ver `PHASE10_3C_LIVE_PILOT_125_REPORT.md`. |
 
 ### 1.2 Elementos bloqueados, complementarios, aplazados o descartados por política
 
 | Elemento | Estado oficial | Motivo |
 |---|---|---|
-| **Ejecución real con gasto en OpenAI API (`gpt-6-luna`, `gpt-6.1-sol`)** | `BLOQUEADO` (listo para activación autorizada) | Toda la infraestructura y las correcciones pre-piloto (`D-CRED-01..03`, `D-BUD-01`, `D-ISO-01..02`) están implementadas y probadas (`58/58 OK`), pero el candado (`PHASE_1_PAID_API_LOCK = True`, etapa `BILLABLE_REAL_EXECUTION`, autorización explícita, reserva activa y credenciales `NOLVUS_OPENAI_API_KEY` + `NOLVUS_OPENAI_PROJECT_ID`) impide llamadas reales hasta que el usuario autorice la ejecución de la Fase 10.3-B. |
+| **Más ejecuciones facturables y producción (`gpt-6-luna`, `gpt-6.1-sol`)** | `BLOQUEADO` hasta la siguiente autorización | Ya hubo pilotos reales autorizados 10.3-B/10.3-C. El candado vuelve a estar activo; la fase 10.3-D requiere remediación y aprobación específica antes de nuevas solicitudes. La producción sigue sin traducciones promovidas. |
 | **Escalamiento a `GPT-6.1 Sol` (`gpt-6.1-sol`)** | `BLOQUEADO` por defecto (`allow_sol_escalation=False`) | Solo interviene cuando una regla verificable (`EscalationRuleCode`) lo justifica y el usuario habilita explícitamente el escalamiento. Prohibido usar Sol como fallback ante errores técnicos/HTTP de Luna. |
 | **Ruta `Antigravity Argon` (`gemini-4-argon`)** | `COMPLEMENTARIO` | Conservada como ruta complementaria y alternativa mediante el intercambio supervisado por archivos (`AntigravityExchangeService`). |
 | **Modelos `Claude` (`Claude Sonnet 5.5`, `Claude Opus 5.5`, `claude*`)** | `DESCARTADO` | Excluidos del flujo principal de traducción y del enrutamiento automático (`ModelRouter` y `OpenAIProjectSecurityProfile` bloquean cualquier identificador `claude*`). |
@@ -65,7 +66,7 @@ Clasificación canónica aplicada:
 | Ocurrencias traducibles totales identificadas (Corte C) | `328.485` | `0` traducidas (`PENDIENTE` de inicio en Fase 10.3) |
 | Cadenas únicas netas pendientes de traducir (Corte C base) | `240.244` | `0` traducidas (`PENDIENTE`) |
 | Cadenas únicas adicionales en archivos JSON narrativos (Subgrupo 4A) | `~440` | Parser y exportador `COMPLETADO` (`F9-02`/`F9-03`); `0` traducidas aún |
-| **Total estimado de cadenas únicas traducibles (Corte C + Subgrupo 4A)** | **`~240.684`** | **`0,00 %` traducido (ninguna traducción real ejecutada aún)** |
+| **Total estimado de cadenas únicas traducibles (Corte C + Subgrupo 4A)** | **`~240.684`** | **Producción: `0,00 %` promovido. Pilotos aislados 10.3-B/10.3-C documentados; sus cifras no alteran el estado del corpus productivo.** |
 | Cadenas con codificación corrupta identificadas en `3DNPC.esp` | `38` | Normalización focalizada implementada en código (`F9-04`: `normalize_targeted_plugin_encoding`) |
 | Scripts `.pex` ganadores dentro de `.bsa` (corte Fase 9) | `38.406` (`25.365` de mods; `3.090` con texto visible = `14.036` ocurrencias) | El escaneo productivo del código ahora solo omite los `.pex` en `.bsa` de `STOCK GAME (Data)` (`F9-01`) |
 | Formatos con extracción + exportación no destructiva en código | 9 familias | `DSD JSON`, `.STRINGS/.DLSTRINGS/.ILSTRINGS`, `MCM .txt`, `MCM Helper JSON`, `.pex`, `INI_LOC`, `XML` selectivo, `JSON_OTHER` (4A). Verificados con datos sintéticos |
@@ -133,5 +134,6 @@ Preparado en modo 100 % offline (`mode=ro&immutable=1`) sobre `workspace_data/no
 
 ## 5. Próxima puerta de aprobación
 
-- **Siguiente paso:** **Fase 10.3-B — Ejecución real controlada del lote preparado `batch_pilot_10_3a_001` (`25` cadenas reales `5×5`) con `gpt-6-luna`**, operando exclusivamente sobre la copia SQLite aislada `pilot_10_3a_work_db.sqlite3` y con tope duro en `BudgetController` de **`max_job_budget_usd = $0.05 USD`** (reserva estimada con margen `+15 %`: **`$0.001493 USD`**).
-- **Requisito para avanzar:** Autorización expresa del usuario aprobando el presupuesto del piloto y la apertura controlada de la llamada `/v1/responses` a `gpt-6-luna`.
+- **Siguiente paso:** **Fase 10.3-D — Remediar los dos hallazgos del lote de scripts y revisar traducciones candidatas** en staging aislado, conservando evidencia y sin reejecutar los lotes ya aprobados.
+- **Requisitos técnicos:** reconciliar `Elder Scroll` con su contexto y validación; proteger `HeelsFix Refresh` sin impedir traducir la descripción; mantener aceptación atómica hasta analizar dependencias; revisar manualmente las candidatas por contexto, registro y legibilidad.
+- **Puerta facturable:** cualquier nueva solicitud requiere reserva presupuestaria y autorización expresa. Antes de ampliar, reprueba dirigida de hasta 25 cadenas del dominio de scripts; la producción continúa no autorizada.

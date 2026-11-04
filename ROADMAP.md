@@ -1,10 +1,10 @@
 # Hoja de ruta (`ROADMAP.md`) — Trabajo futuro y puertas pendientes
 
 **Proyecto:** Nolvus AI Translator (ES-419)  
-**Última actualización:** 2026-11-03  
+**Última actualización:** 2026-11-04  
 **Estado vigente:** ver [PROJECT_STATUS.md](./PROJECT_STATUS.md) · **Historial ejecutado:** ver [CHANGELOG.md](./CHANGELOG.md) · **Decisiones:** ver [DECISIONS.md](./DECISIONS.md)
 
-> Este documento contiene **solo trabajo futuro**. Las fases 0 a 10.3-A y la remediación preflight offline 10.3-B (incluidas la implementación de la infraestructura OpenAI API-First, la preparación offline completa del primer piloto de 25 cadenas reales y las 10 pruebas obligatorias con **58/58 pruebas en verde**) ya están completadas y se registran en `CHANGELOG.md`. Nada de lo descrito aquí está autorizado para generar gasto real hasta que el usuario lo apruebe expresamente fase por fase.
+> Este documento contiene **solo trabajo futuro**. La ejecución 10.3-B de 25 cadenas y el piloto 10.3-C de 125 cadenas ya ocurrieron y están registrados en `CHANGELOG.md` y sus informes. El piloto 10.3-C tuvo aceptación parcial: 100 cadenas importadas en staging, 23 candidatas retenidas por atomicidad y 2 en cuarentena. Nada de lo siguiente autoriza gasto real ni cambios en producción; cada ejecución facturable requiere aprobación expresa.
 
 ---
 
@@ -12,16 +12,27 @@
 
 | Fase | Alcance | Estado | Condición de salida |
 |---|---|---|---|
-| **10.3-B** | **Ejecución real controlada del primer piloto con `gpt-6-luna`** (lote `batch_pilot_10_3a_001` de 25 cadenas reales `5×5` ya preparado en staging local sobre `pilot_10_3a_work_db.sqlite3`, coste máximo con margen `+15 %`: **`$0.001493 USD`**) | `PENDIENTE` (requiere autorización presupuestaria explícita) | 100 % de los 25 UIDs reconciliados, tasa de aceptación a primera pasada del `LocalGatekeeper` medida empíricamente, reconciliación exacta de `BudgetController` dentro del tope autorizado (`$0.05 USD`) y `0` defectos estructurales aceptados. |
-| **10.3-C** | **Ampliación opcional del piloto a 100 cadenas (`4 × 25`) con `gpt-6-luna`** | `PENDIENTE` | Confirmación de estabilidad estadística de calidad ES-419 y consumo en 4 lotes consecutivos bajo el mismo tope de `$0.05 USD`. |
-| **10.4** | **Evaluación de escalamiento selectivo a `gpt-6.1-sol` y prueba de Batch API (`/v1/batches`)** | `PENDIENTE` | Validación empírica de `OpenAIBatchCoordinator` en lote real asíncrono y verificación de las reglas de escalamiento a `gpt-6.1-sol` únicamente sobre ítems en cuarentena tras intentos en `gpt-6-luna`. |
+| **10.3-B** | **Ejecución real controlada de 25 cadenas con `gpt-6-luna`** | `COMPLETADO CON INCIDENCIA` | Dos intentos y su conciliación se documentan en el informe 10.3-B. No se considera puerta de producción. |
+| **10.3-C** | **Piloto transversal real de 125 cadenas (`5 × 25`) con `gpt-6-luna`** | `COMPLETADO CON ACEPTACIÓN PARCIAL` | Cinco solicitudes, 100 importadas en staging, 23 candidatas retenidas por lote atómico, 2 en cuarentena; coste real `$0.011345 USD`. Informe 10.3-C. |
+| **10.3-D** | **Remediación dirigida y reprueba de scripts** | `PENDIENTE` | Confirmar la regla de `Elder Scroll`; preservar en staging el texto exacto de respuestas rechazadas para auditoría; proteger nombres de mods como `HeelsFix Refresh`; revisar importación sin relajar atomicidad antes del análisis de dependencias; repetir solo las dos cadenas en cuarentena y revisar las 23 candidatas. |
+| **10.4** | **Evaluación de escalamiento selectivo a `gpt-6.1-sol` y prueba de Batch API (`/v1/batches`)** | `PENDIENTE` | Validación empírica de `OpenAIBatchCoordinator` en lote real asíncrono y verificación de reglas de escalamiento solo bajo autorización y condiciones comprobables. |
 | **10.5** | **Piloto de un mod completo representativo (~1.100–1.500 cadenas)** | `PENDIENTE` | Coherencia terminológica ES-419, reutilización TM, propagación de duplicados, control presupuestario y exportación MO2 no destructiva verificada en perfil clonado de prueba. |
 | **10.6** | **Recálculo económico empírico del corpus completo (~240.684 cadenas únicas) y puerta de aprobación de Producción** | `PENDIENTE` | Proyección definitiva de costos (`gpt-6-luna` Batch/Standard + tasa real medida de escalamiento a `gpt-6.1-sol`) documentada en `DECISIONS.md` y aprobación expresa de presupuesto productivo. |
 | **Producción** | **Traducción global por oleadas y empaquetado del mod MO2 final** | `PENDIENTE` (no autorizada) | Requiere superar 10.3-B–10.6 y autorización expresa por oleada con presupuesto duro en `BudgetController`. |
 
 ---
 
-## 10.3-B — Ejecución real del lote preparado `batch_pilot_10_3a_001` (`25` cadenas reales) con `gpt-6-luna`
+## 10.3-D — Remediación dirigida posterior al piloto de 125 cadenas
+
+- Revisar por qué el Gatekeeper marcó dos respuestas por la regla de `Elder Scroll` (`Pergamino Antiguo`). El texto exacto rechazado no está en el artefacto reconstruido; ajustar la retención local de evidencia de cuarentena y no desactivar el Gatekeeper.
+- Proteger nombres de mods y marcas en el texto de origen, empezando por `HeelsFix Refresh`, conservando intactos únicamente los nombres y dejando traducible el resto del mensaje.
+- Evaluar importación por elemento solo tras confirmar que no rompe coherencia entre cadenas relacionadas. Hasta entonces, conservar la aceptación atómica y usar reintentos dirigidos en micro-lotes.
+- Revisar la muestra por registro, intención, fluidez ES-419, consistencia del glosario y restricciones reales de interfaz. Las alertas de expansión requieren juicio contextual.
+- Reutilizar las 23 candidatas retenidas tras revisión y preparar una reprueba solo de las dos cadenas en cuarentena, con presupuesto autorizado. No repetir el lote completo de 125 si no hace falta.
+
+## Fases históricas completadas
+
+### 10.3-B — Piloto real de 25 cadenas
 
 **Estado previo ya completado en Fase 10.3-A ([PHASE10_3A_OFFLINE_PILOT_PREPARATION_REPORT.md](./Fase10_Antigravity_Architecture/PHASE10_3A_OFFLINE_PILOT_PREPARATION_REPORT.md)) y remediación preflight ([PHASE10_3B_PREFLIGHT_REMEDIATION_REPORT.md](./Fase10_Antigravity_Architecture/PHASE10_3B_PREFLIGHT_REMEDIATION_REPORT.md)):**
 - Copia SQLite aislada lista (`isolated_dbs/pilot_10_3a_work_db.sqlite3`, `25` cadenas `unprocessed`, `1.538` caracteres de origen, `108` términos de glosario ES-419, `0` entradas TM).
@@ -35,7 +46,7 @@
 3. Operar exclusivamente sobre `pilot_10_3a_work_db.sqlite3`, `pilot_10_3a_exchange_store.sqlite3` y `pilot_10_3a_budget_store.sqlite3` (nunca `workspace_data/nolvus_translator.db`).
 4. Mantener `allow_sol_escalation = False` durante toda la Fase 10.3-B para medir la tasa pura de aceptación a primera pasada de `gpt-6-luna` frente al `LocalGatekeeper` de 12 puertas.
 
-## 10.4 — Validación de Batch API y escalamiento selectivo a `gpt-6.1-sol`
+### 10.4 — Validación de Batch API y escalamiento selectivo a `gpt-6.1-sol`
 
 - Ejecutar un lote de prueba a través de `OpenAIBatchCoordinator` (`/v1/files` + `/v1/batches`) con `gpt-6-luna` para medir tiempos reales de cola asíncrona y verificar el descuento del 50 % en reconciliación post-respuesta.
 - Si del piloto 10.3 resultan cadenas en cuarentena tras agotar reintentos en `gpt-6-luna` (`LUNA_MAX_RETRIES_EXHAUSTED`), evaluar con autorización expresa el escalamiento puntual a `gpt-6.1-sol`.

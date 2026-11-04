@@ -12,11 +12,13 @@ Documentación del proyecto para localizar **Nolvus Awakening 6.0.21** al españ
 | [DECISIONS.md](./DECISIONS.md) | Decisiones técnicas y operativas vigentes e históricas, con fecha y motivo. |
 | [DOCUMENTATION_POLICY.md](./DOCUMENTATION_POLICY.md) | Reglas de mantenimiento documental. |
 
-**Estado en una línea (2026-11-03):** Fases 0–10.3-A y remediación preflight offline 10.3-B completadas; infraestructura **OpenAI API-First** (`GPT-6 Luna` principal, `GPT-6.1 Sol` escalamiento selectivo, `Antigravity Argon` complementario, `BudgetController`, `RealHttpOpenAITransport` y `OpenAIBatchCoordinator`) y **preparación offline del primer piloto real de 25 cadenas (`5 × 5`) para `gpt-6-luna`** implementadas y verificadas con **58/58 pruebas en verde** en la rama `feat/phase10-2-openai-api-first` (`HEAD` en `10795fb`); candado de gasto activo (`PHASE_1_PAID_API_LOCK = True`, `$0.00 USD` gastados, `0` cadenas traducidas); la siguiente puerta es la **Fase 10.3-B (ejecución real del lote preparado `batch_pilot_10_3a_001` con `gpt-6-luna`, coste máximo con margen `+15 %`: `$0.001493 USD`)**, pendiente de autorización presupuestaria expresa y configuración de `NOLVUS_OPENAI_API_KEY` y `NOLVUS_OPENAI_PROJECT_ID`.
+**Estado en una línea (2026-11-04):** Fase 10.3-C ejecutó cinco lotes reales de 25 cadenas (`gpt-6-luna`): 100 se aprobaron e importaron al staging aislado, 23 candidatas válidas quedaron retenidas por la cuarentena atómica de dos incidencias del glosario y el coste medido fue `$0.011345 USD`; la producción sigue bloqueada. La puerta siguiente es la remediación dirigida del lote de scripts, protección de nombres propios y revisión lingüística, no una ampliación masiva.
 
 ## Evidencia por fase (informes históricos preservados)
 
 ### Fase 10.3 — Preparación Offline (10.3-A), Auditoría Preflight y Remediación Offline (10.3-B)
+- [Informe del piloto transversal real de 125 cadenas — Fase 10.3-C (resultado parcial, consumo medido, hallazgos y próxima puerta)](./Fase10_Antigravity_Architecture/PHASE10_3C_LIVE_PILOT_125_REPORT.md)
+- [Informe del piloto real de 25 cadenas — Fase 10.3-B (ejecución y remediación)](./Fase10_Antigravity_Architecture/PHASE10_3B_LIVE_PILOT_EXECUTION_REPORT.md)
 - [Informe de remediación pre-piloto offline Fase 10.3-B (resolución de discrepancias `D-CRED-01..03`, `D-BUD-01`, `D-DOC-01`, `D-ISO-01..02` y 10 pruebas obligatorias)](./Fase10_Antigravity_Architecture/PHASE10_3B_PREFLIGHT_REMEDIATION_REPORT.md)
 - [Auditoría preflight de solo lectura para Fase 10.3-B (credenciales, modelo, candado API, presupuesto, aislamiento y discrepancias)](./Fase10_Antigravity_Architecture/PHASE10_3B_READONLY_PREFLIGHT_AUDIT_REPORT.md)
 - [Informe técnico de preparación offline Fase 10.3-A (25 cadenas reales 5×5, bóveda de 37 placeholders, payload `/v1/responses` y verificación de Gatekeeper)](./Fase10_Antigravity_Architecture/PHASE10_3A_OFFLINE_PILOT_PREPARATION_REPORT.md)

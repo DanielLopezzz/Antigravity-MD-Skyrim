@@ -6,6 +6,20 @@
 
 ---
 
+## [2026-11-04] — Fase 10.3-C: Piloto transversal de 125 cadenas — aceptación parcial
+
+- **Fase / Subtarea:** Ejecución real de cinco lotes de 25 cadenas con `gpt-6-luna`, más revisión lingüística transversal de los candidatos.
+- **Qué se hizo y resultado medido:**
+  - Se enviaron `5` solicitudes reales, sin reintentos, para `125` cadenas. Cuatro lotes (100 cadenas) superaron Gatekeeper y se importaron al staging aislado.
+  - El lote de scripts recibió 25 traducciones; 23 pasaron validación individual y 2 generaron diagnóstico de incumplimiento del glosario para `Elder Scroll` (`Pergamino Antiguo`). Por la aceptación atómica, las 25 quedaron sin importar: 23 candidatas conservadas y 2 en cuarentena. El artefacto reconstruido no retuvo el texto exacto de las dos traducciones rechazadas.
+  - Tokens medidos: `24.890` entrada + `17.712` salida = `42.602`. Coste conciliado de esta ejecución: **`US$0.01134500`**, frente a reserva planificada de `US$0.01833539` y tope del trabajo de `US$0.05`.
+  - El reporte registra API lock restaurado y base productiva intacta. No se hicieron reintentos ni nuevas solicitudes tras la cuarentena.
+  - El análisis transversal identificó un nombre de mod traducido (`HeelsFix Refresh`) y una forma extensa para revisar (`Nightingale Armor Full Set` → `Conjunto completo de armadura de Ruiseñor`). Esas alertas requieren revisión contextual; no equivalen por sí mismas a errores confirmados.
+- **Informe:** [PHASE10_3C_LIVE_PILOT_125_REPORT.md](./Fase10_Antigravity_Architecture/PHASE10_3C_LIVE_PILOT_125_REPORT.md).
+- **Estado:** `COMPLETADO CON ACEPTACIÓN PARCIAL`; producción no autorizada.
+
+---
+
 ## [2026-11-03] — Fase Correctiva Pre-Piloto Offline 10.3-B (`D-CRED-01..03`, `D-BUD-01`, `D-DOC-01`, `D-ISO-01..02` · Commit `10795fb`)
 
 - **Fase / Subtarea:** Fase Correctiva Offline basada en `PHASE10_3B_READONLY_PREFLIGHT_AUDIT_REPORT.md` — Resolución de todas las discrepancias bloqueantes y documentales previas a la autorización de la primera solicitud real a OpenAI.
