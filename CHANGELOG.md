@@ -6,6 +6,15 @@
 
 ---
 
+## [2026-11-04] — Auditoría integral de código complementaria posterior a 10.3-C
+
+- **Alcance:** revisión estática de 65 módulos Python propios, flujos de escaneo, parsers, glosario, TM, contexto, proveedores, presupuesto, staging, Gatekeeper, GUI y exportación. No se escaneó una instalación real ni se lanzaron pilotos.
+- **Ajustes locales:** validación de rutas protegidas antes de crear/escribir; protección del `term_id` y de todos los campos de términos aprobados; preservación en la GUI de metadatos del glosario no expuestos; validación de rutas del empaquetador; rechazo de tablas STRINGS/DLSTRINGS/ILSTRINGS truncadas.
+- **Evaluación:** el sistema es apto para staging offline y pilotos pequeños supervisados, pero no está demostrado para procesar y exportar como aprobadas las ~240.684 cadenas. Persisten riesgos semánticos, de contexto, identidad TM, memoria de parsers y escala; el detalle y prioridades están en el [informe integral](./Fase10_1_Code_Audit/Audit_20261104_Integral_Post_Pilot/INFORME_AUDITORIA_INTEGRAL.md).
+- **Pruebas:** línea base `63/63 OK`; suite posterior `69/69 OK` en `11.752s`; `0` llamadas a proveedores y `0` créditos consumidos.
+- **Aislamiento:** candado `PHASE_1_PAID_API_LOCK=True`; DB principal sin cambios de tamaño/mtime; no se ejecutaron runners contra las DB de staging ni se alteraron sus resultados.
+- **Estado de código:** rama `feat/phase10-2-openai-api-first`, base observada `066ae03`; trabajo ya modificado antes de iniciar y ajustes de esta auditoría permanecen locales, sin commit ni push. No se cambiaron archivos fuente en este repositorio documental.
+
 ## [2026-11-04] — Fase 10.3-C: Piloto transversal de 125 cadenas — aceptación parcial
 
 - **Fase / Subtarea:** Ejecución real de cinco lotes de 25 cadenas con `gpt-6-luna`, más revisión lingüística transversal de los candidatos.

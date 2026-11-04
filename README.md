@@ -16,6 +16,9 @@ Documentación del proyecto para localizar **Nolvus Awakening 6.0.21** al españ
 
 ## Evidencia por fase (informes históricos preservados)
 
+### Auditoría integral complementaria posterior a 10.3-C (2026-11-04)
+- [Informe integral de arquitectura, código, glosario, lingüística ES-419, infraestructura y recomendaciones](./Fase10_1_Code_Audit/Audit_20261104_Integral_Post_Pilot/INFORME_AUDITORIA_INTEGRAL.md) · [Inventario de módulos revisados](./Fase10_1_Code_Audit/Audit_20261104_Integral_Post_Pilot/INVENTARIO_MODULOS.md)
+
 ### Fase 10.3 — Preparación Offline (10.3-A), Auditoría Preflight y Remediación Offline (10.3-B)
 - [Informe del piloto transversal real de 125 cadenas — Fase 10.3-C (resultado parcial, consumo medido, hallazgos y próxima puerta)](./Fase10_Antigravity_Architecture/PHASE10_3C_LIVE_PILOT_125_REPORT.md)
 - [Informe del piloto real de 25 cadenas — Fase 10.3-B (ejecución y remediación)](./Fase10_Antigravity_Architecture/PHASE10_3B_LIVE_PILOT_EXECUTION_REPORT.md)

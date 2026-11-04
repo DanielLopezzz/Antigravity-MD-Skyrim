@@ -59,6 +59,17 @@
 
 - Con las métricas reales de tokens consumidos, tasa de aprobación a primera pasada en `gpt-6-luna` y porcentaje real de escalamiento a `gpt-6.1-sol`, actualizar la proyección económica total para las `~240.684` cadenas únicas antes de solicitar autorización para la traducción masiva por oleadas.
 
+## Recomendaciones técnicas antes de ampliar el piloto
+
+La auditoría integral del 2026-11-04 confirmó que la suite local pasa, pero la escala completa y la calidad semántica no están demostradas. Antes de un piloto de un mod completo, planificar y validar por separado:
+
+- **P1 — Aprobación lingüística:** separar validez estructural, verificación terminológica, revisión humana y exportabilidad; no tratar puntuaciones mecánicas como evidencia de fidelidad narrativa.
+- **P1 — Contexto y memoria de traducción:** versionar el contrato para pasar contexto narrativo útil y corregir la identidad TM para distinguir espacios/contextos sin sobrescribir de forma retroactiva los datos existentes.
+- **P1 — Parsers y escala:** definir límites de descompresión/entrada, y medir duración y memoria con una copia sintética representativa de 240.684 cadenas.
+- **P2 — Integridad y operación:** versionar huellas de archivo, mejorar búsquedas paginadas y hacer atómico el reemplazo de exportaciones.
+
+El alcance, alternativas, beneficios, riesgos y pruebas de salida están en el [informe integral de auditoría](./Fase10_1_Code_Audit/Audit_20261104_Integral_Post_Pilot/INFORME_AUDITORIA_INTEGRAL.md). Estas tareas no habilitan llamadas facturables ni escrituras de producción.
+
 ---
 
 ## Invariantes de seguridad (aplican a todas las fases)
