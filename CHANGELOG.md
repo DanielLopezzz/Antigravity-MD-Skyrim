@@ -6,6 +6,31 @@
 
 ---
 
+## [2026-11-03] — Fase Correctiva Pre-Piloto Offline 10.3-B (`D-CRED-01..03`, `D-BUD-01`, `D-DOC-01`, `D-ISO-01..02` · Commit `10795fb`)
+
+- **Fase / Subtarea:** Fase Correctiva Offline basada en `PHASE10_3B_READONLY_PREFLIGHT_AUDIT_REPORT.md` — Resolución de todas las discrepancias bloqueantes y documentales previas a la autorización de la primera solicitud real a OpenAI.
+- **Qué se hizo:**
+  1. **`D-CRED-01` — Unificación de credenciales (`openai_credentials.py` + documentación):**
+     - Consolidación de `NOLVUS_OPENAI_API_KEY` y `NOLVUS_OPENAI_PROJECT_ID` (más `NOLVUS_OPENAI_ORG_ID` opcional) como nombres canónicos en código y documentación.
+     - Resolución segura de `NOLVUS_OPENAI_PROJECT_ID` desde variable de entorno, desde `external_credential_file` (formatos JSON estructurado o `.env` `KEY=VALUE`) o desde `OpenAIProjectSecurityProfile.default_project_id`, manteniendo `CredentialRedactor` activo.
+  2. **`D-CRED-02` — Transporte HTTP real (`RealHttpOpenAITransport` en `openai_provider.py`):**
+     - Eliminación del stub `raise ExternalAPIDisabledError("OpenAI Real HTTP Transport")` post-candado e implementación completa de `send_request()` exclusivamente hacia `POST https://api.openai.com/v1/responses`, exigiendo `assert_billable_execution_authorized()`, `assert_translation_only_payload()` (`tools=[]`, `tool_choice="none"`, `store=False`), restricción de modelo `allowed_model_id="gpt-6-luna"` y `SecureCredentialLoader.load_for_authorized_billable_call(...)`, con `urlopen_fn` inyectable para pruebas 100 % offline.
+  3. **`D-CRED-03` — Orden de autorización y reserva (`BaseOpenAIModelAdapter.execute_batch` en `openai_provider.py`):**
+     - Creación de la reserva atómica `reservation = self.budget.reserve_budget(...)` antes de exigir `active_reservation` en `assert_billable_execution_authorized(...)`, transmisión de `active_reservation=reservation` a `self.transport.send_request(...)`, marcación `mark_reservation_sent()` solo tras superar las validaciones previas al envío y liberación automática mediante `release_unexecuted_reservation()` ante cualquier error previo al envío (`0` reservas huérfanas).
+  4. **`D-BUD-01` — Inicialización del presupuesto en el almacén aislado (`pilot_offline_staging.py`):**
+     - Invocación explícita de `budget_controller.initialize_project_and_job_budget(job_id="job_pilot_10_3a_luna25")` en `pilot_10_3a_budget_store.sqlite3` (`budget_projects = $0.25 USD ACTIVE`, `budget_jobs = $0.05 USD ACTIVE`, `reserved_usd = 0.0`, `consumed_usd = 0.0`), sin modificar `workspace_data/config.json` ni `workspace_data/nolvus_translator.db`.
+  5. **`D-DOC-01`, `D-ISO-01` y `D-ISO-02` — Unificación documental y de hash de manifiesto:**
+     - Eliminación de la referencia inexistente a `temperature` en `PHASE10_3A_OFFLINE_PILOT_PREPARATION_REPORT.md` (`D-DOC-01`), actualización del recuento de glosario sembrado a `108` términos (`D-ISO-01`) y unificación de `manifest_sha256` en `openai_provider.py` usando `serialize_manifest_bytes(manifest)` (`f036d564398542aca64bc66b7dcffd0a606d758cf3df9dc717cf6129a284a4e7` idéntico en SQLite y disco, `D-ISO-02`).
+- **Archivos afectados (repositorio de código):**
+  - `src/nolvus_translator/translation/openai_credentials.py`
+  - `src/nolvus_translator/translation/openai_provider.py`
+  - `src/nolvus_translator/translation/pilot_offline_staging.py`
+  - `tests/test_pilot_offline_staging.py`
+- **Pruebas ejecutadas:** `python -m unittest discover -s tests -t . -v` (**58/58 pruebas en verde en `13.618s`**, incluyendo las 10 pruebas obligatorias de remediación preflight; `0` llamadas HTTP reales, `$0.00 USD` consumidos).
+- **Resultado:** `COMPLETADO`.
+
+---
+
 ## [2026-11-03] — Fase 10.3-A: Preparación Offline del Primer Piloto `gpt-6-luna` de 25 cadenas reales (Commit `d2b75a5`)
 
 - **Fase / Subtarea:** Fase 10.3-A — Preparación técnica 100 % offline del primer lote piloto real de 25 cadenas (`5 × 5`) del corpus de Nolvus Awakening 6.0.21 para `gpt-6-luna` (`REQUEST_CONSTRUCTION`).

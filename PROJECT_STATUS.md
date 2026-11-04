@@ -3,12 +3,12 @@
 **Proyecto:** Nolvus AI Translator  
 **Objetivo:** Traducción propia de Nolvus Awakening 6.0.21 al español latinoamericano neutro (`ES-419`)  
 **Última actualización:** 2026-11-03  
-**Fase actual:** **Fase 10.3-A (Preparación Offline del Primer Piloto `gpt-6-luna` de 25 cadenas reales) completada** — Listo para puerta de autorización de **Fase 10.3-B (Ejecución real controlada del lote `batch_pilot_10_3a_001` con `gpt-6-luna`)**  
+**Fase actual:** **Fase 10.3-A + Remediación Pre-Piloto Offline 10.3-B completadas (`58/58` pruebas en verde)** — Listo para puerta de autorización de **Fase 10.3-B (Ejecución real controlada del lote `batch_pilot_10_3a_001` con `gpt-6-luna`)**  
 **Estrategia de proveedores vigente:** **API-First** (`gpt-6-luna` principal, `gpt-6.1-sol` escalamiento selectivo por regla verificable, `gemini-4-argon` vía complemento de intercambio de archivos; `Claude` excluido)  
-**Rama activa (repositorio de código):** `feat/phase10-2-openai-api-first` (`HEAD` en `d2b75a5`; rama previa `feat/phase10-1b-antigravity-exchange` en `0b4ff8d`; rama base `master` en `fdea297`)  
-**Estado de suite de pruebas:** **49/49 métodos de prueba en verde (`OK` en `5.682s`)**  
+**Rama activa (repositorio de código):** `feat/phase10-2-openai-api-first` (`HEAD` en `10795fb`; rama previa `feat/phase10-1b-antigravity-exchange` en `0b4ff8d`; rama base `master` en `fdea297`)  
+**Estado de suite de pruebas:** **58/58 métodos de prueba en verde (`OK` en `13.618s`)**  
 **Candado de API de pago:** `PHASE_1_PAID_API_LOCK = True` (activo; `0` llamadas HTTP reales ejecutadas; `$0.00 USD` consumidos; `$0.00 USD` reservados)  
-**Traducciones reales ejecutadas sobre corpus de Nolvus:** **`0` cadenas** (`25` cadenas reales preparadas en staging local aislado `NolvusAIT_PilotStaging/Phase10_3A_Luna25/`, pendientes de autorización económica explícita para la Fase 10.3-B)
+**Traducciones reales ejecutadas sobre corpus de Nolvus:** **`0` cadenas** (`25` cadenas reales preparadas en staging local aislado `NolvusAIT_PilotStaging/Phase10_3A_Luna25/`, con presupuesto de trabajo `$0.05 USD` y proyecto `$0.25 USD` inicializados en `pilot_10_3a_budget_store.sqlite3`, pendientes de autorización explícita para la Fase 10.3-B)
 
 ---
 
@@ -41,14 +41,14 @@ Clasificación canónica aplicada:
 | 12 | **Auditoría estática del código y reconciliación** | Fase 10.1-A | `COMPLETADO` | Auditoría de los 57 archivos base (`PHASE10_1_CODE_AUDIT_REPORT.md`) y reconciliación (`AUDIT_10_1A_RECONCILIATION.md`) completadas. |
 | 13 | **Especificación técnica de Fase 10.1-B** | Fase 10.1-B | `COMPLETADO` | Especificación de contratos, aislamiento, bóveda, Gatekeeper de 12 puertas, recuperación y CLI publicada en `PHASE10_1B_IMPLEMENTATION_SPEC.md`. |
 | 14 | **Infraestructura de intercambio Antigravity y Gatekeeper de 12 puertas** (`exchange_contract.py`, `exchange_store.py`, `gatekeeper.py`, `exchange_service.py`, `cli.py`) | Fase 10.1-B.1 | `COMPLETADO` | Implementado y consolidado (commits `8ff5bf7`, `844aa1b`, `0b4ff8d`). Conservado íntegro como núcleo de validación local (`LocalGatekeeper`) para las respuestas de OpenAI y como ruta complementaria de intercambio con `Antigravity Argon`. |
-| 15 | **Infraestructura OpenAI API-First, Coordinador Batch y Control Presupuestario Local** (`openai_provider.py`, `openai_batch_coordinator.py`, `budget_control.py`, `model_router.py`, `openai_credentials.py`, `pilot_estimator.py`) | Fase 10.2 | `COMPLETADO` | Implementado en la rama `feat/phase10-2-openai-api-first` (commit `2766b73`). Incluye `GPT6LunaAdapter`, `GPT61SolAdapter`, `OpenAIBatchCoordinator`, `BudgetController` con reserva atómica SQLite (`BEGIN IMMEDIATE` + margen `1.15x` sobre tarifa Standard), `ModelRouter`, aislamiento `tools=[]`/`tool_choice="none"` y 21 pruebas automatizadas. Permanece con candado `PHASE_1_PAID_API_LOCK = True` hasta autorización presupuestaria. |
-| 16 | **Preparación Offline del Primer Piloto `gpt-6-luna` (25 cadenas reales 5×5)** (`pilot_offline_staging.py`, `test_pilot_offline_staging.py`) | Fase 10.3-A | `COMPLETADO` | Implementado y ejecutado en modo 100 % offline (commit `d2b75a5`, **49/49 pruebas en verde**). Extrae 25 cadenas reales (`5 × 5`, `1.538` caracteres de origen / `1.384` enmascarados), protege `37` placeholders en bóveda local (`PlaceholderVault`), inyecta el subconjunto del Glosario Maestro ES-419, construye el payload `/v1/responses` (`batch_batch_pilot_10_3a_001_openai_responses_request.json`, `max_output_tokens = 2198`, coste máximo Standard con `+15 %`: **`$0.001493 USD`**) y verifica en clon efímero el paso obligatorio por `LocalGatekeeper`. |
+| 15 | **Infraestructura OpenAI API-First, Coordinador Batch y Control Presupuestario Local** (`openai_provider.py`, `openai_batch_coordinator.py`, `budget_control.py`, `model_router.py`, `openai_credentials.py`, `pilot_estimator.py`) | Fase 10.2 y Remediación Preflight 10.3-B | `COMPLETADO` | Implementado en la rama `feat/phase10-2-openai-api-first`. Incluye `GPT6LunaAdapter`, `GPT61SolAdapter`, `RealHttpOpenAITransport` (restringido a `POST https://api.openai.com/v1/responses` y `gpt-6-luna`), `OpenAIBatchCoordinator`, `BudgetController` con reserva atómica SQLite (`BEGIN IMMEDIATE` + margen `1.15x` sobre tarifa Standard), `ModelRouter`, aislamiento `tools=[]`/`tool_choice="none"`, resolución canónica de `NOLVUS_OPENAI_API_KEY` y `NOLVUS_OPENAI_PROJECT_ID` y liberación automática de reservas ante cualquier error previo al envío. Permanece con candado `PHASE_1_PAID_API_LOCK = True` hasta autorización expresa. |
+| 16 | **Preparación Offline del Primer Piloto `gpt-6-luna` (25 cadenas reales 5×5) y Remediación Pre-Piloto** (`pilot_offline_staging.py`, `test_pilot_offline_staging.py`) | Fase 10.3-A / 10.3-B Preflight | `COMPLETADO` | Implementado y verificado en modo 100 % offline (**58/58 pruebas en verde**). Extrae 25 cadenas reales (`5 × 5`, `1.538` caracteres de origen / `1.384` enmascarados), protege `37` placeholders en bóveda local (`PlaceholderVault`), siembra los `108` términos del Glosario Maestro ES-419, construye el payload `/v1/responses` (`batch_batch_pilot_10_3a_001_openai_responses_request.json`, `max_output_tokens = 2198`, coste máximo Standard con `+15 %`: **`$0.001493 USD`**), inicializa los presupuestos de proyecto (`$0.25 USD`) y trabajo (`$0.05 USD`) en `pilot_10_3a_budget_store.sqlite3` y verifica en clon efímero el paso obligatorio por `LocalGatekeeper`. |
 
 ### 1.2 Elementos bloqueados, complementarios, aplazados o descartados por política
 
 | Elemento | Estado oficial | Motivo |
 |---|---|---|
-| **Ejecución real con gasto en OpenAI API (`gpt-6-luna`, `gpt-6.1-sol`)** | `BLOQUEADO` (listo para activación autorizada) | Toda la infraestructura está implementada y probada (`48/48 OK`), pero el candado cuádruple (`PHASE_1_PAID_API_LOCK = True`, presupuesto configurado, etapa `BILLABLE_OPENAI_EXECUTION` y autorización explícita) impide llamadas reales hasta que el usuario apruebe el presupuesto del primer piloto. |
+| **Ejecución real con gasto en OpenAI API (`gpt-6-luna`, `gpt-6.1-sol`)** | `BLOQUEADO` (listo para activación autorizada) | Toda la infraestructura y las correcciones pre-piloto (`D-CRED-01..03`, `D-BUD-01`, `D-ISO-01..02`) están implementadas y probadas (`58/58 OK`), pero el candado (`PHASE_1_PAID_API_LOCK = True`, etapa `BILLABLE_REAL_EXECUTION`, autorización explícita, reserva activa y credenciales `NOLVUS_OPENAI_API_KEY` + `NOLVUS_OPENAI_PROJECT_ID`) impide llamadas reales hasta que el usuario autorice la ejecución de la Fase 10.3-B. |
 | **Escalamiento a `GPT-6.1 Sol` (`gpt-6.1-sol`)** | `BLOQUEADO` por defecto (`allow_sol_escalation=False`) | Solo interviene cuando una regla verificable (`EscalationRuleCode`) lo justifica y el usuario habilita explícitamente el escalamiento. Prohibido usar Sol como fallback ante errores técnicos/HTTP de Luna. |
 | **Ruta `Antigravity Argon` (`gemini-4-argon`)** | `COMPLEMENTARIO` | Conservada como ruta complementaria y alternativa mediante el intercambio supervisado por archivos (`AntigravityExchangeService`). |
 | **Modelos `Claude` (`Claude Sonnet 5.5`, `Claude Opus 5.5`, `claude*`)** | `DESCARTADO` | Excluidos del flujo principal de traducción y del enrutamiento automático (`ModelRouter` y `OpenAIProjectSecurityProfile` bloquean cualquier identificador `claude*`). |
@@ -85,6 +85,7 @@ Clasificación canónica aplicada:
 | `feat/phase10-2-openai-api-first` | `2766b73` | **Implementación completa de Fase 10.2 (Infraestructura OpenAI API-First):** `budget_control.py`, `openai_credentials.py`, `model_router.py`, `openai_provider.py`, `openai_batch_coordinator.py`, `pilot_estimator.py` y 4 nuevas suites de pruebas (`21` métodos nuevos -> **48/48 en verde**). |
 | `feat/phase10-2-openai-api-first` | `780b643` | Sincronización de los 5 archivos documentales canónicos de la raíz tras la Fase 10.2. |
 | `feat/phase10-2-openai-api-first` | `d2b75a5` | **Implementación y ejecución offline de Fase 10.3-A (Preparación del primer piloto `gpt-6-luna` de 25 cadenas reales):** `pilot_offline_staging.py`, mejora de `protector.py` para llaves vacías `{}` de MCM Helper, mejora de `pilot_estimator.py` y `openai_provider.py`, y suite `test_pilot_offline_staging.py` (**49/49 pruebas en verde**). |
+| `feat/phase10-2-openai-api-first` | `10795fb` | **Remediación offline de las discrepancias preflight (`D-CRED-01..03`, `D-BUD-01`, `D-DOC-01`, `D-ISO-01..02`):** implementación de `RealHttpOpenAITransport` (`POST https://api.openai.com/v1/responses`), corrección del orden de reserva y autorización en `execute_batch()`, inicialización presupuestaria en `pilot_10_3a_budget_store.sqlite3`, unificación de `manifest_sha256` y ampliación de `test_pilot_offline_staging.py` con las 10 pruebas obligatorias (**58/58 pruebas en verde**). |
 
 ### 3.2 Resumen del esquema SQLite real (reconciliado)
 
@@ -93,17 +94,17 @@ Clasificación canónica aplicada:
 2. **Almacén aislado de intercambio y lotes (`src/nolvus_translator/translation/exchange_store.py`):**
    - Opera en un archivo SQLite físicamente separado y define **8 tablas regulares**: `exchange_meta`, `exchange_jobs`, `exchange_batches`, `exchange_items`, `placeholder_vault`, `quarantine_items`, `ingestion_ledger`, `exchange_state_transitions`.
 3. **Almacén de control presupuestario y coordinación Batch (`budget_control.py` + `openai_batch_coordinator.py`):**
-   - `BudgetController` define **3 tablas regulares** (`budget_config`, `budget_jobs`, `budget_reservations`) bajo `BEGIN IMMEDIATE`.
+   - `BudgetController` define **4 tablas regulares** (`budget_projects`, `budget_jobs`, `budget_reservations`, `budget_audit_log`) bajo `BEGIN IMMEDIATE`.
    - `OpenAIBatchCoordinator` define **2 tablas regulares** (`openai_batch_jobs`, `openai_batch_items`) para persistencia y recuperación de trabajos asíncronos `/v1/batches`.
 
-### 3.3 Estado de la suite de pruebas automatizadas (`49/49 OK`)
+### 3.3 Estado de la suite de pruebas automatizadas (`58/58 OK`)
 
-- **Ejecución completa:** `python -m unittest discover -s tests -t . -v` → **`Ran 49 tests in 5.682s — OK`**.
+- **Ejecución completa:** `python -m unittest discover -s tests -t . -v` → **`Ran 58 tests in 13.618s — OK`**.
   - **11 pruebas originales de línea base (`test_end_to_end.py` [2], `test_formats.py` [6], `test_protector_glossary_tm.py` [3]):** `11/11 OK`.
   - **13 pruebas del subsistema de intercambio y Gatekeeper (`test_exchange_contract.py` [3], `test_exchange_store.py` [4], `test_gatekeeper.py` [4], `test_exchange_cli.py` [2]):** `13/13 OK`.
   - **3 pruebas de cobertura Fase 9 y escala sintética (`test_phase9_coverage_and_scale.py` [3]):** `3/3 OK`.
   - **21 pruebas de infraestructura OpenAI API-First, Batch, Presupuesto y Seguridad (`test_openai_budget_control.py` [8], `test_openai_provider_and_router.py` [5], `test_openai_batch_coordinator.py` [3], `test_openai_security_and_isolation.py` [5]):** `21/21 OK` (`0` llamadas de red reales).
-  - **1 prueba integral de preparación offline del piloto de 25 cadenas Fase 10.3-A (`test_pilot_offline_staging.py` [1]):** `1/1 OK` (`0` llamadas de red reales).
+  - **10 pruebas de preparación offline del piloto de 25 cadenas Fase 10.3-A y remediación preflight 10.3-B (`test_pilot_offline_staging.py` [10]):** `10/10 OK` (`0` llamadas de red reales).
 
 ---
 

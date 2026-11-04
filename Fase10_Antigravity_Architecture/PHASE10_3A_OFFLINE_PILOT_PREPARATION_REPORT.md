@@ -22,13 +22,13 @@ Se ha completado y verificado de extremo a extremo la preparación técnica **10
 |---:|---|---|---|
 | 1 | Utilizar **`gpt-6-luna`** como único modelo previsto | **CUMPLIDO** | `model_id = "gpt-6-luna"` en el lote `batch_pilot_10_3a_001` y en el payload `/v1/responses`. `ModelRouter` enrutó las `25/25` cadenas a `openai_luna` (`gpt-6-luna`). |
 | 2 | Mantener **`PHASE_1_PAID_API_LOCK = True`** | **CUMPLIDO** | `paid_api_lock_active = True` verificado en `src/nolvus_translator/core/exceptions.py` y durante toda la ejecución de `prepare_pilot_10_3a_offline()`. |
-| 3 | No cargar ni solicitar **`OPENAI_API_KEY`** | **CUMPLIDO** | `api_key_loaded_or_requested = False`. `OpenAICredentialManager` no se invocó en modo lectura de clave y el proceso se ejecutó con `OPENAI_API_KEY` ausente. |
+| 3 | No cargar ni solicitar **`NOLVUS_OPENAI_API_KEY`** / **`NOLVUS_OPENAI_PROJECT_ID`** | **CUMPLIDO** | `api_key_loaded_or_requested = False`. `SecureCredentialLoader` no se invocó en modo lectura de clave y el proceso se ejecutó sin leer credenciales. |
 | 4 | No realizar solicitudes HTTP (ni reales ni simuladas) | **CUMPLIDO** | `real_http_requests_count = 0`, `simulated_http_requests_count = 0`. La preparación se detuvo exactamente en `stage = "REQUEST_CONSTRUCTION"`. |
 | 5 | No crear trabajos Batch remotos (`/v1/files`, `/v1/batches`) | **CUMPLIDO** | `batch_api_jobs_created = 0`. |
-| 6 | No consumir créditos ni efectuar llamadas facturables | **CUMPLIDO** | `consumed_usd = $0.000000 USD`, `reserved_usd = $0.000000 USD` en `pilot_10_3a_budget_store.sqlite3`. |
+| 6 | No consumir créditos ni efectuar llamadas facturables | **CUMPLIDO** | `consumed_usd = $0.000000 USD`, `reserved_usd = $0.000000 USD` en `pilot_10_3a_budget_store.sqlite3` (`budget_projects` con `$0.25 USD` y `budget_jobs` con `$0.05 USD` inicializados en estado `ACTIVE`). |
 | 7 | No habilitar **`gpt-6.1-sol`** (`GPT-6.1 Sol`) | **CUMPLIDO** | `sol_escalation_enabled = False` (`RoutingPolicy(allow_sol_escalation=False, allow_post_qa_sol_escalation=False)`). |
 | 8 | No modificar la base de datos de producción (`workspace_data/nolvus_translator.db`) | **CUMPLIDO** | Abierta exclusivamente mediante URI SQLite de solo lectura inmutable (`file:...?mode=ro&immutable=1`). Tamaño inalterado (`431.386.624` bytes) y `mtime_ns` idéntico antes y después (`source_db_untouched = True`). |
-| 9 | No modificar el Glosario Maestro ni la TM de producción | **CUMPLIDO** | La semilla del Glosario Maestro (`87` términos ES-419) se sembró únicamente dentro de la copia aislada `pilot_10_3a_work_db.sqlite3`. |
+| 9 | No modificar el Glosario Maestro ni la TM de producción | **CUMPLIDO** | La semilla completa del Glosario Maestro (**`108` términos ES-419** sembrados por `GlossaryManager.ensure_seeded()` desde `seed_data.py`) se sembró únicamente dentro de la copia aislada `pilot_10_3a_work_db.sqlite3`. |
 | 10 | No modificar MO2, Nolvus, `STOCK GAME`, mods ni partidas | **CUMPLIDO** | Todos los artefactos generados residen exclusivamente en el directorio de staging aislado `NolvusAIT_PilotStaging/Phase10_3A_Luna25/`. |
 
 ---
@@ -123,7 +123,7 @@ Durante esta preparación se mejoró expresamente la expresión regular `brace_p
 
 ### 3.2 Subconjunto de Glosario Maestro ES-419 inyectado en el lote
 
-El motor de glosario (`GlossaryManager.find_matching_terms_in_texts`) cruzó las 25 cadenas contra los **87 términos oficiales ES-419** sembrados en la base de trabajo aislada y seleccionó automáticamente el subconjunto exacto aplicable al lote (`3` reglas activas en `5` cadenas):
+El motor de glosario (`GlossaryManager.find_matching_terms_in_texts`) cruzó las 25 cadenas contra los **108 términos oficiales ES-419** sembrados en la base de trabajo aislada (`GlossaryManager.ensure_seeded()` desde `seed_data.py`) y seleccionó automáticamente el subconjunto exacto aplicable al lote (`3` reglas activas en `5` cadenas):
 
 | Término origen (`source_term`) | Traducción aprobada (`approved_translation`) | Regla (`translation_rule`) | `keep_original` | Categoría | Cadenas donde aplica (`seq_id`) |
 |---|---|---|---|---|---|
@@ -135,7 +135,7 @@ El motor de glosario (`GlossaryManager.find_matching_terms_in_texts`) cruzó las
 
 ## 4. Construcción y Verificación del Payload de Responses API en Staging Local
 
-El payload exacto para **OpenAI Responses API (`/v1/responses`)** fue construido en modo offline mediante `GPT6LunaAdapter.build_responses_request()` y serializado en `NolvusAIT_PilotStaging/Phase10_3A_Luna25/staging_payloads/batch_batch_pilot_10_3a_001_openai_responses_request.json` (`SHA-256: aed55a99e06ff44c69c1fadafd5be07e94a1dcb8e0da8b572b7fb7588cea66b5`).
+El payload exacto para **OpenAI Responses API (`/v1/responses`)** fue construido en modo offline mediante `GPT6LunaAdapter.prepare_batch_request()` y serializado en `NolvusAIT_PilotStaging/Phase10_3A_Luna25/staging_payloads/batch_batch_pilot_10_3a_001_openai_responses_request.json` (`SHA-256: aed55a99e06ff44c69c1fadafd5be07e94a1dcb8e0da8b572b7fb7588cea66b5`).
 
 ### 4.1 Propiedades estructurales y de seguridad verificadas sobre el payload
 
@@ -145,10 +145,9 @@ El payload exacto para **OpenAI Responses API (`/v1/responses`)** fue construido
 | `tools` | `[]` (lista vacía) | Cumple la regla «Las API solo traducen»: prohíbe invocación de herramientas, navegación web o ejecución de código. |
 | `tool_choice` | `"none"` | Bloquea cualquier selección implícita de herramientas. |
 | `store` | `False` | Desactiva almacenamiento innecesario del lado del proveedor. |
-| `temperature` | `0.1` | Temperatura determinista baja para preservar etiquetas, marcadores `⟦VAR_n⟧` y consistencia terminológica. |
 | `max_output_tokens` | `2198` | Tope duro físico de salida calculado por `BudgetController.estimate_batch()` para impedir desbordamientos de generación. |
-| `text.format` | `json_schema` (`strict: True`, `name: "nolvus_es419_translation_batch"`) | Obliga al modelo a devolver exclusivamente un objeto JSON válido con `batch_id`, `contract_version` y la lista `items` (`seq_id`, `string_uid`, `translated_text`). |
-| `metadata` | `{"batch_id": "batch_pilot_10_3a_001", "job_id": "job_pilot_10_3a_luna25", "project": "nolvus_ai_translator_es419", "task": "translation_only"}` | Trazabilidad biyectiva del lote sin exponer rutas del sistema ni datos sensibles. |
+| `text.format` | `json_schema` (`strict: True`, `name: "nolvus_es419_translation_batch"`) | Obliga al modelo a devolver exclusivamente un objeto JSON válido con la lista `items` (`seq_id`, `string_uid`, `source_sha256`, `translated_masked_text`, `translator_note`). |
+| `metadata` | `{"job_id": "job_pilot_10_3a_luna25", "batch_id": "batch_pilot_10_3a_001", "model_id": "gpt-6-luna", "idempotency_key": "5f6770fa8528...", "purpose": "translation_only"}` | Trazabilidad biyectiva del lote sin exponer rutas del sistema ni datos sensibles. |
 | `assert_translation_only_payload()` | **APROBADO (`True`)** | Inspección recursiva de todas las cadenas hoja del payload verificando ausencia total de rutas locales (`C:\...`, `STOCK GAME`, `ModOrganizer.ini`, `.db`) y ausencia del mapa de restauración de placeholders. |
 
 ---
@@ -185,7 +184,7 @@ Tarifas de referencia para **`gpt-6-luna`**:
 | Control presupuestario de referencia (todavía no autorizado) | Importe (`USD`) | Estado de verificación |
 |---|---:|---|
 | Presupuesto máximo de referencia por trabajo (`reference_max_job_budget_usd`) | `$0.050000 USD` | `within_reference_job_budget = True` (el techo máximo Standard con `+15 %` de `$0.001493 USD` representa solo el **`2,99 %`** del tope de `$0.05 USD`) |
-| Presupuesto interno de referencia del proyecto (`reference_project_budget_usd`) | `$0.250000 USD` | Reserva actual en base de datos: **`$0.000000 USD`** · Consumido: **`$0.000000 USD`** |
+| Presupuesto interno de referencia del proyecto (`reference_project_budget_usd`) | `$0.250000 USD` | Inicializado en `pilot_10_3a_budget_store.sqlite3` (`ACTIVE`): Reserva actual: **`$0.000000 USD`** · Consumido: **`$0.000000 USD`** |
 
 ---
 
@@ -195,9 +194,9 @@ Todos los artefactos para el futuro piloto quedaron preparados y verificados en 
 
 | Artefacto aislado en `NolvusAIT_PilotStaging/Phase10_3A_Luna25/` | Rol técnico | Integridad SQLite / Formato | Hash `SHA-256` completo |
 |---|---|---|---|
-| `isolated_dbs/pilot_10_3a_work_db.sqlite3` | Copia SQLite de trabajo aislada con `scan_snapshots` (`1`), `scanned_mods` (`8`), `scanned_files` (`9`), `string_entries` (`25` en estado `unprocessed`), `glossary_terms` (`87` términos oficiales ES-419) y `translation_memory` (`0` entradas iniciales). | `PRAGMA integrity_check = ok` | `f6d5baec6f5b83892a2976d3062a08f1c863590e629a024d088d198428fcf00f` |
-| `isolated_dbs/pilot_10_3a_exchange_store.sqlite3` | Almacén SQLite independiente de intercambio (`ExchangeStateStore`) con el trabajo `job_pilot_10_3a_luna25`, el lote `batch_pilot_10_3a_001` en estado `AWAITING_AGENT` y los **25 sobres de bóveda** (`placeholder_vault`) con los `37` placeholders protegidos. | `PRAGMA integrity_check = ok` | `8f1f0010118ef0cd60b97c3e2f1979090218db3b81ea5c3eb6eed71189dc7b90` |
-| `isolated_dbs/pilot_10_3a_budget_store.sqlite3` | Almacén SQLite del `BudgetController` inicializado con los topes de referencia (`$0.05 USD` / `$0.25 USD`), `$0.000000 USD` reservados y `$0.000000 USD` consumidos. | `PRAGMA integrity_check = ok` | `df5210bfd247fe3bb7af2c375329e24d54ca6d656e3fbbc7a96e0e21a03aa36a` |
+| `isolated_dbs/pilot_10_3a_work_db.sqlite3` | Copia SQLite de trabajo aislada con `scan_snapshots` (`1`), `scanned_mods` (`8`), `scanned_files` (`9`), `string_entries` (`25` en estado `unprocessed`), `glossary_terms` (**`108` términos oficiales ES-419**) y `translation_memory` (`0` entradas iniciales). | `PRAGMA integrity_check = ok` | `61806c72105fbe1915d5e64e266882f4c0be6e24008b2cecd937498d6bd439f0` |
+| `isolated_dbs/pilot_10_3a_exchange_store.sqlite3` | Almacén SQLite independiente de intercambio (`ExchangeStateStore`) con el trabajo `job_pilot_10_3a_luna25`, el lote `batch_pilot_10_3a_001` en estado `AWAITING_AGENT` (`manifest_sha256` unificado con el archivo en disco: `f036d5643985...`) y los **25 sobres de bóveda** (`placeholder_vault`) con los `37` placeholders protegidos. | `PRAGMA integrity_check = ok` | `a7e910f51d47a6cd0048b23fbf6e1510bbd77aabf23afda9245df66307480efc` |
+| `isolated_dbs/pilot_10_3a_budget_store.sqlite3` | Almacén SQLite del `BudgetController` con `budget_projects` (`$0.25 USD`, `ACTIVE`) y `budget_jobs` (`job_pilot_10_3a_luna25`, `$0.05 USD`, `ACTIVE`) explícitamente inicializados, `$0.000000 USD` reservados y `$0.000000 USD` consumidos. | `PRAGMA integrity_check = ok` | `4bb18a2c2ffc22c5b0510c3dd5084735501368068705b8aa6f6ca1177614c994` |
 | `staging_payloads/batch_batch_pilot_10_3a_001_meta.json` | Manifiesto versionado (`1.0.0`) del lote exportado para `gpt-6-luna`. | JSON válido (`UTF-8`) | `f036d564398542aca64bc66b7dcffd0a606d758cf3df9dc717cf6129a284a4e7` |
 | `staging_payloads/batch_batch_pilot_10_3a_001_input.jsonl` | Las 25 líneas `InputBatchItemV1` con texto enmascarado (`⟦VAR_n⟧`), hash de origen y glosario por ítem (`1.384` caracteres en `source_masked`). | JSONL válido (`25` líneas) | `22493486b8f8b274517ca4196815727d82cfbf17261c41a8dea92a69d76b5306` |
 | `staging_payloads/batch_batch_pilot_10_3a_001_openai_responses_request.json` | Payload completo de **OpenAI Responses API (`/v1/responses`)** listo para envío futuro. | JSON válido (`UTF-8`) | `aed55a99e06ff44c69c1fadafd5be07e94a1dcb8e0da8b572b7fb7588cea66b5` |
@@ -229,5 +228,5 @@ El proyecto se detiene en este punto. Para pasar en el futuro a la **Fase 10.3-B
 - [x] **Payload `/v1/responses` verificado** (`model="gpt-6-luna"`, `tools=[]`, `tool_choice="none"`, `store=False`, `max_output_tokens=2198`).
 - [x] **Coste máximo calculado con tarifa Standard + margen `+15 %`:** **`$0.001493 USD`** (dentro del presupuesto de referencia de `$0.05 USD` por trabajo).
 - [x] **Paso obligatorio por `LocalGatekeeper` (12 puertas) verificado** antes de cualquier escritura en `translation_memory`.
-- [x] **Suite completa de pruebas en verde:** **`49/49 OK`** (`tests/test_pilot_offline_staging.py` incluida).
-- [ ] **Pendiente de decisión del usuario (Puerta Fase 10.3-B):** Autorización explícita para habilitar el presupuesto (`max_job_budget_usd = $0.05 USD`), configurar `OPENAI_API_KEY` y enviar la solicitud preparada `staging_payloads/batch_batch_pilot_10_3a_001_openai_responses_request.json` a `gpt-6-luna`.
+- [x] **Suite completa de pruebas en verde:** **`58/58 OK`** (`tests/test_pilot_offline_staging.py` con las 10 pruebas obligatorias de remediación pre-piloto incluida).
+- [ ] **Pendiente de decisión del usuario (Puerta Fase 10.3-B):** Autorización explícita para configurar `NOLVUS_OPENAI_API_KEY` y `NOLVUS_OPENAI_PROJECT_ID`, desbloquear `PHASE_1_PAID_API_LOCK` y enviar la solicitud preparada `staging_payloads/batch_batch_pilot_10_3a_001_openai_responses_request.json` a `gpt-6-luna`.
