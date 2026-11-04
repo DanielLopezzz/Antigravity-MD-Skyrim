@@ -1,0 +1,20 @@
+{
+  "rows": 240684,
+  "insert_seconds": 10.452,
+  "cursor_and_identity_seconds": 14.3,
+  "elapsed_seconds": 27.506,
+  "peak_python_allocated_bytes": 4362078,
+  "peak_process_working_set_bytes": 39157760,
+  "sqlite_bytes": 113582080,
+  "integrity_check": "ok",
+  "checkpoint_resume_verified": true,
+  "identity_digest": "040525214a5cace4c559ee461e8dbaf7483839a372855434a8a5ca7f130a01fe",
+  "query_plan": [
+    "(5, 0, 50, 'SEARCH string_entries USING INDEX idx_strings_cursor (snapshot_id=? AND id>?)')"
+  ],
+  "python": "3.13.7",
+  "platform": "Windows-11-10.0.26300-SP0",
+  "network_requests": 0,
+  "paid_api_lock": true,
+  "scope": "DB insertion, bounded cursor, context identity, checkpoint and integrity; excludes real parsers, GUI, model quality and complete MO2 export"
+}

@@ -6,6 +6,16 @@
 
 ---
 
+## [2026-11-04] — Evolución integral y excelencia lingüística offline
+
+- **Implementación local:** contrato 1.1 compatible con 1.0, contexto narrativo en payload y reintentos, perfiles compartidos, variantes explícitas, preservación de identidades técnicas, TM v2 contextual y separación de candidatas/aprobación editorial/exportabilidad.
+- **Infraestructura:** límites zlib/LZ4, comparación de tamaños, huellas SHA-256 completas versionadas e índice/cursor SQLite. Se preparó y probó una primitiva reversible de publicación de directorios; su integración en el exportador activo permanece pendiente.
+- **Investigación y glosario:** registro de fuentes y condiciones, revisión de 109 entradas sin modificarlas en producción; propuestas separadas y rectificación de dudas no demostradas sobre Soul Cairn/Khajiit. UESP/Imperial Library no se recopilaron por acceso o condiciones sin verificar.
+- **Evaluación:** 24 ejemplos sintéticos y 19 casos privados del piloto preparados; 0 referencias humanas nuevas y ninguna comparación de modelos. No se atribuye mejora lingüística medida a los prompts.
+- **Evidencia medida:** línea base 69 pruebas; suite final **80/80 OK en 22,496 s**. Benchmark de 240.684 filas sintéticas: 27,506 s y 39.157.760 bytes de pico de proceso, integridad SQLite OK y reanudación verificada.
+- **Aislamiento:** 57 archivos protegidos idénticos en hash/tamaño/mtime; candado activo, 0 llamadas a proveedores, 0 créditos, sin alterar pilotos ni producción.
+- **Git:** rama local `codex/linguistic-evolution`, HEAD `066ae03`, sin commit ni push de esta fase. [Paquete de informes](./Fase10_Evolucion_Linguistica/Evolution_20261104/README.md).
+
 ## [2026-11-04] — Auditoría integral de código complementaria posterior a 10.3-C
 
 - **Alcance:** revisión estática de 65 módulos Python propios, flujos de escaneo, parsers, glosario, TM, contexto, proveedores, presupuesto, staging, Gatekeeper, GUI y exportación. No se escaneó una instalación real ni se lanzaron pilotos.

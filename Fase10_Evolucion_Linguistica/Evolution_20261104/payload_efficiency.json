@@ -1,0 +1,13 @@
+{
+  "sample": "25 authored homogeneous UI strings; not representative of all Nolvus",
+  "baseline_payload_bytes": 6704,
+  "context_duplicated_bytes": 10204,
+  "context_shared_bytes": 7415,
+  "baseline_input_heuristic_units": 2751,
+  "new_input_heuristic_units": 3121,
+  "context_dedup_heuristic_units_saved": 797,
+  "estimator": "ceil(chars/3.5) plus placeholders/newlines; not measured tokenizer or billed usage",
+  "historical_125_cost_usd": 0.011345,
+  "historical_only_scaled_240684_cost_usd": 21.84447984,
+  "network_requests": 0
+}

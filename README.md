@@ -16,6 +16,10 @@ Documentación del proyecto para localizar **Nolvus Awakening 6.0.21** al españ
 
 ## Evidencia por fase (informes históricos preservados)
 
+### Evolución integral y lingüística offline (2026-11-04)
+
+- [Informe ejecutivo y paquete de evidencia: investigación, 109 términos, contexto/TM, calidad, costes y benchmark](./Fase10_Evolucion_Linguistica/Evolution_20261104/README.md).
+
 ### Auditoría integral complementaria posterior a 10.3-C (2026-11-04)
 - [Informe integral de arquitectura, código, glosario, lingüística ES-419, infraestructura y recomendaciones](./Fase10_1_Code_Audit/Audit_20261104_Integral_Post_Pilot/INFORME_AUDITORIA_INTEGRAL.md) · [Inventario de módulos revisados](./Fase10_1_Code_Audit/Audit_20261104_Integral_Post_Pilot/INVENTARIO_MODULOS.md)
 

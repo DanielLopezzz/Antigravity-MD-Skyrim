@@ -1,0 +1,132 @@
+[
+  {
+    "path": "src/nolvus_translator/core/bounded_compression.py",
+    "state": "new",
+    "sha256": "e06ff8287fbae46917dd4e87a39eb29bafea5cb3e9aec9797c1571253268e54d"
+  },
+  {
+    "path": "src/nolvus_translator/core/database.py",
+    "state": "modified",
+    "sha256": "fe017f3e69ef2792fce7e5d8093dbadf6789114e516eaf0462e2b3b2b3377c50"
+  },
+  {
+    "path": "src/nolvus_translator/core/lz4_codec.py",
+    "state": "modified",
+    "sha256": "705d1d3940f5d5044468b60476700ec089652ef92d3104796cd6eaeb2b6e4a97"
+  },
+  {
+    "path": "src/nolvus_translator/core/models.py",
+    "state": "modified",
+    "sha256": "833005a8c939ea42c9c56a3e8e8beec8f0302f68c9fe76effde45ff3c3a667c0"
+  },
+  {
+    "path": "src/nolvus_translator/export/atomic_publish.py",
+    "state": "new",
+    "sha256": "827f759c0faf99e02b808f48fa3e409d52c71f311f795d9ba3ec5fd39d618076"
+  },
+  {
+    "path": "src/nolvus_translator/export/mo2_packager.py",
+    "state": "modified",
+    "sha256": "991e82ea7f568f97c202bb1c8ddae8d3c52dd69d46739d0cb83a4c6c13fbcad7"
+  },
+  {
+    "path": "src/nolvus_translator/formats/bsa_archive.py",
+    "state": "modified",
+    "sha256": "269572459645e92527dfd02cd70c912cbd5b734785d58b6ff50b6315cc5ab7b1"
+  },
+  {
+    "path": "src/nolvus_translator/formats/esp_parser.py",
+    "state": "modified",
+    "sha256": "3694121aebe936cb762058cf76234dd02bbd53948a05eaff9d44ba710e2d7927"
+  },
+  {
+    "path": "src/nolvus_translator/lore/context_engine.py",
+    "state": "modified",
+    "sha256": "4a08e939cd92f6deca3bd2c85c231dfb04806eed4d8ea4318d54b0cce7d99254"
+  },
+  {
+    "path": "src/nolvus_translator/lore/editorial_policy.py",
+    "state": "new",
+    "sha256": "e3151f223e04ff5a014ae1dda7fef08f308314b4392327251154e6c544cb5dc2"
+  },
+  {
+    "path": "src/nolvus_translator/lore/glossary.py",
+    "state": "modified",
+    "sha256": "3493bde08a30e09ba91fc98852b62acf3dc47e0b7d58f04a94a1af618d9a06ac"
+  },
+  {
+    "path": "src/nolvus_translator/lore/reference_index.py",
+    "state": "new",
+    "sha256": "938af02c225f7f8ece747db31051e049585de883fad89c28d97442c392e1a058"
+  },
+  {
+    "path": "src/nolvus_translator/memory/tm_engine.py",
+    "state": "modified",
+    "sha256": "b2850c42dcfb1f23a92ab436c53d7d9b4c91cceeca5dba763812ea503502426f"
+  },
+  {
+    "path": "src/nolvus_translator/mo2/vfs.py",
+    "state": "modified",
+    "sha256": "43a17a2fce9d1a037bf53a87cd6908f1447352cfbf25da36986dc9b505d0bdc4"
+  },
+  {
+    "path": "src/nolvus_translator/quality/protector.py",
+    "state": "modified",
+    "sha256": "f922542ab8bdcee5c7655417c6c9b0fc15a46e9c52e9cd2ab20f3f6830b04dff"
+  },
+  {
+    "path": "src/nolvus_translator/quality/validator.py",
+    "state": "modified",
+    "sha256": "2f4fa760e0ba787c30466670a6b4581de1fb1217498b9be65aa1f9b0e9740e73"
+  },
+  {
+    "path": "src/nolvus_translator/translation/exchange_contract.py",
+    "state": "modified",
+    "sha256": "c0e7d1a91bb3601387df05c04b66d85abe2332c426ed142b173bac3a43c1f112"
+  },
+  {
+    "path": "src/nolvus_translator/translation/exchange_service.py",
+    "state": "modified",
+    "sha256": "f1fa4b287415dd9cc9182aad7254420a56b450445a892d740ae122adc3642dd1"
+  },
+  {
+    "path": "src/nolvus_translator/translation/exchange_store.py",
+    "state": "modified",
+    "sha256": "ea163d1f19c6658f7f4ecf44adc1d80b1bc55685a0530ea269cc0c3fa920a427"
+  },
+  {
+    "path": "src/nolvus_translator/translation/openai_provider.py",
+    "state": "modified",
+    "sha256": "68f6ecdacc8285eb1cf81399840f762abad1219c627cda0df1c1a3324fd0e328"
+  },
+  {
+    "path": "src/nolvus_translator/translation/pilot_offline_staging.py",
+    "state": "modified",
+    "sha256": "71af1486fe24782ceccfc934c8a33b3a8d9dd72d1dad6032aa513047640609b7"
+  },
+  {
+    "path": "src/nolvus_translator/translation/pipeline.py",
+    "state": "modified",
+    "sha256": "833f69e3665e307712b1399b48e478d3dd847bf945e10a0e44d11c2eef0cf118"
+  },
+  {
+    "path": "tests/test_end_to_end.py",
+    "state": "modified",
+    "sha256": "560e7f22201d12a991cc049429cf58802455e3075709cd146409238f9d99df40"
+  },
+  {
+    "path": "tests/test_gatekeeper.py",
+    "state": "modified",
+    "sha256": "aff0f131d71df638aff95c8d47df22d26ce3c807975d450c874afb3720c163a0"
+  },
+  {
+    "path": "tests/test_linguistic_evolution.py",
+    "state": "new",
+    "sha256": "a014f43e61f9b88e84317e5da3182e07db77489619371c8c3cccdde8c1108b30"
+  },
+  {
+    "path": "tests/test_phase9_coverage_and_scale.py",
+    "state": "modified",
+    "sha256": "317ca0d7062cd61b792b284035be1719f516c26ad0b47a4227781ecb39064827"
+  }
+]

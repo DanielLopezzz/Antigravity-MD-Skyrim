@@ -5,10 +5,12 @@
 **Última actualización:** 2026-11-04  
 **Fase actual:** **Fase 10.3-C completada con aceptación parcial** — 100/125 cadenas importadas al staging aislado; 23 candidatas retenidas por atomicidad y 2 en cuarentena. Siguiente puerta: remediación dirigida 10.3-D.  
 **Estrategia de proveedores vigente:** **API-First** (`gpt-6-luna` principal, `gpt-6.1-sol` escalamiento selectivo por regla verificable, `gemini-4-argon` vía complemento de intercambio de archivos; `Claude` excluido)  
-**Rama activa (repositorio de código):** `feat/phase10-2-openai-api-first` (`HEAD` observado en `066ae03`; cambios de auditoría posteriores sin commit; rama previa `feat/phase10-1b-antigravity-exchange` en `0b4ff8d`; rama base `master` en `fdea297`)<br>
-**Estado de suite de pruebas:** **69/69 pruebas en verde** en la suite completa posterior a la auditoría integral local del 2026-11-04.<br>
+**Rama activa (repositorio de código):** `codex/linguistic-evolution`, creada conservando los cambios locales; `HEAD=066ae03`, mejoras de esta fase sin commit.<br>
+**Estado de suite de pruebas:** **80/80 pruebas en verde**, ejecución final de la evolución offline del 2026-11-04: 22,496 s.<br>
 **Candado de API de pago:** `PHASE_1_PAID_API_LOCK = True` restaurado tras el piloto; producción continúa bloqueada  
 **Traducciones reales en staging de prueba:** **100 aprobadas e importadas + 23 candidatas no importadas + 2 en cuarentena**; coste de la Fase 10.3-C: **`US$0.01134500`**. Traducciones promovidas a producción: `0`.
+
+**Evolución lingüística local:** contexto en payload, contrato v1.1 compatible con v1, TM contextual v2, variantes explícitas y barrera de aprobación editorial implementados offline. Benchmark SQLite de 240.684 cadenas sintéticas realizado; calidad lingüística humana y comparación de modelos pendientes. Los 57 archivos protegidos permanecen idénticos. [Evidencia y límites](./Fase10_Evolucion_Linguistica/Evolution_20261104/README.md).
 
 ---
 
@@ -99,11 +101,12 @@ Clasificación canónica aplicada:
    - `BudgetController` define **4 tablas regulares** (`budget_projects`, `budget_jobs`, `budget_reservations`, `budget_audit_log`) bajo `BEGIN IMMEDIATE`.
    - `OpenAIBatchCoordinator` define **2 tablas regulares** (`openai_batch_jobs`, `openai_batch_items`) para persistencia y recuperación de trabajos asíncronos `/v1/batches`.
 
-### 3.3 Estado de la suite de pruebas automatizadas (`69/69 OK`)
+### 3.3 Estado de la suite de pruebas automatizadas (`80/80 OK`)
 
-- **Última ejecución completa:** `python -m unittest discover -s tests` → **`Ran 69 tests in 11.752s — OK`** (2026-11-04, posterior a la auditoría integral local).
-- La línea base tomada al inicio de la auditoría fue **63/63 OK**; las regresiones añadidas cubren rutas protegidas, identidad y metadatos del glosario, rutas de exportación y estructuras de tablas truncadas.
-- Las pruebas de aislamiento mantienen **0 solicitudes HTTP reales**; el detalle de casos y el registro del cambio están en el [informe integral](./Fase10_1_Code_Audit/Audit_20261104_Integral_Post_Pilot/INFORME_AUDITORIA_INTEGRAL.md).
+- **Última ejecución completa:** `python -m unittest discover -s tests` → **`Ran 80 tests in 22.496s — OK`** (2026-11-04, evolución lingüística offline).
+- La línea base de esta fase fue **69/69 OK**. Se añadieron 11 regresiones de contexto, compatibilidad, migración en copia, TM, aprobación, variantes, nombres, cursor, límites y reversibilidad.
+- Las pruebas usan transportes simulados y mantienen **0 solicitudes reales a proveedores**. Las dimensiones lingüísticas no revisadas se indican como `not_assessed`; la suite no certifica fidelidad semántica.
+- [Resultados, benchmark y registro detallado](./Fase10_Evolucion_Linguistica/Evolution_20261104/README.md). Los informes históricos conservan sus métricas originales.
 
 ---
 

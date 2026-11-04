@@ -1,0 +1,15 @@
+{
+  "baseline": {
+    "tests": 69,
+    "seconds": 13.643,
+    "result": "OK"
+  },
+  "final": {
+    "tests": 80,
+    "seconds": 22.496,
+    "result": "OK"
+  },
+  "provider_requests": 0,
+  "paid_api_lock": true,
+  "production_or_pilot_migrations_run": false
+}

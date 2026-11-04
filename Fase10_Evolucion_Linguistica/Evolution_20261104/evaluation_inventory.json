@@ -1,0 +1,25 @@
+{
+  "synthetic_cases": 24,
+  "synthetic_categories": [
+    "book",
+    "description",
+    "dialogue",
+    "item",
+    "magic",
+    "quest",
+    "script",
+    "ui"
+  ],
+  "private_pilot_cases": 19,
+  "private_profiles": {
+    "quest": 3,
+    "dialogue": 3,
+    "ui": 3,
+    "magic": 3,
+    "item": 1,
+    "book": 3,
+    "script": 3
+  },
+  "human_reviewed_references": 0,
+  "model_comparison_performed": false
+}

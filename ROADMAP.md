@@ -59,16 +59,16 @@
 
 - Con las métricas reales de tokens consumidos, tasa de aprobación a primera pasada en `gpt-6-luna` y porcentaje real de escalamiento a `gpt-6.1-sol`, actualizar la proyección económica total para las `~240.684` cadenas únicas antes de solicitar autorización para la traducción masiva por oleadas.
 
-## Recomendaciones técnicas antes de ampliar el piloto
+## Pendientes tras la evolución lingüística offline
 
-La auditoría integral del 2026-11-04 confirmó que la suite local pasa, pero la escala completa y la calidad semántica no están demostradas. Antes de un piloto de un mod completo, planificar y validar por separado:
+Antes de ampliar el piloto, completar las puertas que siguen abiertas según el [estado de aceptación](./Fase10_Evolucion_Linguistica/Evolution_20261104/05_ESTADO_FINAL.md):
 
-- **P1 — Aprobación lingüística:** separar validez estructural, verificación terminológica, revisión humana y exportabilidad; no tratar puntuaciones mecánicas como evidencia de fidelidad narrativa.
-- **P1 — Contexto y memoria de traducción:** versionar el contrato para pasar contexto narrativo útil y corregir la identidad TM para distinguir espacios/contextos sin sobrescribir de forma retroactiva los datos existentes.
-- **P1 — Parsers y escala:** definir límites de descompresión/entrada, y medir duración y memoria con una copia sintética representativa de 240.684 cadenas.
-- **P2 — Integridad y operación:** versionar huellas de archivo, mejorar búsquedas paginadas y hacer atómico el reemplazo de exportaciones.
+- **P1 — Calidad demostrada:** revisar los casos por personas, adjudicar discrepancias y preparar comparación A/B ciega. No hay nuevas referencias humanas aprobadas ni métricas reales de mejora de modelos.
+- **P1 — Terminología y contexto:** completar evidencia por entrada, obtener fuentes de lore consultables y evaluar segmentación/entidades/relevancia para recuperar pasajes locales de libros.
+- **P2 — Cobertura real:** medir tamaños y memoria de parsers con archivos representativos, añadir pruebas de cabeceras/checksums y medir UI/exportación completa. El benchmark SQLite no cubre esos recorridos.
+- **P2 — Operación y migración:** integrar la publicación reversible preparada con bloqueo y recuperación durable; llevar cursor a consultas necesarias y preparar migraciones generales de la DB principal sobre copias.
 
-El alcance, alternativas, beneficios, riesgos y pruebas de salida están en el [informe integral de auditoría](./Fase10_1_Code_Audit/Audit_20261104_Integral_Post_Pilot/INFORME_AUDITORIA_INTEGRAL.md). Estas tareas no habilitan llamadas facturables ni escrituras de producción.
+La implementación ya realizada está en [CHANGELOG.md](./CHANGELOG.md) y su paquete de evidencia. Estas tareas pendientes no habilitan llamadas facturables ni escrituras de producción.
 
 ---
 
