@@ -1,69 +1,20 @@
-# Nolvus AI Translator — Documentación central (ES-419)
+# Nolvus AI Translator
 
-Documentación del proyecto para localizar **Nolvus Awakening 6.0.21** al español latinoamericano neutro (**ES-419**). Este repositorio contiene solo documentación; el código fuente vive en un repositorio local separado.
+Localización propia de Nolvus Awakening al español latinoamericano neutro (ES-419).
 
-## Empieza aquí
+**Documentación organizada el 2026-11-05.** Empieza por una de estas cuatro páginas; cada tema tiene un único lugar de lectura.
 
-| Documento | Para qué sirve |
+| Necesito saber… | Documento |
 |---|---|
-| [PROJECT_STATUS.md](./PROJECT_STATUS.md) | **Fuente única de verdad**: estado de cada fase y subsistema, rama/commits, pruebas, cobertura, control económico, riesgos y próxima puerta. |
-| [CHANGELOG.md](./CHANGELOG.md) | Historial cronológico de trabajo verificado (fases, archivos, commits, pruebas, resultados). |
-| [ROADMAP.md](./ROADMAP.md) | Solo trabajo futuro y puertas pendientes (10.3-B Ejecución Piloto Real → Producción). |
-| [DECISIONS.md](./DECISIONS.md) | Decisiones técnicas y operativas vigentes e históricas, con fecha y motivo. |
-| [DOCUMENTATION_POLICY.md](./DOCUMENTATION_POLICY.md) | Reglas de mantenimiento documental. |
+| Dónde estamos, resultados y qué sigue | [Estado actual y próximos pasos](documentacion/ESTADO_ACTUAL.md) |
+| Cómo abrir la app, revisar y guardar decisiones | [Guía de uso](documentacion/GUIA_DE_USO.md) |
+| Reglas, arquitectura, formatos y límites | [Referencia técnica](documentacion/REFERENCIA_TECNICA.md) |
+| Qué ocurrió antes y dónde está la evidencia | [Histórico resumido](documentacion/HISTORICO.md) |
 
-**Estado en una línea (2026-11-05):** cuarta prueba completada y sistema de revisión analizado; calibración y revisión humana pendientes. Estado vigente en [PROJECT_STATUS.md](./PROJECT_STATUS.md).
+El cuarto piloto terminó de recibir respuestas; su evaluación editorial sigue abierta. El estado enlazado distingue aceptación mecánica, aprobación humana y cuarentena. No se autoriza una nueva ejecución ni producción por seguir esta documentación.
 
-## Evidencia por fase (informes históricos preservados)
+En el workspace local, abre `Revisar_cuarta_prueba.bat` para revisar la muestra activa o `launch_gui.bat` para la aplicación. El repositorio público contiene únicamente documentación: esos ejecutables y el código permanecen locales.
 
-### Evolución integral y lingüística offline (2026-11-04)
+Los originales retirados de la raíz se conservaron en un ZIP verificable; el histórico explica su alcance y acceso. Los informes de fases conservan sus ubicaciones y no son instrucciones vigentes. Las referencias históricas a tarifas, versiones o “cero llamadas” corresponden a su fecha.
 
-- [Análisis de revisión humana y evaluación profesional del piloto (2026-11-05): alertas, falsos positivos y propuestas sin implementar](./Fase10_Evolucion_Linguistica/Pilot4_Review_Analysis_20261105/README.md).
-
-- [Cuarta prueba completa: barrido, costes, procedencia y revisión pendiente](./Fase10_Evolucion_Linguistica/Pilot4_Completed_20261104/README.md).
-
-- [Corrección del protector y resultado real de R2](./Fase10_Evolucion_Linguistica/Pilot4_R2_20261104/README.md).
-
-- [Resultado real de la primera etapa y diagnóstico que detuvo la continuación](./Fase10_Evolucion_Linguistica/Pilot4_Stage1_20261104/README.md).
-
-- [Preparación de la cuarta prueba: muestra, etapas, correcciones, presupuesto y revisión humana](./Fase10_Evolucion_Linguistica/Pilot4_Preparation_20261104/README.md).
-
-- [Informe ejecutivo y paquete de evidencia: investigación, 109 términos, contexto/TM, calidad, costes y benchmark](./Fase10_Evolucion_Linguistica/Evolution_20261104/README.md).
-
-### Auditoría integral complementaria posterior a 10.3-C (2026-11-04)
-- [Informe integral de arquitectura, código, glosario, lingüística ES-419, infraestructura y recomendaciones](./Fase10_1_Code_Audit/Audit_20261104_Integral_Post_Pilot/INFORME_AUDITORIA_INTEGRAL.md) · [Inventario de módulos revisados](./Fase10_1_Code_Audit/Audit_20261104_Integral_Post_Pilot/INVENTARIO_MODULOS.md)
-
-### Fase 10.3 — Preparación Offline (10.3-A), Auditoría Preflight y Remediación Offline (10.3-B)
-- [Informe del piloto transversal real de 125 cadenas — Fase 10.3-C (resultado parcial, consumo medido, hallazgos y próxima puerta)](./Fase10_Antigravity_Architecture/PHASE10_3C_LIVE_PILOT_125_REPORT.md)
-- [Informe del piloto real de 25 cadenas — Fase 10.3-B (ejecución y remediación)](./Fase10_Antigravity_Architecture/PHASE10_3B_LIVE_PILOT_EXECUTION_REPORT.md)
-- [Informe de remediación pre-piloto offline Fase 10.3-B (resolución de discrepancias `D-CRED-01..03`, `D-BUD-01`, `D-DOC-01`, `D-ISO-01..02` y 10 pruebas obligatorias)](./Fase10_Antigravity_Architecture/PHASE10_3B_PREFLIGHT_REMEDIATION_REPORT.md)
-- [Auditoría preflight de solo lectura para Fase 10.3-B (credenciales, modelo, candado API, presupuesto, aislamiento y discrepancias)](./Fase10_Antigravity_Architecture/PHASE10_3B_READONLY_PREFLIGHT_AUDIT_REPORT.md)
-- [Informe técnico de preparación offline Fase 10.3-A (25 cadenas reales 5×5, bóveda de 37 placeholders, payload `/v1/responses` y verificación de Gatekeeper)](./Fase10_Antigravity_Architecture/PHASE10_3A_OFFLINE_PILOT_PREPARATION_REPORT.md)
-
-### Fase 10.2 — Infraestructura OpenAI API-First y Control Presupuestario Local
-- [Informe de implementación Fase 10.2 (OpenAI API-First, BudgetController, Batch API y estimación de piloto)](./Fase10_Antigravity_Architecture/PHASE10_2_OPENAI_API_FIRST_REPORT.md)
-
-### Fase 10.1 — Auditoría de código, especificación e implementación de intercambio Antigravity
-- [Auditoría 10.1-A](./Fase10_1_Code_Audit/Audit_20261103_113100/PHASE10_1_CODE_AUDIT_REPORT.md) · [Reconciliación 10.1-A](./Fase10_1_Code_Audit/AUDIT_10_1A_RECONCILIATION.md)
-- [Especificación 10.1-B](./Fase10_Antigravity_Architecture/PHASE10_1B_IMPLEMENTATION_SPEC.md)
-- [Informe de implementación 10.1-B.1 (consolidado y reconciliado)](./Fase10_Antigravity_Architecture/PHASE10_1B1_IMPLEMENTATION_REPORT.md)
-
-### Fase 10.0 — Antigravity-first y arquitectura dual (antecedente histórico)
-- [PHASE10_FINAL_REPORT.md](./Fase10_Antigravity_Architecture/PHASE10_FINAL_REPORT.md) · [ANTIGRAVITY_INTEGRATION_ARCHITECTURE.md](./Fase10_Antigravity_Architecture/ANTIGRAVITY_INTEGRATION_ARCHITECTURE.md) · [DUAL_PROVIDER_ARCHITECTURE.md](./Fase10_Antigravity_Architecture/DUAL_PROVIDER_ARCHITECTURE.md) · [TRANSLATION_EXECUTION_ENGINE.md](./Fase10_Antigravity_Architecture/TRANSLATION_EXECUTION_ENGINE.md) · [SCALABILITY_AND_RISK_ASSESSMENT.md](./Fase10_Antigravity_Architecture/SCALABILITY_AND_RISK_ASSESSMENT.md) · [BENCHMARK_PLAN_ANTIGRAVITY.md](./Fase10_Antigravity_Architecture/BENCHMARK_PLAN_ANTIGRAVITY.md)
-
-### Fase 9 — Auditoría integral de mods
-- [PHASE9_FULL_AUDIT_REPORT.md](./Fase9_Full_Audit/PHASE9_FULL_AUDIT_REPORT.md)
-
-### Fases 7–8 — Escaneo real y estimación económica (histórico)
-- [AUDIT_PHASE7.md](./Fase7_y_Fase8_Informes/AUDIT_PHASE7.md) · [coverage_snapshot_1.md](./Fase7_y_Fase8_Informes/coverage_snapshot_1.md) · [API_COST_ESTIMATE_V2.md](./Fase7_y_Fase8_Informes/API_COST_ESTIMATE_V2.md) · [API_COST_ESTIMATE.md](./Fase7_y_Fase8_Informes/API_COST_ESTIMATE.md) · [MODEL_BENCHMARK_PLAN.md](./Fase7_y_Fase8_Informes/MODEL_BENCHMARK_PLAN.md)
-
-### Políticas lingüísticas vigentes
-- [TRANSLATION_POLICY_ES419.md](./Fase7_y_Fase8_Informes/TRANSLATION_POLICY_ES419.md) · [GLOSSARY_POLICY.md](./Fase7_y_Fase8_Informes/GLOSSARY_POLICY.md)
-
-### Fases 0–6 — Documentación base (histórico; contrastar con el código actual)
-- [ARCHITECTURE.md](./Documentacion_Base_Fases_0_a_6/ARCHITECTURE.md) · [SUPPORTED_FORMATS.md](./Documentacion_Base_Fases_0_a_6/SUPPORTED_FORMATS.md) · [TECHNICAL_DECISIONS.md](./Documentacion_Base_Fases_0_a_6/TECHNICAL_DECISIONS.md) · [COMPATIBILITY.md](./Documentacion_Base_Fases_0_a_6/COMPATIBILITY.md) · [TESTING.md](./Documentacion_Base_Fases_0_a_6/TESTING.md) · [USER_GUIDE.md](./Documentacion_Base_Fases_0_a_6/USER_GUIDE.md) · [LICENSES_AND_THIRD_PARTY.md](./Documentacion_Base_Fases_0_a_6/LICENSES_AND_THIRD_PARTY.md)
-
-### Documentos de transición (sustituidos, conservados por trazabilidad)
-- [CURRENT_PROJECT_STATE.md](./CURRENT_PROJECT_STATE.md) — estado y decisiones previos a la centralización; su función pasa a `PROJECT_STATUS.md` y `DECISIONS.md`.
-- [Documentacion_Base_Fases_0_a_6/ROADMAP.md](./Documentacion_Base_Fases_0_a_6/ROADMAP.md) — roadmap anterior; sustituido por `ROADMAP.md` (raíz).
-- [DOCUMENTATION_CLEANUP_REPORT.md](./DOCUMENTATION_CLEANUP_REPORT.md) — registro de la depuración documental anterior.
+Los documentos editables están en `documentacion/` del workspace. `Antigravity-MD-Skyrim/documentacion/` es el espejo de publicación; no sincroniza automáticamente. Los cambios documentales se versionan en el repositorio público mediante una publicación explícita.

@@ -1,4 +1,4 @@
-> **SNAPSHOT #1 — HISTÓRICO:** Este archivo representa la cobertura de la base de datos en Snapshot #1. Sus valores (por ejemplo, 403.922 ocurrencias inventariadas y 235.326 cadenas únicas pendientes) corresponden a ese corte y fueron ampliados después por la auditoría de Fase 9. Para métricas vigentes del corte auditado más reciente, consulta [CURRENT_PROJECT_STATE.md](../../CURRENT_PROJECT_STATE.md).
+> **SNAPSHOT #1 — HISTÓRICO:** Este archivo representa la cobertura de la base de datos en Snapshot #1. Sus valores (por ejemplo, 403.922 ocurrencias inventariadas y 235.326 cadenas únicas pendientes) corresponden a ese corte y fueron ampliados después por la auditoría de Fase 9. Para métricas vigentes del corte auditado más reciente, consulta [CURRENT_PROJECT_STATE.md](../documentacion/HISTORICO.md).
 
 ---
 

@@ -1,4 +1,4 @@
-> **ARQUITECTURA BASE — INSTANTÁNEA DE FASES 0–6:** Este documento registra el diseño inicial del sistema. Puede contener nombres de módulos, rutas, tablas o funciones que hayan cambiado desde su redacción. La arquitectura de proveedores y el estado actual se consolidan en la documentación de Fase 10 y [CURRENT_PROJECT_STATE.md](../../CURRENT_PROJECT_STATE.md). Verifica siempre el código fuente actual antes de implementar a partir de este diseño.
+> **ARQUITECTURA BASE — INSTANTÁNEA DE FASES 0–6:** Este documento registra el diseño inicial del sistema. Puede contener nombres de módulos, rutas, tablas o funciones que hayan cambiado desde su redacción. La arquitectura de proveedores y el estado actual se consolidan en la documentación de Fase 10 y [CURRENT_PROJECT_STATE.md](../documentacion/HISTORICO.md). Verifica siempre el código fuente actual antes de implementar a partir de este diseño.
 
 ---
 

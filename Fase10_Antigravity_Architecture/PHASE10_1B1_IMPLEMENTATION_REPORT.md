@@ -5,7 +5,7 @@
 **Estado:** `COMPLETADO` (Implementado, reconciliado y verificado localmente en rama `feat/phase10-1b-antigravity-exchange`)  
 **Especificación base:** [PHASE10_1B_IMPLEMENTATION_SPEC.md](./PHASE10_1B_IMPLEMENTATION_SPEC.md)  
 **Reconciliación previa:** [AUDIT_10_1A_RECONCILIATION.md](../Fase10_1_Code_Audit/AUDIT_10_1A_RECONCILIATION.md)  
-**Fuente única de estado vigente:** [PROJECT_STATUS.md](../PROJECT_STATUS.md)  
+**Fuente única de estado vigente:** [PROJECT_STATUS.md](../documentacion/ESTADO_ACTUAL.md)<br>
 **Alcance de este documento:** Registro técnico auditable y reconciliado de la implementación funcional de la Fase 10.1-B.1 y de las correcciones posteriores de consolidación técnica en el repositorio local de código fuente. Este repositorio documental no almacena código fuente Python, bases de datos SQLite ni datos del corpus.
 
 ---

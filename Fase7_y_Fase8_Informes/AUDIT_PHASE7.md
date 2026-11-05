@@ -1,4 +1,4 @@
-> **AUDITORÍA FASE 7 — CORTE HISTÓRICO:** Este documento conserva la auditoría complementaria del Snapshot #1 y la reconciliación realizada en la Fase 7. Sus métricas fueron ampliadas/conciliadas en el informe posterior de [Fase 9](../../Fase9_Full_Audit/PHASE9_FULL_AUDIT_REPORT.md). Úsalo para rastrear el origen de los cortes B/C, no como inventario vigente independiente.
+> **AUDITORÍA FASE 7 — CORTE HISTÓRICO:** Este documento conserva la auditoría complementaria del Snapshot #1 y la reconciliación realizada en la Fase 7. Sus métricas fueron ampliadas/conciliadas en el informe posterior de [Fase 9](../Fase9_Full_Audit/PHASE9_FULL_AUDIT_REPORT.md). Úsalo para rastrear el origen de los cortes B/C, no como inventario vigente independiente.
 
 ---
 

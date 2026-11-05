@@ -34,7 +34,7 @@ Resultado esperado: **11 pruebas ejecutadas (`OK`) en ~1.6 segundos, 0 fallos, 0
 
 ## 3. Desglose de Módulos de Prueba
 
-### 3.1 [`tests/test_formats.py`](tests/test_formats.py) — Parsers y Reconstructores Binarios Bethesda
+### 3.1 `tests/test_formats.py` (archivo del workspace local) — Parsers y Reconstructores Binarios Bethesda
 1. **`test_strings_dlstrings_ilstrings_roundtrip_utf8`**:
    - Verifica lectura y escritura binaria exacta de `.STRINGS` (terminado en `\x00`) y `.DLSTRINGS`/`.ILSTRINGS` (prefijado con longitud `uint32` + `\x00`) con caracteres en español (`á, é, í, ó, ú, ñ, ¡, ¿`).
 2. **`test_localized_esl_plugin_with_string_tables`**:
@@ -50,7 +50,7 @@ Resultado esperado: **11 pruebas ejecutadas (`OK`) en ~1.6 segundos, 0 fallos, 0
 6. **`test_mcm_utf16le_json_xml_and_ini_parsers`**:
    - Verifica codificación estricta `UTF-16 LE BOM` (`FF FE`) + tabulador `\t`, `MCM Helper` JSON (`config.json`), XML selectivo (`text` traducible vs `source` técnico) e INIs de `Description Framework` (`*_DISTR.ini`).
 
-### 3.2 [`tests/test_protector_glossary_tm.py`](tests/test_protector_glossary_tm.py) — Protección de Variables, QA, Glosario y Memoria TM
+### 3.2 `tests/test_protector_glossary_tm.py` (archivo del workspace local) — Protección de Variables, QA, Glosario y Memoria TM
 7. **`test_variable_protector_preserves_and_rejects_mutations`**:
    - Verifica enmascaramiento determinista `⟦VAR_i⟧` de `<Alias=Player>`, `<mag>`, `<dur>`, `<p align='left'>`, `<font size='18'>`, `[pagebreak]`, `%.1f%%`, `{0}` y `[0x00018A56]`.
    - Comprueba rechazo automático (`is_valid == False`) si falta un placeholder o si se duplica uno.
@@ -63,7 +63,7 @@ Resultado esperado: **11 pruebas ejecutadas (`OK`) en ~1.6 segundos, 0 fallos, 0
    - Comprueba que intentar sobrescribir automáticamente un término aprobado con una traducción distinta lanza `GlossaryConflictError`.
    - Verifica coincidencia exacta en Memoria de Traducción, registro de historial de versiones (`tm_versions`), detección de inconsistencias contextuales (`Fire!` en `SPEL` vs `INFO`) y búsqueda difusa con `RapidFuzz`.
 
-### 3.3 [`tests/test_end_to_end.py`](tests/test_end_to_end.py) — Flujo Integral E2E, MO2 VFS, Reanudación, Actualizaciones y GUI
+### 3.3 `tests/test_end_to_end.py` (archivo del workspace local) — Flujo Integral E2E, MO2 VFS, Reanudación, Actualizaciones y GUI
 10. **`test_full_mo2_scan_pipeline_resume_incremental_export_and_rollback`**:
     - Verifica bloqueo `ExternalAPIDisabledError` ante cualquier intento de seleccionar un proveedor externo.
     - Verifica inspección PE de `SkyrimSE.exe 1.7.104.0` y alertas de compatibilidad de `DynamicStringDistributor.dll` + `versionlib-1-7-104-0.bin`.

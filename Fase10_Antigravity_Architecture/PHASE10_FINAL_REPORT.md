@@ -81,7 +81,7 @@ Detalle: [SCALABILITY_AND_RISK_ASSESSMENT.md](./SCALABILITY_AND_RISK_ASSESSMENT.
 6. **Continuidad y recuperación:** medir lotes sucesivos, fallos, recuperación y cuota sostenible.
 7. **Decisión de escala:** documentar Antigravity 100 %, híbrido o API. Cualquier activación de API exige nueva cotización y autorización.
 
-El roadmap canónico es [ROADMAP.md](../Documentacion_Base_Fases_0_a_6/ROADMAP.md). Las decisiones vigentes, restricciones y volumen de referencia están en [CURRENT_PROJECT_STATE.md](../CURRENT_PROJECT_STATE.md).
+El roadmap canónico es [ROADMAP.md](../Documentacion_Base_Fases_0_a_6/ROADMAP.md). Las decisiones vigentes, restricciones y volumen de referencia están en [CURRENT_PROJECT_STATE.md](../documentacion/HISTORICO.md).
 
 ## 8. Límites y garantías
 

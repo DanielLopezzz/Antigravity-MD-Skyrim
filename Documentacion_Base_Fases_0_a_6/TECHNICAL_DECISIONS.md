@@ -1,4 +1,4 @@
-> **ADR — REGISTRO HISTÓRICO DE DECISIONES:** Los ADR documentan decisiones adoptadas en sus fases de origen y no deben leerse como una lista de configuración vigente en bloque. Las decisiones posteriores de Fase 9/10 y el estado canónico en [CURRENT_PROJECT_STATE.md](../../CURRENT_PROJECT_STATE.md) prevalecen cuando exista conflicto. Una ADR antigua se conserva para explicar por qué se tomó una decisión, no para declarar que los paquetes o modelos siguen instalados/disponibles.
+> **ADR — REGISTRO HISTÓRICO DE DECISIONES:** Los ADR documentan decisiones adoptadas en sus fases de origen y no deben leerse como una lista de configuración vigente en bloque. Las decisiones posteriores de Fase 9/10 y el estado canónico en [CURRENT_PROJECT_STATE.md](../documentacion/HISTORICO.md) prevalecen cuando exista conflicto. Una ADR antigua se conserva para explicar por qué se tomó una decisión, no para declarar que los paquetes o modelos siguen instalados/disponibles.
 
 ---
 

@@ -1,0 +1,583 @@
+{
+  "date": "2026-11-05",
+  "purpose": "Preserve exact originals before compacting root documentation; archived figures are historical, not current instructions.",
+  "archive": "originales_20261105.zip",
+  "archive_sha256": "ada56fc6370d226bc8651ee5cf9eeac2c48e6440469169274363088d5a298a2f",
+  "members": [
+    {
+      "member": "CHANGELOG.md",
+      "bytes": 35916,
+      "sha256": "840b2d7d42a669f4e30281708108f68acb19f758fb9e61eed78f263b998b7a6f"
+    },
+    {
+      "member": "CURRENT_PROJECT_STATE.md",
+      "bytes": 11703,
+      "sha256": "1f26d2b9cdbe83e50e7a5a26443bbc7d06c22868f4fa3c6bc051ec8fb3dfcdbe"
+    },
+    {
+      "member": "DECISIONS.md",
+      "bytes": 15717,
+      "sha256": "4923ac8f8a2c90336cbb555e7ba5743d413b02966073d23b2aa30df2fe6d43fe"
+    },
+    {
+      "member": "Documentacion_Base_Fases_0_a_6/ARCHITECTURE.md",
+      "bytes": 10122,
+      "sha256": "822aac46bf3f9906f05e5ea083566fe0938c1db2caadf6991c885730413e2c25"
+    },
+    {
+      "member": "Documentacion_Base_Fases_0_a_6/COMPATIBILITY.md",
+      "bytes": 7846,
+      "sha256": "101271ad711f2c9b1b106541780a90b8964bff4e3b95ef4dc8f5802b2eda9874"
+    },
+    {
+      "member": "Documentacion_Base_Fases_0_a_6/LICENSES_AND_THIRD_PARTY.md",
+      "bytes": 9852,
+      "sha256": "bbea28e674b61e83243f010b79d88da21b50c27eb29e9b1cb7412c19b861f444"
+    },
+    {
+      "member": "Documentacion_Base_Fases_0_a_6/ROADMAP.md",
+      "bytes": 7826,
+      "sha256": "8ecd76e0a84e36cc2d9e6ec482bae9d04b76540b34732e9e15244c7cfa2a6269"
+    },
+    {
+      "member": "Documentacion_Base_Fases_0_a_6/SUPPORTED_FORMATS.md",
+      "bytes": 7340,
+      "sha256": "4cf69da42708d3580cf0d3378ab28158f9f066c72e3eca7c36c9ffbf2bff8afe"
+    },
+    {
+      "member": "Documentacion_Base_Fases_0_a_6/TECHNICAL_DECISIONS.md",
+      "bytes": 11198,
+      "sha256": "23369b458e984fed794cf77b1bf2c422af5a6cff1060d2ca647de35540eea081"
+    },
+    {
+      "member": "Documentacion_Base_Fases_0_a_6/TESTING.md",
+      "bytes": 7843,
+      "sha256": "e3005dc15e7afd51c2c0761b63eeca7aee9f60d4070d1595eb5a52dae6370ff7"
+    },
+    {
+      "member": "Documentacion_Base_Fases_0_a_6/USER_GUIDE.md",
+      "bytes": 9563,
+      "sha256": "aad5ca79ea0f36c6b295d40a009f98bb22ed9fd31eb2ca8a9a8bb91b1bfd6c1e"
+    },
+    {
+      "member": "DOCUMENTATION_CLEANUP_REPORT.md",
+      "bytes": 8206,
+      "sha256": "39eb920e5e9efd3f8bf8a25630842ddfa440d20fdcb439e8032a441669f921ce"
+    },
+    {
+      "member": "DOCUMENTATION_POLICY.md",
+      "bytes": 3411,
+      "sha256": "8e819d604954607cb92cbaec955712654d32672c8769ca516e749d92888242be"
+    },
+    {
+      "member": "Fase10_1_Code_Audit/AUDIT_10_1A_RECONCILIATION.md",
+      "bytes": 5867,
+      "sha256": "288a3538296464583c11d19f4070fc1d0c171b8b81ef0ea89aac51a0b94850f0"
+    },
+    {
+      "member": "Fase10_1_Code_Audit/Audit_20261103_113100/component_inventory.json",
+      "bytes": 44858,
+      "sha256": "894ff7709a3a3f52d07b149e10d3d6c02c2753193ae90c7b70c134c534b74f36"
+    },
+    {
+      "member": "Fase10_1_Code_Audit/Audit_20261103_113100/inspected_file_manifest.json",
+      "bytes": 21981,
+      "sha256": "8f2ef9f94d512429bea6317da5aba474049f3f1c83fc6139fb562427266534ce"
+    },
+    {
+      "member": "Fase10_1_Code_Audit/Audit_20261103_113100/PHASE10_1_CODE_AUDIT_REPORT.md",
+      "bytes": 64207,
+      "sha256": "b1af75be7a490ba5358e2fefa311e927d42df4510abc61fe97f8d3d35735deca"
+    },
+    {
+      "member": "Fase10_1_Code_Audit/Audit_20261103_113100/PUBLICATION_MANIFEST.md",
+      "bytes": 9938,
+      "sha256": "0870cad85a4e98ee3d760e4db17e8c6fa1f2ef262a2b45577937f364bf468156"
+    },
+    {
+      "member": "Fase10_1_Code_Audit/Audit_20261103_113100/test_inventory.json",
+      "bytes": 16897,
+      "sha256": "53a4f1f034a707e49ec862e3f8e30429ad7884a8cbad467eec4b3ede368bbf66"
+    },
+    {
+      "member": "Fase10_1_Code_Audit/Audit_20261104_Integral_Post_Pilot/INFORME_AUDITORIA_INTEGRAL.md",
+      "bytes": 35354,
+      "sha256": "4536bc5f26978ed4443b5478e7a32a2a0a25413191b376ff8ce43ace277e1e54"
+    },
+    {
+      "member": "Fase10_1_Code_Audit/Audit_20261104_Integral_Post_Pilot/INVENTARIO_MODULOS.md",
+      "bytes": 3620,
+      "sha256": "400b54f4375ffa634573c24d9a996f24cc079da07ee534e499cca5227f267ca7"
+    },
+    {
+      "member": "Fase10_Antigravity_Architecture/ANTIGRAVITY_INTEGRATION_ARCHITECTURE.md",
+      "bytes": 10587,
+      "sha256": "78e9725afd3a63bdc894222deb39262a242e8bf132d093974299453e7a743889"
+    },
+    {
+      "member": "Fase10_Antigravity_Architecture/BENCHMARK_PLAN_ANTIGRAVITY.md",
+      "bytes": 25961,
+      "sha256": "4c127465f55b43eb4c1e98a60ba1cddd03bedc205f3cd3b2a93796efa7129f88"
+    },
+    {
+      "member": "Fase10_Antigravity_Architecture/DUAL_PROVIDER_ARCHITECTURE.md",
+      "bytes": 15895,
+      "sha256": "020d5fa8b121075610fb76a5e2b977fe0ca217c5ae1cf0de9a44cfb1fa7c2837"
+    },
+    {
+      "member": "Fase10_Antigravity_Architecture/PHASE10_1B1_IMPLEMENTATION_REPORT.md",
+      "bytes": 20762,
+      "sha256": "b0222fe6702d42a228b08ec5a527d4cb3947da7fbcfaf9b13b484f105a397884"
+    },
+    {
+      "member": "Fase10_Antigravity_Architecture/PHASE10_1B_IMPLEMENTATION_SPEC.md",
+      "bytes": 25631,
+      "sha256": "55e4811eec3fdefefed6c9298d19bc6ec562f2379e1ab229c9b3caa5f61709b3"
+    },
+    {
+      "member": "Fase10_Antigravity_Architecture/PHASE10_2_OPENAI_API_FIRST_REPORT.md",
+      "bytes": 18546,
+      "sha256": "696791b688c5778668d22e7bf5f025be9a089764cda241ee2a27391123af0e77"
+    },
+    {
+      "member": "Fase10_Antigravity_Architecture/PHASE10_3A_OFFLINE_PILOT_PREPARATION_REPORT.md",
+      "bytes": 32054,
+      "sha256": "f00db2ee634b14b7a00e00147b9b2a721b4748dae12e3094bbee4ca059371082"
+    },
+    {
+      "member": "Fase10_Antigravity_Architecture/PHASE10_3B_LIVE_PILOT_EXECUTION_REPORT.md",
+      "bytes": 21571,
+      "sha256": "4cb3782cd4b79beede962ddae6dd278a6d2aad51aac9b963cfca69a39e41f8e3"
+    },
+    {
+      "member": "Fase10_Antigravity_Architecture/PHASE10_3B_PREFLIGHT_REMEDIATION_REPORT.md",
+      "bytes": 17568,
+      "sha256": "77e08e2b5e9a653ec32b710200f94ca76fbf45905d4b3fa4677474fe7f950651"
+    },
+    {
+      "member": "Fase10_Antigravity_Architecture/PHASE10_3B_READONLY_PREFLIGHT_AUDIT_REPORT.md",
+      "bytes": 22058,
+      "sha256": "9e68940ca60d6d61022842a28f3bf03125b611ea0d3ae443d3d4ee45aae64f21"
+    },
+    {
+      "member": "Fase10_Antigravity_Architecture/PHASE10_3C_LIVE_PILOT_125_REPORT.md",
+      "bytes": 6089,
+      "sha256": "c3c20c5a7760b3fdff51eaf164bf21e9947f9a5241cd954a8d53886c5004f83f"
+    },
+    {
+      "member": "Fase10_Antigravity_Architecture/PHASE10_FINAL_REPORT.md",
+      "bytes": 7046,
+      "sha256": "e47aeb0c2f095e8b3425fedaf6fab4a2ac590b8da28bec33dd8555f4b9fac339"
+    },
+    {
+      "member": "Fase10_Antigravity_Architecture/SCALABILITY_AND_RISK_ASSESSMENT.md",
+      "bytes": 14256,
+      "sha256": "83f16a918fe2e0bd926acbc74714384d35fc62836262faf1645ec987d1233c1b"
+    },
+    {
+      "member": "Fase10_Antigravity_Architecture/TRANSLATION_EXECUTION_ENGINE.md",
+      "bytes": 38572,
+      "sha256": "f4532dfa613674afad8d8c5228c9590bfaf94f47874d6b896bd0bddf0b32e65c"
+    },
+    {
+      "member": "Fase10_Evolucion_Linguistica/Evolution_20261104/01_INVESTIGACION.md",
+      "bytes": 8392,
+      "sha256": "52dab1ae0e9a1dba06da69368f0e80e5f583707c5689b418e6a834cb62b5697e"
+    },
+    {
+      "member": "Fase10_Evolucion_Linguistica/Evolution_20261104/01B_GLOSARIO_109.md",
+      "bytes": 21611,
+      "sha256": "e74612ffe13012372386321031a359212661efdfcd9a75fc6061956bda54fcdc"
+    },
+    {
+      "member": "Fase10_Evolucion_Linguistica/Evolution_20261104/02_CONTEXTO_TM_CALIDAD.md",
+      "bytes": 6069,
+      "sha256": "349461c8dff43f419b590af3260af51ac83ab8875d09d625456e6fe077c91c77"
+    },
+    {
+      "member": "Fase10_Evolucion_Linguistica/Evolution_20261104/03_BENCHMARK_COSTES_PRUEBAS.md",
+      "bytes": 4257,
+      "sha256": "2583e3e511cc5ef2e855c0e229733be1104bbcf284bc5f3ff477309bd255c85c"
+    },
+    {
+      "member": "Fase10_Evolucion_Linguistica/Evolution_20261104/04_CAMBIOS.md",
+      "bytes": 7407,
+      "sha256": "aeddd3b77479f79374db49c124b17f0abb7afebcb46211e3cc85a267fd4babcf"
+    },
+    {
+      "member": "Fase10_Evolucion_Linguistica/Evolution_20261104/05_ESTADO_FINAL.md",
+      "bytes": 5699,
+      "sha256": "d17417cf4884694b84633ad4417d9051e0f1c7b9f5240ad907ffe815156a01b4"
+    },
+    {
+      "member": "Fase10_Evolucion_Linguistica/Evolution_20261104/benchmark_scale_results.json",
+      "bytes": 796,
+      "sha256": "175a7c6ebd0adb7ff92503ffd020bc28bc3b8f050cbda76de84121d910bb62bc"
+    },
+    {
+      "member": "Fase10_Evolucion_Linguistica/Evolution_20261104/change_inventory.json",
+      "bytes": 4617,
+      "sha256": "1b7887b83d58720154fd7fb5869c639c65339cc1f758a8763717d8eae8e3b2b1"
+    },
+    {
+      "member": "Fase10_Evolucion_Linguistica/Evolution_20261104/evaluation_inventory.json",
+      "bytes": 433,
+      "sha256": "9691299ab1fb33c145cb44b574d8f0d242f475ab76dc3c84c82f6b6d1c6ec85e"
+    },
+    {
+      "member": "Fase10_Evolucion_Linguistica/Evolution_20261104/glossary_review_109.json",
+      "bytes": 56399,
+      "sha256": "0003c770128ab9c2c69bf31293e5202fa363ff2de642c3437dc0a0127409ca66"
+    },
+    {
+      "member": "Fase10_Evolucion_Linguistica/Evolution_20261104/payload_efficiency.json",
+      "bytes": 548,
+      "sha256": "b475a0c3283771a33550fd01020df11f97d6927a5acee31de59075f5f5d8e150"
+    },
+    {
+      "member": "Fase10_Evolucion_Linguistica/Evolution_20261104/protected_verification.json",
+      "bytes": 67,
+      "sha256": "fd00c180d9232f91f20e4fd8c03d64ec2ede5addf1e772da038201a6311ccde6"
+    },
+    {
+      "member": "Fase10_Evolucion_Linguistica/Evolution_20261104/README.md",
+      "bytes": 2006,
+      "sha256": "5c47efdffd415eb8a8d5cb5d0bae0f09ea5ad2ae18479c888c7a8e5668fb060a"
+    },
+    {
+      "member": "Fase10_Evolucion_Linguistica/Evolution_20261104/regression_results.json",
+      "bytes": 271,
+      "sha256": "186e661e56b0ae0220f81c16eec841ef8680a569759c820eb11802672038dde5"
+    },
+    {
+      "member": "Fase10_Evolucion_Linguistica/Evolution_20261104/source_register.json",
+      "bytes": 8400,
+      "sha256": "430f64db105fbd8a81b278af323aec456f59259caf894caa688d9db161d5c002"
+    },
+    {
+      "member": "Fase10_Evolucion_Linguistica/Evolution_20261104/terminology_proposals.json",
+      "bytes": 5318,
+      "sha256": "93639a4c989360622108d16d7b3e26118c605f408b09290a110ca9580c1b1908"
+    },
+    {
+      "member": "Fase10_Evolucion_Linguistica/Pilot4_Completed_20261104/COMPONENT_SWEEP.md",
+      "bytes": 11279,
+      "sha256": "4d17695abf892e715ef5971048ca817a734d5deee60d6852ccb62efb7b95cf16"
+    },
+    {
+      "member": "Fase10_Evolucion_Linguistica/Pilot4_Completed_20261104/final_metrics.json",
+      "bytes": 3222,
+      "sha256": "3e8fea15c0ce04630c6a20ad476478ec1304f5b0ee9ceb5187a688990e11ee09"
+    },
+    {
+      "member": "Fase10_Evolucion_Linguistica/Pilot4_Completed_20261104/protected_verification.json",
+      "bytes": 68,
+      "sha256": "cc1dd522e48ff307fd1d546efee01a9138f214174fb84424e7ddaf0cb325b038"
+    },
+    {
+      "member": "Fase10_Evolucion_Linguistica/Pilot4_Completed_20261104/README.md",
+      "bytes": 9373,
+      "sha256": "dba0b30d06b9f77dd677d994a86a0d0d4f5a1373949b2576329c18daa3dacca7"
+    },
+    {
+      "member": "Fase10_Evolucion_Linguistica/Pilot4_Preparation_20261104/preflight_result.json",
+      "bytes": 179,
+      "sha256": "65a2e3549b5ef4bb4d8a7a2f43584d55c9ce43bd7c47f1dbbcb8bc698ca277c5"
+    },
+    {
+      "member": "Fase10_Evolucion_Linguistica/Pilot4_Preparation_20261104/protected_verification.json",
+      "bytes": 184,
+      "sha256": "672b0218256764f38e5386aaf6d5f7d04946f57dcf4fa159e18e6a23ecd5d62d"
+    },
+    {
+      "member": "Fase10_Evolucion_Linguistica/Pilot4_Preparation_20261104/readiness_metrics.json",
+      "bytes": 1671,
+      "sha256": "53a73e0ec703efec3a77c011dcbd1ac6811c92f65480475c0a8f690a581746d9"
+    },
+    {
+      "member": "Fase10_Evolucion_Linguistica/Pilot4_Preparation_20261104/README.md",
+      "bytes": 11268,
+      "sha256": "aa03faf36b3918235ee6872bd5afe83159d4d39a0654e6e5c662c31a91ec5cb1"
+    },
+    {
+      "member": "Fase10_Evolucion_Linguistica/Pilot4_Preparation_20261104/TESTS.md",
+      "bytes": 359,
+      "sha256": "8cfdf18bb67c65ac2386fdce467d285c9276a1b1161074ebf1029af160eef44d"
+    },
+    {
+      "member": "Fase10_Evolucion_Linguistica/Pilot4_R2_20261104/offline_corpus_check.json",
+      "bytes": 146,
+      "sha256": "c6bc4ab31e87a3cbf6666d38df726d9009997013562fadeb7dbba15cd73857f6"
+    },
+    {
+      "member": "Fase10_Evolucion_Linguistica/Pilot4_R2_20261104/protected_verification.json",
+      "bytes": 68,
+      "sha256": "0246331424d790df2c604b27b2a5a107c394f5adaa175e906725c61cec4c9856"
+    },
+    {
+      "member": "Fase10_Evolucion_Linguistica/Pilot4_R2_20261104/r2_result_metrics.json",
+      "bytes": 1300,
+      "sha256": "7999973d7acab807ff32b90797a783660ef93d7e3a692b68a703893c82bdc9a8"
+    },
+    {
+      "member": "Fase10_Evolucion_Linguistica/Pilot4_R2_20261104/README.md",
+      "bytes": 6993,
+      "sha256": "cfaf60775b4d897cf4635f6c4a87210bec3b74dfde40d3a35e0a857b0e205478"
+    },
+    {
+      "member": "Fase10_Evolucion_Linguistica/Pilot4_R2_20261104/TESTS.md",
+      "bytes": 349,
+      "sha256": "c4d0f266af3bd002e1405a73a377b4c70a527ca20598ecefc55d459868f80c16"
+    },
+    {
+      "member": "Fase10_Evolucion_Linguistica/Pilot4_Review_Analysis_20261105/README.md",
+      "bytes": 16346,
+      "sha256": "7286c9287bd0d28aaf4239c19d36226900de4a9556f188ff5b4330a4ec68f141"
+    },
+    {
+      "member": "Fase10_Evolucion_Linguistica/Pilot4_Stage1_20261104/README.md",
+      "bytes": 6755,
+      "sha256": "70c2c104398adea49542ce14d7992b6dd39df5fbb1aa74fd4b85248f1f769e1c"
+    },
+    {
+      "member": "Fase10_Evolucion_Linguistica/Pilot4_Stage1_20261104/stage_1_metrics.json",
+      "bytes": 1378,
+      "sha256": "0a5f9a5707d9ff4c6c89b03f0e2bbf59c0206c1ffd16fe51ca3fe2df6b2e5af3"
+    },
+    {
+      "member": "Fase7_y_Fase8_Informes/API_COST_ESTIMATE.md",
+      "bytes": 15586,
+      "sha256": "818b3546d59f629d43063c8dc552b33cb910c43a72916b4c1cd42ea48d696c7a"
+    },
+    {
+      "member": "Fase7_y_Fase8_Informes/API_COST_ESTIMATE_V2.md",
+      "bytes": 34067,
+      "sha256": "bf085ae35397a5c2148c12b32e2c08aac955189f5a0020507f4aef50ddddba1a"
+    },
+    {
+      "member": "Fase7_y_Fase8_Informes/AUDIT_PHASE7.md",
+      "bytes": 19134,
+      "sha256": "5494163ee1ae4216f1f8d324fe32784a6372fadf2edb13b1998231200bcc38d1"
+    },
+    {
+      "member": "Fase7_y_Fase8_Informes/coverage_snapshot_1.md",
+      "bytes": 2712,
+      "sha256": "500275cf823af3e79a6dbe91cf655908d7cae54c3c07426f234bf6346c460db4"
+    },
+    {
+      "member": "Fase7_y_Fase8_Informes/GLOSSARY_POLICY.md",
+      "bytes": 9278,
+      "sha256": "bede1c5c4f7497e050051ceb5f7f89b2b38930fa3f46a9735c44f6e7640ee8f8"
+    },
+    {
+      "member": "Fase7_y_Fase8_Informes/MODEL_BENCHMARK_PLAN.md",
+      "bytes": 15745,
+      "sha256": "7c8ad509187d9f85ebec0ee47c464f9b1e290e1e45e3c91606d65fb601ac9658"
+    },
+    {
+      "member": "Fase7_y_Fase8_Informes/TRANSLATION_POLICY_ES419.md",
+      "bytes": 9484,
+      "sha256": "f7080eaa6581140722ddd342e10c62a64c5bb3d94b90afd7f0353e073c574aad"
+    },
+    {
+      "member": "Fase9_Full_Audit/PHASE9_FULL_AUDIT_REPORT.md",
+      "bytes": 61894,
+      "sha256": "61dd61fe246c830903ac82adbc303fcd314bc2704b0b759bf55ef97a1cdb43d2"
+    },
+    {
+      "member": "PROJECT_STATUS.md",
+      "bytes": 24219,
+      "sha256": "1fdd2445156ec367428c561fd82c1b5f7b0a623cf9fc209001ccc6e61dbe7e34"
+    },
+    {
+      "member": "README.md",
+      "bytes": 7340,
+      "sha256": "ccca740e76c899f924aa1841d4f79bfa3e13f7f8f2880569b82191c42e1d2ce3"
+    },
+    {
+      "member": "ROADMAP.md",
+      "bytes": 10453,
+      "sha256": "99e0095d60e35015dff2378d838876b4c073969ef055b2e1c62b6b8021172ef8"
+    }
+  ],
+  "link_migrations": [
+    {
+      "file": "Documentacion_Base_Fases_0_a_6/ARCHITECTURE.md",
+      "sha256_before": "822aac46bf3f9906f05e5ea083566fe0938c1db2caadf6991c885730413e2c25",
+      "sha256_after": "977a012294081572953b5ef4a85ffee4f1bf51c12addd9dfcfa0773e7cfbdbfb",
+      "links": [
+        {
+          "old": "../../CURRENT_PROJECT_STATE.md",
+          "new": "../documentacion/HISTORICO.md"
+        }
+      ]
+    },
+    {
+      "file": "Documentacion_Base_Fases_0_a_6/ROADMAP.md",
+      "sha256_before": "8ecd76e0a84e36cc2d9e6ec482bae9d04b76540b34732e9e15244c7cfa2a6269",
+      "sha256_after": "2f786b4762f92236a6047862ca40206c0c9204ec7bbb72e4ac3b2e9701bb4367",
+      "links": [
+        {
+          "old": "../ROADMAP.md",
+          "new": "../documentacion/ESTADO_ACTUAL.md"
+        },
+        {
+          "old": "../PROJECT_STATUS.md",
+          "new": "../documentacion/ESTADO_ACTUAL.md"
+        },
+        {
+          "old": "../CHANGELOG.md",
+          "new": "../documentacion/HISTORICO.md"
+        },
+        {
+          "old": "../../CURRENT_PROJECT_STATE.md",
+          "new": "../documentacion/HISTORICO.md"
+        },
+        {
+          "old": "../../Fase9_Full_Audit/PHASE9_FULL_AUDIT_REPORT.md",
+          "new": "../Fase9_Full_Audit/PHASE9_FULL_AUDIT_REPORT.md"
+        },
+        {
+          "old": "../../Fase10_Antigravity_Architecture/PHASE10_1B1_IMPLEMENTATION_REPORT.md",
+          "new": "../Fase10_Antigravity_Architecture/PHASE10_1B1_IMPLEMENTATION_REPORT.md"
+        },
+        {
+          "old": "../../Fase10_1_Code_Audit/Audit_20261103_113100/PHASE10_1_CODE_AUDIT_REPORT.md",
+          "new": "../Fase10_1_Code_Audit/Audit_20261103_113100/PHASE10_1_CODE_AUDIT_REPORT.md"
+        },
+        {
+          "old": "../../Fase10_1_Code_Audit/AUDIT_10_1A_RECONCILIATION.md",
+          "new": "../Fase10_1_Code_Audit/AUDIT_10_1A_RECONCILIATION.md"
+        },
+        {
+          "old": "../../Fase10_Antigravity_Architecture/PHASE10_1B_IMPLEMENTATION_SPEC.md",
+          "new": "../Fase10_Antigravity_Architecture/PHASE10_1B_IMPLEMENTATION_SPEC.md"
+        },
+        {
+          "old": "../../Fase10_Antigravity_Architecture/PHASE10_1B1_IMPLEMENTATION_REPORT.md",
+          "new": "../Fase10_Antigravity_Architecture/PHASE10_1B1_IMPLEMENTATION_REPORT.md"
+        }
+      ]
+    },
+    {
+      "file": "Documentacion_Base_Fases_0_a_6/TECHNICAL_DECISIONS.md",
+      "sha256_before": "23369b458e984fed794cf77b1bf2c422af5a6cff1060d2ca647de35540eea081",
+      "sha256_after": "16dbd6bb1d4b642b8667f469b4c697a46fa5884351dc916fcbf51a617bcf841b",
+      "links": [
+        {
+          "old": "../../CURRENT_PROJECT_STATE.md",
+          "new": "../documentacion/HISTORICO.md"
+        }
+      ]
+    },
+    {
+      "file": "Documentacion_Base_Fases_0_a_6/TESTING.md",
+      "sha256_before": "e3005dc15e7afd51c2c0761b63eeca7aee9f60d4070d1595eb5a52dae6370ff7",
+      "sha256_after": "11f240d8a9715a6a4bc3d5de3c12c96aaf27996e2129af655b75197aba0d7f61",
+      "links": [
+        {
+          "old": "tests/test_formats.py",
+          "new": "plain local-file reference"
+        },
+        {
+          "old": "tests/test_protector_glossary_tm.py",
+          "new": "plain local-file reference"
+        },
+        {
+          "old": "tests/test_end_to_end.py",
+          "new": "plain local-file reference"
+        }
+      ]
+    },
+    {
+      "file": "Documentacion_Base_Fases_0_a_6/USER_GUIDE.md",
+      "sha256_before": "aad5ca79ea0f36c6b295d40a009f98bb22ed9fd31eb2ca8a9a8bb91b1bfd6c1e",
+      "sha256_after": "71d1838566722e62f05ccfb11992c71916c4098e5ff392a1820a44e73f9b3527",
+      "links": [
+        {
+          "old": "../../CURRENT_PROJECT_STATE.md",
+          "new": "../documentacion/HISTORICO.md"
+        },
+        {
+          "old": "launch_gui.bat",
+          "new": "plain local-file reference"
+        }
+      ]
+    },
+    {
+      "file": "Fase10_Antigravity_Architecture/PHASE10_1B1_IMPLEMENTATION_REPORT.md",
+      "sha256_before": "b0222fe6702d42a228b08ec5a527d4cb3947da7fbcfaf9b13b484f105a397884",
+      "sha256_after": "c99d25d4f884b24170c46f2ff1abb58d767bfe940108c2684faa8dea0bffb641",
+      "links": [
+        {
+          "old": "../PROJECT_STATUS.md",
+          "new": "../documentacion/ESTADO_ACTUAL.md"
+        }
+      ],
+      "format_note": "Existing Markdown hard break on the edited navigation line expressed as <br>; no factual content changed."
+    },
+    {
+      "file": "Fase10_Antigravity_Architecture/PHASE10_FINAL_REPORT.md",
+      "sha256_before": "e47aeb0c2f095e8b3425fedaf6fab4a2ac590b8da28bec33dd8555f4b9fac339",
+      "sha256_after": "f52e3e67f16d53cc4e72b40f864403a0e29fdca49ab485ce114ad57c5b3a1f1c",
+      "links": [
+        {
+          "old": "../CURRENT_PROJECT_STATE.md",
+          "new": "../documentacion/HISTORICO.md"
+        }
+      ]
+    },
+    {
+      "file": "Fase7_y_Fase8_Informes/API_COST_ESTIMATE_V2.md",
+      "sha256_before": "bf085ae35397a5c2148c12b32e2c08aac955189f5a0020507f4aef50ddddba1a",
+      "sha256_after": "7710978477fd7397d2dad7465b9b68da822b35d54f3fcfb4658a52a24a7af2e1",
+      "links": [
+        {
+          "old": "../../CURRENT_PROJECT_STATE.md",
+          "new": "../documentacion/HISTORICO.md"
+        }
+      ]
+    },
+    {
+      "file": "Fase7_y_Fase8_Informes/AUDIT_PHASE7.md",
+      "sha256_before": "5494163ee1ae4216f1f8d324fe32784a6372fadf2edb13b1998231200bcc38d1",
+      "sha256_after": "4442ea399c857ed94bce406bb0e0fb748b26bd454b93d207cd3207f149202d1c",
+      "links": [
+        {
+          "old": "../../Fase9_Full_Audit/PHASE9_FULL_AUDIT_REPORT.md",
+          "new": "../Fase9_Full_Audit/PHASE9_FULL_AUDIT_REPORT.md"
+        }
+      ]
+    },
+    {
+      "file": "Fase7_y_Fase8_Informes/coverage_snapshot_1.md",
+      "sha256_before": "500275cf823af3e79a6dbe91cf655908d7cae54c3c07426f234bf6346c460db4",
+      "sha256_after": "18c1045befd030e334b38aac03e99af6ec20534314f576975645aa842dfbdc25",
+      "links": [
+        {
+          "old": "../../CURRENT_PROJECT_STATE.md",
+          "new": "../documentacion/HISTORICO.md"
+        }
+      ]
+    },
+    {
+      "file": "Fase7_y_Fase8_Informes/MODEL_BENCHMARK_PLAN.md",
+      "sha256_before": "7c8ad509187d9f85ebec0ee47c464f9b1e290e1e45e3c91606d65fb601ac9658",
+      "sha256_after": "89150c16f3ffd47a9b07d8c265673fbfa08381f5aeae3b214fb51319affaea32",
+      "links": [
+        {
+          "old": "../../Fase10_Antigravity_Architecture/BENCHMARK_PLAN_ANTIGRAVITY.md",
+          "new": "../Fase10_Antigravity_Architecture/BENCHMARK_PLAN_ANTIGRAVITY.md"
+        }
+      ]
+    }
+  ],
+  "root_readme_replaced": true,
+  "active_documents": [
+    "ESTADO_ACTUAL.md",
+    "GUIA_DE_USO.md",
+    "REFERENCIA_TECNICA.md",
+    "HISTORICO.md"
+  ],
+  "published_text_encoding": "UTF-8 with canonical LF for migrated text; ZIP originals preserve exact original bytes."
+}

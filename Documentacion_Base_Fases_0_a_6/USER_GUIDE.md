@@ -1,4 +1,4 @@
-> **GUÍA DE USUARIO — DOCUMENTO HISTÓRICO:** Esta guía describe la interfaz y los flujos de la aplicación durante las fases iniciales. Sus nombres de vistas, indicadores, rutas y procedimientos no se han revalidado contra el ejecutable actual. Para el estado vigente, restricciones y próximos pasos, consulta [CURRENT_PROJECT_STATE.md](../../CURRENT_PROJECT_STATE.md) y [ROADMAP.md](./ROADMAP.md). No tomes los pasos de activación/exportación de este documento como autorización para modificar MO2 o Nolvus.
+> **GUÍA DE USUARIO — DOCUMENTO HISTÓRICO:** Esta guía describe la interfaz y los flujos de la aplicación durante las fases iniciales. Sus nombres de vistas, indicadores, rutas y procedimientos no se han revalidado contra el ejecutable actual. Para el estado vigente, restricciones y próximos pasos, consulta [CURRENT_PROJECT_STATE.md](../documentacion/HISTORICO.md) y [ROADMAP.md](./ROADMAP.md). No tomes los pasos de activación/exportación de este documento como autorización para modificar MO2 o Nolvus.
 
 ---
 
@@ -10,7 +10,7 @@
 
 ## 1. Arranque de la Aplicación
 
-Ejecuta [`launch_gui.bat`](launch_gui.bat) con doble clic o abre una terminal PowerShell en la carpeta del proyecto:
+Ejecuta `launch_gui.bat` (archivo del workspace local) con doble clic o abre una terminal PowerShell en la carpeta del proyecto:
 
 ```powershell
 .venv\Scripts\python.exe -m nolvus_translator
