@@ -12,11 +12,19 @@ Documentación del proyecto para localizar **Nolvus Awakening 6.0.21** al españ
 | [DECISIONS.md](./DECISIONS.md) | Decisiones técnicas y operativas vigentes e históricas, con fecha y motivo. |
 | [DOCUMENTATION_POLICY.md](./DOCUMENTATION_POLICY.md) | Reglas de mantenimiento documental. |
 
-**Estado en una línea (2026-11-04):** Fase 10.3-C ejecutó cinco lotes reales de 25 cadenas (`gpt-6-luna`): 100 se aprobaron e importaron al staging aislado, 23 candidatas válidas quedaron retenidas por la cuarentena atómica de dos incidencias del glosario y el coste medido fue `$0.011345 USD`; la producción sigue bloqueada. La puerta siguiente es la remediación dirigida del lote de scripts, protección de nombres propios y revisión lingüística, no una ampliación masiva.
+**Estado en una línea (2026-11-04):** muestra de la cuarta prueba completada tras el barrido; revisión humana pendiente. Estado vigente en [PROJECT_STATUS.md](./PROJECT_STATUS.md).
 
 ## Evidencia por fase (informes históricos preservados)
 
 ### Evolución integral y lingüística offline (2026-11-04)
+
+- [Cuarta prueba completa: barrido, costes, procedencia y revisión pendiente](./Fase10_Evolucion_Linguistica/Pilot4_Completed_20261104/README.md).
+
+- [Corrección del protector y resultado real de R2](./Fase10_Evolucion_Linguistica/Pilot4_R2_20261104/README.md).
+
+- [Resultado real de la primera etapa y diagnóstico que detuvo la continuación](./Fase10_Evolucion_Linguistica/Pilot4_Stage1_20261104/README.md).
+
+- [Preparación de la cuarta prueba: muestra, etapas, correcciones, presupuesto y revisión humana](./Fase10_Evolucion_Linguistica/Pilot4_Preparation_20261104/README.md).
 
 - [Informe ejecutivo y paquete de evidencia: investigación, 109 términos, contexto/TM, calidad, costes y benchmark](./Fase10_Evolucion_Linguistica/Evolution_20261104/README.md).
 

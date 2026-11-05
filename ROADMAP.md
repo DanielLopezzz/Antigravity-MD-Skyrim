@@ -14,7 +14,7 @@
 |---|---|---|---|
 | **10.3-B** | **Ejecución real controlada de 25 cadenas con `gpt-6-luna`** | `COMPLETADO CON INCIDENCIA` | Dos intentos y su conciliación se documentan en el informe 10.3-B. No se considera puerta de producción. |
 | **10.3-C** | **Piloto transversal real de 125 cadenas (`5 × 25`) con `gpt-6-luna`** | `COMPLETADO CON ACEPTACIÓN PARCIAL` | Cinco solicitudes, 100 importadas en staging, 23 candidatas retenidas por lote atómico, 2 en cuarentena; coste real `$0.011345 USD`. Informe 10.3-C. |
-| **10.3-D** | **Remediación dirigida y reprueba de scripts** | `PENDIENTE` | Confirmar la regla de `Elder Scroll`; preservar en staging el texto exacto de respuestas rechazadas para auditoría; proteger nombres de mods como `HeelsFix Refresh`; revisar importación sin relajar atomicidad antes del análisis de dependencias; repetir solo las dos cadenas en cuarentena y revisar las 23 candidatas. |
+| **10.3-D / cuarta prueba** | **Evaluación humana de la muestra completada** | `PENDIENTE` | Revisar obligatorios y muestra sin alertas; medir gravedad y categorías de error antes de escalar. [Resultado completo](./Fase10_Evolucion_Linguistica/Pilot4_Completed_20261104/README.md). |
 | **10.4** | **Evaluación de escalamiento selectivo a `gpt-6.1-sol` y prueba de Batch API (`/v1/batches`)** | `PENDIENTE` | Validación empírica de `OpenAIBatchCoordinator` en lote real asíncrono y verificación de reglas de escalamiento solo bajo autorización y condiciones comprobables. |
 | **10.5** | **Piloto de un mod completo representativo (~1.100–1.500 cadenas)** | `PENDIENTE` | Coherencia terminológica ES-419, reutilización TM, propagación de duplicados, control presupuestario y exportación MO2 no destructiva verificada en perfil clonado de prueba. |
 | **10.6** | **Recálculo económico empírico del corpus completo (~240.684 cadenas únicas) y puerta de aprobación de Producción** | `PENDIENTE` | Proyección definitiva de costos (`gpt-6-luna` Batch/Standard + tasa real medida de escalamiento a `gpt-6.1-sol`) documentada en `DECISIONS.md` y aprobación expresa de presupuesto productivo. |
@@ -22,15 +22,18 @@
 
 ---
 
-## 10.3-D — Remediación dirigida posterior al piloto de 125 cadenas
+## 10.3-D — Evaluación humana y cuarta prueba
 
-- Revisar por qué el Gatekeeper marcó dos respuestas por la regla de `Elder Scroll` (`Pergamino Antiguo`). El texto exacto rechazado no está en el artefacto reconstruido; ajustar la retención local de evidencia de cuarentena y no desactivar el Gatekeeper.
-- Proteger nombres de mods y marcas en el texto de origen, empezando por `HeelsFix Refresh`, conservando intactos únicamente los nombres y dejando traducible el resto del mensaje.
-- Evaluar importación por elemento solo tras confirmar que no rompe coherencia entre cadenas relacionadas. Hasta entonces, conservar la aceptación atómica y usar reintentos dirigidos en micro-lotes.
-- Revisar la muestra por registro, intención, fluidez ES-419, consistencia del glosario y restricciones reales de interfaz. Las alertas de expansión requieren juicio contextual.
-- Reutilizar las 23 candidatas retenidas tras revisión y preparar una reprueba solo de las dos cadenas en cuarentena, con presupuesto autorizado. No repetir el lote completo de 125 si no hace falta.
+**Prioridad actual:** revisar los casos obligatorios y la muestra de calidad de la continuación activa. La ejecución de las 1.000 entradas ya concluyó; no repetir las candidatas válidas. Separar aceptación mecánica, reparación posterior y aprobación humana. Ver el informe completo enlazado arriba.
 
-## Fases históricas completadas
+- Completar las revisiones previas y decidir qué patrones exigen corrección. Si cambian prompt, glosario o código, regenerar el plan en otra carpeta; no modificar reglas durante el experimento.
+- Reconfirmar modelo/tarifas y autorizar presupuesto antes de la primera etapa. Ejecutar por separado las etapas preparadas y evaluar las 50 iniciales antes de avanzar.
+- Revisar los tres casos conocidos de `Elder Scroll` y `HeelsFix Refresh`, todas las alertas y la muestra de calidad. Comparar los 100 controles distinguiendo aprobación original de corrección humana.
+- Elaborar recuentos por categoría y cohorte de significado, naturalidad, voz, terminología, contexto y formato. La aceptación mecánica no demuestra calidad lingüística.
+- Auditar la clasificación general PEX antes de producción. El filtro de esta prueba evita los literales técnicos detectados, pero no reclasifica el inventario ni acredita cobertura completa.
+- Conservar aceptación atómica y no reenviar solicitudes fallidas o inciertas sin reconciliación. Los controles ya implementados están en el [informe de preparación](./Fase10_Evolucion_Linguistica/Pilot4_Preparation_20261104/README.md).
+
+## Antecedente histórico: piloto de 25 cadenas
 
 ### 10.3-B — Piloto real de 25 cadenas
 
@@ -46,7 +49,7 @@
 3. Operar exclusivamente sobre `pilot_10_3a_work_db.sqlite3`, `pilot_10_3a_exchange_store.sqlite3` y `pilot_10_3a_budget_store.sqlite3` (nunca `workspace_data/nolvus_translator.db`).
 4. Mantener `allow_sol_escalation = False` durante toda la Fase 10.3-B para medir la tasa pura de aceptación a primera pasada de `gpt-6-luna` frente al `LocalGatekeeper` de 12 puertas.
 
-### 10.4 — Validación de Batch API y escalamiento selectivo a `gpt-6.1-sol`
+## 10.4 — Validación de Batch API y escalamiento selectivo a `gpt-6.1-sol`
 
 - Ejecutar un lote de prueba a través de `OpenAIBatchCoordinator` (`/v1/files` + `/v1/batches`) con `gpt-6-luna` para medir tiempos reales de cola asíncrona y verificar el descuento del 50 % en reconciliación post-respuesta.
 - Si del piloto 10.3 resultan cadenas en cuarentena tras agotar reintentos en `gpt-6-luna` (`LUNA_MAX_RETRIES_EXHAUSTED`), evaluar con autorización expresa el escalamiento puntual a `gpt-6.1-sol`.
@@ -63,7 +66,7 @@
 
 Antes de ampliar el piloto, completar las puertas que siguen abiertas según el [estado de aceptación](./Fase10_Evolucion_Linguistica/Evolution_20261104/05_ESTADO_FINAL.md):
 
-- **P1 — Calidad demostrada:** revisar los casos por personas, adjudicar discrepancias y preparar comparación A/B ciega. No hay nuevas referencias humanas aprobadas ni métricas reales de mejora de modelos.
+- **P1 — Calidad demostrada:** completar las revisiones humanas en curso, adjudicar discrepancias y preparar comparación A/B ciega. Todavía no hay métricas comparativas de mejora de modelos.
 - **P1 — Terminología y contexto:** completar evidencia por entrada, obtener fuentes de lore consultables y evaluar segmentación/entidades/relevancia para recuperar pasajes locales de libros.
 - **P2 — Cobertura real:** medir tamaños y memoria de parsers con archivos representativos, añadir pruebas de cabeceras/checksums y medir UI/exportación completa. El benchmark SQLite no cubre esos recorridos.
 - **P2 — Operación y migración:** integrar la publicación reversible preparada con bloqueo y recuperación durable; llevar cursor a consultas necesarias y preparar migraciones generales de la DB principal sobre copias.

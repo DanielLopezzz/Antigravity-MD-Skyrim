@@ -1,0 +1,109 @@
+{
+  "state": "COMPLETED_AWAITING_HUMAN_REVIEW",
+  "target": 1000,
+  "candidates_received": 1000,
+  "candidates_imported": 975,
+  "quarantined_atomic_group_members": 25,
+  "raw_quarantined_placeholder_failures": 0,
+  "cached_at_first_continuation": 48,
+  "unique_api_strings_requested_this_task": 952,
+  "api_items_sent_this_task_including_repairs": 957,
+  "format_only_ai_proposals": 1,
+  "new_human_approvals_created_by_agent": 0,
+  "current_review_status": {
+    "pending": 1000
+  },
+  "database_review_status": {
+    "pending": 834,
+    "requires_lore_research": 141,
+    "unprocessed": 25
+  },
+  "total_cost_all_attempts_usd": 0.1176624,
+  "original_limit_usd": 0.17,
+  "remaining_usd": 0.0523376,
+  "per_run": [
+    {
+      "run": "Phase4_Luna1000",
+      "consumed_usd": 0.0044856,
+      "paid_requests": 2,
+      "input_tokens": 10866,
+      "output_tokens": 6798
+    },
+    {
+      "run": "Phase4_Luna1000_R2",
+      "consumed_usd": 0.0043975,
+      "paid_requests": 2,
+      "input_tokens": 10860,
+      "output_tokens": 6623
+    },
+    {
+      "run": "Phase4_Luna1000_R3_Continuation",
+      "consumed_usd": 0.0399661,
+      "paid_requests": 18,
+      "input_tokens": 104801,
+      "output_tokens": 58972
+    },
+    {
+      "run": "Phase4_Luna1000_R4_Completion",
+      "consumed_usd": 0.0130135,
+      "paid_requests": 6,
+      "input_tokens": 35035,
+      "output_tokens": 19020
+    },
+    {
+      "run": "Phase4_Luna1000_R5_Final",
+      "consumed_usd": 0.0269469,
+      "paid_requests": 10,
+      "input_tokens": 67124,
+      "output_tokens": 40469
+    },
+    {
+      "run": "Phase4_Luna1000_R6_Complete",
+      "consumed_usd": 0.0062911,
+      "paid_requests": 3,
+      "input_tokens": 16651,
+      "output_tokens": 9252
+    },
+    {
+      "run": "Phase4_Luna1000_R7_DiagnosticComplete",
+      "consumed_usd": 0.0225617,
+      "paid_requests": 9,
+      "input_tokens": 54242,
+      "output_tokens": 34275
+    }
+  ],
+  "verified_real_responses": 50,
+  "bounded_focal_requests_this_task": 4,
+  "focal_repaired_cases_to_review": 5,
+  "hard_placeholder_failures": 0,
+  "raw_control_mismatches": 0,
+  "escaped_control_mismatches": 0,
+  "numeric_text_differences_to_review": 2,
+  "editorial_cases_flagged_by_final_audit": 42,
+  "mandatory_review_cases": 196,
+  "sample_cases": 199,
+  "tm_rows": 0,
+  "api_lock": true,
+  "protected_files_checked": 494,
+  "protected_files_identical": true,
+  "glossary_regression_cases": {
+    "elder_scroll": 2,
+    "heelsfix_refresh": 1,
+    "heelsfix_name_preserved": true
+  },
+  "full_offline_tests_passed_before_final_api": 109,
+  "full_offline_tests_passed": 110,
+  "post_run_hash_schema_fix_offline_only": true,
+  "complete_corpus_simulation_passed": true,
+  "metadata_false_positive_corrected": true,
+  "concordance_false_positive_corrected": true,
+  "final_stage_diagnostic_without_retries": true,
+  "protocol_hash_error_cases": 1,
+  "offline_protocol_quarantine_adjudications": 1,
+  "final_stage_primary_batches": {
+    "complete": 8,
+    "quarantined": 1
+  },
+  "duplicated_response_normalized_offline": 1,
+  "candidate_text_unchanged_after_metadata_fix": true
+}

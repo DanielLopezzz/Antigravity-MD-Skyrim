@@ -3,12 +3,14 @@
 **Proyecto:** Nolvus AI Translator  
 **Objetivo:** Traducción propia de Nolvus Awakening 6.0.21 al español latinoamericano neutro (`ES-419`)  
 **Última actualización:** 2026-11-04  
-**Fase actual:** **Fase 10.3-C completada con aceptación parcial** — 100/125 cadenas importadas al staging aislado; 23 candidatas retenidas por atomicidad y 2 en cuarentena. Siguiente puerta: remediación dirigida 10.3-D.  
+**Fase actual:** **Cuarta prueba: muestra de 1.000 procesada; revisión humana pendiente.** Continuaciones identificadas, reutilización y cuarentena atómica; sin promoción a producción.<br>
 **Estrategia de proveedores vigente:** **API-First** (`gpt-6-luna` principal, `gpt-6.1-sol` escalamiento selectivo por regla verificable, `gemini-4-argon` vía complemento de intercambio de archivos; `Claude` excluido)  
 **Rama activa (repositorio de código):** `codex/linguistic-evolution`, creada conservando los cambios locales; `HEAD=066ae03`, mejoras de esta fase sin commit.<br>
-**Estado de suite de pruebas:** **80/80 pruebas en verde**, ejecución final de la evolución offline del 2026-11-04: 22,496 s.<br>
-**Candado de API de pago:** `PHASE_1_PAID_API_LOCK = True` restaurado tras el piloto; producción continúa bloqueada  
-**Traducciones reales en staging de prueba:** **100 aprobadas e importadas + 23 candidatas no importadas + 2 en cuarentena**; coste de la Fase 10.3-C: **`US$0.01134500`**. Traducciones promovidas a producción: `0`.
+**Estado de suite de pruebas:** **110/110 OK** después de reforzar el esquema del hash; 109/109 OK antes del tramo final.<br>
+**Candado de API de pago:** `PHASE_1_PAID_API_LOCK = True`, restaurado al cerrar la prueba; producción continúa bloqueada.
+**Traducciones reales del piloto histórico en staging:** **100 validadas mecánicamente e importadas + 23 candidatas no importadas + 2 en cuarentena**; esa validación no acredita aprobación humana. Coste histórico 10.3-C: **`US$0.01134500`**. Traducciones promovidas a producción: `0`.
+
+**Prueba vigente:** 1000 candidatas recibidas, 975 importadas pendientes en staging y 25 miembros de lotes retenidos. Coste acumulado de todos los intentos `US$0.1176624` dentro de `US$0.17`; 494 archivos anteriores idénticos. Cuatro reparaciones pagadas y una propuesta de formato IA explícita; cero aprobaciones humanas automáticas, TM o promociones. [Informe y siguiente paso](./Fase10_Evolucion_Linguistica/Pilot4_Completed_20261104/README.md).
 
 **Evolución lingüística local:** contexto en payload, contrato v1.1 compatible con v1, TM contextual v2, variantes explícitas y barrera de aprobación editorial implementados offline. Benchmark SQLite de 240.684 cadenas sintéticas realizado; calidad lingüística humana y comparación de modelos pendientes. Los 57 archivos protegidos permanecen idénticos. [Evidencia y límites](./Fase10_Evolucion_Linguistica/Evolution_20261104/README.md).
 
@@ -101,12 +103,12 @@ Clasificación canónica aplicada:
    - `BudgetController` define **4 tablas regulares** (`budget_projects`, `budget_jobs`, `budget_reservations`, `budget_audit_log`) bajo `BEGIN IMMEDIATE`.
    - `OpenAIBatchCoordinator` define **2 tablas regulares** (`openai_batch_jobs`, `openai_batch_items`) para persistencia y recuperación de trabajos asíncronos `/v1/batches`.
 
-### 3.3 Estado de la suite de pruebas automatizadas (`80/80 OK`)
+### 3.3 Estado de la suite de pruebas automatizadas (`110/110 OK`)
 
-- **Última ejecución completa:** `python -m unittest discover -s tests` → **`Ran 80 tests in 22.496s — OK`** (2026-11-04, evolución lingüística offline).
-- La línea base de esta fase fue **69/69 OK**. Se añadieron 11 regresiones de contexto, compatibilidad, migración en copia, TM, aprobación, variantes, nombres, cursor, límites y reversibilidad.
+- **Última ejecución completa:** `python -m unittest discover -s tests -t .` → **`Ran 110 tests in 54.544s — OK`** (2026-11-04, después del refuerzo del esquema SHA-256). Antes del último tramo de API pasaron 109/109 en 37,296 s.
+- Las regresiones cubren protección de controles y porcentajes, reutilización, recuperación acotada, atomicidad, concordancia, cardinalidad, duplicados, cuarentena diagnóstica y rechazo de hashes no canónicos. Los resultados anteriores de 80/80 se conservan en el informe de evolución offline.
 - Las pruebas usan transportes simulados y mantienen **0 solicitudes reales a proveedores**. Las dimensiones lingüísticas no revisadas se indican como `not_assessed`; la suite no certifica fidelidad semántica.
-- [Resultados, benchmark y registro detallado](./Fase10_Evolucion_Linguistica/Evolution_20261104/README.md). Los informes históricos conservan sus métricas originales.
+- [Barrido y resultado de la cuarta prueba](./Fase10_Evolucion_Linguistica/Pilot4_Completed_20261104/README.md) y [benchmark anterior](./Fase10_Evolucion_Linguistica/Evolution_20261104/README.md). Los informes históricos conservan sus métricas originales.
 
 ---
 
@@ -135,6 +137,6 @@ Preparado en modo 100 % offline (`mode=ro&immutable=1`) sobre `workspace_data/no
 
 ## 5. Próxima puerta de aprobación
 
-- **Siguiente paso:** **Fase 10.3-D — Remediar los dos hallazgos del lote de scripts y revisar traducciones candidatas** en staging aislado, conservando evidencia y sin reejecutar los lotes ya aprobados.
-- **Requisitos técnicos:** reconciliar `Elder Scroll` con su contexto y validación; proteger `HeelsFix Refresh` sin impedir traducir la descripción; mantener aceptación atómica hasta analizar dependencias; revisar manualmente las candidatas por contexto, registro y legibilidad.
-- **Puerta facturable:** cualquier nueva solicitud requiere reserva presupuestaria y autorización expresa. Antes de ampliar, reprueba dirigida de hasta 25 cadenas del dominio de scripts; la producción continúa no autorizada.
+- **Siguiente paso:** revisar los 196 casos obligatorios y los 199 de muestra de calidad de la cuarta prueba. Conservar el lote de 25 en cuarentena por un hash truncado; no repetir automáticamente las candidatas válidas.
+- **Requisitos técnicos:** multiplicidad exacta de variables y concordancia contextual, adjudicación de denominaciones y revisión humana; los 1.000 candidatos de la continuación activa están visibles en la interfaz sin aprobaciones automáticas.
+- **Puerta facturable:** no quedan llamadas en curso. Cualquier prueba nueva requiere un alcance y presupuesto explícitos; no se reenvía el lote retenido automáticamente. Producción y TM continúan sin promoción.

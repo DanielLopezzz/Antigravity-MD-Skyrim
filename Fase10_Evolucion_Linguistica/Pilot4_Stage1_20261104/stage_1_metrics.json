@@ -1,0 +1,39 @@
+{
+  "state": "STAGE_1_COMPLETE_EDITORIAL_CONTINUATION_HOLD",
+  "execution_stage": 1,
+  "actual_paid_requests": 2,
+  "strings_received": 50,
+  "strings_mechanically_accepted": 50,
+  "strings_unsent": 950,
+  "input_tokens": 10866,
+  "output_tokens": 6798,
+  "consumed_usd": 0.0044856,
+  "authorized_whole_job_usd": 0.17,
+  "available_usd": 0.1655144,
+  "reserved_usd": 0.0,
+  "quarantined_usd": 0.0,
+  "billing_reconciled": true,
+  "automatic_flagged_cases": 7,
+  "additional_ai_editorial_cases": 6,
+  "current_mandatory_review_cases": 13,
+  "api_lock": true,
+  "protected_files_checked": 55,
+  "protected_files_identical": true,
+  "changed_protected_files": [],
+  "work_db_status_counts": {
+    "pending": 43,
+    "requires_lore_research": 7,
+    "unprocessed": 950
+  },
+  "tm_rows": 0,
+  "prior_human_review_status": {
+    "approved": 43
+  },
+  "input_masking_affected_strings_total": 14,
+  "input_masking_already_sent": 1,
+  "input_masking_remaining_unsent": 13,
+  "raw_candidates_overwritten": false,
+  "human_decisions_written_for_new_stage": false,
+  "translation_code_changed_mid_trial": false,
+  "continuation_recommendation": "Do not execute stages 2 or 3 before fixing the local percentage-mask defect, testing it offline, and preparing a separately identified continuation; review first-stage candidates with the human reviewer."
+}

@@ -1,0 +1,6 @@
+{
+  "strings_checked": 1000,
+  "exact_roundtrips": 1000,
+  "known_affected_strings_rechecked": 14,
+  "remaining_percent_false_positives": 0
+}

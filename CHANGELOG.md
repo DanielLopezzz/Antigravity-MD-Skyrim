@@ -6,6 +6,33 @@
 
 ---
 
+## [2026-11-04] — Barrido y finalización de la cuarta prueba
+
+- Protección de controles reales, reutilización verificable, recuperación focalizada y aceptación atómica. Se corrigieron falsos positivos de metadatos y concordancia, versionado contextual y cardinalidad/duplicados de salida.
+- Muestra completa procesada: 975 candidatas importadas pendientes y 25 miembros retenidos. Consumo de todos los intentos `US$0.1176624`, dentro de `US$0.17`; cuatro reparaciones pagadas. Una propuesta separada de formato IA sigue pendiente de revisión.
+- Suite 109/109 OK antes de la API y 110/110 OK tras reforzar el esquema SHA-256 offline; 494 archivos anteriores idénticos, cero TM, aprobaciones humanas automáticas o promociones. Código y corpus privados locales; documentación agregada preparada sin push. [Informe](./Fase10_Evolucion_Linguistica/Pilot4_Completed_20261104/README.md).
+
+## [2026-11-04] — Corrección porcentual y repetición R2
+
+- Protector corregido y comprobado sobre las 1.000 entradas; formatos printf legítimos conservados y 14 falsos positivos eliminados. Suite antes de R2: 95/95 OK.
+- R2: misma muestra y glosario, 2 solicitudes reales, 50 respuestas, 25 importadas y un lote de 25 retenido por 1 alias duplicado (24 candidatas válidas conservadas). La respuesta con porcentajes confirma la corrección; 950 cadenas no enviadas.
+- Consumo R2 `US$0.00439750`; acumulado `US$0.00888310` dentro del tope total de `US$0.17`. Las dos reservas están conciliadas. Sin reintentos, Sol ni promociones.
+- Tras R2 se corrigió el indicador de conciliación para distinguir rechazo de QA e incertidumbre económica; evidencia original preservada y fuente usada archivada. Suite final **96/96 OK, 26,860 s**; 345 archivos anteriores protegidos idénticos. [Informe](./Fase10_Evolucion_Linguistica/Pilot4_R2_20261104/README.md).
+
+## [2026-11-04] — Cuarta prueba: primera etapa real y detención editorial
+
+- Se aplicaron las tres adjudicaciones humanas autorizadas; 43 referencias anteriores aprobadas y tiempo presente narrativo conservado.
+- Dos solicitudes reales, 50 cadenas recibidas y aceptadas mecánicamente; 10.866 tokens de entrada, 6.798 de salida y coste conciliado de **US$0,00448560**. Ninguna promoción productiva o a TM.
+- La revisión detectó un defecto local de protección de porcentajes: 14 cadenas afectadas, 1 enviada y 13 sin enviar. No se ejecutaron las otras 950; se preservaron entradas y respuestas y se anotaron 13 casos para revisión obligatoria, incluidos diagnósticos automáticos y editoriales de IA.
+- Candado restaurado y 55 archivos anteriores protegidos idénticos. [Informe y siguiente paso](./Fase10_Evolucion_Linguistica/Pilot4_Stage1_20261104/README.md).
+
+## [2026-11-04] — Preparación de la cuarta prueba y revisión del visor
+
+- Muestra de 1.000 cadenas (100 controles + 900 adicionales), 130 mods, 43 lotes y tres etapas; preflight offline correcto. Cero solicitudes reales y credenciales cargadas; ejecución pendiente.
+- Se excluyeron literales técnicos PEX tras inspeccionar una primera selección, conservada como preparación descartada. Los tres casos conocidos de `Elder Scroll` y `HeelsFix Refresh` están en la muestra definitiva.
+- Se implementaron runner por etapas, retención de respuestas antes de analizarlas, bloqueo de reenvíos inciertos y conciliación desde el libro presupuestario. El visor incorpora otras pruebas, recarga, prioridades, bloqueo e historial de guardado y compatibilidad con decisiones anteriores.
+- Validación final: **92/92 pruebas, 14,736 s**; 55 archivos preexistentes protegidos idénticos. Revisiones del usuario sin reescritura y código solo local. [Informe agregado y limitaciones](./Fase10_Evolucion_Linguistica/Pilot4_Preparation_20261104/README.md).
+
 ## [2026-11-04] — Evolución integral y excelencia lingüística offline
 
 - **Implementación local:** contrato 1.1 compatible con 1.0, contexto narrativo en payload y reintentos, perfiles compartidos, variantes explícitas, preservación de identidades técnicas, TM v2 contextual y separación de candidatas/aprobación editorial/exportabilidad.

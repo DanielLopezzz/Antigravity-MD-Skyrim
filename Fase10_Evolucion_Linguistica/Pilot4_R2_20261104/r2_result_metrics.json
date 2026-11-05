@@ -1,0 +1,42 @@
+{
+  "state": "R2_STOPPED_BY_GATEKEEPER_DUPLICATED_ALIAS",
+  "strings_received": 50,
+  "strings_imported": 25,
+  "work_db_states": {
+    "pending": 25,
+    "unprocessed": 975
+  },
+  "strings_not_sent": 950,
+  "accepted_batches": 1,
+  "rejected_batches": 1,
+  "valid_candidates_retained_from_rejected_batch": 24,
+  "quarantined_candidates_in_rejected_batch": 1,
+  "http_requests": 2,
+  "input_tokens": 10860,
+  "output_tokens": 6623,
+  "r2_cost_usd": 0.0043975,
+  "previous_cost_usd": 0.0044856,
+  "combined_cost_usd": 0.0088831,
+  "original_authorized_limit_usd": 0.17,
+  "remaining_total_authorization_usd": 0.1611169,
+  "reservation_states": {
+    "RECONCILED": 2
+  },
+  "budget_reserved_usd": 0.0,
+  "budget_quarantined_usd": 0.0,
+  "financial_reconciliation_verified_from_ledger": true,
+  "runner_generic_reconciliation_flag": false,
+  "percentage_input_fix_verified_offline": true,
+  "percentage_candidate_restored_without_bad_fragments": true,
+  "tm_rows": 0,
+  "api_lock": true,
+  "protected_files_checked": 345,
+  "protected_files_identical": true,
+  "changed_protected_files": [],
+  "new_human_approvals_created": 0,
+  "retries": 0,
+  "sol_calls": 0,
+  "summary_indicator_fixed_after_r2": true,
+  "test_suite_before_r2": 95,
+  "test_suite_final": 96
+}
