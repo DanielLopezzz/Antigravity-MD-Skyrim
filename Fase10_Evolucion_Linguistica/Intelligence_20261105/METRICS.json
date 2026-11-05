@@ -1,0 +1,86 @@
+{
+  "policy": "risk-2.0.0",
+  "simulation_only": true,
+  "provider_requests": 0,
+  "credentials_loaded": false,
+  "billed_usd": 0,
+  "cases": 1000,
+  "historical_priority": {
+    "sample": 199,
+    "optional": 605,
+    "mandatory": 196
+  },
+  "new_priority": {
+    "sample": 199,
+    "optional": 763,
+    "mandatory": 38
+  },
+  "dispositions": {
+    "low_risk_uncalibrated": 804,
+    "informative": 158,
+    "human_review": 13,
+    "quarantine": 25
+  },
+  "finding_cases": {
+    "ENTITY_COVERAGE": 141,
+    "LEGACY_ALERT": 37,
+    "LENGTH_RATIO": 20,
+    "RECOVERY_PROVENANCE": 8,
+    "NUMERIC_AUDIT_RESOLVED": 2,
+    "DISTINGUISHING_ATTRIBUTE": 1,
+    "QUANTITY_DIFFERENCE": 1,
+    "PROTOCOL": 25
+  },
+  "reclassified_cases": 158,
+  "new_human_approvals": 0,
+  "autoapproval_enabled": false,
+  "human_references": 3,
+  "human_reference_splits": {
+    "calibration": 2,
+    "validation": 1
+  },
+  "semantic_quality_change": "not_measured",
+  "false_negatives": "not_measurable_without_heldout_human_labels",
+  "naturalness_change": "not_measured",
+  "calibration_eligible": false,
+  "real_npc_name_records_indexed": 12423,
+  "coherent_batches_for_frozen_sample": 431,
+  "historical_last_run_batches": 9,
+  "historical_last_run_requested": 175,
+  "terminal_control_proposals_available": 0,
+  "source_characters": 132260,
+  "source_tokens_conservative": 39827,
+  "evaluations_proposed": 13,
+  "coherent_batch_note": "Same frozen 1000 sources; not comparable to last continuation alone. More small groups increase request overhead.",
+  "duration_seconds": 2.533,
+  "synthetic_scale": {
+    "rows": 240684,
+    "seconds": 11.884,
+    "python_tracemalloc_peak_bytes": 21265,
+    "sqlite_bytes": 66994176,
+    "note": "Synthetic SQLite ingestion, not game translation or whole-process RSS"
+  },
+  "glossary_audit": {
+    "entries_reviewed": 109,
+    "approved_entries_modified": 0,
+    "duplicate_sources_casefold": 0,
+    "keep_original_target_conflicts": 0,
+    "without_precise_url_in_source_reference": 109,
+    "scoped_proposals_created": 2,
+    "scoped_terms_approved": 0,
+    "metadata_source_registrations_attempted": 20
+  },
+  "tests": {
+    "baseline_passed": 110,
+    "baseline_seconds": 21.541,
+    "final_passed": 136,
+    "final_seconds": 25.083
+  },
+  "protection": {
+    "files_checked": 2186,
+    "identical": true,
+    "changed": [],
+    "paid_api_lock": true
+  },
+  "priority_reduction_percent": 80.61
+}

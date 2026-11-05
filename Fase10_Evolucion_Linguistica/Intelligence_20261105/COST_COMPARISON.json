@@ -1,0 +1,19 @@
+{
+  "mixed_no_retrieval": {
+    "batches": 43,
+    "input_tokens_estimated": 321967,
+    "output_tokens_estimated": 140552,
+    "reserve_usd": 0.16704072,
+    "seconds": 1.841
+  },
+  "coherent_with_retrieval": {
+    "batches": 431,
+    "input_tokens_estimated": 1066714,
+    "output_tokens_estimated": 141965,
+    "reserve_usd": 0.39955632,
+    "seconds": 5.095
+  },
+  "scope": "Both estimated offline on the same 1000 sources under the NEW prompt; neither is an actual provider bill or a replay of the old prompt.",
+  "network_calls": 0,
+  "limits_changed": false
+}
