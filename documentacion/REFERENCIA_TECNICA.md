@@ -12,7 +12,7 @@ Corte documental **2026-11-05**. Resume lo vigente sin sustituir los contratos d
 6. **Ejecución acotada:** candado de API activo por defecto, autorización explícita, presupuesto reservado antes de enviar y conciliación posterior. Una credencial disponible no autoriza gasto. No hay fallback automático a un modelo más caro ante errores de red.
 7. **Operación reversible:** staging aislado, evidencia original, importación transaccional del grupo, vista previa y respaldos antes de una exportación futura. No reenviar solicitudes inciertas ni repetir candidatas válidas por defecto.
 
-Estas reglas consolidan decisiones ya existentes; la reorganización no modifica su implementación ni autoriza las mejoras propuestas en el último análisis.
+Estas reglas consolidan decisiones existentes. La fase de evolución autorizó y verificó mejoras offline; no autoriza gasto, producción o aprobación automática nueva.
 
 ## Recorrido y componentes
 
@@ -50,11 +50,21 @@ Casos binarios importantes: `PERK EPFD` solo es texto con `EPFT=7`; `GMST DATA` 
 - El informe de Fase 9 registró Nolvus Awakening 6.0.21 Ultimate, MO2 2.4.4 y STOCK GAME 1.5.97.0. Son datos de aquel escaneo, no una inspección nueva. Compatibilidad DSD/SKSE/Address Library debe comprobarse contra el ejecutable efectivo antes de exportar.
 - `pyproject.toml`: proyecto 0.6.0, Python >=3.11; dependencias declaradas Pydantic, RapidFuzz, lxml, charset-normalizer y XlsxWriter. No se fijan aquí versiones instaladas tomadas de auditorías antiguas.
 - La política mantiene parsers propios y evita copiar código de terceros. Los análisis antiguos de licencias quedan archivados como referencias fechadas; esta reorganización no revalida sus conclusiones legales ni las condiciones actuales de terceros. Conservar avisos aplicables antes de distribuir.
-- La última suite registrada es 110/110. El benchmark de 240.684 filas fue sintético y de SQLite; no acredita tiempos/memoria de todos los parsers, UI, exportación o traducción del inventario real.
+- La suite funcional vigente está registrada en el estado actual. Los benchmarks de 240.684 filas son sintéticos y de SQLite; no acreditan tiempos/memoria de todos los parsers, UI, exportación o traducción del inventario real.
 
-## Mejoras propuestas, todavía pendientes
+## Evolución offline implementada y límites
 
-Separar severidades y procedencia, corregir el análisis de cifras/ordinales, calibrar nombres/longitud, mejorar contexto y terminología de familias, distinguir transporte de QA y evaluar un segundo juez con datos humanos. No están implementadas por aparecer en esta referencia. Véase [estado y secuencia de autorización](ESTADO_ACTUAL.md).
+`quality/intelligent_review.py` añade severidades, cifras/ordinales, propuestas de controles terminales y gate de calibración. `lore/mod_knowledge.py` mantiene conocimiento y propuestas por mod/plugin en un sidecar, con procedencia y permisos. `translation/durable_run.py` prueba recibos, conciliación y reanudación sin reenvío; `execute_authorized_stages` coordina etapas dentro de un alcance fijo. El flujo `independent_review` / `review_workflow` / `review_experiment` conecta evaluación, posedición y recomprobación offline, con solicitudes exactas previas al modelo, recibos y reserva acotada. Una respuesta malformada no provoca reenvío ni detiene los demás casos; un transporte incierto requiere conciliación. Solo se ejercitó con simuladores; su uso real y calidad lingüística siguen sin validar.
+
+Contrato de entrada 1.2, lectura compatible 1.0/1.1: hasta cuatro fragmentos de 320 caracteres, sin rutas privadas y con hash de procedencia, datos no confiables. La preparación puede sellar un snapshot contextual; la agrupación coherente es opcional y su coste debe caber en el presupuesto. No se reabren planes históricos con fingerprints modificados. Las entidades NPC son nombres de registro, no nombres propios intraducibles por defecto. El contexto específico no sobrescribe silenciosamente el glosario global aprobado.
+
+La aprobación nueva permanece cerrada: las referencias disponibles y los juicios simulados no bastan para calibrar. Falta evaluar falsos negativos, tiempo humano, semántica y naturalidad en una muestra independiente. Véase [estado y siguiente puerta](ESTADO_ACTUAL.md).
+
+El catálogo `context_catalog` conserva pasajes completos y roles de personaje, misión, objeto, hechizo, lugar y documento, sin convertir etiquetas genéricas en nombres intraducibles. Relaciona registro/grupo/misión dentro del mismo mod/plugin; las fuentes del autor admiten alcance de mod, versiones, permisos y hash. La búsqueda restringe el ámbito antes de BM25 ([FTS5 oficial](https://www.sqlite.org/fts5.html)); la documentación de autores se considera referencia, con compatibilidad de versión no verificada. Las denominaciones aprobadas por mod se incorporan como restricciones; los conflictos con el glosario global quedan explícitos y no lo sobrescriben. Se incorporaron extractos de los README de [MCM Helper](https://github.com/Exit-9B/MCM-Helper/blob/main/README.md) y [Alternate Perspective](https://github.com/KrisV-777/Alternate-Perspective/blob/main/README.md), con hash y licencias conservadas privadamente; no se presume que describan la versión instalada.
+
+`long_text` divide original y candidata solo en límites protegidos compartidos, conserva vecinos narrativos y verifica la recomposición completa. No presume alineación entre frases. `durable_run` continúa los casos independientes mientras bloquea dependencias de envíos/uso inciertos; el presupuesto difiere textos completos que no caben, sin ampliar el cap. Los prompts comparan agencia, modalidad, negación, comparaciones y recursos, aceptando metáforas y paráfrasis fieles. La [evaluación de discurso en traducción literaria](https://aclanthology.org/2023.acl-long.435/) motivó conservar vecinos y consistencia; no certifica resultados propios.
+
+`review_calibration` vincula candidata, fuente, contexto, versión y evaluador con referencias humanas. No convierte cualquier retoque en error semántico, no cuenta mocks y agrupa familias para evitar observaciones duplicadas. Reutilizar una aprobación exige igualdad exacta y nunca libera cuarentenas ni aprueba una reparación nueva.
 
 ## Mantenimiento documental
 
@@ -63,4 +73,4 @@ Separar severidades y procedencia, corregir el análisis de cifras/ordinales, ca
 - Conservar informes cerrados. Cambios de navegación se permiten, pero se registran y el original exacto queda en el archivo con hash. No reinterpretar sus resultados como aprobaciones actuales.
 - Mantener los cuatro documentos activos compactos, idealmente hasta 150 líneas cada uno. Llevar el detalle cerrado a un informe fechado o al archivo; no convertir el histórico en otra enciclopedia.
 - Los originales de la raíz y las fuentes documentales previas están en `archivo/originales_20261105.zip`, verificables con `archivo/MANIFIESTO.json`. Los archivos locales y públicos tienen distinto alcance; no publicar el archivo privado del workspace.
-- La publicación pública contiene solo documentación agregada. Los cambios de código, políticas funcionales, glosario, estados o gasto requieren su propia autorización.
+- La publicación pública contiene solo documentación agregada. La autorización vigente cubre implementación privada y pruebas offline; no habilita gasto, producción, publicación de fuentes ni modificación silenciosa del glosario aprobado.

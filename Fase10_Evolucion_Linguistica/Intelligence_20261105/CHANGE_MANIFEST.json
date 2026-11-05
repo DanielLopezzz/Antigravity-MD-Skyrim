@@ -1,0 +1,95 @@
+{
+  "date": "2026-11-05",
+  "code_branch": "codex/linguistic-evolution",
+  "base_commit": "066ae03",
+  "scope": "Changes relative to phase-start private snapshot, excluding prior uncommitted work.",
+  "private_baseline_zip_sha256": "aa4dab05033485b4023ea387daa1e18d28a7798f15409cc57d66c9999b968c7b",
+  "private_final_zip_sha256": "c9876cca9ba4004bf20d2560db485ca6104e84efa8cfabc21431612ed7f27cfc",
+  "code_published": false,
+  "files": [
+    {
+      "path": "src/nolvus_translator/core/models.py",
+      "change": "modified",
+      "sha256_before": "833005a8c939ea42c9c56a3e8e8beec8f0302f68c9fe76effde45ff3c3a667c0",
+      "sha256_after": "fc7237b3df31255cbf9b2a3e03a182718670cec47426c512e6b19afa0127b517"
+    },
+    {
+      "path": "src/nolvus_translator/lore/mod_knowledge.py",
+      "change": "added",
+      "sha256_before": null,
+      "sha256_after": "bc775b3e6f11ca11cb9ad36949a477a7967770ef8b5cb97843b09196032a57c3"
+    },
+    {
+      "path": "src/nolvus_translator/quality/intelligent_review.py",
+      "change": "added",
+      "sha256_before": null,
+      "sha256_after": "897954ee19c4ad860bee45523e76c91943d56c1457c1ebf4c91055f685c5a644"
+    },
+    {
+      "path": "src/nolvus_translator/quality/validator.py",
+      "change": "modified",
+      "sha256_before": "2f4fa760e0ba787c30466670a6b4581de1fb1217498b9be65aa1f9b0e9740e73",
+      "sha256_after": "efcec1d8af8a98bb92c2549ed245f9935934a3d5fb3b28d4dbe6fb81524dc467"
+    },
+    {
+      "path": "src/nolvus_translator/translation/durable_run.py",
+      "change": "added",
+      "sha256_before": null,
+      "sha256_after": "07612a6f0f61e66cddff00d8cd15b14496e7a6df05db2b385a418fdd7c24514d"
+    },
+    {
+      "path": "src/nolvus_translator/translation/exchange_contract.py",
+      "change": "modified",
+      "sha256_before": "2ac8d6528ef2eb1061867fae0971b1a342b1909dc58fc87251046d18fedef269",
+      "sha256_after": "df7861e62dfd4877e2f862d28e526ede9ce45ece2c0af89c6e9bdb01127a5523"
+    },
+    {
+      "path": "src/nolvus_translator/translation/intelligence_workbench.py",
+      "change": "added",
+      "sha256_before": null,
+      "sha256_after": "1c30cd4186170de66613e5621e1b614c93fd206e66f4e2f79890200096846374"
+    },
+    {
+      "path": "src/nolvus_translator/translation/openai_provider.py",
+      "change": "modified",
+      "sha256_before": "3578116b58b2510dcdb7ec9ae6b6b0793938828828279949e659eba68638a7de",
+      "sha256_after": "52a9807224630fd68743d0ea8d7a026b22bbc834a5a984ddba4eb7cf7e38a93d"
+    },
+    {
+      "path": "src/nolvus_translator/translation/pilot_four.py",
+      "change": "modified",
+      "sha256_before": "7cb1c711ec50dbe82b9fa91de1d39510359e530082e202e9f899c51ba4ccca63",
+      "sha256_after": "a95059ca0ba70e3c95b2df7966d60bd7aae85df2fb90cb703aa6a4ca30bf31f8"
+    },
+    {
+      "path": "src/nolvus_translator/translation/pilot_four_execution.py",
+      "change": "modified",
+      "sha256_before": "8e71002085703464220f51d5135811318b401e58c8693a9fce43718aae720bf1",
+      "sha256_after": "9cc9fa53e7a9f38c4545be11c215ac60b869d77c645b286e609debf7d83747b4"
+    },
+    {
+      "path": "src/nolvus_translator/translation/pilot_recovery.py",
+      "change": "modified",
+      "sha256_before": "e3d1aecd1d030bb2b7e59d777631558e1c5031dc9652818da541182f990600fe",
+      "sha256_after": "6d2692d6f7ac2ffcc039659a91e8389732aaae027ff1636af96f207f8a123c66"
+    },
+    {
+      "path": "src/nolvus_translator/ui/case_review.py",
+      "change": "modified",
+      "sha256_before": "90b684019436bd0a38741034050d9e5c89a4f98f3ce51c38369fe3f901f4e706",
+      "sha256_after": "8c07376cfb79d0685d4078ad68c1780a235e709e026f8040cb709cc850d4b1af"
+    },
+    {
+      "path": "tests/test_intelligent_review.py",
+      "change": "added",
+      "sha256_before": null,
+      "sha256_after": "825e456754530b12c57c5d6340883a673a72792aa56c6118ca474cc6f1682cb6"
+    },
+    {
+      "path": "tests/test_protector_glossary_tm.py",
+      "change": "modified",
+      "sha256_before": "60c22875ca1264aba88cf22e747e0f4efa42cd9f4bb1fd3605d21900ce844cc3",
+      "sha256_after": "f679780789a84c1663502414c8dbdcbfb54ef5f04e7ddea967ee71d40c207c82"
+    }
+  ]
+}
