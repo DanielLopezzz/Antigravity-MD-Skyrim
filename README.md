@@ -12,11 +12,13 @@ Documentación del proyecto para localizar **Nolvus Awakening 6.0.21** al españ
 | [DECISIONS.md](./DECISIONS.md) | Decisiones técnicas y operativas vigentes e históricas, con fecha y motivo. |
 | [DOCUMENTATION_POLICY.md](./DOCUMENTATION_POLICY.md) | Reglas de mantenimiento documental. |
 
-**Estado en una línea (2026-11-04):** muestra de la cuarta prueba completada tras el barrido; revisión humana pendiente. Estado vigente en [PROJECT_STATUS.md](./PROJECT_STATUS.md).
+**Estado en una línea (2026-11-05):** cuarta prueba completada y sistema de revisión analizado; calibración y revisión humana pendientes. Estado vigente en [PROJECT_STATUS.md](./PROJECT_STATUS.md).
 
 ## Evidencia por fase (informes históricos preservados)
 
 ### Evolución integral y lingüística offline (2026-11-04)
+
+- [Análisis de revisión humana y evaluación profesional del piloto (2026-11-05): alertas, falsos positivos y propuestas sin implementar](./Fase10_Evolucion_Linguistica/Pilot4_Review_Analysis_20261105/README.md).
 
 - [Cuarta prueba completa: barrido, costes, procedencia y revisión pendiente](./Fase10_Evolucion_Linguistica/Pilot4_Completed_20261104/README.md).
 

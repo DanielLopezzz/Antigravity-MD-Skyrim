@@ -1,7 +1,7 @@
 # Hoja de ruta (`ROADMAP.md`) — Trabajo futuro y puertas pendientes
 
 **Proyecto:** Nolvus AI Translator (ES-419)  
-**Última actualización:** 2026-11-04  
+**Última actualización:** 2026-11-05<br>
 **Estado vigente:** ver [PROJECT_STATUS.md](./PROJECT_STATUS.md) · **Historial ejecutado:** ver [CHANGELOG.md](./CHANGELOG.md) · **Decisiones:** ver [DECISIONS.md](./DECISIONS.md)
 
 > Este documento contiene **solo trabajo futuro**. La ejecución 10.3-B de 25 cadenas y el piloto 10.3-C de 125 cadenas ya ocurrieron y están registrados en `CHANGELOG.md` y sus informes. El piloto 10.3-C tuvo aceptación parcial: 100 cadenas importadas en staging, 23 candidatas retenidas por atomicidad y 2 en cuarentena. Nada de lo siguiente autoriza gasto real ni cambios en producción; cada ejecución facturable requiere aprobación expresa.
@@ -26,6 +26,8 @@
 
 **Prioridad actual:** revisar los casos obligatorios y la muestra de calidad de la continuación activa. La ejecución de las 1.000 entradas ya concluyó; no repetir las candidatas válidas. Separar aceptación mecánica, reparación posterior y aprobación humana. Ver el informe completo enlazado arriba.
 
+- Evaluar y seleccionar las propuestas del [análisis profesional del 2026-11-05](./Fase10_Evolucion_Linguistica/Pilot4_Review_Analysis_20261105/README.md): corregir falsos positivos numéricos, separar severidades, calibrar nombres/longitud, aportar contexto y distinguir transporte de QA. Ninguna de estas propuestas se ha implementado o autorizado por su publicación.
+- Antes de otro aumento de carga, completar una revisión humana representativa y validar la reevaluación en modo experimental, sin nuevas aprobaciones automáticas. Cualquier evaluación con modelos requiere autorización y presupuesto independientes.
 - Completar las revisiones previas y decidir qué patrones exigen corrección. Si cambian prompt, glosario o código, regenerar el plan en otra carpeta; no modificar reglas durante el experimento.
 - Reconfirmar modelo/tarifas y autorizar presupuesto antes de la primera etapa. Ejecutar por separado las etapas preparadas y evaluar las 50 iniciales antes de avanzar.
 - Revisar los tres casos conocidos de `Elder Scroll` y `HeelsFix Refresh`, todas las alertas y la muestra de calidad. Comparar los 100 controles distinguiendo aprobación original de corrección humana.

@@ -2,8 +2,8 @@
 
 **Proyecto:** Nolvus AI Translator  
 **Objetivo:** Traducción propia de Nolvus Awakening 6.0.21 al español latinoamericano neutro (`ES-419`)  
-**Última actualización:** 2026-11-04  
-**Fase actual:** **Cuarta prueba: muestra de 1.000 procesada; revisión humana pendiente.** Continuaciones identificadas, reutilización y cuarentena atómica; sin promoción a producción.<br>
+**Última actualización:** 2026-11-05<br>
+**Fase actual:** **Cuarta prueba procesada y análisis del sistema de revisión completado; revisión humana y calibración pendientes.** Propuestas de mejora sin implementar; sin promoción a producción.<br>
 **Estrategia de proveedores vigente:** **API-First** (`gpt-6-luna` principal, `gpt-6.1-sol` escalamiento selectivo por regla verificable, `gemini-4-argon` vía complemento de intercambio de archivos; `Claude` excluido)  
 **Rama activa (repositorio de código):** `codex/linguistic-evolution`, creada conservando los cambios locales; `HEAD=066ae03`, mejoras de esta fase sin commit.<br>
 **Estado de suite de pruebas:** **110/110 OK** después de reforzar el esquema del hash; 109/109 OK antes del tramo final.<br>
@@ -11,6 +11,8 @@
 **Traducciones reales del piloto histórico en staging:** **100 validadas mecánicamente e importadas + 23 candidatas no importadas + 2 en cuarentena**; esa validación no acredita aprobación humana. Coste histórico 10.3-C: **`US$0.01134500`**. Traducciones promovidas a producción: `0`.
 
 **Prueba vigente:** 1000 candidatas recibidas, 975 importadas pendientes en staging y 25 miembros de lotes retenidos. Coste acumulado de todos los intentos `US$0.1176624` dentro de `US$0.17`; 494 archivos anteriores idénticos. Cuatro reparaciones pagadas y una propuesta de formato IA explícita; cero aprobaciones humanas automáticas, TM o promociones. [Informe y siguiente paso](./Fase10_Evolucion_Linguistica/Pilot4_Completed_20261104/README.md).
+
+**Análisis de revisión (2026-11-05):** los 42 señalamientos editoriales están incluidos en los 196 obligatorios; los 199 de muestra son distintos, con unión de 395 casos. En el corte analizado había tres aprobaciones humanas sin cambios y 997 pendientes en el visor; no se importan esas decisiones a la DB. Se confirmaron dos falsos positivos de la auditoría numérica y 132 casos con solo la alerta de nombres/lore. El análisis no cambió reglas ni estados, no ejecutó HTTP ni consumió créditos; las propuestas de reevaluación requieren autorización. [Informe profesional y límites](./Fase10_Evolucion_Linguistica/Pilot4_Review_Analysis_20261105/README.md).
 
 **Evolución lingüística local:** contexto en payload, contrato v1.1 compatible con v1, TM contextual v2, variantes explícitas y barrera de aprobación editorial implementados offline. Benchmark SQLite de 240.684 cadenas sintéticas realizado; calidad lingüística humana y comparación de modelos pendientes. Los 57 archivos protegidos permanecen idénticos. [Evidencia y límites](./Fase10_Evolucion_Linguistica/Evolution_20261104/README.md).
 
