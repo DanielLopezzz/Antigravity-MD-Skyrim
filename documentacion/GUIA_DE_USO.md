@@ -39,6 +39,8 @@ No edites esos JSON manualmente. Conserva copias de seguridad privadas junto con
 
 ## CLI de revisión
 
+La comparación nueva está en `NolvusAIT_Intelligence/20261105/private/final_comparison`: selecciónala con **Abrir otra prueba…** para ver las mismas candidatas con clasificación de riesgo. Las decisiones originales siguen en R7; no se copiaron a esta carpeta ni se crearon aprobaciones nuevas. Las etiquetas de riesgo informativas no equivalen a aprobación lingüística.
+
 Desde PowerShell, situado en la raíz del workspace:
 
 ```powershell
@@ -53,6 +55,7 @@ Para la revisión anterior: `python -m nolvus_translator --review-cases` con el 
 - `pyproject.toml` declara Python >=3.11. El punto de entrada es `nolvus_translator.__main__:main`; no se requiere una versión exacta de Python/SQLite tomada de un informe antiguo.
 - `workspace_data/config.json` es la configuración local; la DB principal es `workspace_data/nolvus_translator.db`. No se usan como destinos de una prueba de traducción nueva.
 - La suite se ejecuta con `python -m unittest discover -s tests -t .` y `PYTHONPATH=src`. Crea datos temporales de prueba; no constituye una operación de solo lectura. No se ejecutó durante esta reorganización.
+- Workbench offline: `python -m nolvus_translator.translation.intelligence_workbench --source <DB> --pilot <R7> --output <carpeta-nueva>`. Solo lee fuentes y crea un experimento aislado; rechaza reemplazar uno existente. `--benchmark-count` opcional mide ingesta sintética. No ejecuta traducciones ni jueces reales.
 - Antes de una exportación futura: vista previa, evidencia editorial, respaldo, perfil clonado de MO2 y compatibilidad del ejecutable real. Las capacidades de exportación existentes no autorizan desplegar el piloto actual.
 - No actives proveedores, ejecutes runners facturables ni deshabilites el candado por seguir esta guía. Cada prueba nueva exige alcance, presupuesto y autorización.
 

@@ -12,7 +12,7 @@ Corte documental **2026-11-05**. Resume lo vigente sin sustituir los contratos d
 6. **Ejecución acotada:** candado de API activo por defecto, autorización explícita, presupuesto reservado antes de enviar y conciliación posterior. Una credencial disponible no autoriza gasto. No hay fallback automático a un modelo más caro ante errores de red.
 7. **Operación reversible:** staging aislado, evidencia original, importación transaccional del grupo, vista previa y respaldos antes de una exportación futura. No reenviar solicitudes inciertas ni repetir candidatas válidas por defecto.
 
-Estas reglas consolidan decisiones ya existentes; la reorganización no modifica su implementación ni autoriza las mejoras propuestas en el último análisis.
+Estas reglas consolidan decisiones existentes. La fase de evolución autorizó y verificó mejoras offline; no autoriza gasto, producción o aprobación automática nueva.
 
 ## Recorrido y componentes
 
@@ -50,11 +50,15 @@ Casos binarios importantes: `PERK EPFD` solo es texto con `EPFT=7`; `GMST DATA` 
 - El informe de Fase 9 registró Nolvus Awakening 6.0.21 Ultimate, MO2 2.4.4 y STOCK GAME 1.5.97.0. Son datos de aquel escaneo, no una inspección nueva. Compatibilidad DSD/SKSE/Address Library debe comprobarse contra el ejecutable efectivo antes de exportar.
 - `pyproject.toml`: proyecto 0.6.0, Python >=3.11; dependencias declaradas Pydantic, RapidFuzz, lxml, charset-normalizer y XlsxWriter. No se fijan aquí versiones instaladas tomadas de auditorías antiguas.
 - La política mantiene parsers propios y evita copiar código de terceros. Los análisis antiguos de licencias quedan archivados como referencias fechadas; esta reorganización no revalida sus conclusiones legales ni las condiciones actuales de terceros. Conservar avisos aplicables antes de distribuir.
-- La última suite registrada es 110/110. El benchmark de 240.684 filas fue sintético y de SQLite; no acredita tiempos/memoria de todos los parsers, UI, exportación o traducción del inventario real.
+- La suite de evolución alcanza 136/136. Los benchmarks de 240.684 filas son sintéticos y de SQLite; no acreditan tiempos/memoria de todos los parsers, UI, exportación o traducción del inventario real.
 
-## Mejoras propuestas, todavía pendientes
+## Evolución offline implementada y límites
 
-Separar severidades y procedencia, corregir el análisis de cifras/ordinales, calibrar nombres/longitud, mejorar contexto y terminología de familias, distinguir transporte de QA y evaluar un segundo juez con datos humanos. No están implementadas por aparecer en esta referencia. Véase [estado y secuencia de autorización](ESTADO_ACTUAL.md).
+`quality/intelligent_review.py` añade severidades, cifras/ordinales, propuestas de controles terminales y gate de calibración. `lore/mod_knowledge.py` mantiene conocimiento y propuestas por mod/plugin en un sidecar, con procedencia y permisos. `translation/durable_run.py` prueba recibos, conciliación y reanudación sin reenvío; `execute_authorized_stages` coordina etapas dentro de un alcance fijo. El juez y el nuevo diario solo se ejercitaron con simulaciones; no se ha validado su uso real facturable.
+
+Contrato de entrada 1.2, lectura compatible 1.0/1.1: hasta cuatro fragmentos de 320 caracteres, sin rutas privadas y con hash de procedencia, datos no confiables. La preparación puede sellar un snapshot contextual; la agrupación coherente es opcional y su coste debe caber en el presupuesto. No se reabren planes históricos con fingerprints modificados. Las entidades NPC son nombres de registro, no nombres propios intraducibles por defecto. El contexto específico no sobrescribe silenciosamente el glosario global aprobado.
+
+La aprobación nueva permanece cerrada: tres referencias humanas no bastan para calibrar. Falta evaluar falsos negativos, tiempo humano, semántica y naturalidad en una muestra independiente. Véase [estado y siguiente puerta](ESTADO_ACTUAL.md).
 
 ## Mantenimiento documental
 
