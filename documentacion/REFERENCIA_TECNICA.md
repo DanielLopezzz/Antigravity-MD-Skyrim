@@ -74,6 +74,10 @@ El proveedor registra el HTTP original antes de parsear/conciliar; un 5xx o time
 
 ## Mantenimiento documental
 
+`lore/consistency.py` construye un registro de nombres del último escaneo, leído con SQLite `mode=ro`. Usa `origin_plugin`, tipo y FormID para relacionar overrides/separar homónimos, y localización existente del juego base como referencia. Excluye candidatas nuevas de esa autoridad, protege variables y evita tratar palabras comunes/clases de NPC como nombres propios. Las referencias y conflictos son datos acotados, no aprobaciones. Las familias admiten formas de concordancia y preferencias pendientes; las relaciones léxicas son hipótesis.
+
+`ConsistencyContext` combina ese registro con `ModKnowledge` para preparación del proveedor/coordinador, juez y recomprobación. `review_experiment --name-source <DB-solo-lectura>` vincula el hash del nuevo insumo al experimento; rechaza reemplazar la carpeta humana y un cambio de fuente. El diseño controlado acepta también esa fuente, sin ejecutar. Política `risk-2.3.0`, revisor `independent-review-2.2`: una discrepancia de referencia bloquea reutilización ciega/posedición insegura, conserva el estado humano y permanece visible en la cola. No modifica el contrato 1.2 ni habilita transporte real. El visor presenta la procedencia de los nuevos fragmentos cuando la copia los contiene.
+
 - `README.md` solo orienta. `ESTADO_ACTUAL.md` contiene métricas/pendientes; `GUIA_DE_USO.md`, operación; este documento, reglas/técnica; `HISTORICO.md`, cronología y acceso a evidencia.
 - Registrar fecha, fuente y si algo es medido, estimado, histórico o propuesto. Actualizar el estado sin repetir una matriz de métricas en todos los documentos.
 - Conservar informes cerrados. Cambios de navegación se permiten, pero se registran y el original exacto queda en el archivo con hash. No reinterpretar sus resultados como aprobaciones actuales.

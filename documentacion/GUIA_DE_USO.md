@@ -67,9 +67,11 @@ Para la revisión anterior: `python -m nolvus_translator --review-cases` con el 
 
 ## Consolidación y validación preparada
 
-La línea privada de trabajo es `codex/technical-consolidation-20261105`; las ramas anteriores se conservan y no deben fusionarse como si contuvieran evoluciones distintas. Los planes históricos sellados no se reabren con un fingerprint de código diferente.
+La línea privada de trabajo continúa en `codex/contextual-coherence-20261105`, conservando `codex/technical-consolidation-20261105` y las ramas anteriores. Los planes históricos sellados no se reabren con un fingerprint de código diferente.
 
 El diseño está en `NolvusAIT_Intelligence/20261105_Consolidation/private/next_validation_final/plan.json`; sus previews son privados. Preparar no envía solicitudes ni autoriza gasto. Si alguien empieza a guardar revisiones mientras se genera una copia, se conserva su archivo de casos y los recibos quedan disponibles en el diario. El visor en marcha no necesita cerrarse para este trabajo; los cambios de código se cargan al abrirlo nuevamente.
+
+La preparación actualizada con nombres está en `NolvusAIT_Intelligence/20261105_Coherence/private/final/next_validation/plan.json`, sin ejecutar. En copias futuras, el panel de contexto muestra las denominaciones de referencia y posibles piezas relacionadas, indicando propuestas pendientes. Una discrepancia nueva de identidad puede pedir atención aunque exista una aprobación anterior; esa decisión permanece guardada. El barrido no regeneró tu carpeta activa ni te asigna otros 1.000 casos obligatorios. Los 25 de cuarentena ya tienen decisión lingüística; su retención técnica es independiente.
 
 ## Documentación y publicación
 

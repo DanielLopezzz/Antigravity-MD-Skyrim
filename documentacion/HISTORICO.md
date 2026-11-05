@@ -22,6 +22,8 @@ Organizado el **2026-11-05**. Es un índice de hechos cerrados y decisiones sust
 
 ## Informes que conviene abrir solo cuando haga falta
 
+Tras la consolidación, **coherencia contextual del 2026-11-05**: registro de nombres con identidad y localización existente, referencias de conjuntos e integración en preparación/revisión/recomprobación/visor. Suite 246/246; barrido de las 1.000 candidatas sin reescribirlas ni aprobarlas. [Informe de continuación y límites](https://github.com/DanielLopezzz/Antigravity-MD-Skyrim/blob/codex/technical-consolidation-docs-20261105/Fase10_Evolucion_Linguistica/Coherence_20261105/README.md). La revisión humana cerró los 25 casos de cuarentena lingüísticamente, sin resolver su retención técnica. No se ejecutó una IA real.
+
 Los enlaces siguientes apuntan a la documentación ya publicada; su estructura de fases se conserva para no perder enlaces externos.
 
 - [Análisis profesional de revisión humana](https://github.com/DanielLopezzz/Antigravity-MD-Skyrim/blob/main/Fase10_Evolucion_Linguistica/Pilot4_Review_Analysis_20261105/README.md).

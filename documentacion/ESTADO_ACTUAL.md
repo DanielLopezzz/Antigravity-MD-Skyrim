@@ -10,14 +10,14 @@ Nolvus AI Translator localiza Nolvus Awakening al español latinoamericano neutr
 |---|---|
 | Muestra del cuarto piloto | 1.000 candidatas recibidas; 100 controles y 900 adicionales |
 | Staging aislado | 975 importadas mecánicamente; no equivale a aprobación lingüística |
-| Cuarentena | 25 retenidas por atomicidad: un registro devolvió un hash de origen de 63 caracteres |
+| Cuarentena | 25 retenidas por atomicidad; revisión lingüística terminada: 22 aprobadas y tres para investigación. No libera el lote |
 | Prioridad obligatoria del piloto histórico | 196 casos, incluidos los 42 señalados por auditoría; ese archivo no se modificó |
 | Muestra de calidad | 199 casos distintos; unión con obligatorios: 395; otros 605 con prioridad adicional |
-| Revisión humana al corte | 8 aprobaciones exactas reutilizables y 992 pendientes al congelar la revisión; el archivo humano continúa activo |
+| Revisión humana al corte actual | 41 decisiones en la copia activa de evolución: 29 aprobaciones y 12 investigaciones; el archivo humano continúa activo |
 | Consumo acumulado del cuarto piloto | US$0,1176624 de US$0,17; 50 respuestas reales, sin llamadas pendientes |
 | TM del staging / promoción a producción | 0 / 0; no se crearon aprobaciones humanas automáticas |
-| Última suite registrada | 212/212; 19 regresiones nuevas sobre la base consolidada de 193 |
-| Código local | Rama `codex/technical-consolidation-20261105`; herencia `12f1125`, correcciones `b68c7dd`, versionadas solo localmente |
+| Última suite registrada | 246/246; 34 regresiones nuevas sobre la base consolidada de 212 |
+| Código local | Rama `codex/contextual-coherence-20261105`, commit `d9f2aae`; conserva la consolidación anterior y se versiona solo localmente |
 
 Coste calculado por el libro local con tokens reportados y tarifa registrada: no certifica la factura ni una tarifa vigente del proveedor. Las últimas 110 pruebas incluyen el refuerzo del esquema SHA-256, comprobado offline después de cerrar la API. Ese último ajuste no se ha validado con otra llamada pagada.
 
@@ -49,10 +49,12 @@ La consolidación preservó las tres ramas anteriores (mismo commit base), regis
 
 ## Próximos pasos
 
+La coherencia entre registros ya incorpora nombres localizados con identidad/procedencia, piezas relacionadas y contraste en revisión/posedición. Sobre las mismas 1.000 cadenas recupera referencias para 483 y señala 32 posibles diferencias/conflictos, **no 32 errores confirmados**. No impone preferencias pendientes ni fabrica nombres faltantes. La reanudación añade cero invocaciones al simulador; cero HTTP, créditos y aprobaciones nuevas. Se preservaron 1.719 archivos anteriores del alcance protegido y las 41 decisiones. [Resultados y límites](https://github.com/DanielLopezzz/Antigravity-MD-Skyrim/blob/codex/technical-consolidation-docs-20261105/Fase10_Evolucion_Linguistica/Coherence_20261105/README.md).
+
 | Orden | Trabajo pendiente | Condición para avanzar |
 |---|---|---|
-| 1 | Revisión humana representativa, incluidos casos sin alertas | Separar errores de significado de retoques y advertencias |
-| 2 | Adjudicar familias terminológicas y el lote retenido | Conservar evidencia; no retransmitir todo el lote por defecto |
+| 1 | Completar referencias fiables y resolver denominaciones/familias en conflicto | El sistema debe aportar evidencia, no exigir al usuario conocer todo el lore |
+| 2 | Adjudicar el problema técnico del lote retenido | Conservar las 22 aprobaciones y tres investigaciones; no retransmitir el lote por defecto |
 | 3 | Adjudicar etiquetas humanas del experimento preparado | Evaluación ciega y separación de controles naturales/sintéticos |
 | 4 | Calibrar y evaluar un juez independiente autorizado | Medir falsas aprobaciones y ahorro de trabajo; sin autoaprobación nueva |
 | 5 | Ejecutar la validación preparada cuando se autorice | Tarifa verificada, adaptador real revisado y presupuesto congelado; hoy no está autorizada |
