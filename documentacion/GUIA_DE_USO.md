@@ -9,6 +9,7 @@ Actualizada el **2026-11-05** a partir de los lanzadores, CLI y visor existentes
 | `launch_gui.bat` | Aplicación principal; puede inicializar sus carpetas de trabajo |
 | `Revisar_cuarta_prueba.bat` | Visor del piloto activo R7 de 1.000 cadenas |
 | `Revisar_traducciones.bat` | Casos del piloto anterior y ejemplos sintéticos |
+| `Revisar_evolucion_inteligente.bat` | Copia experimental del flujo de reevaluación offline |
 
 Estos lanzadores pertenecen al workspace con código. El repositorio público de documentación no incorpora la aplicación. El visor de casos no llama a la API ni importa decisiones a producción o a la TM.
 
@@ -27,6 +28,8 @@ Antes de aprobar se comprueban integridad, términos obligatorios y registro reg
 Los casos en cuarentena se pueden evaluar lingüísticamente, pero aprobar una referencia en el visor **no arregla el hash ni libera el lote para importación**. La propuesta de formato del poema está marcada para revisión obligatoria y conserva su procedencia de IA.
 
 Si hay texto sin guardar, el visor avisa al navegar. Si otra ventana guarda decisiones, usa **Recargar**; hay bloqueo de guardado e historial. Una decisión se vincula al original y al contexto revisados.
+
+La copia de evolución se abre con `Revisar_evolucion_inteligente.bat`. Muestra estado del evaluador, procedencia y controles sin crear aprobaciones. Los dictámenes del simulador son inconclusos; no miden calidad lingüística. Su carpeta es `NolvusAIT_Intelligence/20261105_Continuation/private/experiment`; las decisiones se guardan en su propio `private/human_reviews.json`. Cuando existe ese overlay, el ejecutor experimental rechaza regenerar la copia.
 
 ## Dónde quedan las decisiones
 
