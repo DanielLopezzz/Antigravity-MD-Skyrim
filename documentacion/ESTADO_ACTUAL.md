@@ -13,11 +13,11 @@ Nolvus AI Translator localiza Nolvus Awakening al español latinoamericano neutr
 | Cuarentena | 25 retenidas por atomicidad: un registro devolvió un hash de origen de 63 caracteres |
 | Prioridad obligatoria del piloto histórico | 196 casos, incluidos los 42 señalados por auditoría; ese archivo no se modificó |
 | Muestra de calidad | 199 casos distintos; unión con obligatorios: 395; otros 605 con prioridad adicional |
-| Revisión humana al corte | 3 aprobadas sin cambios y 997 pendientes en el visor; sus decisiones no modifican la DB |
+| Revisión humana al corte | 8 aprobaciones exactas reutilizables y 992 pendientes al congelar la revisión; el archivo humano continúa activo |
 | Consumo acumulado del cuarto piloto | US$0,1176624 de US$0,17; 50 respuestas reales, sin llamadas pendientes |
 | TM del staging / promoción a producción | 0 / 0; no se crearon aprobaciones humanas automáticas |
-| Última suite registrada | 161/161 en la continuación offline; 25 nuevas sobre las 136 previas |
-| Código local | Rama `codex/independent-review-flow-20261105`, base `066ae03`, con cambios locales sin commit |
+| Última suite registrada | 186/186, 48,443 s; 25 nuevas sobre las 161 anteriores |
+| Código local | Rama `codex/contextual-recovery-20261105`, base `066ae03`, con cambios locales sin commit |
 
 Coste calculado por el libro local con tokens reportados y tarifa registrada: no certifica la factura ni una tarifa vigente del proveedor. Las últimas 110 pruebas incluyen el refuerzo del esquema SHA-256, comprobado offline después de cerrar la API. Ese último ajuste no se ha validado con otra llamada pagada.
 
@@ -31,13 +31,17 @@ Coste calculado por el libro local con tokens reportados y tarifa registrada: no
 
 ## Evolución inteligente verificada offline
 
-La copia experimental reclasifica las mismas candidatas a **38 obligatorias (25 de cuarentena y 13 editoriales), 199 de muestra y 763 adicionales**, sin aprobar o reescribir ninguna. La reducción del 80,61 % es de prioridad, no de tiempo humano o errores semánticos medidos. Hay solo dos referencias para calibración y una para validación: aprobación automática nueva deshabilitada.
+La copia experimental reclasifica las mismas candidatas a **38 obligatorias (25 de cuarentena y 13 editoriales), 199 de muestra y 763 adicionales**, sin aprobar o reescribir ninguna. La reducción del 80,61 % es de prioridad, no de tiempo humano o errores semánticos medidos. En ese primer corte había dos referencias para calibración y una para validación; la aprobación automática nueva continúa deshabilitada.
 
 Se implementaron contexto por mod/plugin, contrato 1.2 compatible con lectura 1.0/1.1, propuestas terminológicas separadas, reparación técnica reversible, juez simulado y ejecución por etapas con alcance fijo. Se indexaron 12.423 nombres de registro NPC; no se infieren biografías. El benchmark de 240.684 pasajes sintéticos verificó la ingesta SQLite, no la traducción completa.
 
 La preparación coherente con recuperación de esta muestra dispersa estima US$0,39955632 frente a US$0,16704072 sin recuperación. Excede el cap anterior: la opción no se activó por defecto ni se elevó el presupuesto. Cero solicitudes facturables y 2.186 archivos anteriores verificados idénticos. [Informe y métricas](https://github.com/DanielLopezzz/Antigravity-MD-Skyrim/blob/a232c2edc575469e3f029ff99e6eeb4774cf4273/Fase10_Evolucion_Linguistica/Intelligence_20261105/README.md).
 
 La continuación integra revisión independiente → posedición acotada → recomprobación en un ejecutor offline con evidencia persistida. Sobre la copia de 1.000 cadenas selecciona 13 por riesgo y 8 controles; el simulador se abstiene en los 21 casos. Reanudar añade cero invocaciones. Las 25 de cuarentena permanecen aisladas; cero aprobaciones nuevas y 2.225 archivos anteriores idénticos. Falta medir el evaluador real y calibrar. [Detalle funcional y pruebas](https://github.com/DanielLopezzz/Antigravity-MD-Skyrim/blob/4c13cb4564e046aad163135bc27629e6ce7dd64f/Fase10_Evolucion_Linguistica/Intelligence_Continuation_20261105/README.md).
+
+La ampliación funcional incorpora un catálogo de **403.922 registros originales de 1.316 mods con textos**, relaciones por registro/grupo/misión y dos extractos documentales de autores con licencia y procedencia. No son 403.922 traducciones ni entidades únicas. Se recuperaron referencias para 987 de las 1.000 cadenas en 9,532 s; la cobertura no acredita pertinencia lingüística. Se conservan íntegros 11 textos largos en 22 segmentos, se reutilizan ocho aprobaciones humanas exactas y se aíslan transporte/uso inciertos sin bloquear otros casos.
+
+El ejercicio final mantiene 21 consultas simuladas inconclusas y 25 casos en cuarentena, sin editar candidatas ni crear aprobaciones. La reanudación agrega cero consultas. Las ocho referencias humanas y los dictámenes simulados no permiten calibrar un juez real. API Lock activo, cero HTTP y cero créditos; la DB productiva conserva su hash. De 2.254 archivos protegidos, 2.253 siguen idénticos; el único cambio externo fue el overlay humano durante la revisión, preservado y congelado como entrada privada. Evidencia local: `NolvusAIT_Intelligence/20261105_Functional/private`.
 
 ## Próximos pasos
 
@@ -49,7 +53,7 @@ La continuación integra revisión independiente → posedición acotada → rec
 | 4 | Calibrar y evaluar un juez independiente autorizado | Medir falsas aprobaciones y ahorro de trabajo; sin autoaprobación nueva |
 | 5 | Preparar un piloto acotado de un mod | Configuración congelada, contexto coherente, presupuesto y autorización explícitos |
 
-No se recomienda aumentar carga sin calibración y presupuesto compatible. El puerto del juez está probado con mocks; su ejecución real, el escalamiento, la aprobación automática nueva y la producción siguen pendientes. Los cambios de esta fase se proponen en una PR solo documental; el código permanece privado.
+No se recomienda aumentar carga sin calibración y presupuesto compatible. El flujo del juez está probado offline; su calidad real, la calibración, el escalamiento y la producción siguen pendientes. La segmentación automática exige límites compartidos fiables; un párrafo demasiado largo o desalineado queda retenido sin truncarse. Los cambios de esta fase se proponen en una PR solo documental; el código permanece privado.
 
 ## Fuentes del corte
 

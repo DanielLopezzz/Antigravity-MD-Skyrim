@@ -29,7 +29,7 @@ Los casos en cuarentena se pueden evaluar lingüísticamente, pero aprobar una r
 
 Si hay texto sin guardar, el visor avisa al navegar. Si otra ventana guarda decisiones, usa **Recargar**; hay bloqueo de guardado e historial. Una decisión se vincula al original y al contexto revisados.
 
-La copia de evolución se abre con `Revisar_evolucion_inteligente.bat`. Muestra estado del evaluador, procedencia y controles sin crear aprobaciones. Los dictámenes del simulador son inconclusos; no miden calidad lingüística. Su carpeta es `NolvusAIT_Intelligence/20261105_Continuation/private/experiment`; las decisiones se guardan en su propio `private/human_reviews.json`. Cuando existe ese overlay, el ejecutor experimental rechaza regenerar la copia.
+La copia de evolución se abre con `Revisar_evolucion_inteligente.bat`. Muestra estado del evaluador, procedencia y controles sin crear aprobaciones. Los dictámenes del simulador son inconclusos; no miden calidad lingüística. Su carpeta es `NolvusAIT_Intelligence/20261105_Functional/private/review_final`; las decisiones se guardan en su propio `private/human_reviews.json`. Cuando existe ese overlay, el ejecutor experimental rechaza regenerar la copia. Las aprobaciones previas exactas aparecen como **Referencia aprobada**, leídas de una copia inmutable separada; no se duplican en el overlay de decisiones nuevas. **Exportar evaluación** guarda referencias y exclusiones de calibración en `private/calibration_summary.json`; descarta dictámenes simulados y referencias desactualizadas. Los segmentos se recomponen solo tras comprobar su identidad, orden e integridad; si la revisión resulta inconclusa se conserva la candidata histórica completa.
 
 ## Dónde quedan las decisiones
 
@@ -59,6 +59,7 @@ Para la revisión anterior: `python -m nolvus_translator --review-cases` con el 
 - `workspace_data/config.json` es la configuración local; la DB principal es `workspace_data/nolvus_translator.db`. No se usan como destinos de una prueba de traducción nueva.
 - La suite se ejecuta con `python -m unittest discover -s tests -t .` y `PYTHONPATH=src`. Crea datos temporales de prueba; no constituye una operación de solo lectura. No se ejecutó durante esta reorganización.
 - Workbench offline: `python -m nolvus_translator.translation.intelligence_workbench --source <DB> --pilot <R7> --output <carpeta-nueva>`. Solo lee fuentes y crea un experimento aislado; rechaza reemplazar uno existente. `--benchmark-count` opcional mide ingesta sintética. No ejecuta traducciones ni jueces reales.
+- Catálogo contextual offline: `python -m nolvus_translator.lore.knowledge_workbench --source <DB> --output <carpeta-nueva>`. Para enriquecer una copia ya creada: `--knowledge <sidecar> --documents-manifest <registro-json>`. Verifica hashes/permisos del registro; no descarga ni ejecuta código externo.
 - Antes de una exportación futura: vista previa, evidencia editorial, respaldo, perfil clonado de MO2 y compatibilidad del ejecutable real. Las capacidades de exportación existentes no autorizan desplegar el piloto actual.
 - No actives proveedores, ejecutes runners facturables ni deshabilites el candado por seguir esta guía. Cada prueba nueva exige alcance, presupuesto y autorización.
 
