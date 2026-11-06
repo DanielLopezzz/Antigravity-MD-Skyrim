@@ -11,7 +11,7 @@ Actualizada el **2026-11-06** a partir de los lanzadores, CLI y visor existentes
 | `Revisar_traducciones.bat` | Casos del piloto anterior y ejemplos sintéticos |
 | `Revisar_evolucion_inteligente.bat` | Copia experimental del flujo de reevaluación offline |
 | `Revisar_prueba_pareada.bat` | Resultado real separado: 47 candidatas para evaluar y una en cuarentena técnica |
-| `Validar_prueba_pesada.bat` | Verifica el plan sellado de 1.050 fuentes; no llama a la API |
+| `Validar_prueba_pesada.bat` | Inspecciona el antecedente pesado; su sello de código es anterior a la estabilización. No llama a la API |
 
 Estos lanzadores pertenecen al workspace con código. El repositorio público de documentación no incorpora la aplicación. El visor de casos no llama a la API ni importa decisiones a producción o a la TM.
 
@@ -85,7 +85,7 @@ Para una ejecución masiva futura, usa un plan nuevo con roles, referencias, dep
 
 ## Preparación de la prueba mayor
 
-El plan definitivo está en `NolvusAIT_Intelligence/20261106_HeavyTrial/private/prepared_final_v5`; sus previews, fuentes, términos y código están vinculados por hashes. Usa `Validar_prueba_pesada.bat` para comprobarlo offline. Los borradores anteriores y `offline_exercise` son evidencia de preparación/simulación y no deben confundirse con una ejecución real. `INFORME.md`, `SUMMARY.json` y `OFFLINE_CHECK.json` resumen alcance, costes supuestos y pruebas.
+El plan histórico cerrado está en `NolvusAIT_Intelligence/20261106_HeavyTrial/private/prepared_final_v5`; sus previews, fuentes, términos y código están vinculados por hashes. Usa `Validar_prueba_pesada.bat` para comprobarlo offline. Los borradores anteriores y `offline_exercise` son evidencia de preparación/simulación y no deben confundirse con una ejecución real. `INFORME.md`, `SUMMARY.json` y `OFFLINE_CHECK.json` resumen alcance, costes supuestos y pruebas.
 
 Se conserva el límite de **US$0,30**: US$0,08 Luna y US$0,22 Sol. El runner privado exige autorización nueva explícita y crea `private/live`; no reabre el piloto anterior. Los resultados distinguirán llamadas/coste de cada modelo, cobertura de Sol, cuarentenas y etapas aplazadas. No se retransmiten resultados inciertos ni se eleva el cap para completar un porcentaje.
 
@@ -106,3 +106,11 @@ El antiguo `subir_md_a_github.bat` no prepara ni incorpora documentos nuevos: ha
 La configuración ordinaria no debe enviar todo a Sol: muestra del 2 %, máximo 14 casos iniciales y límite económico separado. Los avisos sin evidencia no justifican una revisión adicional. No aumentes esa cobertura automáticamente ni confundas el máximo del motor offline con la política del producto.
 
 La ejecución real de esta preparación quedó detenida. `NolvusAIT_Intelligence/20261106_HeavyTrial/RESULTADO_REAL.md` y `RUN_METRICS.json` contienen el corte real; `private/live_r2` conserva los nueve recibos y el libro económico. El primer intento local sin HTTP se conserva en `private/live`. La exportación `live_r2/review` es diagnóstica, sin revisiones naturales ni cambios de candidata: no constituye una evaluación antes/después y no es necesario revisarla. La validación muestra preparación y ejecución asociada por separado. No vuelvas a lanzar el diario cerrado ni borres su cuarentena para forzar un reenvío. [Resultado y condiciones para continuar](https://github.com/DanielLopezzz/Antigravity-MD-Skyrim/blob/codex/terminology-continuity-docs-20261106/Fase10_Evolucion_Linguistica/HeavyTrial_Run_20261106/README.md).
+
+## Perfil estabilizado y próxima validación
+
+Para pruebas nuevas se selecciona `compact-v2` y roles Luna/Sol explícitos. Los contratos y visores anteriores permanecen legibles. Un sello anterior puede rechazar el código actualizado: conserva ese antecedente; no borres el sello ni la cuarentena para forzar su ejecución. Los pares ciegos nuevos solo se generan si Sol obtuvo un dictamen real sobre esas candidatas.
+
+La preparación privada está en `NolvusAIT_Intelligence/20261106_Stabilization/private/next_probe_v3/plan.json`; el procedimiento `probe_runner.py` ya pasó una simulación con replay. Prevé dos traducciones Luna y una evaluación Sol, hasta US$0,05, sin reintentos ni promoción. Requiere autorización específica nueva, hash del plan y carpeta de ejecución separada. No se ha ejecutado con API. La plantilla Sol se reconstruye sobre la candidata recibida; no se envía como traducción real. [Resultado y condiciones](https://github.com/DanielLopezzz/Antigravity-MD-Skyrim/blob/codex/terminology-continuity-docs-20261106/Fase10_Evolucion_Linguistica/Stabilization_20261106/README.md).
+
+La importación del flujo integrado solo escribe pendientes en staging aislado, revalida fuente/contexto/estructura/glosario y protege decisiones humanas. Su repetición es idempotente; no escribe TM. No necesitas volver a revisar el visor histórico por estas pruebas sintéticas.
