@@ -11,6 +11,8 @@ Localización propia de Nolvus Awakening al español latinoamericano neutro (ES-
 | Reglas, arquitectura, formatos y límites | [Referencia técnica](documentacion/REFERENCIA_TECNICA.md) |
 | Qué ocurrió antes y dónde está la evidencia | [Histórico resumido](documentacion/HISTORICO.md) |
 
+Evaluación estratégica del 2026-11-06: [viabilidad de traducción masiva y dictamen B — Evolucionar](Fase10_Evolucion_Linguistica/StrategicEvaluation_20261106/README.md), con proyección económica, alternativas y experimento propuesto. Es una evaluación; no autoriza migración ni gasto.
+
 El cuarto piloto terminó de recibir respuestas; su evaluación editorial sigue abierta. El estado enlazado distingue aceptación mecánica, aprobación humana y cuarentena. No se autoriza una nueva ejecución ni producción por seguir esta documentación.
 
 En el workspace local, abre `Revisar_cuarta_prueba.bat` para revisar la muestra activa o `launch_gui.bat` para la aplicación. El repositorio público contiene únicamente documentación: esos ejecutables y el código permanecen locales.
