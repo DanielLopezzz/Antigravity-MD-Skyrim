@@ -1,0 +1,73 @@
+{
+  "profiles_occurrences": [
+    {
+      "profile": "book",
+      "n": 8681,
+      "speaker_known": 0,
+      "quest_known": 0,
+      "group_known": 8681,
+      "characters": 7009146
+    },
+    {
+      "profile": "dialogue",
+      "n": 148192,
+      "speaker_known": 2847,
+      "quest_known": 22861,
+      "group_known": 148192,
+      "characters": 9913082
+    },
+    {
+      "profile": "item",
+      "n": 36449,
+      "speaker_known": 0,
+      "quest_known": 0,
+      "group_known": 36449,
+      "characters": 944817
+    },
+    {
+      "profile": "magic",
+      "n": 38656,
+      "speaker_known": 0,
+      "quest_known": 0,
+      "group_known": 38656,
+      "characters": 1198590
+    },
+    {
+      "profile": "quest",
+      "n": 14370,
+      "speaker_known": 0,
+      "quest_known": 14370,
+      "group_known": 14370,
+      "characters": 1066015
+    },
+    {
+      "profile": "script",
+      "n": 20514,
+      "speaker_known": 0,
+      "quest_known": 0,
+      "group_known": 20514,
+      "characters": 573743
+    },
+    {
+      "profile": "ui",
+      "n": 46869,
+      "speaker_known": 0,
+      "quest_known": 0,
+      "group_known": 46869,
+      "characters": 1423417
+    }
+  ],
+  "context_scoped_distinct_units": 278933,
+  "context_scoped_characters": 21304038,
+  "grouping_on_one_representative_per_exact_text": {
+    "not_full_translation_plan": true,
+    "batches": 73110,
+    "eligible_sources": 235232,
+    "mean_items_per_batch": 3.218,
+    "single_item_batches": 45118,
+    "single_sources_over_12000_chars_requiring_segmentation": 69,
+    "bucket_count": 69338
+  },
+  "top_one_percent_char_share": 0.3296,
+  "longest_chars": 39975
+}
