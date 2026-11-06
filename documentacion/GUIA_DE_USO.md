@@ -10,6 +10,7 @@ Actualizada el **2026-11-05** a partir de los lanzadores, CLI y visor existentes
 | `Revisar_cuarta_prueba.bat` | Visor del piloto activo R7 de 1.000 cadenas |
 | `Revisar_traducciones.bat` | Casos del piloto anterior y ejemplos sintéticos |
 | `Revisar_evolucion_inteligente.bat` | Copia experimental del flujo de reevaluación offline |
+| `Revisar_prueba_pareada.bat` | Resultado real separado: 47 candidatas para evaluar y una en cuarentena técnica |
 
 Estos lanzadores pertenecen al workspace con código. El repositorio público de documentación no incorpora la aplicación. El visor de casos no llama a la API ni importa decisiones a producción o a la TM.
 
@@ -75,7 +76,9 @@ La preparación actualizada con nombres está en `NolvusAIT_Intelligence/2026110
 
 ## Documentación y publicación
 
-La preparación pareada vigente está en `NolvusAIT_Intelligence/20261105_PairedTrial/private/prepared_final_v4`; el plan y los previews son privados. `private/Validar_preparacion.bat` verifica archivos y fuentes sin enviar solicitudes. Los borradores anteriores se conservan, pero no son la selección final. La ejecución real sigue deshabilitada; validar la preparación no habilita API ni reserva saldo. Tus revisiones activas no se sustituyeron.
+La preparación pareada vigente está en `NolvusAIT_Intelligence/20261105_PairedTrial/private/prepared_final_v4`; el plan y los previews son privados. `private/Validar_preparacion.bat` verifica archivos y fuentes sin enviar solicitudes. Los borradores anteriores se conservan, pero no son la selección final. La ejecución autorizada está cerrada por una discrepancia de identidad; `Validar_preparacion.bat` muestra el estado real por separado y no envía HTTP. Tus revisiones activas no se sustituyeron.
+
+Para consultar el resultado nuevo, abre `Revisar_prueba_pareada.bat`; en el filtro «Casos» puedes seleccionar «Prueba pareada». «Necesita criterio» agrupa 47 candidatas pendientes de evaluación, no 47 errores; cambia la cola a «Cuarentena técnica» para la restante. La evaluación de IA natural figura como no ejecutada. Las variantes no se identifican durante la lectura y ambas muestran las mismas referencias disponibles para adjudicación. Guardar crea solo `private/live_20261105/review/private/human_reviews.json`; una aprobación no libera el recibo retenido. No es necesario repetir la revisión de los 1.000 casos. El informe parcial está en `NolvusAIT_Intelligence/20261105_PairedTrial/INFORME_RESULTADOS.md`.
 
 El contexto ampliado está en `NolvusAIT_Intelligence/20261105_Documentation/private/knowledge.sqlite3`, separado del catálogo anterior y del visor activo. Las fuentes web se presentan como resúmenes del proyecto, con advertencia cuando su versión no coincide o no puede verificarse. Un enlace descubierto en el inventario no equivale a documentación validada. Las adjudicaciones de los 32 casos y la propuesta de El Corcel están en esa misma carpeta privada; no sustituyen tus decisiones ni crean aprobaciones.
 
