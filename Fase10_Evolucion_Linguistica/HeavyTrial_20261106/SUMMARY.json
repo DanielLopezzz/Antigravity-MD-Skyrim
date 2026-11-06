@@ -1,0 +1,51 @@
+{
+  "date": "2026-11-06",
+  "execution_authorized": false,
+  "execution_ready": true,
+  "api_lock": true,
+  "http_requests": 0,
+  "billed_usd": 0,
+  "sources": 1050,
+  "origins": {
+    "reused": 950,
+    "new": 100
+  },
+  "profiles": {
+    "book": 159,
+    "dialogue": 190,
+    "item": 155,
+    "magic": 160,
+    "quest": 161,
+    "script": 113,
+    "ui": 112
+  },
+  "mods": 182,
+  "translation_requests": 93,
+  "sol_natural_reviews": 14,
+  "sol_controls": 8,
+  "max_postedits": 2,
+  "max_verifications": 2,
+  "max_blind_audits": 2,
+  "max_calls": 121,
+  "cap_usd": ".30",
+  "model_caps_usd": {
+    "gpt-6-luna": "0.08",
+    "gpt-6.1-sol": "0.22"
+  },
+  "sizing_scenario_usd": {
+    "luna_translation": 0.060624,
+    "sol_natural_review": 0.120118,
+    "sol_controls": 0.053282
+  },
+  "sizing_scenario_before_repairs_usd": 0.234024,
+  "sizing_note": "Heuristic input tokens, fixed illustrative output allowances including reasoning; excludes repair/audit/cache writes. Not a guarantee. Per-call reserves and caps may defer stages.",
+  "plan_sha256": "6c814a1801774e6e520ef3421a5c69b2a091c856248b574428c8a089e7a30804",
+  "protected_unchanged": true,
+  "selection_exclusions": {},
+  "offline_tests_passed": 306,
+  "offline_tests_total": 306,
+  "new_regressions": 8,
+  "source_commit": "c464179d5612e6a098ac0b927ed6d0a5a7a103f9",
+  "prepared_folder": "private/prepared_final_v3",
+  "credits_spent": 0
+}
