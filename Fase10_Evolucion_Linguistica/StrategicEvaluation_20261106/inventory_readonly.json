@@ -1,0 +1,83 @@
+{
+  "snapshot": [
+    {
+      "snapshot_id": 1,
+      "created_at": "2026-11-03T04:33:49+00:00",
+      "nolvus_version": "6.0.21",
+      "total_strings": 403922,
+      "notes": "Snapshot #1 auditado y actualizado bajo Pol\u00edtica ES-419 (0% comunitarias; MCM depurado a _english.txt; Bethesda oficial separado)"
+    }
+  ],
+  "classification": [
+    {
+      "classification": "already_translated",
+      "n": 57261,
+      "unique_texts": 48051,
+      "characters": 3307179
+    },
+    {
+      "classification": "identifier",
+      "n": 6535,
+      "unique_texts": 4552,
+      "characters": 115755
+    },
+    {
+      "classification": "non_translatable",
+      "n": 1176,
+      "unique_texts": 180,
+      "characters": 3051
+    },
+    {
+      "classification": "pending_research",
+      "n": 718,
+      "unique_texts": 352,
+      "characters": 5329
+    },
+    {
+      "classification": "protected_proper_noun",
+      "n": 8667,
+      "unique_texts": 4933,
+      "characters": 90149
+    },
+    {
+      "classification": "pure_variable",
+      "n": 9647,
+      "unique_texts": 4403,
+      "characters": 165357
+    },
+    {
+      "classification": "technical_text",
+      "n": 6187,
+      "unique_texts": 2845,
+      "characters": 164281
+    },
+    {
+      "classification": "translatable",
+      "n": 313731,
+      "unique_texts": 235301,
+      "characters": 22128810
+    }
+  ],
+  "tm": [],
+  "pending_text_unique_count": 235301,
+  "pending_unique_characters": 20077501,
+  "pending_mean_chars": 85.327,
+  "pending_median_chars": 41,
+  "length_percentiles_chars": {
+    "0.5": 41,
+    "0.9": 128,
+    "0.95": 144,
+    "0.99": 399
+  },
+  "cumulative_length_counts": {
+    "20": 51235,
+    "60": 146587,
+    "120": 206146,
+    "300": 232133,
+    "1000": 233899,
+    "4000": 234812,
+    "12000": 235232
+  },
+  "source_bytes_utf8": 20078636,
+  "query_mode": "mode=ro&immutable=1; WAL verified empty; no rescan of Nolvus"
+}
