@@ -36,6 +36,8 @@ Los enlaces siguientes apuntan a la documentación ya publicada; su estructura d
 
 ## Originales y trazabilidad
 
+**Preparación pareada, 2026-11-05, posterior a ampliación documental:** 24 cadenas reales y ocho controles, contexto anterior/ampliado, conjunto enano agrupado y fuentes selladas; suite 262/262. Solo construcción y validación, sin traducción real ni API. El tope propuesto de US$0,35 requiere validación y autorización futuras. [Informe](https://github.com/DanielLopezzz/Antigravity-MD-Skyrim/blob/codex/technical-consolidation-docs-20261105/Fase10_Evolucion_Linguistica/PairedTrial_20261105/README.md).
+
 **Ampliación documental, 2026-11-05, posterior a coherencia:** descubrimiento sobre 1.302 mods, integración aislada de documentos locales y resúmenes externos versionados, adjudicación de los 32 avisos y corrección de la recuperación de fuentes relevantes. Suite 253/253, cero API/créditos. [Informe y alcance real](https://github.com/DanielLopezzz/Antigravity-MD-Skyrim/blob/codex/technical-consolidation-docs-20261105/Fase10_Evolucion_Linguistica/Documentation_20261105/README.md). No se presenta el conjunto de enlaces candidatos como investigación ya completada.
 
 [Archivo de originales](archivo/originales_20261105.zip) · [Manifiesto y hashes](archivo/MANIFIESTO.json).

@@ -75,6 +75,8 @@ La preparación actualizada con nombres está en `NolvusAIT_Intelligence/2026110
 
 ## Documentación y publicación
 
+La preparación pareada vigente está en `NolvusAIT_Intelligence/20261105_PairedTrial/private/prepared_final_v4`; el plan y los previews son privados. `private/Validar_preparacion.bat` verifica archivos y fuentes sin enviar solicitudes. Los borradores anteriores se conservan, pero no son la selección final. La ejecución real sigue deshabilitada; validar la preparación no habilita API ni reserva saldo. Tus revisiones activas no se sustituyeron.
+
 El contexto ampliado está en `NolvusAIT_Intelligence/20261105_Documentation/private/knowledge.sqlite3`, separado del catálogo anterior y del visor activo. Las fuentes web se presentan como resúmenes del proyecto, con advertencia cuando su versión no coincide o no puede verificarse. Un enlace descubierto en el inventario no equivale a documentación validada. Las adjudicaciones de los 32 casos y la propuesta de El Corcel están en esa misma carpeta privada; no sustituyen tus decisiones ni crean aprobaciones.
 
 Edita los cuatro documentos de `documentacion/` en el workspace local. La copia `Antigravity-MD-Skyrim/documentacion/` es el espejo documental para publicar; no se actualiza automáticamente. Mantén ambas copias iguales antes de publicar, salvo sus archivos históricos, que tienen distinto alcance.
