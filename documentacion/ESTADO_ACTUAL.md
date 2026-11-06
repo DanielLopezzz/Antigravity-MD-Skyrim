@@ -16,8 +16,8 @@ Nolvus AI Translator localiza Nolvus Awakening al español latinoamericano neutr
 | Revisión humana al corte actual | 41 decisiones en la copia activa de evolución: 29 aprobaciones y 12 investigaciones; el archivo humano continúa activo |
 | Consumo acumulado del cuarto piloto | US$0,1176624 de US$0,17; 50 respuestas reales, sin llamadas pendientes |
 | TM del staging / promoción a producción | 0 / 0; no se crearon aprobaciones humanas automáticas |
-| Última suite registrada | 246/246; 34 regresiones nuevas sobre la base consolidada de 212 |
-| Código local | Rama `codex/contextual-coherence-20261105`, commit `d9f2aae`; conserva la consolidación anterior y se versiona solo localmente |
+| Última suite registrada | 253/253; siete regresiones nuevas sobre la base de 246 |
+| Código local | Rama `codex/contextual-coherence-20261105`, commit funcional `4b7b4e9`; conserva la consolidación anterior y se versiona solo localmente |
 
 Coste calculado por el libro local con tokens reportados y tarifa registrada: no certifica la factura ni una tarifa vigente del proveedor. Las últimas 110 pruebas incluyen el refuerzo del esquema SHA-256, comprobado offline después de cerrar la API. Ese último ajuste no se ha validado con otra llamada pagada.
 
@@ -48,6 +48,8 @@ El barrido local separa atención de aprobación: 16 casos necesitan criterio, 2
 La consolidación preservó las tres ramas anteriores (mismo commit base), registró el trabajo heredado y corrigió recibos/presupuesto, integridad de planes, concurrencia, propuestas terminológicas y reingesta contextual. Las observaciones del visor llegan también a la selección de reevaluación. El experimento acotado ya está preparado, **sin ejecutar**; resultados, límites y comparación offline en el [informe ejecutivo único](https://github.com/DanielLopezzz/Antigravity-MD-Skyrim/blob/30db1581792ba69d2d2fd87e7222731a45d9b4f7/Fase10_Evolucion_Linguistica/Consolidation_20261105/README.md). El inventario completo de archivos/hashes es privado.
 
 ## Próximos pasos
+
+La ampliación documental descubrió 41 documentos locales en 36 de los 1.302 mods con texto pendiente y registró 1.220 páginas candidatas, todavía sin verificar individualmente. Se examinaron diez fuentes externas de siete mods, con versiones y resúmenes analíticos identificados; se corrigió la selección para que documentos relevantes no desaparezcan entre registros. De los 32 casos señalados: 16 diferencias de denominación, un cambio de identidad, 11 alertas que no establecen error y cuatro pendientes de contexto. La propuesta de El Corcel está aislada; tus decisiones siguen intactas. [Informe documental y límites](https://github.com/DanielLopezzz/Antigravity-MD-Skyrim/blob/codex/technical-consolidation-docs-20261105/Fase10_Evolucion_Linguistica/Documentation_20261105/README.md).
 
 La coherencia entre registros ya incorpora nombres localizados con identidad/procedencia, piezas relacionadas y contraste en revisión/posedición. Sobre las mismas 1.000 cadenas recupera referencias para 483 y señala 32 posibles diferencias/conflictos, **no 32 errores confirmados**. No impone preferencias pendientes ni fabrica nombres faltantes. La reanudación añade cero invocaciones al simulador; cero HTTP, créditos y aprobaciones nuevas. Se preservaron 1.719 archivos anteriores del alcance protegido y las 41 decisiones. [Resultados y límites](https://github.com/DanielLopezzz/Antigravity-MD-Skyrim/blob/codex/technical-consolidation-docs-20261105/Fase10_Evolucion_Linguistica/Coherence_20261105/README.md).
 

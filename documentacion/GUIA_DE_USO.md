@@ -75,6 +75,8 @@ La preparación actualizada con nombres está en `NolvusAIT_Intelligence/2026110
 
 ## Documentación y publicación
 
+El contexto ampliado está en `NolvusAIT_Intelligence/20261105_Documentation/private/knowledge.sqlite3`, separado del catálogo anterior y del visor activo. Las fuentes web se presentan como resúmenes del proyecto, con advertencia cuando su versión no coincide o no puede verificarse. Un enlace descubierto en el inventario no equivale a documentación validada. Las adjudicaciones de los 32 casos y la propuesta de El Corcel están en esa misma carpeta privada; no sustituyen tus decisiones ni crean aprobaciones.
+
 Edita los cuatro documentos de `documentacion/` en el workspace local. La copia `Antigravity-MD-Skyrim/documentacion/` es el espejo documental para publicar; no se actualiza automáticamente. Mantén ambas copias iguales antes de publicar, salvo sus archivos históricos, que tienen distinto alcance.
 
 El antiguo `subir_md_a_github.bat` no prepara ni incorpora documentos nuevos: hace pull/push de commits existentes y contiene mensajes y una ruta heredados. No se ejecutó ni se modificó en esta reorganización. La publicación debe revisar el diff del repositorio documental y excluir siempre fuentes, credenciales, DB, corpus y decisiones humanas individuales.

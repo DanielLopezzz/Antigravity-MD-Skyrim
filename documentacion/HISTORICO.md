@@ -36,6 +36,8 @@ Los enlaces siguientes apuntan a la documentación ya publicada; su estructura d
 
 ## Originales y trazabilidad
 
+**Ampliación documental, 2026-11-05, posterior a coherencia:** descubrimiento sobre 1.302 mods, integración aislada de documentos locales y resúmenes externos versionados, adjudicación de los 32 avisos y corrección de la recuperación de fuentes relevantes. Suite 253/253, cero API/créditos. [Informe y alcance real](https://github.com/DanielLopezzz/Antigravity-MD-Skyrim/blob/codex/technical-consolidation-docs-20261105/Fase10_Evolucion_Linguistica/Documentation_20261105/README.md). No se presenta el conjunto de enlaces candidatos como investigación ya completada.
+
 [Archivo de originales](archivo/originales_20261105.zip) · [Manifiesto y hashes](archivo/MANIFIESTO.json).
 
 El ZIP del workspace conserva los 20 Markdown originales de su raíz, la hoja de estimación y las 79 fuentes Markdown/JSON previas del repositorio documental. El ZIP del espejo público contiene solo esas 79 fuentes documentales ya existentes allí: excluye originales privados del workspace. El manifiesto de cada copia indica sus miembros y SHA-256; no intercambiar esos dos ZIP.
