@@ -16,8 +16,8 @@ Nolvus AI Translator localiza Nolvus Awakening al español latinoamericano neutr
 | Revisión humana al corte actual | 41 decisiones en la copia activa de evolución: 29 aprobaciones y 12 investigaciones; el archivo humano continúa activo |
 | Consumo acumulado del cuarto piloto | US$0,1176624 de US$0,17; 50 respuestas reales, sin llamadas pendientes |
 | TM del staging / promoción a producción | 0 / 0; no se crearon aprobaciones humanas automáticas |
-| Última suite registrada | 307/307; nueve regresiones nuevas sobre las 298 anteriores |
-| Código local | Rama `codex/heavy-trial-preflight-20261106`, commit funcional `3fdfd70`; conserva la consolidación anterior y se versiona solo localmente |
+| Última suite registrada | 308/308; diez regresiones nuevas sobre las 298 anteriores |
+| Código local | Rama `codex/heavy-trial-preflight-20261106`, commit funcional `33f613c`; conserva la consolidación anterior y se versiona solo localmente |
 
 El coste histórico del cuarto piloto fue calculado con tokens reportados y tarifa registrada; no certifica la factura ni una tarifa vigente. Las 110 pruebas de cierre de aquel piloto reforzaron la forma SHA-256 offline. El consumo y los límites de la nueva ejecución se registran por separado en «Próximos pasos».
 
@@ -53,11 +53,17 @@ El nuevo flujo integrado vincula conceptos a ámbito semántico y referencias ex
 
 Una identidad incorrecta de salida con uso conocido queda aislada por lote; corrupción del diario/fuentes, credenciales/autorización o uso incierto bloquean nuevos envíos del plan. Solo se reintenta con prueba de no envío/no cargo y límite sellado. El perfil nuevo es experimental y exclusivamente offline: no sustituye runners históricos ni reabre la parada del piloto. Cero HTTP/créditos, nueve entradas congeladas idénticas y 41 decisiones previas conservadas. El contraste determinista de las 48 candidatas antiguas señaló seis casos por referencias (cuatro diferencias y dos conflictos), no seis errores confirmados. Falta ampliar cobertura semántica y verificar/calibrar Sol con API autorizada.
 
-## Prueba mayor preparada, sin API
+## Preparación de la prueba mayor (corte previo)
 
 El barrido previo corrigió el despacho ante un envío incierto tardío, la serialización de términos reales y su validación inicial, la pérdida de metadatos, el límite de revisión y referencias semánticas que podían descartarse por tamaño. Se añadió un ámbito pagado sellado para Luna/Sol, con atribución de coste y sublímites, sin cambiar presupuestos históricos. El ejercicio final de solicitudes exactas completó 117 intercambios programados y reanudó con cero adicionales; no mide calidad real de IA. [Hallazgos y preparación](https://github.com/DanielLopezzz/Antigravity-MD-Skyrim/blob/codex/terminology-continuity-docs-20261106/Fase10_Evolucion_Linguistica/HeavyTrial_20261106/README.md).
 
-El plan vigente comprende **1.050 fuentes: 950 candidatas conservadas y 100 traducciones nuevas**, de 182 mods/orígenes. Sol evaluará **14 casos naturales**, más ocho controles sintéticos; hasta dos correcciones Luna con recomprobación Sol y dos auditorías adicionales. Sol no revisará toda la población. Tope propuesto para ejecutar: **US$0,30**, repartido en US$0,08 Luna y US$0,22 Sol. El escenario orientativo previo a correcciones/auditorías es US$0,234024; no garantiza cobertura completa y los caps detienen etapas que no puedan reservar la siguiente llamada. Preparación validada y API Lock activo; faltan autorización de ejecución, acceso efectivo al modelo y consumo/calidad reales. `Validar_prueba_pesada.bat` no envía HTTP. El borrador de 1.200 no es vigente.
+El plan vigente comprende **1.050 fuentes: 950 candidatas conservadas y 100 traducciones nuevas**, de 182 mods/orígenes. Sol evaluará **14 casos naturales**, más ocho controles sintéticos; hasta dos correcciones Luna con recomprobación Sol y dos auditorías adicionales. Sol no revisará toda la población. Tope propuesto para ejecutar: **US$0,30**, repartido en US$0,08 Luna y US$0,22 Sol. El escenario orientativo previo a correcciones/auditorías es US$0,234024; no garantiza cobertura completa y los caps detienen etapas que no puedan reservar la siguiente llamada. La ejecución posterior recibió autorización y quedó cerrada por cuarentena económica; véase el resultado real siguiente. `Validar_prueba_pesada.bat` no envía HTTP. El borrador de 1.200 no es vigente.
+
+## Última ejecución real Luna/Sol
+
+La ejecución autorizada del cap US$0,30 hizo **nueve HTTP únicos**: ocho controles Sol completados y una respuesta Luna incompleta/vacía, con motivo `max_output_tokens` y uso reportado cero. Sol superó los ocho controles y consumió **US$0,023968** según tokens/tarifa; **US$0,00249593** de reserva Luna quedaron retenidos, sin presentarlos como cargo confirmado. La parada económica bloqueó nuevos envíos. Se conservan 950 candidatas; hubo cero traducciones nuevas y cero revisiones naturales, posediciones o recomprobaciones. No se midió mejora lingüística. [Recibos, incidencia y resultado parcial](https://github.com/DanielLopezzz/Antigravity-MD-Skyrim/blob/codex/terminology-continuity-docs-20261106/Fase10_Evolucion_Linguistica/HeavyTrial_Run_20261106/README.md).
+
+Antes de esos HTTP se corrigió un bloqueo local del transporte que aún restringía el modelo a Luna; ese intento no envió HTTP ni consumió. Se probó la ruta real con servidor simulado y se conservó el intento anterior. La reserva incierta requiere conciliación antes de continuar; no se recomienda elevar salida ni repetir la prueba por una respuesta de uso cero. API Lock activo y siete entradas protegidas idénticas. Los controles Sol siguen siendo una comprobación mínima, no una aprobación del corpus.
 
 ## Próximos pasos
 
