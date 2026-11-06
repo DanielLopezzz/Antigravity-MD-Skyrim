@@ -1,0 +1,48 @@
+{
+  "kind": "controlled-context-design",
+  "execution_authorized": false,
+  "requests_executed": 0,
+  "http_requests": 0,
+  "paid_api_lock": true,
+  "natural_cases": 12,
+  "synthetic_probes": 4,
+  "synthetic_probe_error_types": [
+    "quantity",
+    "negation",
+    "entity",
+    "addition"
+  ],
+  "arms": 3,
+  "logical_comparisons": 48,
+  "identical_arms_reuse_one_receipt": true,
+  "prepared_review_requests": 40,
+  "max_edit_requests": 4,
+  "max_recheck_requests": 4,
+  "max_requests": 48,
+  "max_request_bytes": 12288,
+  "max_output_tokens": 2048,
+  "input_token_bound_per_request": 12800,
+  "prepared_input_tokens_heuristic": 46181,
+  "worst_input_tokens": 614400,
+  "worst_output_tokens": 98304,
+  "reserve_usd": "0.12718080",
+  "proposed_budget_cap_usd": "0.15",
+  "pricing_basis": "Registered local tariff; verify before any future paid authorization.",
+  "acceptance": [
+    "Human-adjudicated source/target labels before unblinding; never use model agreement as gold.",
+    "At least 10/12 natural context sets useful, no cross-mod/plugin evidence or contradiction silently accepted.",
+    "Detect all four controlled errors and introduce zero critical/major errors in at most four edits.",
+    "No false semantic alarms on human-accepted controls; measure paired human corrections and review time.",
+    "Report outcomes separately for natural cases and synthetic probes; this sample cannot calibrate autoapproval."
+  ],
+  "stop_conditions": [
+    "Any unexpected request/tool/model, production write or budget above the sealed bounds.",
+    "Any unknown usage or critical identity/markup failure; preserve receipts, never automatic resend.",
+    "More than 10% malformed/refused/incomplete outputs; terminate the experiment and adjudicate."
+  ],
+  "pending": [
+    "Explicit future API authorization, verified tariff, safe execution adapter and independent human labels."
+  ],
+  "automatic_approval_enabled": false,
+  "judge_independence": "Blind separate invocation; same model family may share errors."
+}
