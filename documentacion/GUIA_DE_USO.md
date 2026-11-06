@@ -1,6 +1,6 @@
 # Guía de uso y revisión local
 
-Actualizada el **2026-11-05** a partir de los lanzadores, CLI y visor existentes. [Estado y pendientes](ESTADO_ACTUAL.md) · [Referencia técnica](REFERENCIA_TECNICA.md).
+Actualizada el **2026-11-06** a partir de los lanzadores, CLI y visor existentes. [Estado y pendientes](ESTADO_ACTUAL.md) · [Referencia técnica](REFERENCIA_TECNICA.md).
 
 ## Accesos desde la raíz del workspace
 
@@ -11,6 +11,7 @@ Actualizada el **2026-11-05** a partir de los lanzadores, CLI y visor existentes
 | `Revisar_traducciones.bat` | Casos del piloto anterior y ejemplos sintéticos |
 | `Revisar_evolucion_inteligente.bat` | Copia experimental del flujo de reevaluación offline |
 | `Revisar_prueba_pareada.bat` | Resultado real separado: 47 candidatas para evaluar y una en cuarentena técnica |
+| `Validar_prueba_pesada.bat` | Inspecciona el antecedente pesado; su sello de código es anterior a la estabilización. No llama a la API |
 
 Estos lanzadores pertenecen al workspace con código. El repositorio público de documentación no incorpora la aplicación. El visor de casos no llama a la API ni importa decisiones a producción o a la TM.
 
@@ -68,11 +69,27 @@ Para la revisión anterior: `python -m nolvus_translator --review-cases` con el 
 
 ## Consolidación y validación preparada
 
-La línea privada de trabajo continúa en `codex/contextual-coherence-20261105`, conservando `codex/technical-consolidation-20261105` y las ramas anteriores. Los planes históricos sellados no se reabren con un fingerprint de código diferente.
+La línea privada nueva es `codex/heavy-trial-preflight-20261106`; conserva `codex/terminology-continuity-20261106`, `codex/contextual-coherence-20261105`, `codex/technical-consolidation-20261105` y las ramas anteriores. Los planes históricos sellados no se reabren con un fingerprint de código diferente.
 
 El diseño está en `NolvusAIT_Intelligence/20261105_Consolidation/private/next_validation_final/plan.json`; sus previews son privados. Preparar no envía solicitudes ni autoriza gasto. Si alguien empieza a guardar revisiones mientras se genera una copia, se conserva su archivo de casos y los recibos quedan disponibles en el diario. El visor en marcha no necesita cerrarse para este trabajo; los cambios de código se cargan al abrirlo nuevamente.
 
 La preparación actualizada con nombres está en `NolvusAIT_Intelligence/20261105_Coherence/private/final/next_validation/plan.json`, sin ejecutar. En copias futuras, el panel de contexto muestra las denominaciones de referencia y posibles piezas relacionadas, indicando propuestas pendientes. Una discrepancia nueva de identidad puede pedir atención aunque exista una aprobación anterior; esa decisión permanece guardada. El barrido no regeneró tu carpeta activa ni te asigna otros 1.000 casos obligatorios. Los 25 de cuarentena ya tienen decisión lingüística; su retención técnica es independiente.
+
+## Nuevo flujo de continuidad offline
+
+El flujo integrado `BatchWorkflow` recibe solicitudes Luna preparadas y fuentes congeladas; crea un diario nuevo y solo admite backends simulados. Conserva traducciones válidas, aísla respuestas defectuosas por lote y dirige revisión/verificación a Sol y posedición a Luna. No activa la API ni cambia el funcionamiento de los visores históricos. Los términos comunes necesitan un ámbito semántico respaldado: una palabra compartida no basta para imponer una equivalencia. Las propuestas siguen pendientes; no actualizan TM ni glosario aprobado.
+
+La evidencia actual está en `NolvusAIT_Intelligence/20261106_TerminologyContinuity`: `INFORME.md` y `METRICS.json` resumen resultados; `private/evidence/private/batch_report.json` enumera cada lote sintético y su causa. `private/evidence/integration/summary.json` y `private/results.json` dentro de esa integración conservan el ejemplo programado. Son pruebas técnicas; no son nuevas traducciones o decisiones humanas. Se conservan también los logs y el runner privado; este último rechaza sobrescribir una ejecución anterior.
+
+Para una ejecución masiva futura, usa un plan nuevo con roles, referencias, dependencias y límites sellados. Reabrirlo reutiliza recibos completos. Revisa `state`, `cause`, `blocked_by` e incidentes antes de resolver pendientes; no borres el diario para forzar reenvíos. Ante consumo incierto o fallo de integridad no se continúa enviando. La política nueva no permite saltarse la parada crítica de una prueba histórica ni autoriza gasto.
+
+## Preparación de la prueba mayor
+
+El plan histórico cerrado está en `NolvusAIT_Intelligence/20261106_HeavyTrial/private/prepared_final_v5`; sus previews, fuentes, términos y código están vinculados por hashes. Usa `Validar_prueba_pesada.bat` para comprobarlo offline. Los borradores anteriores y `offline_exercise` son evidencia de preparación/simulación y no deben confundirse con una ejecución real. `INFORME.md`, `SUMMARY.json` y `OFFLINE_CHECK.json` resumen alcance, costes supuestos y pruebas.
+
+Se conserva el límite de **US$0,30**: US$0,08 Luna y US$0,22 Sol. El runner privado exige autorización nueva explícita y crea `private/live`; no reabre el piloto anterior. Los resultados distinguirán llamadas/coste de cada modelo, cobertura de Sol, cuarentenas y etapas aplazadas. No se retransmiten resultados inciertos ni se eleva el cap para completar un porcentaje.
+
+Tras una ejecución real, abre `private/live/review` con **Abrir otra prueba…** en el visor. Habrá hasta 28 versiones ciegas correspondientes a 14 pares antes/después. La repetición del original es deliberada y también puede haber pares sin cambios; no significa aprobación ni corrección de IA. Tus notas se guardarán en un overlay privado nuevo; la asociación de variantes permanece aparte. No necesitas volver a revisar las 1.000 cadenas antiguas.
 
 ## Documentación y publicación
 
@@ -85,3 +102,15 @@ El contexto ampliado está en `NolvusAIT_Intelligence/20261105_Documentation/pri
 Edita los cuatro documentos de `documentacion/` en el workspace local. La copia `Antigravity-MD-Skyrim/documentacion/` es el espejo documental para publicar; no se actualiza automáticamente. Mantén ambas copias iguales antes de publicar, salvo sus archivos históricos, que tienen distinto alcance.
 
 El antiguo `subir_md_a_github.bat` no prepara ni incorpora documentos nuevos: hace pull/push de commits existentes y contiene mensajes y una ruta heredados. No se ejecutó ni se modificó en esta reorganización. La publicación debe revisar el diff del repositorio documental y excluir siempre fuentes, credenciales, DB, corpus y decisiones humanas individuales.
+
+La configuración ordinaria no debe enviar todo a Sol: muestra del 2 %, máximo 14 casos iniciales y límite económico separado. Los avisos sin evidencia no justifican una revisión adicional. No aumentes esa cobertura automáticamente ni confundas el máximo del motor offline con la política del producto.
+
+La ejecución real de esta preparación quedó detenida. `NolvusAIT_Intelligence/20261106_HeavyTrial/RESULTADO_REAL.md` y `RUN_METRICS.json` contienen el corte real; `private/live_r2` conserva los nueve recibos y el libro económico. El primer intento local sin HTTP se conserva en `private/live`. La exportación `live_r2/review` es diagnóstica, sin revisiones naturales ni cambios de candidata: no constituye una evaluación antes/después y no es necesario revisarla. La validación muestra preparación y ejecución asociada por separado. No vuelvas a lanzar el diario cerrado ni borres su cuarentena para forzar un reenvío. [Resultado y condiciones para continuar](https://github.com/DanielLopezzz/Antigravity-MD-Skyrim/blob/codex/terminology-continuity-docs-20261106/Fase10_Evolucion_Linguistica/HeavyTrial_Run_20261106/README.md).
+
+## Perfil estabilizado y próxima validación
+
+Para pruebas nuevas se selecciona `compact-v2` y roles Luna/Sol explícitos. Los contratos y visores anteriores permanecen legibles. Un sello anterior puede rechazar el código actualizado: conserva ese antecedente; no borres el sello ni la cuarentena para forzar su ejecución. Los pares ciegos nuevos solo se generan si Sol obtuvo un dictamen real sobre esas candidatas.
+
+La preparación privada está en `NolvusAIT_Intelligence/20261106_Stabilization/private/next_probe_v3/plan.json`; el procedimiento `probe_runner.py` ya pasó una simulación con replay. Prevé dos traducciones Luna y una evaluación Sol, hasta US$0,05, sin reintentos ni promoción. Requiere autorización específica nueva, hash del plan y carpeta de ejecución separada. No se ha ejecutado con API. La plantilla Sol se reconstruye sobre la candidata recibida; no se envía como traducción real. [Resultado y condiciones](https://github.com/DanielLopezzz/Antigravity-MD-Skyrim/blob/codex/terminology-continuity-docs-20261106/Fase10_Evolucion_Linguistica/Stabilization_20261106/README.md).
+
+La importación del flujo integrado solo escribe pendientes en staging aislado, revalida fuente/contexto/estructura/glosario y protege decisiones humanas. Su repetición es idempotente; no escribe TM. No necesitas volver a revisar el visor histórico por estas pruebas sintéticas.

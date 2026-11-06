@@ -1,0 +1,56 @@
+{
+  "date": "2026-11-06",
+  "simulation_only": true,
+  "http_requests": 0,
+  "credentials_loaded": false,
+  "billed_usd": "0",
+  "api_lock": true,
+  "production_writes": 0,
+  "tm_writes": 0,
+  "approved_glossary_writes": 0,
+  "previous_human_decisions_changed": 0,
+  "protected_files_unchanged": 9,
+  "load_fixture": {
+    "batches": 1000,
+    "initial_simulated_exchanges": 1000,
+    "extra_exchanges_after_restart": 0,
+    "states": {
+      "quarantined": 50,
+      "validated": 940,
+      "protocol_failed": 10
+    },
+    "seconds": 25.01,
+    "simulated_usage_usd": "0",
+    "limit": "Synthetic journal workload, not real translation latency or semantic quality."
+  },
+  "integration_fixture": {
+    "translation_states": {
+      "quarantined": 1,
+      "validated": 2
+    },
+    "valid_candidates_available": 2,
+    "initial_simulated_model_exchanges": 7,
+    "extra_exchanges_after_restart": 0,
+    "roles": {
+      "translation_and_postedit": "gpt-6-luna",
+      "review_and_verify": "gpt-6.1-sol"
+    },
+    "proposal_changes": 1,
+    "new_approvals": 0,
+    "limit": "Scripted model replies, not a measured Sol/Luna quality result."
+  },
+  "preserved_real_candidates": {
+    "count": 48,
+    "mechanically_valid": 47,
+    "cases_with_reference_findings": 6,
+    "finding_codes": {
+      "NAME_REFERENCE_MISMATCH": 4,
+      "NAME_REFERENCE_CONFLICT": 2
+    },
+    "limit": "Read-only reference contrasts, not confirmed errors or new human/AI adjudication."
+  },
+  "offline_tests_passed": 298,
+  "offline_tests_total": 298,
+  "new_regression_tests": 22,
+  "source_commit": "a1c921dc88f603e993dff9686483acd2effce90e"
+}

@@ -1,10 +1,10 @@
 # Estado actual y próximos pasos
 
-Verificado el **2026-11-05**. Esta es la fuente del estado vigente; [uso](GUIA_DE_USO.md), [reglas y arquitectura](REFERENCIA_TECNICA.md) e [histórico](HISTORICO.md) cubren temas distintos. Las cifras de revisión son un corte, no un contador en tiempo real.
+Verificado el **2026-11-06**. Esta es la fuente del estado vigente; [uso](GUIA_DE_USO.md), [reglas y arquitectura](REFERENCIA_TECNICA.md) e [histórico](HISTORICO.md) cubren temas distintos. Las cifras de revisión son un corte, no un contador en tiempo real.
 
 ## Dónde está el proyecto
 
-Nolvus AI Translator localiza Nolvus Awakening al español latinoamericano neutro (ES-419). El piloto de 1.000 cadenas está procesado. La última prueba pareada usó API con autorización y se detuvo por una discrepancia de identidad: 47 candidatas válidas mecánicamente y una retenida. **Quedan la revisión ciega natural y la calibración; traducción masiva y promoción productiva siguen sin autorización.**
+Nolvus AI Translator localiza Nolvus Awakening al español latinoamericano neutro (ES-419). El piloto de 1.000 cadenas está procesado. La última ejecución real Luna/Sol terminó con ocho controles Sol y un recibo Luna incompleto con uso cero. La estabilización posterior está implementada y verificada offline; no hubo otra prueba facturable. **Quedan la revisión ciega natural y la calibración; traducción masiva y promoción productiva siguen sin autorización.**
 
 | Dato comprobado | Resultado e interpretación |
 |---|---|
@@ -16,8 +16,8 @@ Nolvus AI Translator localiza Nolvus Awakening al español latinoamericano neutr
 | Revisión humana al corte actual | 41 decisiones en la copia activa de evolución: 29 aprobaciones y 12 investigaciones; el archivo humano continúa activo |
 | Consumo acumulado del cuarto piloto | US$0,1176624 de US$0,17; 50 respuestas reales, sin llamadas pendientes |
 | TM del staging / promoción a producción | 0 / 0; no se crearon aprobaciones humanas automáticas |
-| Última suite registrada | 276/276; 14 pruebas nuevas del ejecutor sobre la base de 262 |
-| Código local | Rama `codex/contextual-coherence-20261105`, commit funcional de cierre `3e4e974`; conserva la consolidación anterior y se versiona solo localmente |
+| Última suite registrada | 332/332; 24 regresiones nuevas sobre la base 308/308 repetida desde backup |
+| Código local | Rama `codex/product-stabilization-20261106`, commit funcional `6a153dd`; conserva la consolidación anterior y se versiona solo localmente |
 
 El coste histórico del cuarto piloto fue calculado con tokens reportados y tarifa registrada; no certifica la factura ni una tarifa vigente. Las 110 pruebas de cierre de aquel piloto reforzaron la forma SHA-256 offline. El consumo y los límites de la nueva ejecución se registran por separado en «Próximos pasos».
 
@@ -47,6 +47,24 @@ El barrido local separa atención de aprobación: 16 casos necesitan criterio, 2
 
 La consolidación preservó las tres ramas anteriores (mismo commit base), registró el trabajo heredado y corrigió recibos/presupuesto, integridad de planes, concurrencia, propuestas terminológicas y reingesta contextual. Las observaciones del visor llegan también a la selección de reevaluación. En aquel corte quedó preparado el experimento acotado, sin ejecutarlo; resultados, límites y comparación offline en el [informe ejecutivo único](https://github.com/DanielLopezzz/Antigravity-MD-Skyrim/blob/30db1581792ba69d2d2fd87e7222731a45d9b4f7/Fase10_Evolucion_Linguistica/Consolidation_20261105/README.md). El inventario completo de archivos/hashes es privado.
 
+## Estandarización y continuidad verificadas offline
+
+El nuevo flujo integrado vincula conceptos a ámbito semántico y referencias existentes, separa Luna (traducción/posedición) de Sol (evaluación/recomprobación), congela contexto y términos por ejecución y conserva checkpoints por lote. No impone un término de equipo a otro sentido de la palabra ni convierte propuestas en glosario. La carga sintética procesó 1.000 lotes: 940 validados, 50 en cuarentena y 10 con protocolo fallido; reabrir añadió cero intercambios. La integración programada aisló un lote con hash incorrecto y completó otros dos, con una propuesta recomprobada y cero aprobaciones. No mide calidad ni velocidad real de IA. [Cambios, pruebas y límites](https://github.com/DanielLopezzz/Antigravity-MD-Skyrim/blob/codex/terminology-continuity-docs-20261106/Fase10_Evolucion_Linguistica/TerminologyContinuity_20261106/README.md).
+
+Una identidad incorrecta de salida con uso conocido queda aislada por lote; corrupción del diario/fuentes, credenciales/autorización o uso incierto bloquean nuevos envíos del plan. Solo se reintenta con prueba de no envío/no cargo y límite sellado. El perfil nuevo es experimental y exclusivamente offline: no sustituye runners históricos ni reabre la parada del piloto. Cero HTTP/créditos, nueve entradas congeladas idénticas y 41 decisiones previas conservadas. El contraste determinista de las 48 candidatas antiguas señaló seis casos por referencias (cuatro diferencias y dos conflictos), no seis errores confirmados. Falta ampliar cobertura semántica y verificar/calibrar Sol con API autorizada.
+
+## Preparación de la prueba mayor (corte previo)
+
+El barrido previo corrigió el despacho ante un envío incierto tardío, la serialización de términos reales y su validación inicial, la pérdida de metadatos, el límite de revisión y referencias semánticas que podían descartarse por tamaño. Se añadió un ámbito pagado sellado para Luna/Sol, con atribución de coste y sublímites, sin cambiar presupuestos históricos. El ejercicio final de solicitudes exactas completó 117 intercambios programados y reanudó con cero adicionales; no mide calidad real de IA. [Hallazgos y preparación](https://github.com/DanielLopezzz/Antigravity-MD-Skyrim/blob/codex/terminology-continuity-docs-20261106/Fase10_Evolucion_Linguistica/HeavyTrial_20261106/README.md).
+
+El plan cerrado comprendía **1.050 fuentes: 950 candidatas conservadas y 100 traducciones nuevas**, de 182 mods/orígenes. Sol evaluará **14 casos naturales**, más ocho controles sintéticos; hasta dos correcciones Luna con recomprobación Sol y dos auditorías adicionales. Sol no revisará toda la población. Tope propuesto para ejecutar: **US$0,30**, repartido en US$0,08 Luna y US$0,22 Sol. El escenario orientativo previo a correcciones/auditorías es US$0,234024; no garantiza cobertura completa y los caps detienen etapas que no puedan reservar la siguiente llamada. La ejecución posterior recibió autorización y quedó cerrada por cuarentena económica; véase el resultado real siguiente. `Validar_prueba_pesada.bat` no envía HTTP. El borrador de 1.200 no es vigente.
+
+## Última ejecución real Luna/Sol
+
+La ejecución autorizada del cap US$0,30 hizo **nueve HTTP únicos**: ocho controles Sol completados y una respuesta Luna incompleta/vacía, con motivo `max_output_tokens` y uso reportado cero. Sol superó los ocho controles y consumió **US$0,023968** según tokens/tarifa; **US$0,00249593** de reserva Luna quedaron retenidos, sin presentarlos como cargo confirmado. La parada económica bloqueó nuevos envíos. Se conservan 950 candidatas; hubo cero traducciones nuevas y cero revisiones naturales, posediciones o recomprobaciones. No se midió mejora lingüística. [Recibos, incidencia y resultado parcial](https://github.com/DanielLopezzz/Antigravity-MD-Skyrim/blob/codex/terminology-continuity-docs-20261106/Fase10_Evolucion_Linguistica/HeavyTrial_Run_20261106/README.md).
+
+Antes de esos HTTP se corrigió un bloqueo local del transporte que aún restringía el modelo a Luna; ese intento no envió HTTP ni consumió. Se probó la ruta real con servidor simulado y se conservó el intento anterior. La reserva incierta requiere conciliación para resolver aquel diario; no se recomienda elevar salida ni repetir la prueba por una respuesta de uso cero. API Lock activo y siete entradas protegidas idénticas. Los controles Sol siguen siendo una comprobación mínima, no una aprobación del corpus.
+
 ## Próximos pasos
 
 La prueba pareada **se ejecutó con API y quedó detenida por su condición crítica sellada**: 24 fuentes × dos contextos, 48 traducciones recibidas, 47 válidas y una con hash incorrecto. Los ocho controles sintéticos del juez pasaron; no se alcanzó la revisión ciega de las traducciones naturales, posedición ni recomprobación. Fueron 50 llamadas únicas, sin reenvíos, con **US$0,01524421** conciliados frente al cap autorizado de US$0,35; reserva y uso incierto: cero. El API Lock está activo y la parada persiste tras reiniciar. [Resultado, consumo y límites](https://github.com/DanielLopezzz/Antigravity-MD-Skyrim/blob/codex/technical-consolidation-docs-20261105/Fase10_Evolucion_Linguistica/PairedTrial_Run_20261105/README.md).
@@ -59,11 +77,11 @@ La coherencia entre registros ya incorpora nombres localizados con identidad/pro
 
 | Orden | Trabajo pendiente | Condición para avanzar |
 |---|---|---|
-| 1 | Completar referencias fiables y resolver denominaciones/familias en conflicto | El sistema debe aportar evidencia, no exigir al usuario conocer todo el lore |
-| 2 | Adjudicar el problema técnico del lote retenido | Conservar las 22 aprobaciones y tres investigaciones; no retransmitir el lote por defecto |
+| 1 | Microdiagnóstico independiente del nuevo perfil | Autorización específica: dos Luna y un Sol, hasta US$0,05; no reabre el diario detenido |
+| 2 | Aclarar el recibo económico incierto y conservar cuarentenas históricas | Evidencia del proveedor; no liberar US$0,00249593 ni reenviar su fuente |
 | 3 | Adjudicar las parejas conservadas | Evaluación ciega; distinguir validación mecánica, naturalidad y fidelidad |
 | 4 | Completar y calibrar el juez sobre casos naturales | Ocho controles pasados no miden falsas aprobaciones ni ahorro humano |
-| 5 | Continuación acotada tras la parada crítica | Nuevo alcance autorizado; reutilizar 47 candidatas y resolver una solicitud retenida, sin repetir todo |
+| 5 | Validación natural y escalamiento gradual | Perfil confirmado por API y juez calibrado; preservar candidatas y decisiones, sin repetir todo |
 
 No se recomienda aumentar carga sin calibración y presupuesto compatible. El transporte real pasó los controles sintéticos; calidad del juez sobre traducciones naturales, calibración, escalamiento y producción siguen pendientes. La segmentación automática exige límites compartidos fiables; un párrafo demasiado largo o desalineado queda retenido sin truncarse. Los cambios de esta fase se proponen en una PR solo documental; el código permanece privado.
 
@@ -74,3 +92,11 @@ No se recomienda aumentar carga sin calibración y presupuesto compatible. El tr
 - Evidencia local: `NolvusAIT_Pilot4_Sweep/20261104/final_metrics.json`, `full_tests_after_hash_fix.txt` y `NolvusAIT_PilotStaging/Phase4_Luna1000_R7_DiagnosticComplete`.
 
 El inventario de ~240.684 cadenas es una estimación histórica reconciliada; no se ha vuelto a escanear Nolvus para actualizarla. Las cifras iniciales de otras fases se consultan en el histórico, no se suman a la muestra actual.
+
+Sol queda limitado como validador selectivo: muestreo ordinario del 2 % y hasta 14 revisiones iniciales por ejecución, incluidas dudas priorizadas. Luna mantiene traducción y posedición; no se encadenan revisiones generales de toda la población. El antecedente cerrado conserva sus 14 casos y su cap US$0,30.
+
+## Estabilización funcional actual
+
+Se unificaron recibos/telemetría, se añadió contrato compacto con identidades locales y razonamiento acotado, y se corrigieron intención de envío, reanudación, contexto TM/diferencial, importación protegida y exportación reversible. La carga sintética de 1.000 fuentes aisló cuatro lotes defectuosos y conservó/importó 900 candidatas pendientes; reanudar añadió cero llamadas. No mide calidad lingüística. 68/68 archivos protegidos y 41 decisiones conservados; cero HTTP facturables, créditos o aprobaciones nuevas. [Cambios implementados y límites](https://github.com/DanielLopezzz/Antigravity-MD-Skyrim/blob/codex/terminology-continuity-docs-20261106/Fase10_Evolucion_Linguistica/Stabilization_20261106/README.md).
+
+Quedó preparado y simulado el microdiagnóstico, con cap propuesto US$0,05 y reserva máxima US$0,0469568 dentro del margen conservador previo. La reserva incierta anterior sigue retenida y su causa no está probada. Faltan autorización específica y validación real del perfil; no se declara producción lista.

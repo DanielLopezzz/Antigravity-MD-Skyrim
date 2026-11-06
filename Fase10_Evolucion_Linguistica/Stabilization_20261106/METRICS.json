@@ -1,0 +1,116 @@
+{
+  "date": "2026-11-06",
+  "state": "implemented_verified_offline",
+  "source_commit": "6a153ddffde15717c93c9400349e353a230bc3a2",
+  "private_branch": "codex/product-stabilization-20261106",
+  "baseline_source_files": 95,
+  "baseline_source_lines": 28266,
+  "current_source_files": 97,
+  "baseline_suite": {
+    "baseline": true,
+    "tests": 308,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "successful": true,
+    "seconds": 59.989,
+    "blocked_network_attempts": 0,
+    "paid_http_requests": 0
+  },
+  "final_suite": {
+    "baseline": false,
+    "tests": 332,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "successful": true,
+    "seconds": 92.468,
+    "blocked_network_attempts": 0,
+    "paid_http_requests": 0
+  },
+  "new_regression_tests": 24,
+  "dependencies_check": "pip check: no broken requirements",
+  "compile_check": "passed",
+  "synthetic_load": {
+    "sources": 1000,
+    "batches": 40,
+    "injected_batch_failures": 4,
+    "valid_candidates": 900,
+    "held_sources": 100,
+    "translation_states": {
+      "quarantined": 4,
+      "validated": 36
+    },
+    "simulated_luna_calls": 40,
+    "simulated_sol_calls": 1,
+    "new_calls_on_replay": 0,
+    "pending_staging_imports": 900,
+    "http_requests": 0,
+    "charged_usd": 0,
+    "new_approvals": 0,
+    "tm_writes": 0,
+    "synthetic_only": true,
+    "linguistic_quality_measured": false,
+    "review_deferred_units": 13,
+    "virtual_translation_cost_usd": "0.01400",
+    "duration_seconds": 11.139
+  },
+  "request_measurement": {
+    "fixture_only": true,
+    "measures": [
+      {
+        "wire_profile": "identity-v1",
+        "request_bytes": 7683,
+        "instruction_bytes": 6050,
+        "output_schema_bytes": 578
+      },
+      {
+        "wire_profile": "compact-v2",
+        "request_bytes": 3646,
+        "instruction_bytes": 2166,
+        "output_schema_bytes": 332
+      }
+    ],
+    "request_reduction_percent": 52.54,
+    "cost_reduction_measured": false
+  },
+  "probe_preflight": {
+    "offline_diagnostic_completed": true,
+    "simulated_calls": 3,
+    "new_calls_on_replay": 0,
+    "real_http": 0,
+    "charged_usd": 0,
+    "unauthorized_real_execution_rejected_before_files": true,
+    "plan_sha256": "c261daffd60de52b440cd69b45bc6fe4fa104b313aa4140284969804a9fd2655",
+    "api_lock": true
+  },
+  "api_lock": true,
+  "real_paid_http_requests": 0,
+  "charged_usd": "0",
+  "production_writes": 0,
+  "tm_writes": 0,
+  "approved_glossary_writes": 0,
+  "new_approvals": 0,
+  "protected_files_checked": 68,
+  "protected_files_unchanged": 68,
+  "human_decisions_preserved": 41,
+  "prior_uncertain_reserve_usd": "0.00249593",
+  "prior_uncertain_reserve_changed": false,
+  "prior_receipt_root_cause": "unproven",
+  "future_diagnostic": {
+    "execution_authorized": false,
+    "sources": 2,
+    "luna_calls_max": 2,
+    "sol_calls_max": 1,
+    "http_calls_max": 3,
+    "cap_usd": "0.05",
+    "worst_case_reserve_usd": "0.0469568",
+    "max_request_bytes": 6144,
+    "max_output_tokens": 2048,
+    "new_automatic_retries": 0,
+    "uses_uncertain_source": false,
+    "production_promotion": false
+  },
+  "real_linguistic_quality_measured": false,
+  "production_ready_claim": false
+}
