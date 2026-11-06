@@ -1,0 +1,257 @@
+{
+  "reference_unique_strings": 240684,
+  "measured_mean_chars_from_snapshot": 85.32688343865942,
+  "projected_reference_source_chars": 20536816,
+  "character_token_assumptions": {
+    "english_chars_per_token": 4,
+    "spanish_chars_per_token": 3.5,
+    "spanish_character_expansion": 1.18,
+    "json_output_tokens_per_item": 12
+  },
+  "rates_usd_per_mtoken": {
+    "luna": {
+      "input": 0.1,
+      "output": 0.5,
+      "cache_read": 0.01,
+      "cache_write": 0.125
+    },
+    "sol": {
+      "input": 2,
+      "output": 10,
+      "cache_read": 0.1,
+      "cache_write": 2.5
+    }
+  },
+  "scenarios": {
+    "efficient": {
+      "assumptions": {
+        "b": 12,
+        "F": 800,
+        "M": 50,
+        "C": 80,
+        "R": 64,
+        "r": 0.01,
+        "Si": 1000,
+        "So": 200,
+        "e": 0.002,
+        "Ei": 1200,
+        "Eo": 200
+      },
+      "translation_requests": 20057,
+      "initial_sol_reviews": 2407,
+      "postedits_and_sol_rechecks": 482,
+      "luna_translation_input_mtokens": 52.4687,
+      "luna_translation_output_mtokens": 11.0957,
+      "cost_usd": {
+        "luna_translation": 10.7947,
+        "sol_initial_review": 9.628,
+        "luna_postedit": 0.106,
+        "sol_recheck": 1.928
+      },
+      "total_standard_usd": 22.4568,
+      "all_input_cache_write_extreme_usd": 25.2274,
+      "luna_batch_only_usd_no_cache_stack": 17.0594,
+      "all_roles_batch_hypothetical_usd_no_cache_stack": 11.2284
+    },
+    "current_grouping_central": {
+      "assumptions": {
+        "b": 3.218,
+        "F": 1100,
+        "M": 60,
+        "C": 200,
+        "R": 256,
+        "r": 0.02,
+        "Si": 1400,
+        "So": 400,
+        "e": 0.005,
+        "Ei": 1600,
+        "Eo": 300
+      },
+      "translation_requests": 74794,
+      "initial_sol_reviews": 4814,
+      "postedits_and_sol_rechecks": 1204,
+      "luna_translation_input_mtokens": 149.9854,
+      "luna_translation_output_mtokens": 28.9593,
+      "cost_usd": {
+        "luna_translation": 29.4782,
+        "sol_initial_review": 32.7352,
+        "luna_postedit": 0.3732,
+        "sol_recheck": 8.1872
+      },
+      "total_standard_usd": 70.7738,
+      "all_input_cache_write_extreme_usd": 78.7842,
+      "luna_batch_only_usd_no_cache_stack": 56.0347,
+      "all_roles_batch_hypothetical_usd_no_cache_stack": 35.3869
+    },
+    "recommended_packing_central": {
+      "assumptions": {
+        "b": 8,
+        "F": 1100,
+        "M": 60,
+        "C": 200,
+        "R": 256,
+        "r": 0.02,
+        "Si": 1400,
+        "So": 400,
+        "e": 0.005,
+        "Ei": 1600,
+        "Eo": 300
+      },
+      "translation_requests": 30086,
+      "initial_sol_reviews": 4814,
+      "postedits_and_sol_rechecks": 1204,
+      "luna_translation_input_mtokens": 100.8066,
+      "luna_translation_output_mtokens": 17.5141,
+      "cost_usd": {
+        "luna_translation": 18.8377,
+        "sol_initial_review": 32.7352,
+        "luna_postedit": 0.3732,
+        "sol_recheck": 8.1872
+      },
+      "total_standard_usd": 60.1333,
+      "all_input_cache_write_extreme_usd": 66.9143,
+      "luna_batch_only_usd_no_cache_stack": 50.7145,
+      "all_roles_batch_hypothetical_usd_no_cache_stack": 30.0667
+    },
+    "stress": {
+      "assumptions": {
+        "b": 1,
+        "F": 1400,
+        "M": 80,
+        "C": 500,
+        "R": 1024,
+        "r": 0.02,
+        "Si": 2500,
+        "So": 900,
+        "e": 0.01,
+        "Ei": 3000,
+        "Eo": 1000
+      },
+      "translation_requests": 240684,
+      "initial_sol_reviews": 4814,
+      "postedits_and_sol_rechecks": 2407,
+      "luna_translation_input_mtokens": 481.6885,
+      "luna_translation_output_mtokens": 256.2725,
+      "cost_usd": {
+        "luna_translation": 176.3051,
+        "sol_initial_review": 67.396,
+        "luna_postedit": 1.9256,
+        "sol_recheck": 33.698
+      },
+      "total_standard_usd": 279.3247,
+      "all_input_cache_write_extreme_usd": 300.5737,
+      "luna_batch_only_usd_no_cache_stack": 191.1721,
+      "all_roles_batch_hypothetical_usd_no_cache_stack": 139.6623
+    }
+  },
+  "cache_sensitivity": {
+    "0": {
+      "luna_translation_standard_input_output_usd": 18.8377,
+      "same_all_role_workload_usd_excluding_new_writes": 60.1333
+    },
+    "0.25": {
+      "luna_translation_standard_input_output_usd": 16.5696,
+      "same_all_role_workload_usd_excluding_new_writes": 57.8652
+    },
+    "0.5": {
+      "luna_translation_standard_input_output_usd": 14.3014,
+      "same_all_role_workload_usd_excluding_new_writes": 55.597
+    }
+  },
+  "initial_review_rate_sensitivity": {
+    "0.005": {
+      "sol_initial_calls": 1204,
+      "sol_initial_cost_usd": 8.1872,
+      "minutes_human_at_30_seconds_each": 602.0
+    },
+    "0.01": {
+      "sol_initial_calls": 2407,
+      "sol_initial_cost_usd": 16.3676,
+      "minutes_human_at_30_seconds_each": 1203.5
+    },
+    "0.02": {
+      "sol_initial_calls": 4814,
+      "sol_initial_cost_usd": 32.7352,
+      "minutes_human_at_30_seconds_each": 2407.0
+    }
+  },
+  "same_tokens_single_sol_usd": 376.7542,
+  "three_pass_every_string_luna_example_usd": 175.2823,
+  "three_pass_sol_reflection_every_string_example_usd": 1730.1009,
+  "google_nmt_only_before_credits_qa_usd": 410.7363,
+  "google_tllm_only_before_qa_usd": 447.7026,
+  "same_policy_10_percent_approved_tm_hits_hypothetical_usd": 54.12,
+  "conservative_context_expansion_units": 1.1854305761556474,
+  "conservative_context_expansion_characters": 1.061090122719954,
+  "human_full_review_hours_at_30_seconds": 2005.7,
+  "quality_or_provider_latency_measured": false,
+  "first_pass_tm_hit_assumption": 0,
+  "taxes_hosting_setup_excluded": true,
+  "alternative_provider_same_token_example": {
+    "not_quality_benchmark": true,
+    "gemini_2_5_flash_lite_input_output_rates": [
+      0.1,
+      0.4
+    ],
+    "gemini_2_5_flash_lite_translation_only_usd": 17.0863,
+    "gemini_3_1_flash_lite_input_output_rates": [
+      0.25,
+      1.5
+    ],
+    "gemini_3_1_flash_lite_translation_only_usd": 51.4728,
+    "source": "https://ai.google.dev/gemini-api/docs/pricing"
+  },
+  "minimal_experiment_proposal": {
+    "execution_authorized": false,
+    "natural_translation_units": 70,
+    "arms": 2,
+    "luna_calls_max": 50,
+    "sol_calls_max": 2,
+    "postedit_calls": 0,
+    "max_request_bytes": 6144,
+    "max_output_tokens": 2048,
+    "cap_usd": 0.2,
+    "model_caps_usd": {
+      "luna": 0.11,
+      "sol": 0.09
+    },
+    "worst_case_reserve_usd": 0.192096,
+    "purpose": "Compare source/context packing, quality and recovery; cannot calibrate Sol or prove population safety.",
+    "human_adjudication_required": true,
+    "no_migration_authorized": true,
+    "prior_confirmed_plus_held_usd": 0.02646393,
+    "prior_microdiagnostic_max_usd": 0.05,
+    "combined_max_usd": 0.27646393
+  },
+  "context_separation_sensitivity": {
+    "not_an_executable_manifest": true,
+    "semantic_units": 285315,
+    "source_characters": 21791413,
+    "luna_generation_calls": 35665,
+    "sol_initial_reviews": 5707,
+    "luna_edits_sol_rechecks": 1427,
+    "standard_usd": 70.7901,
+    "all_input_cache_write_extreme_usd": 78.8125,
+    "assumptions": "Inventory context-unit and character ratios applied to 240684 reference texts; canonical identity reconciliation may collapse some."
+  },
+  "central_packing_savings_percent": {
+    "generation": 36.1,
+    "all_roles": 15.03,
+    "generation_http_count": 59.77
+  },
+  "illustrative_agent_workload": {
+    "not_a_quality_matched_comparison": true,
+    "base_generation": "recommended_packing_central Luna generation",
+    "reflection_calls": 240684,
+    "reflection_input_output_tokens": [
+      1400,
+      400
+    ],
+    "improvement_calls": 240684,
+    "improvement_input_output_tokens": [
+      1600,
+      300
+    ],
+    "additional_final_judge_included": false
+  }
+}
