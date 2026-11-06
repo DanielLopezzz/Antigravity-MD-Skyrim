@@ -1,6 +1,6 @@
 # Estado actual y próximos pasos
 
-Verificado el **2026-11-05**. Esta es la fuente del estado vigente; [uso](GUIA_DE_USO.md), [reglas y arquitectura](REFERENCIA_TECNICA.md) e [histórico](HISTORICO.md) cubren temas distintos. Las cifras de revisión son un corte, no un contador en tiempo real.
+Verificado el **2026-11-06**. Esta es la fuente del estado vigente; [uso](GUIA_DE_USO.md), [reglas y arquitectura](REFERENCIA_TECNICA.md) e [histórico](HISTORICO.md) cubren temas distintos. Las cifras de revisión son un corte, no un contador en tiempo real.
 
 ## Dónde está el proyecto
 
@@ -16,8 +16,8 @@ Nolvus AI Translator localiza Nolvus Awakening al español latinoamericano neutr
 | Revisión humana al corte actual | 41 decisiones en la copia activa de evolución: 29 aprobaciones y 12 investigaciones; el archivo humano continúa activo |
 | Consumo acumulado del cuarto piloto | US$0,1176624 de US$0,17; 50 respuestas reales, sin llamadas pendientes |
 | TM del staging / promoción a producción | 0 / 0; no se crearon aprobaciones humanas automáticas |
-| Última suite registrada | 276/276; 14 pruebas nuevas del ejecutor sobre la base de 262 |
-| Código local | Rama `codex/contextual-coherence-20261105`, commit funcional de cierre `3e4e974`; conserva la consolidación anterior y se versiona solo localmente |
+| Última suite registrada | 298/298; 22 regresiones nuevas sobre las 276 anteriores |
+| Código local | Rama `codex/terminology-continuity-20261106`, commit funcional `a1c921d`; conserva la consolidación anterior y se versiona solo localmente |
 
 El coste histórico del cuarto piloto fue calculado con tokens reportados y tarifa registrada; no certifica la factura ni una tarifa vigente. Las 110 pruebas de cierre de aquel piloto reforzaron la forma SHA-256 offline. El consumo y los límites de la nueva ejecución se registran por separado en «Próximos pasos».
 
@@ -46,6 +46,12 @@ El ejercicio final mantiene 21 consultas simuladas inconclusas y 25 casos en cua
 El barrido local separa atención de aprobación: 16 casos necesitan criterio, 25 permanecen en cuarentena técnica, 207 forman un control opcional, 744 quedan para consulta y ocho conservan referencias aprobadas. De 141 avisos de nombres/lore, 132 no entran en la cola prioritaria. La lectura lingüística focalizada detectó sustituciones Elsweyr/elfa y Steed/Sombra, una variante de familia y etiquetas por comprobar; las observaciones se vinculan a hashes y no cambian candidatas ni decisiones humanas. No constituye certificación semántica de las 1.000 cadenas.
 
 La consolidación preservó las tres ramas anteriores (mismo commit base), registró el trabajo heredado y corrigió recibos/presupuesto, integridad de planes, concurrencia, propuestas terminológicas y reingesta contextual. Las observaciones del visor llegan también a la selección de reevaluación. En aquel corte quedó preparado el experimento acotado, sin ejecutarlo; resultados, límites y comparación offline en el [informe ejecutivo único](https://github.com/DanielLopezzz/Antigravity-MD-Skyrim/blob/30db1581792ba69d2d2fd87e7222731a45d9b4f7/Fase10_Evolucion_Linguistica/Consolidation_20261105/README.md). El inventario completo de archivos/hashes es privado.
+
+## Estandarización y continuidad verificadas offline
+
+El nuevo flujo integrado vincula conceptos a ámbito semántico y referencias existentes, separa Luna (traducción/posedición) de Sol (evaluación/recomprobación), congela contexto y términos por ejecución y conserva checkpoints por lote. No impone un término de equipo a otro sentido de la palabra ni convierte propuestas en glosario. La carga sintética procesó 1.000 lotes: 940 validados, 50 en cuarentena y 10 con protocolo fallido; reabrir añadió cero intercambios. La integración programada aisló un lote con hash incorrecto y completó otros dos, con una propuesta recomprobada y cero aprobaciones. No mide calidad ni velocidad real de IA. [Cambios, pruebas y límites](https://github.com/DanielLopezzz/Antigravity-MD-Skyrim/blob/codex/terminology-continuity-docs-20261106/Fase10_Evolucion_Linguistica/TerminologyContinuity_20261106/README.md).
+
+Una identidad incorrecta de salida con uso conocido queda aislada por lote; corrupción del diario/fuentes, credenciales/autorización o uso incierto bloquean nuevos envíos del plan. Solo se reintenta con prueba de no envío/no cargo y límite sellado. El perfil nuevo es experimental y exclusivamente offline: no sustituye runners históricos ni reabre la parada del piloto. Cero HTTP/créditos, nueve entradas congeladas idénticas y 41 decisiones previas conservadas. El contraste determinista de las 48 candidatas antiguas señaló seis casos por referencias (cuatro diferencias y dos conflictos), no seis errores confirmados. Falta ampliar cobertura semántica y verificar/calibrar Sol con API autorizada.
 
 ## Próximos pasos
 

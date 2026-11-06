@@ -1,6 +1,6 @@
 # Guía de uso y revisión local
 
-Actualizada el **2026-11-05** a partir de los lanzadores, CLI y visor existentes. [Estado y pendientes](ESTADO_ACTUAL.md) · [Referencia técnica](REFERENCIA_TECNICA.md).
+Actualizada el **2026-11-06** a partir de los lanzadores, CLI y visor existentes. [Estado y pendientes](ESTADO_ACTUAL.md) · [Referencia técnica](REFERENCIA_TECNICA.md).
 
 ## Accesos desde la raíz del workspace
 
@@ -68,11 +68,19 @@ Para la revisión anterior: `python -m nolvus_translator --review-cases` con el 
 
 ## Consolidación y validación preparada
 
-La línea privada de trabajo continúa en `codex/contextual-coherence-20261105`, conservando `codex/technical-consolidation-20261105` y las ramas anteriores. Los planes históricos sellados no se reabren con un fingerprint de código diferente.
+La línea privada nueva es `codex/terminology-continuity-20261106`; conserva `codex/contextual-coherence-20261105`, `codex/technical-consolidation-20261105` y las ramas anteriores. Los planes históricos sellados no se reabren con un fingerprint de código diferente.
 
 El diseño está en `NolvusAIT_Intelligence/20261105_Consolidation/private/next_validation_final/plan.json`; sus previews son privados. Preparar no envía solicitudes ni autoriza gasto. Si alguien empieza a guardar revisiones mientras se genera una copia, se conserva su archivo de casos y los recibos quedan disponibles en el diario. El visor en marcha no necesita cerrarse para este trabajo; los cambios de código se cargan al abrirlo nuevamente.
 
 La preparación actualizada con nombres está en `NolvusAIT_Intelligence/20261105_Coherence/private/final/next_validation/plan.json`, sin ejecutar. En copias futuras, el panel de contexto muestra las denominaciones de referencia y posibles piezas relacionadas, indicando propuestas pendientes. Una discrepancia nueva de identidad puede pedir atención aunque exista una aprobación anterior; esa decisión permanece guardada. El barrido no regeneró tu carpeta activa ni te asigna otros 1.000 casos obligatorios. Los 25 de cuarentena ya tienen decisión lingüística; su retención técnica es independiente.
+
+## Nuevo flujo de continuidad offline
+
+El flujo integrado `BatchWorkflow` recibe solicitudes Luna preparadas y fuentes congeladas; crea un diario nuevo y solo admite backends simulados. Conserva traducciones válidas, aísla respuestas defectuosas por lote y dirige revisión/verificación a Sol y posedición a Luna. No activa la API ni cambia el funcionamiento de los visores históricos. Los términos comunes necesitan un ámbito semántico respaldado: una palabra compartida no basta para imponer una equivalencia. Las propuestas siguen pendientes; no actualizan TM ni glosario aprobado.
+
+La evidencia actual está en `NolvusAIT_Intelligence/20261106_TerminologyContinuity`: `INFORME.md` y `METRICS.json` resumen resultados; `private/evidence/private/batch_report.json` enumera cada lote sintético y su causa. `private/evidence/integration/summary.json` y `private/results.json` dentro de esa integración conservan el ejemplo programado. Son pruebas técnicas; no son nuevas traducciones o decisiones humanas. Se conservan también los logs y el runner privado; este último rechaza sobrescribir una ejecución anterior.
+
+Para una ejecución masiva futura, usa un plan nuevo con roles, referencias, dependencias y límites sellados. Reabrirlo reutiliza recibos completos. Revisa `state`, `cause`, `blocked_by` e incidentes antes de resolver pendientes; no borres el diario para forzar reenvíos. Ante consumo incierto o fallo de integridad no se continúa enviando. La política nueva no permite saltarse la parada crítica de una prueba histórica ni autoriza gasto.
 
 ## Documentación y publicación
 

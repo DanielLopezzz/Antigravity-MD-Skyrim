@@ -1,6 +1,6 @@
 # Histórico resumido y acceso a evidencia
 
-Organizado el **2026-11-05**. Es un índice de hechos cerrados y decisiones sustituidas, no una guía de ejecución. [Estado vigente](ESTADO_ACTUAL.md) · [Uso](GUIA_DE_USO.md) · [Reglas](REFERENCIA_TECNICA.md).
+Actualizado el **2026-11-06**. Es un índice de hechos cerrados y decisiones sustituidas, no una guía de ejecución. [Estado vigente](ESTADO_ACTUAL.md) · [Uso](GUIA_DE_USO.md) · [Reglas](REFERENCIA_TECNICA.md).
 
 ## Cronología objetiva
 
@@ -21,6 +21,8 @@ Organizado el **2026-11-05**. Es un índice de hechos cerrados y decisiones sust
 | Consolidación técnica, 2026-11-05 | Herencia versionada en una línea privada, contratos/artefactos compartidos, recibos antes de conciliación, contexto incremental y validación preparada | Benchmarks de ingesta/memoria no acreditan calidad lingüística. [Informe ejecutivo](https://github.com/DanielLopezzz/Antigravity-MD-Skyrim/blob/30db1581792ba69d2d2fd87e7222731a45d9b4f7/Fase10_Evolucion_Linguistica/Consolidation_20261105/README.md) |
 
 **Prueba pareada real, 2026-11-05, posterior a su preparación:** 50 llamadas, ocho controles favorables y 48 candidatas; 47 válidas mecánicamente y una retenida por identidad. Parada sellada antes del juez natural; US$0,01524421 conciliados, lock activo, 276/276 pruebas offline. Corrección exacta del esquema aún sin confirmación API. No modifica pilotos ni decisiones anteriores. [Resultado parcial y correcciones](https://github.com/DanielLopezzz/Antigravity-MD-Skyrim/blob/codex/technical-consolidation-docs-20261105/Fase10_Evolucion_Linguistica/PairedTrial_Run_20261105/README.md).
+
+**Terminología contextual y continuidad, 2026-11-06:** extensión del sidecar/registro/diario existentes y flujo integrado offline Luna/Sol; ámbitos semánticos, validación completa, aislamiento de lotes y bloqueos de seguridad. Suite 298/298; carga sintética y reanudación sin reenvío, cero créditos o aprobaciones nuevas. No sustituye runners históricos ni reabre el piloto detenido. [Informe y evidencia agregada](https://github.com/DanielLopezzz/Antigravity-MD-Skyrim/blob/codex/terminology-continuity-docs-20261106/Fase10_Evolucion_Linguistica/TerminologyContinuity_20261106/README.md).
 
 ## Informes que conviene abrir solo cuando haga falta
 
