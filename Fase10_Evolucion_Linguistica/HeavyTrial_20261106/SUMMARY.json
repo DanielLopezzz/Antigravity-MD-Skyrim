@@ -39,13 +39,20 @@
   },
   "sizing_scenario_before_repairs_usd": 0.234024,
   "sizing_note": "Heuristic input tokens, fixed illustrative output allowances including reasoning; excludes repair/audit/cache writes. Not a guarantee. Per-call reserves and caps may defer stages.",
-  "plan_sha256": "6c814a1801774e6e520ef3421a5c69b2a091c856248b574428c8a089e7a30804",
+  "plan_sha256": "e51a285c30847d0cda4fe712b6192babc406feca6c38492cef6580bb2165757f",
   "protected_unchanged": true,
   "selection_exclusions": {},
-  "offline_tests_passed": 306,
-  "offline_tests_total": 306,
-  "new_regressions": 8,
-  "source_commit": "c464179d5612e6a098ac0b927ed6d0a5a7a103f9",
-  "prepared_folder": "private/prepared_final_v3",
-  "credits_spent": 0
+  "offline_tests_passed": 307,
+  "offline_tests_total": 307,
+  "new_regressions": 9,
+  "source_commit": "3fdfd7016b16fad3c96121942730f20adddf0cc6",
+  "prepared_folder": "private/prepared_final_v4",
+  "credits_spent": 0,
+  "sol_policy": {
+    "sample_rate_max": 0.02,
+    "max_initial_cases": 14,
+    "role": "selective_validator",
+    "translator": "gpt-6-luna"
+  },
+  "prepared_requests_unchanged": true
 }

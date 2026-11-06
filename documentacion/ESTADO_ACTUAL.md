@@ -16,8 +16,8 @@ Nolvus AI Translator localiza Nolvus Awakening al español latinoamericano neutr
 | Revisión humana al corte actual | 41 decisiones en la copia activa de evolución: 29 aprobaciones y 12 investigaciones; el archivo humano continúa activo |
 | Consumo acumulado del cuarto piloto | US$0,1176624 de US$0,17; 50 respuestas reales, sin llamadas pendientes |
 | TM del staging / promoción a producción | 0 / 0; no se crearon aprobaciones humanas automáticas |
-| Última suite registrada | 306/306; ocho regresiones nuevas sobre las 298 anteriores |
-| Código local | Rama `codex/heavy-trial-preflight-20261106`, commit funcional `c464179`; conserva la consolidación anterior y se versiona solo localmente |
+| Última suite registrada | 307/307; nueve regresiones nuevas sobre las 298 anteriores |
+| Código local | Rama `codex/heavy-trial-preflight-20261106`, commit funcional `3fdfd70`; conserva la consolidación anterior y se versiona solo localmente |
 
 El coste histórico del cuarto piloto fue calculado con tokens reportados y tarifa registrada; no certifica la factura ni una tarifa vigente. Las 110 pruebas de cierre de aquel piloto reforzaron la forma SHA-256 offline. El consumo y los límites de la nueva ejecución se registran por separado en «Próximos pasos».
 
@@ -86,3 +86,5 @@ No se recomienda aumentar carga sin calibración y presupuesto compatible. El tr
 - Evidencia local: `NolvusAIT_Pilot4_Sweep/20261104/final_metrics.json`, `full_tests_after_hash_fix.txt` y `NolvusAIT_PilotStaging/Phase4_Luna1000_R7_DiagnosticComplete`.
 
 El inventario de ~240.684 cadenas es una estimación histórica reconciliada; no se ha vuelto a escanear Nolvus para actualizarla. Las cifras iniciales de otras fases se consultan en el histórico, no se suman a la muestra actual.
+
+Sol queda limitado como validador selectivo: muestreo ordinario del 2 % y hasta 14 revisiones iniciales por ejecución, incluidas dudas priorizadas. Luna mantiene traducción y posedición; no se encadenan revisiones generales de toda la población. El plan conserva sus 14 casos y su cap US$0,30.

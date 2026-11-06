@@ -63,11 +63,15 @@ En el visor pueden repetirse los originales por las dos versiones del par. Esa r
 
 ## Pruebas y estado de entrega
 
-- **306/306 pruebas** en la suite completa; ocho regresiones nuevas. La exportación final del visor se verificó además con las ocho pruebas focalizadas.
+- **307/307 pruebas** en la suite completa; nueve regresiones nuevas. La exportación final del visor se verificó además con las nueve pruebas focalizadas.
 - El recorrido final de solicitudes exactas usó **117 intercambios programados**, terminó y reanudó con **cero intercambios adicionales**. Obtuvo la cobertura de 14 casos y conservó los 1.050 resultados del ejercicio. Es material de simulación que solo prueba contratos/rutas; no son nuevas traducciones ni dictámenes lingüísticos reales.
 - **Cero HTTP facturable, cero credenciales cargadas y US$0 consumidos** en esta preparación. API Lock activo. Las siete entradas protegidas conservaron sus hashes, incluidas la DB principal, catálogos, casos, decisiones y estado del piloto anterior.
-- Código privado: rama `codex/heavy-trial-preflight-20261106`, commit `c464179d5612e6a098ac0b927ed6d0a5a7a103f9`. El plan definitivo está en `private/prepared_final_v3`, sello `6c814a1801774e6e520ef3421a5c69b2a091c856248b574428c8a089e7a30804`. Los borradores se conservan y no deben ejecutarse.
+- Código privado: rama `codex/heavy-trial-preflight-20261106`, commit `3fdfd7016b16fad3c96121942730f20adddf0cc6`. El plan definitivo está en `private/prepared_final_v4`, sello `e51a285c30847d0cda4fe712b6192babc406feca6c38492cef6580bb2165757f`. Los borradores se conservan y no deben ejecutarse.
 
 `Validar_prueba_pesada.bat` comprueba el plan sin API. El ejecutor privado exige autorización explícita y el flag de facturación; los resultados reales irán a `private/live`, separados de la preparación y del ejercicio simulado. El estado `execution_ready` indica que existe el ejecutor y los contratos están preparados/probados offline; no confirma permiso de cuenta para Sol, éxito futuro o garantía de completar la cobertura con el cap.
 
 Quedan para la ejecución autorizada comprobar acceso/tarifa efectiva del proveedor, medir tokens y consumo reales por modelo y obtener las traducciones/dictámenes antes de evaluar su mejora. El informe, `SUMMARY.json` y `OFFLINE_CHECK.json` son agregados públicos; código, DB, corpus, solicitudes/respuestas completas y decisiones individuales permanecen privados.
+
+## Política selectiva de Sol
+
+Luna mantiene traducción y corrección. Sol actúa como segundo validador en una muestra ordinaria del 2 % y en dudas fundamentadas, compartiendo un máximo de 14 revisiones iniciales por ejecución. Se corrigió el valor por defecto del flujo integrado que podía seleccionar todas las candidatas. La regresión con 80 casos ordinarios solicita solo dos evaluaciones Sol. El plan v4 conserva exactamente los cuatro artefactos de solicitudes/datos de v3, sus 14 casos y sus caps económicos; solo cambia el sello para vincular el código actualizado. El replay v4 repite el resultado técnico de 117 intercambios programados y cero adicionales al reanudar, sin API ni calidad semántica medida.

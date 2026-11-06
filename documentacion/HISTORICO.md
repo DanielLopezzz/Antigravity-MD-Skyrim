@@ -24,7 +24,7 @@ Actualizado el **2026-11-06**. Es un índice de hechos cerrados y decisiones sus
 
 **Terminología contextual y continuidad, 2026-11-06:** extensión del sidecar/registro/diario existentes y flujo integrado offline Luna/Sol; ámbitos semánticos, validación completa, aislamiento de lotes y bloqueos de seguridad. Suite 298/298; carga sintética y reanudación sin reenvío, cero créditos o aprobaciones nuevas. No sustituye runners históricos ni reabre el piloto detenido. [Informe y evidencia agregada](https://github.com/DanielLopezzz/Antigravity-MD-Skyrim/blob/codex/terminology-continuity-docs-20261106/Fase10_Evolucion_Linguistica/TerminologyContinuity_20261106/README.md).
 
-**Barrido y preparación acotada Luna/Sol, 2026-11-06:** correcciones demostradas, suite 306/306 y replay offline sin intercambios adicionales. Plan vigente de 1.050 fuentes, 100 traducciones nuevas y 14 revisiones naturales Sol, cap US$0,30; conserva borradores anteriores, pilotos y decisiones. No hubo API ni mejora lingüística real medida. [Informe y alcance económico](https://github.com/DanielLopezzz/Antigravity-MD-Skyrim/blob/codex/terminology-continuity-docs-20261106/Fase10_Evolucion_Linguistica/HeavyTrial_20261106/README.md).
+**Barrido y preparación acotada Luna/Sol, 2026-11-06:** correcciones demostradas, suite 307/307 y replay offline sin intercambios adicionales. Plan vigente de 1.050 fuentes, 100 traducciones nuevas y 14 revisiones naturales Sol, cap US$0,30; conserva borradores anteriores, pilotos y decisiones. No hubo API ni mejora lingüística real medida. [Informe y alcance económico](https://github.com/DanielLopezzz/Antigravity-MD-Skyrim/blob/codex/terminology-continuity-docs-20261106/Fase10_Evolucion_Linguistica/HeavyTrial_20261106/README.md).
 
 ## Informes que conviene abrir solo cuando haga falta
 
@@ -53,3 +53,5 @@ El ZIP del workspace conserva los 20 Markdown originales de su raíz, la hoja de
 Los originales se guardan byte por byte, sin “actualizar” sus cifras. Para consultar uno, abre el ZIP o extráelo fuera de la carpeta de documentación vigente. Las versiones antiguas pueden contener enlaces o instrucciones sustituidos; no deben volver a copiarse a la raíz.
 
 La reorganización retira índices duplicados de la raíz, integra arquitectura/formatos/compatibilidad y políticas en la referencia, y guía de usuario/revisión en una sola guía. Las auditorías extensas siguen disponibles como evidencia, fuera del recorrido de lectura habitual. Los ajustes de enlaces de documentos históricos se registran en el manifiesto, con hash anterior y posterior.
+
+**Aclaración de roles, 2026-11-06:** Luna conserva la traducción/corrección; Sol solo valida muestras o dudas fundamentadas. Se corrigió un valor por defecto que podía seleccionar todas las candidatas; suite 307/307 y sello v4 con las mismas solicitudes, cobertura y presupuesto. Cero API/créditos.

@@ -85,7 +85,7 @@ Para una ejecución masiva futura, usa un plan nuevo con roles, referencias, dep
 
 ## Preparación de la prueba mayor
 
-El plan definitivo está en `NolvusAIT_Intelligence/20261106_HeavyTrial/private/prepared_final_v3`; sus previews, fuentes, términos y código están vinculados por hashes. Usa `Validar_prueba_pesada.bat` para comprobarlo offline. Los borradores anteriores y `offline_exercise` son evidencia de preparación/simulación y no deben confundirse con una ejecución real. `INFORME.md`, `SUMMARY.json` y `OFFLINE_CHECK.json` resumen alcance, costes supuestos y pruebas.
+El plan definitivo está en `NolvusAIT_Intelligence/20261106_HeavyTrial/private/prepared_final_v4`; sus previews, fuentes, términos y código están vinculados por hashes. Usa `Validar_prueba_pesada.bat` para comprobarlo offline. Los borradores anteriores y `offline_exercise` son evidencia de preparación/simulación y no deben confundirse con una ejecución real. `INFORME.md`, `SUMMARY.json` y `OFFLINE_CHECK.json` resumen alcance, costes supuestos y pruebas.
 
 Se conserva el límite de **US$0,30**: US$0,08 Luna y US$0,22 Sol. El runner privado exige autorización nueva explícita y crea `private/live`; no reabre el piloto anterior. Los resultados distinguirán llamadas/coste de cada modelo, cobertura de Sol, cuarentenas y etapas aplazadas. No se retransmiten resultados inciertos ni se eleva el cap para completar un porcentaje.
 
@@ -102,3 +102,5 @@ El contexto ampliado está en `NolvusAIT_Intelligence/20261105_Documentation/pri
 Edita los cuatro documentos de `documentacion/` en el workspace local. La copia `Antigravity-MD-Skyrim/documentacion/` es el espejo documental para publicar; no se actualiza automáticamente. Mantén ambas copias iguales antes de publicar, salvo sus archivos históricos, que tienen distinto alcance.
 
 El antiguo `subir_md_a_github.bat` no prepara ni incorpora documentos nuevos: hace pull/push de commits existentes y contiene mensajes y una ruta heredados. No se ejecutó ni se modificó en esta reorganización. La publicación debe revisar el diff del repositorio documental y excluir siempre fuentes, credenciales, DB, corpus y decisiones humanas individuales.
+
+La configuración ordinaria no debe enviar todo a Sol: muestra del 2 %, máximo 14 casos iniciales y límite económico separado. Los avisos sin evidencia no justifican una revisión adicional. No aumentes esa cobertura automáticamente ni confundas el máximo del motor offline con la política del producto.
