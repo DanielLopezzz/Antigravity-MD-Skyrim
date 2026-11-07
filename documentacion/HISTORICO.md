@@ -16,8 +16,15 @@ Organizado el **2026-11-05**. Es un índice de hechos cerrados y decisiones sust
 | Cuarto piloto, 2026-11-04 | Primera etapa, R2 y continuaciones supervisadas hasta 1.000 respuestas; correcciones de porcentajes, controles, falsos rechazos y duplicados | Los intentos fallidos se conservaron; el resultado no es una sola ejecución ciega |
 | Análisis, 2026-11-05 | Intersecciones de alertas, dos falsos positivos numéricos y propuesta de reevaluación | Análisis y publicación no autorizan implementar ni consumir créditos |
 | Reorganización, 2026-11-05 | Un README y cuatro documentos activos; originales comprimidos con hashes; enlaces corregidos | No se alteraron app, glosario, TM, decisiones humanas, pilotos ni producción; la publicación documental es una acción separada |
+| Evolución inteligente, 2026-11-05 | Validación por riesgo, conocimiento por mod, contrato 1.2, simulación de juez y coordinación durable; 38 prioridades frente a 196 en copia offline | No mide mejora semántica ni ahorro humano; no hubo aprobación nueva o API facturable. [Informe](https://github.com/DanielLopezzz/Antigravity-MD-Skyrim/blob/a232c2edc575469e3f029ff99e6eeb4774cf4273/Fase10_Evolucion_Linguistica/Intelligence_20261105/README.md) |
+| Ampliación funcional, 2026-11-05 | Catálogo completo de registros, fuentes de autores, recuperación por relevancia, revisión por segmentos, reutilización de referencias humanas y aislamiento de fallos | Implementación privada y pruebas offline; no acredita calidad de un juez real ni habilita aprobación nueva. [Estado y evidencia vigente](ESTADO_ACTUAL.md) |
+| Consolidación técnica, 2026-11-05 | Herencia versionada en una línea privada, contratos/artefactos compartidos, recibos antes de conciliación, contexto incremental y validación preparada | Benchmarks de ingesta/memoria no acreditan calidad lingüística. [Informe ejecutivo](https://github.com/DanielLopezzz/Antigravity-MD-Skyrim/blob/30db1581792ba69d2d2fd87e7222731a45d9b4f7/Fase10_Evolucion_Linguistica/Consolidation_20261105/README.md) |
+
+**Prueba pareada real, 2026-11-05, posterior a su preparación:** 50 llamadas, ocho controles favorables y 48 candidatas; 47 válidas mecánicamente y una retenida por identidad. Parada sellada antes del juez natural; US$0,01524421 conciliados, lock activo, 276/276 pruebas offline. Corrección exacta del esquema aún sin confirmación API. No modifica pilotos ni decisiones anteriores. [Resultado parcial y correcciones](https://github.com/DanielLopezzz/Antigravity-MD-Skyrim/blob/codex/technical-consolidation-docs-20261105/Fase10_Evolucion_Linguistica/PairedTrial_Run_20261105/README.md).
 
 ## Informes que conviene abrir solo cuando haga falta
+
+Tras la consolidación, **coherencia contextual del 2026-11-05**: registro de nombres con identidad y localización existente, referencias de conjuntos e integración en preparación/revisión/recomprobación/visor. Suite 246/246; barrido de las 1.000 candidatas sin reescribirlas ni aprobarlas. [Informe de continuación y límites](https://github.com/DanielLopezzz/Antigravity-MD-Skyrim/blob/codex/technical-consolidation-docs-20261105/Fase10_Evolucion_Linguistica/Coherence_20261105/README.md). La revisión humana cerró los 25 casos de cuarentena lingüísticamente, sin resolver su retención técnica. No se ejecutó una IA real.
 
 Los enlaces siguientes apuntan a la documentación ya publicada; su estructura de fases se conserva para no perder enlaces externos.
 
@@ -30,6 +37,10 @@ Los enlaces siguientes apuntan a la documentación ya publicada; su estructura d
 - [Auditoría Fase 9](https://github.com/DanielLopezzz/Antigravity-MD-Skyrim/blob/main/Fase9_Full_Audit/PHASE9_FULL_AUDIT_REPORT.md), [Fases 7–8](https://github.com/DanielLopezzz/Antigravity-MD-Skyrim/tree/main/Fase7_y_Fase8_Informes) y [base 0–6](https://github.com/DanielLopezzz/Antigravity-MD-Skyrim/tree/main/Documentacion_Base_Fases_0_a_6).
 
 ## Originales y trazabilidad
+
+**Preparación pareada, 2026-11-05, posterior a ampliación documental:** 24 cadenas reales y ocho controles, contexto anterior/ampliado, conjunto enano agrupado y fuentes selladas; suite 262/262. Solo construcción y validación, sin traducción real ni API. El tope propuesto de US$0,35 requiere validación y autorización futuras. [Informe](https://github.com/DanielLopezzz/Antigravity-MD-Skyrim/blob/codex/technical-consolidation-docs-20261105/Fase10_Evolucion_Linguistica/PairedTrial_20261105/README.md).
+
+**Ampliación documental, 2026-11-05, posterior a coherencia:** descubrimiento sobre 1.302 mods, integración aislada de documentos locales y resúmenes externos versionados, adjudicación de los 32 avisos y corrección de la recuperación de fuentes relevantes. Suite 253/253, cero API/créditos. [Informe y alcance real](https://github.com/DanielLopezzz/Antigravity-MD-Skyrim/blob/codex/technical-consolidation-docs-20261105/Fase10_Evolucion_Linguistica/Documentation_20261105/README.md). No se presenta el conjunto de enlaces candidatos como investigación ya completada.
 
 [Archivo de originales](archivo/originales_20261105.zip) · [Manifiesto y hashes](archivo/MANIFIESTO.json).
 

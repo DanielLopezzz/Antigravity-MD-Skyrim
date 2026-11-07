@@ -1,0 +1,94 @@
+{
+  "tests": {
+    "baseline_passed": 193,
+    "baseline_seconds": 48.601,
+    "final_passed": 212,
+    "final_seconds": 72.155,
+    "new_tests": 19
+  },
+  "audit_source_modules": 89,
+  "synthetic_scale": {
+    "rows": 240684,
+    "before": {
+      "mode": "controlled_old",
+      "rows": 240684,
+      "first_ingestion_seconds": 59.827,
+      "unchanged_ingestion_seconds": 113.464,
+      "retrieval_100_seconds": 9.951,
+      "retrieved_fragments": 400,
+      "retrieval_sha256": "4f8a8f01557e56cc04f0d1c02071719d29e34a497f963bafb851346861f0aa05",
+      "sqlite_bytes": 269451264,
+      "integrity": "ok",
+      "last_ingest_stats": null,
+      "http_requests": 0,
+      "peak_working_set_bytes": 29114368,
+      "working_set_bytes": 22331392,
+      "measurement": "Windows process working set, not tracemalloc"
+    },
+    "after": {
+      "mode": "controlled_new",
+      "rows": 240684,
+      "first_ingestion_seconds": 70.422,
+      "unchanged_ingestion_seconds": 6.926,
+      "retrieval_100_seconds": 7.102,
+      "retrieved_fragments": 400,
+      "retrieval_sha256": "4f8a8f01557e56cc04f0d1c02071719d29e34a497f963bafb851346861f0aa05",
+      "sqlite_bytes": 277987328,
+      "integrity": "ok",
+      "last_ingest_stats": {
+        "seen": 240684,
+        "changed": 0,
+        "unchanged": 240684
+      },
+      "http_requests": 0,
+      "peak_working_set_bytes": 28762112,
+      "working_set_bytes": 22417408,
+      "measurement": "Windows process working set, not tracemalloc"
+    },
+    "same_retrieval_sample_sha256": true,
+    "interpretation": "Ingestion/100 retrieval queries only; shared-host wall time varies. Not a translation or linguistic-quality benchmark."
+  },
+  "hash_memory": {
+    "synthetic_file_bytes": 67108864,
+    "before": {
+      "mode": "hash_old",
+      "bytes": 67108864,
+      "sha256": "e20a69eca39368572e90b9135738a613838f954987a0b44b6220889c171cbb76",
+      "seconds": 0.057,
+      "peak_working_set_bytes": 85471232,
+      "working_set_bytes": 18460672,
+      "measurement": "Windows process working set, not tracemalloc"
+    },
+    "after": {
+      "mode": "hash_new",
+      "bytes": 67108864,
+      "sha256": "e20a69eca39368572e90b9135738a613838f954987a0b44b6220889c171cbb76",
+      "seconds": 0.067,
+      "peak_working_set_bytes": 21487616,
+      "working_set_bytes": 19468288,
+      "measurement": "Windows process working set, not tracemalloc"
+    },
+    "same_sha256": true
+  },
+  "future_experiment": {
+    "natural_cases": 12,
+    "synthetic_probes": 4,
+    "logical_comparisons": 48,
+    "prepared_review_requests": 40,
+    "max_requests": 48,
+    "reserve_usd": "0.12718080",
+    "proposed_budget_cap_usd": "0.15",
+    "requests_executed": 0,
+    "execution_authorized": false,
+    "max_request_bytes": 12288,
+    "max_output_tokens": 2048,
+    "prepared_input_tokens_heuristic": 46181,
+    "worst_input_tokens": 614400,
+    "worst_output_tokens": 98304
+  },
+  "code_test_files_changed": 20,
+  "provider_http_requests": 0,
+  "billed_usd": 0,
+  "semantic_quality_change": "not_measured",
+  "production_modified_by_agent": false
+}

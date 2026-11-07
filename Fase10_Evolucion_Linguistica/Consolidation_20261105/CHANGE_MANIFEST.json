@@ -1,0 +1,12 @@
+{
+  "branch": "codex/technical-consolidation-20261105",
+  "base_commit": "066ae03",
+  "inherited_snapshot_commit": "12f1125032a3913cb7ade8477b24634e4b68cacf",
+  "implementation_commit": "b68c7dd65d09ace8127fb3f148a2aeaedebe7c25",
+  "original_branches_unchanged": true,
+  "merges_or_resets": false,
+  "source_published": false,
+  "code_test_files_changed": 20,
+  "new_files": 4,
+  "inventory_scope": "Aggregate evidence only. Full per-file inventory and hashes stay in the private workspace."
+}
