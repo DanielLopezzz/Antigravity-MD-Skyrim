@@ -4,6 +4,8 @@ Actualizada el **2026-11-06** a partir de los lanzadores, CLI y visor existentes
 
 ## Accesos desde la raíz del workspace
 
+Tras la depuración, el visor y el staging pendiente muestran la posedición recomprobada cuando supera QA; la candidata original queda conservada en caché y en `original_candidate`. No se transforma en aprobación humana ni se promueve a TM. Reanudar mantiene los mismos recibos y no vuelve a solicitar traducciones por este cambio.
+
 **Plan B, modo aislado:** `python -m nolvus_translator mass prepare --rows <filas.json> --project <proyecto-nuevo>` prepara manifiesto, contexto y cohortes. `mass status --project <proyecto>` muestra el libro compartido; `mass simulate --project <proyecto> --receipts <fixtures.json>` recorre el flujo integrado sin red. Los caps son virtuales en este modo; no autorizan gasto. Puede añadirse `--knowledge <sidecar>` y `--approved-memory <snapshot>` en preparación, ambos consultados en solo lectura.
 
 Usa el Python del entorno `.venv` desde el workspace. `--project` identifica la cartera compartida; `--run-name` permite otro mod o una revisión del manifiesto dentro de esa misma cartera, conservando gastos y caché. El valor predeterminado es `run`. La carpeta `private/full_mod_pilot_v2` de la entrega local contiene la preparación offline; no contiene traducciones nuevas.
