@@ -4,6 +4,8 @@ Verificado el **2026-11-06**. Esta es la fuente del estado vigente; [uso](GUIA_D
 
 ## Dónde está el proyecto
 
+**Depuración posterior a Plan B:** suite 389/389 tras tres refactorizaciones verificadas por separado. Se conectó la posedición recomprobada al visor/staging pendiente, se hizo atómica la procedencia de simulación y se optimizaron caché y muestreo sin cambiar sus contratos. Código privado en `codex/plan-b-cleanup-20261106`, commit funcional `e260fc6`; originales, TM y diarios históricos conservados. No se midió mejora lingüística ni se consumió API.
+
 **Plan B implementado, 2026-11-06:** nuevo modo aislado `mass`, con despachador/libro global por modelo y etapa, cohortes reanudables, manifiestos, referencias aprobadas en solo lectura y caché de candidatas. Integra contexto existente, QA completo, muestra independiente antes del riesgo, Luna auxiliar o Terra opcional, Sol selectivo y posedición acotada. No aplica automáticamente el 2 %/14 del ejecutor legado. El backend pagado exige un permiso nuevo y permanece bloqueado; la CLI solo prepara/simula. [Implementación, diagrama, pruebas, costes y piloto](https://github.com/DanielLopezzz/Antigravity-MD-Skyrim/blob/4060d9f3581df44732228c7cb3eb46ae8646ad3b/Fase10_Evolucion_Linguistica/PlanB_20261106/README.md).
 
 El alcance offline de Amber Guard está preparado: 128 entradas traducibles, cinco pendientes de investigación, 12 nombres protegidos y un identificador. Se preservan los históricos y la reserva incierta. No se ha demostrado mejora lingüística, calibración, compatibilidad en juego ni ahorro humano; la salida provisional DSD se probó únicamente con fixtures. Las cifras verificadas finales y sus límites están en el informe enlazado.
@@ -20,8 +22,8 @@ Nolvus AI Translator localiza Nolvus Awakening al español latinoamericano neutr
 | Revisión humana al corte actual | 41 decisiones en la copia activa de evolución: 29 aprobaciones y 12 investigaciones; el archivo humano continúa activo |
 | Consumo acumulado del cuarto piloto | US$0,1176624 de US$0,17; 50 respuestas reales, sin llamadas pendientes |
 | TM del staging / promoción a producción | 0 / 0; no se crearon aprobaciones humanas automáticas |
-| Última suite registrada | 383/383; incluye 51 regresiones nuevas de Plan B sobre la base anterior de 332 |
-| Código local | Rama `codex/plan-b-localization-20261106`, commit funcional `25c3297`; conserva `6a153dd` y los anteriores, con código solo privado |
+| Última suite registrada | 389/389; seis regresiones de depuración sobre las 383 de Plan B |
+| Código local | Rama `codex/plan-b-cleanup-20261106`, commit funcional `e260fc6`; conserva `25c3297`, `6a153dd` y los anteriores, con código solo privado |
 
 El coste histórico del cuarto piloto fue calculado con tokens reportados y tarifa registrada; no certifica la factura ni una tarifa vigente. Las 110 pruebas de cierre de aquel piloto reforzaron la forma SHA-256 offline. El consumo y los límites de la nueva ejecución se registran por separado en «Próximos pasos».
 
