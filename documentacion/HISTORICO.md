@@ -4,6 +4,8 @@ Actualizado el **2026-11-06**. Es un índice de hechos cerrados y decisiones sus
 
 ## Cronología objetiva
 
+**Depuración de Plan B, 2026-11-06:** 385/385, 387/387 y 389/389 pruebas completas después de cada bloque. Lectura coherente y agrupada de caché, posedición conectada al staging/visor, procedencia atómica, utilidades compartidas y muestreo equivalente más eficiente. Se conservaron lectores/ejecutores históricos y datos aprobados; cero solicitudes reales a IA. Las mediciones de planificación de la entrega inicial son su corte histórico, no un benchmark nuevo de esta depuración.
+
 **Plan B, 2026-11-06:** implementación privada de ejecución por cohortes y libro compartido, revisión escalonada y entrega provisional aislada, posterior al dictamen estratégico B. Pruebas offline y preparación de un mod completo; sin nuevas solicitudes a modelos, promociones ni cambios en la reserva histórica. Los ejecutores anteriores se conservaron para compatibilidad. [Entrega y evidencias agregadas](https://github.com/DanielLopezzz/Antigravity-MD-Skyrim/blob/4060d9f3581df44732228c7cb3eb46ae8646ad3b/Fase10_Evolucion_Linguistica/PlanB_20261106/README.md).
 
 | Corte | Qué quedó registrado | Qué no debe inferirse |
