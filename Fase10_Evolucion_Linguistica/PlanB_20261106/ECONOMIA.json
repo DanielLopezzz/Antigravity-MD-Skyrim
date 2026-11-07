@@ -1,0 +1,102 @@
+{
+  "reference_original_strings": 240684,
+  "inventory_original_strings": 235301,
+  "projected_original_characters": 20536816,
+  "not_a_quote_or_authorization": true,
+  "actual_provider_tokens_measured": false,
+  "tm_savings_assumed": 0,
+  "cache_hits_assumed": 0,
+  "assumptions": {
+    "wire_chars_per_token": [
+      4,
+      3
+    ],
+    "english_chars_per_token_held": 4,
+    "spanish_chars_per_token": 3.5,
+    "spanish_expansion": 1.18,
+    "extra_held_segment_chars": 800,
+    "additional_calls_factor_for_context": 1.5,
+    "fixed_tokens_per_additional_call": 600,
+    "context_tokens_per_segment": 200,
+    "framing_tokens_per_call": 64,
+    "reasoning_output_per_call": 256,
+    "json_output_per_segment": 12,
+    "auxiliary_reviews": 2407,
+    "independent_sol_reviews": 300,
+    "escalated_sol_reviews": 300,
+    "luna_postedits_sol_rechecks": 121,
+    "review_input_output_tokens": [
+      1400,
+      400
+    ],
+    "postedit_input_output_tokens": [
+      1600,
+      300
+    ]
+  },
+  "projected_translation_calls": 38336,
+  "base_scaled_calls": 24171,
+  "additional_held_chunks_hypothetical": 1386,
+  "scenarios": [
+    {
+      "wire_chars_per_token_assumed": 4,
+      "luna_input_mtokens": 81.296,
+      "luna_output_mtokens": 19.7052,
+      "generation_usd": 17.9822,
+      "staged_luna_aux_usd": 23.7409,
+      "staged_luna_aux_all_input_write_extreme_usd": 26.3671,
+      "staged_terra_aux_usd": 31.1063,
+      "staged_terra_aux_all_input_write_extreme_usd": 34.4907,
+      "prior_2pct_policy_usd": 59.2779,
+      "prior_2pct_policy_all_input_write_extreme_usd": 65.571,
+      "staged_luna_aux_usd_per_1000": 0.0986
+    },
+    {
+      "wire_chars_per_token_assumed": 3,
+      "luna_input_mtokens": 88.1661,
+      "luna_output_mtokens": 19.7052,
+      "generation_usd": 18.6692,
+      "staged_luna_aux_usd": 24.4279,
+      "staged_luna_aux_all_input_write_extreme_usd": 27.2259,
+      "staged_terra_aux_usd": 31.7933,
+      "staged_terra_aux_all_input_write_extreme_usd": 35.3495,
+      "prior_2pct_policy_usd": 59.9649,
+      "prior_2pct_policy_all_input_write_extreme_usd": 66.4298,
+      "staged_luna_aux_usd_per_1000": 0.1015
+    }
+  ],
+  "linguistic_quality_equivalence_demonstrated": false,
+  "input_write_extreme_multiplier": 1.25,
+  "fees_taxes_hosting_human_time_excluded": true,
+  "projected_wire_utf8_bytes_before_extra_context": 82440781.12405813,
+  "projected_held_characters": 1108013.1860383083,
+  "projected_segments_including_held_assumption": 247281.55872690724,
+  "rates_usd_per_million_tokens": {
+    "luna": {
+      "input": 0.1,
+      "output": 0.5,
+      "cached": 0.01,
+      "write_30m": 0.125
+    },
+    "terra": {
+      "input": 1,
+      "output": 5,
+      "cached": 0.05,
+      "write_30m": 1.25
+    },
+    "sol": {
+      "input": 2,
+      "output": 10,
+      "cached": 0.1,
+      "write_30m": 2.5
+    }
+  },
+  "formulas": {
+    "scale": "N_reference / N_observed",
+    "K": "ceil((ceil(B_observed * scale) + extra_held_chunks) * 1.5)",
+    "I": "projected_wire_bytes / assumed_chars_per_token + projected_held_chars/4 + (K-base_scaled_calls)*600 + projected_segments*200 + K*64",
+    "O": "projected_original_chars*1.18/3.5 + projected_segments*12 + K*256",
+    "generation_usd": "I*0.10/1000000 + O*0.50/1000000",
+    "staged_review_usd": "2407*(1400*0.10+400*0.50)/1000000 + (300+300+121)*(1400*2+400*10)/1000000 + 121*(1600*0.10+300*0.50)/1000000"
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "synthetic_only": true,
+  "source_units": 1000,
+  "planned_calls": 40,
+  "first_calls": 40,
+  "additional_calls_on_replay": 0,
+  "candidate_count": 900,
+  "seconds": 3.325,
+  "fault_schedule": [
+    "invalid_cardinality",
+    "timeout",
+    "zero_usage",
+    "invalid_cardinality"
+  ],
+  "financial_reconciliation": true,
+  "summary": {
+    "spent_usd": 0.00133,
+    "held_usd": 0.003842,
+    "uncertain_usd": 0.003842,
+    "states": {
+      "qa_failed": 2,
+      "uncertain": 2,
+      "validated": 36
+    },
+    "cohorts": [
+      {
+        "cohort": "0",
+        "state": "qa_failed",
+        "count": 2
+      },
+      {
+        "cohort": "0",
+        "state": "uncertain",
+        "count": 2
+      },
+      {
+        "cohort": "0",
+        "state": "validated",
+        "count": 16
+      },
+      {
+        "cohort": "1",
+        "state": "validated",
+        "count": 20
+      }
+    ],
+    "attribution": [
+      {
+        "model": "gpt-6-luna",
+        "stage": "translation",
+        "requests": 40,
+        "spent_usd": 0.00133,
+        "held_usd": 0.003842
+      }
+    ],
+    "global_stops": [],
+    "human_approvals_created": 0,
+    "deferred": [],
+    "held_sources": [],
+    "simulated": true,
+    "paid_http_requests": 0
+  },
+  "paid_http_requests": 0,
+  "linguistic_quality_measured": false
+}
