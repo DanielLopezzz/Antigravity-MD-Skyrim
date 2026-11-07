@@ -1,0 +1,18 @@
+{
+  "functional_commit": "25c329703479140d19c39c1a51ab95881283e379",
+  "branch": "codex/plan-b-localization-20261106",
+  "tests_total": 383,
+  "new_regressions": 51,
+  "protected_data_files": 71,
+  "protected_data_unchanged": 71,
+  "authorized_baseline_source_edits": [
+    "src/nolvus_translator/__main__.py",
+    "src/nolvus_translator/translation/openai_provider.py",
+    "src/nolvus_translator/ui/app.py"
+  ],
+  "api_lock_declaration_true": true,
+  "paid_provider_requests": 0,
+  "charged_usd": 0,
+  "historical_uncertain_reserve_unchanged": true,
+  "source_worktree_clean": true
+}
