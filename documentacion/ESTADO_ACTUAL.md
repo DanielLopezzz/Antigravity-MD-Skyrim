@@ -4,20 +4,20 @@ Verificado el **2026-11-05**. Esta es la fuente del estado vigente; [uso](GUIA_D
 
 ## Dónde está el proyecto
 
-Nolvus AI Translator localiza Nolvus Awakening al español latinoamericano neutro (ES-419). El piloto de 1.000 cadenas está procesado y su sistema de revisión fue analizado. **Quedan revisión humana y calibración; la traducción masiva y la promoción productiva no están autorizadas.**
+Nolvus AI Translator localiza Nolvus Awakening al español latinoamericano neutro (ES-419). El piloto de 1.000 cadenas está procesado; la evolución inteligente está implementada y probada offline en copias separadas. **Quedan calibración y validación real autorizada; la traducción masiva y la promoción productiva no están autorizadas.**
 
 | Dato comprobado | Resultado e interpretación |
 |---|---|
 | Muestra del cuarto piloto | 1.000 candidatas recibidas; 100 controles y 900 adicionales |
 | Staging aislado | 975 importadas mecánicamente; no equivale a aprobación lingüística |
 | Cuarentena | 25 retenidas por atomicidad: un registro devolvió un hash de origen de 63 caracteres |
-| Prioridad obligatoria | 196 casos, incluidos los 42 señalados por auditoría |
+| Prioridad obligatoria del piloto histórico | 196 casos, incluidos los 42 señalados por auditoría; ese archivo no se modificó |
 | Muestra de calidad | 199 casos distintos; unión con obligatorios: 395; otros 605 con prioridad adicional |
-| Revisión humana al corte | 3 aprobadas sin cambios y 997 pendientes en el visor; sus decisiones no modifican la DB |
+| Revisión humana al corte | 8 aprobaciones exactas reutilizables y 992 pendientes al congelar la revisión; el archivo humano continúa activo |
 | Consumo acumulado del cuarto piloto | US$0,1176624 de US$0,17; 50 respuestas reales, sin llamadas pendientes |
 | TM del staging / promoción a producción | 0 / 0; no se crearon aprobaciones humanas automáticas |
-| Última suite registrada | 110/110, 54,544 s; no se volvió a ejecutar durante esta reorganización |
-| Código local | Rama `codex/linguistic-evolution`, base `066ae03`, con cambios locales sin commit |
+| Última suite registrada | 186/186, 48,443 s; 25 nuevas sobre las 161 anteriores |
+| Código local | Rama `codex/contextual-recovery-20261105`, base `066ae03`, con cambios locales sin commit |
 
 Coste calculado por el libro local con tokens reportados y tarifa registrada: no certifica la factura ni una tarifa vigente del proveedor. Las últimas 110 pruebas incluyen el refuerzo del esquema SHA-256, comprobado offline después de cerrar la API. Ese último ajuste no se ha validado con otra llamada pagada.
 
@@ -25,9 +25,23 @@ Coste calculado por el libro local con tokens reportados y tarifa registrada: no
 
 - Se conservaron respuestas originales, hashes, presupuesto acotado, importación atómica y reutilización de candidatas válidas. La auditoría final registró cero diferencias de placeholders y controles entre las 975 importadas.
 - El resultado reúne continuaciones y reparaciones con reglas ajustadas. El 97,5 % de importación es acumulado; no mide acierto semántico ni aceptación inicial.
-- El contexto enviado es limitado: no hay indicación de hablante en las 200 cadenas de diálogo; el runner agrupa por tamaño y puede mezclar grupos narrativos.
+- En el piloto histórico, el contexto enviado es limitado: no hay indicación de hablante en las 200 cadenas de diálogo; el runner agrupa por tamaño y puede mezclar grupos narrativos.
 - Hay una propuesta de formato de IA para un poema, pendiente humana. Está identificada; no es una respuesta intacta del proveedor.
-- El análisis halló dos falsos positivos del auditor de cifras y 132 casos con solo una alerta heurística de nombres/lore. No se corrigió esa lógica: **las propuestas siguientes siguen sin implementar**.
+- El análisis halló dos falsos positivos numéricos y 132 casos con solo alerta de nombres/lore. El nuevo validador separa severidades y normaliza cifras; conserva los informes históricos.
+
+## Evolución inteligente verificada offline
+
+La copia experimental reclasifica las mismas candidatas a **38 obligatorias (25 de cuarentena y 13 editoriales), 199 de muestra y 763 adicionales**, sin aprobar o reescribir ninguna. La reducción del 80,61 % es de prioridad, no de tiempo humano o errores semánticos medidos. En ese primer corte había dos referencias para calibración y una para validación; la aprobación automática nueva continúa deshabilitada.
+
+Se implementaron contexto por mod/plugin, contrato 1.2 compatible con lectura 1.0/1.1, propuestas terminológicas separadas, reparación técnica reversible, juez simulado y ejecución por etapas con alcance fijo. Se indexaron 12.423 nombres de registro NPC; no se infieren biografías. El benchmark de 240.684 pasajes sintéticos verificó la ingesta SQLite, no la traducción completa.
+
+La preparación coherente con recuperación de esta muestra dispersa estima US$0,39955632 frente a US$0,16704072 sin recuperación. Excede el cap anterior: la opción no se activó por defecto ni se elevó el presupuesto. Cero solicitudes facturables y 2.186 archivos anteriores verificados idénticos. [Informe y métricas](https://github.com/DanielLopezzz/Antigravity-MD-Skyrim/blob/a232c2edc575469e3f029ff99e6eeb4774cf4273/Fase10_Evolucion_Linguistica/Intelligence_20261105/README.md).
+
+La continuación integra revisión independiente → posedición acotada → recomprobación en un ejecutor offline con evidencia persistida. Sobre la copia de 1.000 cadenas selecciona 13 por riesgo y 8 controles; el simulador se abstiene en los 21 casos. Reanudar añade cero invocaciones. Las 25 de cuarentena permanecen aisladas; cero aprobaciones nuevas y 2.225 archivos anteriores idénticos. Falta medir el evaluador real y calibrar. [Detalle funcional y pruebas](https://github.com/DanielLopezzz/Antigravity-MD-Skyrim/blob/4c13cb4564e046aad163135bc27629e6ce7dd64f/Fase10_Evolucion_Linguistica/Intelligence_Continuation_20261105/README.md).
+
+La ampliación funcional incorpora un catálogo de **403.922 registros originales de 1.316 mods con textos**, relaciones por registro/grupo/misión y dos extractos documentales de autores con licencia y procedencia. No son 403.922 traducciones ni entidades únicas. Se recuperaron referencias para 987 de las 1.000 cadenas en 9,532 s; la cobertura no acredita pertinencia lingüística. Se conservan íntegros 11 textos largos en 22 segmentos, se reutilizan ocho aprobaciones humanas exactas y se aíslan transporte/uso inciertos sin bloquear otros casos.
+
+El ejercicio final mantiene 21 consultas simuladas inconclusas y 25 casos en cuarentena, sin editar candidatas ni crear aprobaciones. La reanudación agrega cero consultas. Las ocho referencias humanas y los dictámenes simulados no permiten calibrar un juez real. API Lock activo, cero HTTP y cero créditos; la DB productiva conserva su hash. De 2.254 archivos protegidos, 2.253 siguen idénticos; el único cambio externo fue el overlay humano durante la revisión, preservado y congelado como entrada privada. Evidencia local: `NolvusAIT_Intelligence/20261105_Functional/private`.
 
 ## Próximos pasos
 
@@ -35,11 +49,11 @@ Coste calculado por el libro local con tokens reportados y tarifa registrada: no
 |---|---|---|
 | 1 | Revisión humana representativa, incluidos casos sin alertas | Separar errores de significado de retoques y advertencias |
 | 2 | Adjudicar familias terminológicas y el lote retenido | Conservar evidencia; no retransmitir todo el lote por defecto |
-| 3 | Elegir y autorizar mejoras deterministas | Cifras/ordinales, severidades, nombres/longitud, contexto y estados de reparación |
-| 4 | Evaluar una reevaluación inteligente en modo experimental | Medir falsas aprobaciones y ahorro de trabajo; sin autoaprobación nueva |
+| 3 | Revisar los cambios offline ya implementados | Validar su comportamiento en el ámbito real, sin modificar el histórico |
+| 4 | Calibrar y evaluar un juez independiente autorizado | Medir falsas aprobaciones y ahorro de trabajo; sin autoaprobación nueva |
 | 5 | Preparar un piloto acotado de un mod | Configuración congelada, contexto coherente, presupuesto y autorización explícitos |
 
-No se recomienda aumentar carga sin esta calibración. El segundo juez, el uso excepcional de otro modelo, las aprobaciones automáticas nuevas y la producción son propuestas o fases pendientes, no capacidades autorizadas por este documento.
+No se recomienda aumentar carga sin calibración y presupuesto compatible. El flujo del juez está probado offline; su calidad real, la calibración, el escalamiento y la producción siguen pendientes. La segmentación automática exige límites compartidos fiables; un párrafo demasiado largo o desalineado queda retenido sin truncarse. Los cambios de esta fase se proponen en una PR solo documental; el código permanece privado.
 
 ## Fuentes del corte
 

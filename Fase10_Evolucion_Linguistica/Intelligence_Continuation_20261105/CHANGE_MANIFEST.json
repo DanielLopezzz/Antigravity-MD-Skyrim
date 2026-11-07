@@ -1,0 +1,54 @@
+{
+  "date": "2026-11-05",
+  "code_branch": "codex/independent-review-flow-20261105",
+  "base_commit": "066ae03",
+  "code_committed": false,
+  "code_published": false,
+  "scope": "Changes relative to continuation-start snapshot; previous dirty work retained.",
+  "private_source_before_sha256": "c9876cca9ba4004bf20d2560db485ca6104e84efa8cfabc21431612ed7f27cfc",
+  "private_source_final_sha256": "5312b63565be5b8d99b1e8a38973f93276346d7b1eafad1db101b9bc110b79ee",
+  "files": [
+    {
+      "path": "src/nolvus_translator/translation/durable_run.py",
+      "change": "modified",
+      "sha256_before": "07612a6f0f61e66cddff00d8cd15b14496e7a6df05db2b385a418fdd7c24514d",
+      "sha256_after": "1639e5e590e4cc543ab887d82f5945758c7d6b059361d2910c08b013ee307777"
+    },
+    {
+      "path": "src/nolvus_translator/translation/independent_review.py",
+      "change": "added",
+      "sha256_before": null,
+      "sha256_after": "1035e0ddb546ad6d590ad7ce5abd02ad0c7638c1bb7f667722d25ffb16b7b4b8"
+    },
+    {
+      "path": "src/nolvus_translator/translation/review_experiment.py",
+      "change": "added",
+      "sha256_before": null,
+      "sha256_after": "afdcc0662a6f6261299a7d1f84feac122527b67ce6f8636b7e86ed15164476ef"
+    },
+    {
+      "path": "src/nolvus_translator/translation/review_workflow.py",
+      "change": "added",
+      "sha256_before": null,
+      "sha256_after": "29227c39f1819c9f50ae8e3c7bac0f735ebd843f566b97a9bdd0c9aeb6ebe719"
+    },
+    {
+      "path": "src/nolvus_translator/ui/case_review.py",
+      "change": "modified",
+      "sha256_before": "8c07376cfb79d0685d4078ad68c1780a235e709e026f8040cb709cc850d4b1af",
+      "sha256_after": "050deecae548278c4631c2937f86a83ffae8a291fa0e38695b4b8706155a7991"
+    },
+    {
+      "path": "tests/test_review_workflow.py",
+      "change": "added",
+      "sha256_before": null,
+      "sha256_after": "97cc6a6cc95d69bec22610a58c664d35aad93db3f2534a3dccd1a0132cd42de0"
+    },
+    {
+      "path": "Revisar_evolucion_inteligente.bat",
+      "change": "added",
+      "sha256_before": null,
+      "sha256_after": "d4586ee35eacea5769be73c4b3607f8810e6b0cb3d74cb8bcd34bbd9a3a0e67d"
+    }
+  ]
+}

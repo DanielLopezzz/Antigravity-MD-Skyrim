@@ -16,6 +16,8 @@ Organizado el **2026-11-05**. Es un índice de hechos cerrados y decisiones sust
 | Cuarto piloto, 2026-11-04 | Primera etapa, R2 y continuaciones supervisadas hasta 1.000 respuestas; correcciones de porcentajes, controles, falsos rechazos y duplicados | Los intentos fallidos se conservaron; el resultado no es una sola ejecución ciega |
 | Análisis, 2026-11-05 | Intersecciones de alertas, dos falsos positivos numéricos y propuesta de reevaluación | Análisis y publicación no autorizan implementar ni consumir créditos |
 | Reorganización, 2026-11-05 | Un README y cuatro documentos activos; originales comprimidos con hashes; enlaces corregidos | No se alteraron app, glosario, TM, decisiones humanas, pilotos ni producción; la publicación documental es una acción separada |
+| Evolución inteligente, 2026-11-05 | Validación por riesgo, conocimiento por mod, contrato 1.2, simulación de juez y coordinación durable; 38 prioridades frente a 196 en copia offline | No mide mejora semántica ni ahorro humano; no hubo aprobación nueva o API facturable. [Informe](https://github.com/DanielLopezzz/Antigravity-MD-Skyrim/blob/a232c2edc575469e3f029ff99e6eeb4774cf4273/Fase10_Evolucion_Linguistica/Intelligence_20261105/README.md) |
+| Ampliación funcional, 2026-11-05 | Catálogo completo de registros, fuentes de autores, recuperación por relevancia, revisión por segmentos, reutilización de referencias humanas y aislamiento de fallos | Implementación privada y pruebas offline; no acredita calidad de un juez real ni habilita aprobación nueva. [Estado y evidencia vigente](ESTADO_ACTUAL.md) |
 
 ## Informes que conviene abrir solo cuando haga falta
 
