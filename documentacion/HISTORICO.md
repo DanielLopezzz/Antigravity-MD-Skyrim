@@ -4,7 +4,7 @@ Actualizado el **2026-11-06**. Es un índice de hechos cerrados y decisiones sus
 
 ## Cronología objetiva
 
-**Plan B, 2026-11-06:** implementación privada de ejecución por cohortes y libro compartido, revisión escalonada y entrega provisional aislada, posterior al dictamen estratégico B. Pruebas offline y preparación de un mod completo; sin nuevas solicitudes a modelos, promociones ni cambios en la reserva histórica. Los ejecutores anteriores se conservaron para compatibilidad. [Entrega y evidencias agregadas](https://github.com/DanielLopezzz/Antigravity-MD-Skyrim/blob/codex/plan-b-evidence-20261106/Fase10_Evolucion_Linguistica/PlanB_20261106/README.md).
+**Plan B, 2026-11-06:** implementación privada de ejecución por cohortes y libro compartido, revisión escalonada y entrega provisional aislada, posterior al dictamen estratégico B. Pruebas offline y preparación de un mod completo; sin nuevas solicitudes a modelos, promociones ni cambios en la reserva histórica. Los ejecutores anteriores se conservaron para compatibilidad. [Entrega y evidencias agregadas](https://github.com/DanielLopezzz/Antigravity-MD-Skyrim/blob/4060d9f3581df44732228c7cb3eb46ae8646ad3b/Fase10_Evolucion_Linguistica/PlanB_20261106/README.md).
 
 | Corte | Qué quedó registrado | Qué no debe inferirse |
 |---|---|---|
