@@ -1,12 +1,18 @@
 # Histórico resumido y acceso a evidencia
 
-Actualizado el **2026-11-06**. Es un índice de hechos cerrados y decisiones sustituidas, no una guía de ejecución. [Estado vigente](ESTADO_ACTUAL.md) · [Uso](GUIA_DE_USO.md) · [Reglas](REFERENCIA_TECNICA.md).
+Actualizado el **2026-11-07**. Es un índice de hechos cerrados y decisiones sustituidas, no una guía de ejecución. [Estado vigente](ESTADO_ACTUAL.md) · [Uso](GUIA_DE_USO.md) · [Reglas](REFERENCIA_TECNICA.md).
+
+## Diagnóstico y preparación versionada, 2026-11-07
+
+Se ejecutó únicamente el alcance autorizado de dos Luna y un Sol, cap US$0,05. Dos respuestas válidas de Luna; Sol HTTP 400 sin evaluación ni uso verificable. Se conservaron recibo/reserva y se corrigió el formato offline, sin cuarto envío. No demuestra mejora lingüística. El detalle económico vigente está en ESTADO_ACTUAL.
+
+Se completaron las cinco clasificaciones pendientes en un overlay nuevo, se incorporó evidencia de hablantes desde el plugin y se identificó la diferencia entre la versión instalada y la documentación actual. Se conservaron preparaciones anteriores y tres dudas narrativas reales. Cinco regresiones nuevas, suite completa 394/394. Código privado `40335ec`; publicación solo de los cuatro documentos canónicos.
 
 ## Cronología objetiva
 
 **Depuración de Plan B, 2026-11-06:** 385/385, 387/387 y 389/389 pruebas completas después de cada bloque. Lectura coherente y agrupada de caché, posedición conectada al staging/visor, procedencia atómica, utilidades compartidas y muestreo equivalente más eficiente. Se conservaron lectores/ejecutores históricos y datos aprobados; cero solicitudes reales a IA. Las mediciones de planificación de la entrega inicial son su corte histórico, no un benchmark nuevo de esta depuración.
 
-**Plan B, 2026-11-06:** implementación privada de ejecución por cohortes y libro compartido, revisión escalonada y entrega provisional aislada, posterior al dictamen estratégico B. Pruebas offline y preparación de un mod completo; sin nuevas solicitudes a modelos, promociones ni cambios en la reserva histórica. Los ejecutores anteriores se conservaron para compatibilidad. [Entrega y evidencias agregadas](https://github.com/DanielLopezzz/Antigravity-MD-Skyrim/blob/4060d9f3581df44732228c7cb3eb46ae8646ad3b/Fase10_Evolucion_Linguistica/PlanB_20261106/README.md).
+**Plan B, 2026-11-06:** implementación privada de ejecución por cohortes y libro compartido, revisión escalonada y entrega provisional aislada, posterior al dictamen estratégico B. Pruebas offline y preparación de un mod completo; sin nuevas solicitudes a modelos, promociones ni cambios en la reserva histórica. Los ejecutores anteriores se conservaron para compatibilidad. [Entrega y evidencias agregadas](../NolvusAIT_Intelligence/20261106_PlanB/README.md).
 
 | Corte | Qué quedó registrado | Qué no debe inferirse |
 |---|---|---|

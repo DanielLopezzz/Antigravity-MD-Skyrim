@@ -1,14 +1,24 @@
 # Estado actual y próximos pasos
 
-Verificado el **2026-11-06**. Esta es la fuente del estado vigente; [uso](GUIA_DE_USO.md), [reglas y arquitectura](REFERENCIA_TECNICA.md) e [histórico](HISTORICO.md) cubren temas distintos. Las cifras de revisión son un corte, no un contador en tiempo real.
+Verificado el **2026-11-07**. Esta es la fuente del estado vigente; [uso](GUIA_DE_USO.md), [reglas y arquitectura](REFERENCIA_TECNICA.md) e [histórico](HISTORICO.md) cubren temas distintos. Las cifras de revisión son un corte, no un contador en tiempo real.
+
+## Amber Guard: corte verificado del 7 de noviembre
+
+Código privado `40335ec`, rama `codex/amber-guard-pilot-20261107`; suite **394/394**. Se corrigió la entrada JSON del evaluador, se recuperan hablantes solo con condiciones de identidad inequívocas y se distinguen temas/prompts de respuestas NPC. No se crearon aprobaciones ni se modificaron producción o históricos protegidos.
+
+El microdiagnóstico autorizado de hasta US$0,05 terminó con **tres envíos**: dos Luna válidos (US$0,000120 conciliados, variable conservada) y un Sol rechazado con HTTP 400 por faltar la indicación JSON en los mensajes de entrada. La corrección está probada offline; no se envió una cuarta solicitud. Sin uso verificable de Sol, se conservan US$0,010256 de reserva, adicionales a los US$0,00249593 históricos intactos. La exposición del diagnóstico es US$0,010376 entre gasto y reserva, no gasto confirmado. Falta demostrar el evaluador corregido mediante API; este ejercicio sintético no acredita calidad lingüística.
+
+La preparación aislada usa **Amber Guard instalado 1.9.2** (1.09.2 del autor), ligado al hash del plugin. El [historial del autor](https://www.nexusmods.com/skyrimspecialedition/mods/55564?tab=logs) indica que 1.10.x sustituyó misiones/diálogos; esa documentación reciente no respalda el lore antiguo. De 146 entradas inventariadas quedan 132 traducibles, 13 nombres conservados y un identificador. Las cuatro cartas/notas se resolvieron con su propio cuerpo; Karthgrav se conserva sin aprobar un término maestro. Se añadieron 43 campos del plugin solo como contexto, incluyendo NPC fuera del inventario ganador. No se propone sobrescribirlos.
+
+Se recuperaron 14 hablantes; las tareas de contexto bajaron de 32 a **3 títulos de misión**, pendientes sin inventar narrativa. Preparación: 133 unidades segmentadas, 17 solicitudes de generación, cero retenidas por tamaño. Reserva conservadora de generación US$0,040590 más bolsa propuesta de evaluación US$0,08: **US$0,120590**. No es gasto, permiso ni garantía de cobertura completa de revisión. Piloto completo no ejecutado; la exportación y compatibilidad en juego siguen pendientes.
 
 ## Dónde está el proyecto
 
 **Depuración posterior a Plan B:** suite 389/389 tras tres refactorizaciones verificadas por separado. Se conectó la posedición recomprobada al visor/staging pendiente, se hizo atómica la procedencia de simulación y se optimizaron caché y muestreo sin cambiar sus contratos. Código privado en `codex/plan-b-cleanup-20261106`, commit funcional `e260fc6`; originales, TM y diarios históricos conservados. No se midió mejora lingüística ni se consumió API.
 
-**Plan B implementado, 2026-11-06:** nuevo modo aislado `mass`, con despachador/libro global por modelo y etapa, cohortes reanudables, manifiestos, referencias aprobadas en solo lectura y caché de candidatas. Integra contexto existente, QA completo, muestra independiente antes del riesgo, Luna auxiliar o Terra opcional, Sol selectivo y posedición acotada. No aplica automáticamente el 2 %/14 del ejecutor legado. El backend pagado exige un permiso nuevo y permanece bloqueado; la CLI solo prepara/simula. [Implementación, diagrama, pruebas, costes y piloto](https://github.com/DanielLopezzz/Antigravity-MD-Skyrim/blob/4060d9f3581df44732228c7cb3eb46ae8646ad3b/Fase10_Evolucion_Linguistica/PlanB_20261106/README.md).
+**Plan B implementado, 2026-11-06:** nuevo modo aislado `mass`, con despachador/libro global por modelo y etapa, cohortes reanudables, manifiestos, referencias aprobadas en solo lectura y caché de candidatas. Integra contexto existente, QA completo, muestra independiente antes del riesgo, Luna auxiliar o Terra opcional, Sol selectivo y posedición acotada. No aplica automáticamente el 2 %/14 del ejecutor legado. El backend pagado exige un permiso nuevo y permanece bloqueado; la CLI solo prepara/simula. [Implementación, diagrama, pruebas, costes y piloto](../NolvusAIT_Intelligence/20261106_PlanB/README.md).
 
-El alcance offline de Amber Guard está preparado: 128 entradas traducibles, cinco pendientes de investigación, 12 nombres protegidos y un identificador. Se preservan los históricos y la reserva incierta. No se ha demostrado mejora lingüística, calibración, compatibilidad en juego ni ahorro humano; la salida provisional DSD se probó únicamente con fixtures. Las cifras verificadas finales y sus límites están en el informe enlazado.
+El corte inicial de Amber Guard tenía 128 entradas traducibles y cinco pendientes; queda sustituido por la preparación versionada del 7 de noviembre descrita arriba. Se preservan los históricos y la reserva incierta. No se ha demostrado mejora lingüística, calibración, compatibilidad en juego ni ahorro humano; la salida provisional DSD se probó únicamente con fixtures. Las cifras verificadas finales y sus límites están en el informe enlazado.
 
 Nolvus AI Translator localiza Nolvus Awakening al español latinoamericano neutro (ES-419). El piloto de 1.000 cadenas está procesado. La última ejecución real Luna/Sol terminó con ocho controles Sol y un recibo Luna incompleto con uso cero. La estabilización posterior está implementada y verificada offline; no hubo otra prueba facturable. **Quedan la revisión ciega natural y la calibración; traducción masiva y promoción productiva siguen sin autorización.**
 
@@ -22,7 +32,7 @@ Nolvus AI Translator localiza Nolvus Awakening al español latinoamericano neutr
 | Revisión humana al corte actual | 41 decisiones en la copia activa de evolución: 29 aprobaciones y 12 investigaciones; el archivo humano continúa activo |
 | Consumo acumulado del cuarto piloto | US$0,1176624 de US$0,17; 50 respuestas reales, sin llamadas pendientes |
 | TM del staging / promoción a producción | 0 / 0; no se crearon aprobaciones humanas automáticas |
-| Última suite registrada | 389/389; seis regresiones de depuración sobre las 383 de Plan B |
+| Última suite registrada | 394/394; cinco regresiones adicionales de diagnóstico/contexto |
 | Código local | Rama `codex/plan-b-cleanup-20261106`, commit funcional `e260fc6`; conserva `25c3297`, `6a153dd` y los anteriores, con código solo privado |
 
 El coste histórico del cuarto piloto fue calculado con tokens reportados y tarifa registrada; no certifica la factura ni una tarifa vigente. Las 110 pruebas de cierre de aquel piloto reforzaron la forma SHA-256 offline. El consumo y los límites de la nueva ejecución se registran por separado en «Próximos pasos».
@@ -83,7 +93,7 @@ La coherencia entre registros ya incorpora nombres localizados con identidad/pro
 
 | Orden | Trabajo pendiente | Condición para avanzar |
 |---|---|---|
-| 1 | Microdiagnóstico independiente del nuevo perfil | Autorización específica: dos Luna y un Sol, hasta US$0,05; no reabre el diario detenido |
+| 1 | Confirmar por API el evaluador corregido y después el piloto de Amber Guard | Tres envíos autorizados ya consumidos; cualquier llamada nueva exige alcance/presupuesto específico |
 | 2 | Aclarar el recibo económico incierto y conservar cuarentenas históricas | Evidencia del proveedor; no liberar US$0,00249593 ni reenviar su fuente |
 | 3 | Adjudicar las parejas conservadas | Evaluación ciega; distinguir validación mecánica, naturalidad y fidelidad |
 | 4 | Completar y calibrar el juez sobre casos naturales | Ocho controles pasados no miden falsas aprobaciones ni ahorro humano |
@@ -105,4 +115,4 @@ El ejecutor legado mantiene Sol selectivo con muestreo ordinario del 2 % y hasta
 
 Se unificaron recibos/telemetría, se añadió contrato compacto con identidades locales y razonamiento acotado, y se corrigieron intención de envío, reanudación, contexto TM/diferencial, importación protegida y exportación reversible. La carga sintética de 1.000 fuentes aisló cuatro lotes defectuosos y conservó/importó 900 candidatas pendientes; reanudar añadió cero llamadas. No mide calidad lingüística. 68/68 archivos protegidos y 41 decisiones conservados; cero HTTP facturables, créditos o aprobaciones nuevas. [Cambios implementados y límites](https://github.com/DanielLopezzz/Antigravity-MD-Skyrim/blob/codex/terminology-continuity-docs-20261106/Fase10_Evolucion_Linguistica/Stabilization_20261106/README.md).
 
-Quedó preparado y simulado el microdiagnóstico, con cap propuesto US$0,05 y reserva máxima US$0,0469568 dentro del margen conservador previo. La reserva incierta anterior sigue retenida y su causa no está probada. Faltan autorización específica y validación real del perfil; no se declara producción lista.
+La preparación histórica del microdiagnóstico no se reabrió. El resultado real del nuevo perfil y sus reservas están en el corte del 7 de noviembre al inicio. No se declara producción lista.
