@@ -1,6 +1,12 @@
 # Guía de uso y revisión local
 
-Actualizada el **2026-11-06** a partir de los lanzadores, CLI y visor existentes. [Estado y pendientes](ESTADO_ACTUAL.md) · [Referencia técnica](REFERENCIA_TECNICA.md).
+Actualizada el **2026-11-07** a partir de los lanzadores, CLI y visor existentes. [Estado y pendientes](ESTADO_ACTUAL.md) · [Referencia técnica](REFERENCIA_TECNICA.md).
+
+## Preparación vigente de Amber Guard
+
+La carpeta privada vigente es `NolvusAIT_Intelligence/20261107_AmberGuard/private/pilot_prepared_v4/run`; contiene manifiestos, plan y tres tareas contextuales pendientes. `pilot_preflight.json` resume el alcance y el presupuesto propuesto; `classification_overlay.json` justifica las cinco reclasificaciones locales. Los anteriores `full_mod_pilot_v2` y preparados intermedios se conservan como evidencia.
+
+Consultar ese proyecto no consume API ni acredita aprobación. Sus 132 cadenas todavía no tienen traducciones nuevas. El diagnóstico real está separado en `micro_live/result.json`, con recibos en su ledger; no volver a ejecutar su runner para obtener un reintento. Sol agotó el tercer envío del alcance inicial y conserva su reserva. La confirmación posterior está en `sol_confirmation/result.json`: una llamada nueva, coste US$0,000918, error numérico detectado pero categoría fuera de contrato. No volver a ejecutar su runner; el recibo y su rechazo se conservan. La comprobación posterior está en `sol_strict_confirmation/result.json`: una llamada nueva de US$0,001198, evidencia numérica aceptada sin aprobación editorial. `offline_replay.json` verifica reutilización con cero HTTP; no ejecutar runners para repetir diagnósticos. El intercambio técnico del juez quedó confirmado. Antes del piloto completo deben tratarse los tres títulos sin contexto y fijarse un permiso económico específico; la calibración natural todavía falta. No importar a producción ni instalar en MO2.
 
 ## Accesos desde la raíz del workspace
 
@@ -10,7 +16,7 @@ Tras la depuración, el visor y el staging pendiente muestran la posedición rec
 
 Usa el Python del entorno `.venv` desde el workspace. `--project` identifica la cartera compartida; `--run-name` permite otro mod o una revisión del manifiesto dentro de esa misma cartera, conservando gastos y caché. El valor predeterminado es `run`. La carpeta `private/full_mod_pilot_v2` de la entrega local contiene la preparación offline; no contiene traducciones nuevas.
 
-Para revisar: `python -m nolvus_translator mass review --project <proyecto>`, o el botón **Abrir revisión Plan B** de la pestaña Revisión. Se guardan decisiones en el overlay privado del proyecto, sin escribir la TM maestra. No hay que aprobar toda la población para consultar una muestra. Los comandos existentes de pilotos históricos conservan su alcance anterior. [Procedimiento de piloto y límites](https://github.com/DanielLopezzz/Antigravity-MD-Skyrim/blob/4060d9f3581df44732228c7cb3eb46ae8646ad3b/Fase10_Evolucion_Linguistica/PlanB_20261106/README.md#9-procedimiento-para-un-piloto-de-un-mod-completo).
+Para revisar: `python -m nolvus_translator mass review --project <proyecto>`, o el botón **Abrir revisión Plan B** de la pestaña Revisión. Se guardan decisiones en el overlay privado del proyecto, sin escribir la TM maestra. No hay que aprobar toda la población para consultar una muestra. Los comandos existentes de pilotos históricos conservan su alcance anterior. [Procedimiento de piloto y límites](../NolvusAIT_Intelligence/20261106_PlanB/README.md#9-procedimiento-para-un-piloto-de-un-mod-completo).
 
 | Acceso | Qué abre |
 |---|---|
