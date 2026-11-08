@@ -2,6 +2,10 @@
 
 Actualizado el **2026-11-07**. Es un índice de hechos cerrados y decisiones sustituidas, no una guía de ejecución. [Estado vigente](ESTADO_ACTUAL.md) · [Uso](GUIA_DE_USO.md) · [Reglas](REFERENCIA_TECNICA.md).
 
+## Confirmación acotada de Sol, 2026-11-07
+
+Con autorización posterior se envió una solicitud nueva, sin reabrir diarios: US$0,000918 conciliados. Sol aceptó JSON y señaló 10→20, pero el enum traducido `fidelidad` provocó rechazo de contrato. Se conservó el recibo, no hubo reenvío ni aprobación, y se añadió esquema estricto para evaluación. Suite 395/395; el nuevo esquema se verificó solo offline. Los 79 archivos protegidos, incluidos los del diagnóstico previo, permanecieron idénticos.
+
 ## Diagnóstico y preparación versionada, 2026-11-07
 
 Se ejecutó únicamente el alcance autorizado de dos Luna y un Sol, cap US$0,05. Dos respuestas válidas de Luna; Sol HTTP 400 sin evaluación ni uso verificable. Se conservaron recibo/reserva y se corrigió el formato offline, sin cuarto envío. No demuestra mejora lingüística. El detalle económico vigente está en ESTADO_ACTUAL.

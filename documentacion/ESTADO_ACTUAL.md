@@ -4,9 +4,9 @@ Verificado el **2026-11-07**. Esta es la fuente del estado vigente; [uso](GUIA_D
 
 ## Amber Guard: corte verificado del 7 de noviembre
 
-Código privado `40335ec`, rama `codex/amber-guard-pilot-20261107`; suite **394/394**. Se corrigió la entrada JSON del evaluador, se recuperan hablantes solo con condiciones de identidad inequívocas y se distinguen temas/prompts de respuestas NPC. No se crearon aprobaciones ni se modificaron producción o históricos protegidos.
+Código privado `40335ec`, rama `codex/amber-guard-pilot-20261107`; suite **395/395**. Se corrigió la entrada JSON del evaluador, se recuperan hablantes solo con condiciones de identidad inequívocas y se distinguen temas/prompts de respuestas NPC. No se crearon aprobaciones ni se modificaron producción o históricos protegidos.
 
-El microdiagnóstico autorizado de hasta US$0,05 terminó con **tres envíos**: dos Luna válidos (US$0,000120 conciliados, variable conservada) y un Sol rechazado con HTTP 400 por faltar la indicación JSON en los mensajes de entrada. La corrección está probada offline; no se envió una cuarta solicitud. Sin uso verificable de Sol, se conservan US$0,010256 de reserva, adicionales a los US$0,00249593 históricos intactos. La exposición del diagnóstico es US$0,010376 entre gasto y reserva, no gasto confirmado. Falta demostrar el evaluador corregido mediante API; este ejercicio sintético no acredita calidad lingüística.
+El microdiagnóstico autorizado de hasta US$0,05 terminó con **tres envíos**: dos Luna válidos (US$0,000120 conciliados, variable conservada) y un Sol rechazado con HTTP 400 por faltar la indicación JSON en los mensajes de entrada. La corrección está probada offline; no se envió una cuarta solicitud. Sin uso verificable de Sol, se conservan US$0,010256 de reserva, adicionales a los US$0,00249593 históricos intactos. La exposición del diagnóstico es US$0,010376 entre gasto y reserva, no gasto confirmado. Una autorización posterior permitió una sola llamada adicional a Sol, por US$0,000918: aceptó JSON y detectó el cambio 10→20, pero devolvió la categoría española `fidelidad`, incompatible con el enum `accuracy`. El recibo quedó conciliado y `protocol_failed`, sin aprobación ni reenvío. Se sustituyó la evaluación por contrato `evaluation-v1` con JSON Schema estricto y enums explícitos; comprobado offline, todavía no por API. Gasto conciliado acumulado de ambos diagnósticos US$0,001038; ambas reservas anteriores siguen intactas. No acredita calidad lingüística ni confirma aún el circuito de revisión completo.
 
 La preparación aislada usa **Amber Guard instalado 1.9.2** (1.09.2 del autor), ligado al hash del plugin. El [historial del autor](https://www.nexusmods.com/skyrimspecialedition/mods/55564?tab=logs) indica que 1.10.x sustituyó misiones/diálogos; esa documentación reciente no respalda el lore antiguo. De 146 entradas inventariadas quedan 132 traducibles, 13 nombres conservados y un identificador. Las cuatro cartas/notas se resolvieron con su propio cuerpo; Karthgrav se conserva sin aprobar un término maestro. Se añadieron 43 campos del plugin solo como contexto, incluyendo NPC fuera del inventario ganador. No se propone sobrescribirlos.
 
@@ -32,7 +32,7 @@ Nolvus AI Translator localiza Nolvus Awakening al español latinoamericano neutr
 | Revisión humana al corte actual | 41 decisiones en la copia activa de evolución: 29 aprobaciones y 12 investigaciones; el archivo humano continúa activo |
 | Consumo acumulado del cuarto piloto | US$0,1176624 de US$0,17; 50 respuestas reales, sin llamadas pendientes |
 | TM del staging / promoción a producción | 0 / 0; no se crearon aprobaciones humanas automáticas |
-| Última suite registrada | 394/394; cinco regresiones adicionales de diagnóstico/contexto |
+| Última suite registrada | 395/395; incluye regresión de esquema y categorías del evaluador |
 | Código local | Rama `codex/plan-b-cleanup-20261106`, commit funcional `e260fc6`; conserva `25c3297`, `6a153dd` y los anteriores, con código solo privado |
 
 El coste histórico del cuarto piloto fue calculado con tokens reportados y tarifa registrada; no certifica la factura ni una tarifa vigente. Las 110 pruebas de cierre de aquel piloto reforzaron la forma SHA-256 offline. El consumo y los límites de la nueva ejecución se registran por separado en «Próximos pasos».
@@ -93,7 +93,7 @@ La coherencia entre registros ya incorpora nombres localizados con identidad/pro
 
 | Orden | Trabajo pendiente | Condición para avanzar |
 |---|---|---|
-| 1 | Confirmar por API el evaluador corregido y después el piloto de Amber Guard | Tres envíos autorizados ya consumidos; cualquier llamada nueva exige alcance/presupuesto específico |
+| 1 | Confirmar por API el evaluador corregido y después el piloto de Amber Guard | Dos diagnósticos consumidos (3+1 envíos); esquema estricto del juez pendiente de comprobación real, con nuevo alcance específico |
 | 2 | Aclarar el recibo económico incierto y conservar cuarentenas históricas | Evidencia del proveedor; no liberar US$0,00249593 ni reenviar su fuente |
 | 3 | Adjudicar las parejas conservadas | Evaluación ciega; distinguir validación mecánica, naturalidad y fidelidad |
 | 4 | Completar y calibrar el juez sobre casos naturales | Ocho controles pasados no miden falsas aprobaciones ni ahorro humano |

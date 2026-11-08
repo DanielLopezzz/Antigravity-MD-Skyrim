@@ -4,9 +4,9 @@ Actualizada el **2026-11-07** a partir de los lanzadores, CLI y visor existentes
 
 ## Preparación vigente de Amber Guard
 
-La carpeta privada vigente es `NolvusAIT_Intelligence/20261107_AmberGuard/private/pilot_prepared_v3/run`; contiene manifiestos, plan y tres tareas contextuales pendientes. `pilot_preflight.json` resume el alcance y el presupuesto propuesto; `classification_overlay.json` justifica las cinco reclasificaciones locales. Los anteriores `full_mod_pilot_v2` y preparados intermedios se conservan como evidencia.
+La carpeta privada vigente es `NolvusAIT_Intelligence/20261107_AmberGuard/private/pilot_prepared_v4/run`; contiene manifiestos, plan y tres tareas contextuales pendientes. `pilot_preflight.json` resume el alcance y el presupuesto propuesto; `classification_overlay.json` justifica las cinco reclasificaciones locales. Los anteriores `full_mod_pilot_v2` y preparados intermedios se conservan como evidencia.
 
-Consultar ese proyecto no consume API ni acredita aprobación. Sus 132 cadenas todavía no tienen traducciones nuevas. El diagnóstico real está separado en `micro_live/result.json`, con recibos en su ledger; no volver a ejecutar su runner para obtener un reintento. Sol agotó el tercer envío autorizado y conserva reserva por uso no verificable. Antes del piloto completo deben confirmarse la corrección del juez, los tres títulos sin contexto y un permiso económico específico. No importar a producción ni instalar en MO2.
+Consultar ese proyecto no consume API ni acredita aprobación. Sus 132 cadenas todavía no tienen traducciones nuevas. El diagnóstico real está separado en `micro_live/result.json`, con recibos en su ledger; no volver a ejecutar su runner para obtener un reintento. Sol agotó el tercer envío del alcance inicial y conserva su reserva. La confirmación posterior está en `sol_confirmation/result.json`: una llamada nueva, coste US$0,000918, error numérico detectado pero categoría fuera de contrato. No volver a ejecutar su runner; el recibo y su rechazo se conservan. La evaluación estricta posterior solo fue probada offline. Antes del piloto completo deben confirmarse la corrección del juez, los tres títulos sin contexto y un permiso económico específico. No importar a producción ni instalar en MO2.
 
 ## Accesos desde la raíz del workspace
 
