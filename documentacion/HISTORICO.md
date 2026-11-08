@@ -2,9 +2,9 @@
 
 Actualizado el **2026-11-07**. Es un índice de hechos cerrados y decisiones sustituidas, no una guía de ejecución. [Estado vigente](ESTADO_ACTUAL.md) · [Uso](GUIA_DE_USO.md) · [Reglas](REFERENCIA_TECNICA.md).
 
-## Continuación técnica offline de Amber Guard, 2026-11-07
+## Continuación técnica y reparación focalizada de Amber Guard, 2026-11-07 / 2026-11-08
 
-Conexión inmutable del glosario maestro aprobado (`ApprovedGlossaryView`, 109 entradas), aplicación por identidad/sentido (`1.0.3`), consistencia entre registros y candidatas hermanas sin aprobar (`coherence-1.2`), abstención de posedición ante originales ambiguos (`risk-2.4.0`) y preparación offline sin ejecutar de la reparación focalizada de 11 unidades (conservando 121/132 candidatas; cap cerrado requerido US$0,093514, sin permiso creado). Código privado `8a2bc23`, suite completa 403/403, cero HTTP/créditos, candado activo y 180/180 archivos protegidos idénticos. Detalle vigente en ESTADO_ACTUAL.
+Conexión inmutable del glosario maestro aprobado (`ApprovedGlossaryView`, 109 entradas), aplicación por identidad/sentido (`1.0.3`), consistencia entre registros y candidatas hermanas sin aprobar (`coherence-1.2`), adaptación contextual ante inglés defectuoso con contexto (`risk-2.4.0`), registro de 5 decisiones humanas aprobadas por Daniel y ejecución autorizada de la reparación focalizada de 11 unidades (`amber_guard_1_09_2_focused_repair_v1`, conservando 121/132 candidatas; 9 solicitudes reales Luna/Sol, US$0,011996 conciliados frente al cap US$0,093406, primer ciclo natural completo `Sol → posedición Luna → recomprobación Sol` en `0006DBE1`, replay con cero HTTP, candado activo y 180/180 archivos protegidos idénticos). Detalle vigente en ESTADO_ACTUAL.
 
 ## Revisión documental, 2026-11-07
 
