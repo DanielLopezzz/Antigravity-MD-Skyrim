@@ -2,6 +2,10 @@
 
 Actualizado el **2026-11-07**. Es un índice de hechos cerrados y decisiones sustituidas, no una guía de ejecución. [Estado vigente](ESTADO_ACTUAL.md) · [Uso](GUIA_DE_USO.md) · [Reglas](REFERENCIA_TECNICA.md).
 
+## Revisión documental, 2026-11-07
+
+Se corrigieron referencias a última ejecución, preparaciones presentadas como vigentes, límites heredados de Sol, dependencias, rutas del piloto, lectura de su libro económico y enlaces de la entrega inicial. Se actualizaron README y los cuatro documentos, conservando resultados e informes cerrados. Sin cambios funcionales ni llamadas API; no se repitió la suite de código por esta edición documental.
+
 ## Piloto real de Amber Guard, 2026-11-07
 
 Autorizado tras la propuesta US$0,120590: 132 fuentes/133 unidades, 17 Luna y dos Sol, US$0,009556 conciliados. Reensambladas 132 candidatas; cero aprobaciones, posediciones, reenvíos o reservas pendientes nuevas. Hallazgos posteriores: omisión de T, nombres inconsistentes, ortografía/formato y ambigüedad del original; la preparación no conectó el glosario maestro. Sol no señaló errores en sus dos muestras, sin certificar el conjunto. Métricas, limitaciones y pasos siguientes en ESTADO_ACTUAL.
@@ -10,7 +14,7 @@ Se corrigió compatibilidad del visor con metadatos y prioridad Plan B; suites c
 
 ## Confirmación del contrato estricto, 2026-11-07
 
-Con autorización posterior: un Sol, US$0,001198 conciliados, 10→20 detectado como `accuracy/major`, evidencia aceptada y cero aprobaciones editoriales. Cero reservas pendientes nuevas, 88 archivos protegidos idénticos y candado restaurado. Reanudación offline con cero HTTP y hash del recibo intacto. Sin cambios funcionales adicionales; continúa vigente la suite 395/395. Calidad natural y piloto completo pendientes; detalle económico acumulado en ESTADO_ACTUAL.
+Con autorización posterior: un Sol, US$0,001198 conciliados, 10→20 detectado como `accuracy/major`, evidencia aceptada y cero aprobaciones editoriales. Cero reservas pendientes nuevas, 88 archivos protegidos idénticos y candado restaurado. Reanudación offline con cero HTTP y hash del recibo intacto. En aquel corte no hubo cambios funcionales adicionales: suite 395/395. La calibración y el piloto completo aún estaban pendientes; el piloto se ejecutó después, según el apartado superior; detalle económico acumulado en ESTADO_ACTUAL.
 
 ## Confirmación acotada de Sol, 2026-11-07
 
@@ -26,7 +30,7 @@ Se completaron las cinco clasificaciones pendientes en un overlay nuevo, se inco
 
 **Depuración de Plan B, 2026-11-06:** 385/385, 387/387 y 389/389 pruebas completas después de cada bloque. Lectura coherente y agrupada de caché, posedición conectada al staging/visor, procedencia atómica, utilidades compartidas y muestreo equivalente más eficiente. Se conservaron lectores/ejecutores históricos y datos aprobados; cero solicitudes reales a IA. Las mediciones de planificación de la entrega inicial son su corte histórico, no un benchmark nuevo de esta depuración.
 
-**Plan B, 2026-11-06:** implementación privada de ejecución por cohortes y libro compartido, revisión escalonada y entrega provisional aislada, posterior al dictamen estratégico B. Pruebas offline y preparación de un mod completo; sin nuevas solicitudes a modelos, promociones ni cambios en la reserva histórica. Los ejecutores anteriores se conservaron para compatibilidad. [Entrega y evidencias agregadas](../NolvusAIT_Intelligence/20261106_PlanB/README.md).
+**Plan B, 2026-11-06:** implementación privada de ejecución por cohortes y libro compartido, revisión escalonada y entrega provisional aislada, posterior al dictamen estratégico B. Pruebas offline y preparación de un mod completo; sin nuevas solicitudes a modelos, promociones ni cambios en la reserva histórica. Los ejecutores anteriores se conservaron para compatibilidad. [Entrega y evidencias agregadas](https://github.com/DanielLopezzz/Antigravity-MD-Skyrim/blob/4060d9f3581df44732228c7cb3eb46ae8646ad3b/Fase10_Evolucion_Linguistica/PlanB_20261106/README.md).
 
 | Corte | Qué quedó registrado | Qué no debe inferirse |
 |---|---|---|
@@ -48,7 +52,7 @@ Se completaron las cinco clasificaciones pendientes en un overlay nuevo, se inco
 
 **Terminología contextual y continuidad, 2026-11-06:** extensión del sidecar/registro/diario existentes y flujo integrado offline Luna/Sol; ámbitos semánticos, validación completa, aislamiento de lotes y bloqueos de seguridad. Suite 298/298; carga sintética y reanudación sin reenvío, cero créditos o aprobaciones nuevas. No sustituye runners históricos ni reabre el piloto detenido. [Informe y evidencia agregada](https://github.com/DanielLopezzz/Antigravity-MD-Skyrim/blob/codex/terminology-continuity-docs-20261106/Fase10_Evolucion_Linguistica/TerminologyContinuity_20261106/README.md).
 
-**Barrido y preparación acotada Luna/Sol, 2026-11-06:** correcciones demostradas, suite 307/307 y replay offline sin intercambios adicionales. Plan vigente de 1.050 fuentes, 100 traducciones nuevas y 14 revisiones naturales Sol, cap US$0,30; conserva borradores anteriores, pilotos y decisiones. No hubo API ni mejora lingüística real medida. [Informe y alcance económico](https://github.com/DanielLopezzz/Antigravity-MD-Skyrim/blob/codex/terminology-continuity-docs-20261106/Fase10_Evolucion_Linguistica/HeavyTrial_20261106/README.md).
+**Barrido y preparación acotada Luna/Sol, 2026-11-06:** correcciones demostradas, suite 307/307 y replay offline sin intercambios adicionales. Plan de aquel corte: 1.050 fuentes, 100 traducciones nuevas y 14 revisiones naturales Sol, cap US$0,30; conserva borradores anteriores, pilotos y decisiones. No hubo API ni mejora lingüística real medida. [Informe y alcance económico](https://github.com/DanielLopezzz/Antigravity-MD-Skyrim/blob/codex/terminology-continuity-docs-20261106/Fase10_Evolucion_Linguistica/HeavyTrial_20261106/README.md).
 
 ## Informes que conviene abrir solo cuando haga falta
 
@@ -66,7 +70,7 @@ Los enlaces siguientes apuntan a la documentación ya publicada; su estructura d
 
 ## Originales y trazabilidad
 
-**Preparación pareada, 2026-11-05, posterior a ampliación documental:** 24 cadenas reales y ocho controles, contexto anterior/ampliado, conjunto enano agrupado y fuentes selladas; suite 262/262. Solo construcción y validación, sin traducción real ni API. El tope propuesto de US$0,35 requiere validación y autorización futuras. [Informe](https://github.com/DanielLopezzz/Antigravity-MD-Skyrim/blob/codex/technical-consolidation-docs-20261105/Fase10_Evolucion_Linguistica/PairedTrial_20261105/README.md).
+**Preparación pareada, 2026-11-05, posterior a ampliación documental:** 24 cadenas reales y ocho controles, contexto anterior/ampliado, conjunto enano agrupado y fuentes selladas; suite 262/262. Solo construcción y validación, sin traducción real ni API. En esa preparación el tope US$0,35 estaba propuesto; la ejecución autorizada posterior y su parada se registran arriba. [Informe](https://github.com/DanielLopezzz/Antigravity-MD-Skyrim/blob/codex/technical-consolidation-docs-20261105/Fase10_Evolucion_Linguistica/PairedTrial_20261105/README.md).
 
 **Ampliación documental, 2026-11-05, posterior a coherencia:** descubrimiento sobre 1.302 mods, integración aislada de documentos locales y resúmenes externos versionados, adjudicación de los 32 avisos y corrección de la recuperación de fuentes relevantes. Suite 253/253, cero API/créditos. [Informe y alcance real](https://github.com/DanielLopezzz/Antigravity-MD-Skyrim/blob/codex/technical-consolidation-docs-20261105/Fase10_Evolucion_Linguistica/Documentation_20261105/README.md). No se presenta el conjunto de enlaces candidatos como investigación ya completada.
 
