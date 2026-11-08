@@ -2,6 +2,14 @@
 
 Corte documental **2026-11-07**. Resume lo vigente sin sustituir los contratos del código. [Estado](ESTADO_ACTUAL.md) · [Uso](GUIA_DE_USO.md) · [Histórico y originales](HISTORICO.md).
 
+## Integración real y visor de Amber Guard
+
+El permiso del piloto liga manifiesto y wallet aislada con cap US$0,120590; límites por modelo Luna US$0,080590/Sol US$0,04 y por etapa traducción US$0,040590/revisión US$0,07/posedición US$0,01. Los sublímites no amplían el cap global. La ejecución generó 17 recibos y dos de revisión, todos conciliados; reejecutar el despachador con red bloqueada reutilizó recibos sin HTTP. Reservas anteriores permanecen aparte e intactas.
+
+El visor ahora admite `model` como alternativa a `evaluator_identity`, muestra estados Plan B y normaliza `priority` hacia la prioridad de revisión histórica. Se conservan candidatos, contratos históricos y overlays. Dos regresiones y carga offline de las 133 unidades verifican la integración, sin inicializar Tk ni declarar inspección visual realizada.
+
+La generación de este piloto no recibió el argumento de glosario maestro aunque el flujo lo admite. El visor usa términos semilla y por eso señaló dos conflictos Thane que no vio el despachador. Las referencias locales recuperadas no bastaron para imponer coherencia regional/comercial. No normalizar automáticamente palabras iguales: verificar entidad y uso, conectar referencias aprobadas por identidad y recuperar contexto de otras candidatas antes de decidir una reparación selectiva. Ninguno de estos hallazgos autoriza editar TM o glosario aprobados.
+
 ## Cambios funcionales verificados el 7 de noviembre
 
 `mass_provider` añade una instrucción de objeto JSON en un mensaje developer cuando usa `json_object`; mantenerla solo en `instructions` produjo HTTP 400 real. La traducción compacta no cambia. Tras la confirmación adicional, la evaluación opta por `response_contract=evaluation-v1`: se elimina ese marcador del contexto enviado y se exige JSON Schema estricto con claves, categorías y severidades enumeradas. Contratos desconocidos se rechazan antes de HTTP; los recibos antiguos siguen bajo validación estricta y no se recategorizan silenciosamente. Se probó el nuevo formato con Luna/Sol/Terra y caché explícita simulada; la llamada posterior confirmó aceptación JSON y detectó el error sembrado, pero no cumplió el enum local. La confirmación posterior verificó por API el esquema estricto: `accuracy/major`, spans 10 y 20, estado `machine_reviewed`. Una reanudación offline conservó el hash del recibo y añadió cero HTTP. Es un solo control sembrado; no calibración del juez ni prueba de todo el ciclo de posedición. Se mantuvieron las comprobaciones semánticas de spans, contradicciones y aprobación separada. [Documentación oficial](https://developers.openai.com/api/docs/guides/structured-outputs).

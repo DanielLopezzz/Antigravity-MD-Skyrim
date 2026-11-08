@@ -2,6 +2,12 @@
 
 Actualizado el **2026-11-07**. Es un índice de hechos cerrados y decisiones sustituidas, no una guía de ejecución. [Estado vigente](ESTADO_ACTUAL.md) · [Uso](GUIA_DE_USO.md) · [Reglas](REFERENCIA_TECNICA.md).
 
+## Piloto real de Amber Guard, 2026-11-07
+
+Autorizado tras la propuesta US$0,120590: 132 fuentes/133 unidades, 17 Luna y dos Sol, US$0,009556 conciliados. Reensambladas 132 candidatas; cero aprobaciones, posediciones, reenvíos o reservas pendientes nuevas. Hallazgos posteriores: omisión de T, nombres inconsistentes, ortografía/formato y ambigüedad del original; la preparación no conectó el glosario maestro. Sol no señaló errores en sus dos muestras, sin certificar el conjunto. Métricas, limitaciones y pasos siguientes en ESTADO_ACTUAL.
+
+Se corrigió compatibilidad del visor con metadatos y prioridad Plan B; suites completas 396/396 y 397/397, carga offline de 133 casos y reutilización de recibos con cero HTTP. Observaciones separadas de candidatas y decisiones; 100 archivos protegidos idénticos. No se instaló en Nolvus/MO2 ni se modificó producción. Código privado; publicación solo documental.
+
 ## Confirmación del contrato estricto, 2026-11-07
 
 Con autorización posterior: un Sol, US$0,001198 conciliados, 10→20 detectado como `accuracy/major`, evidencia aceptada y cero aprobaciones editoriales. Cero reservas pendientes nuevas, 88 archivos protegidos idénticos y candado restaurado. Reanudación offline con cero HTTP y hash del recibo intacto. Sin cambios funcionales adicionales; continúa vigente la suite 395/395. Calidad natural y piloto completo pendientes; detalle económico acumulado en ESTADO_ACTUAL.

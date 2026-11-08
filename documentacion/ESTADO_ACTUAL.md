@@ -4,7 +4,15 @@ Verificado el **2026-11-07**. Esta es la fuente del estado vigente; [uso](GUIA_D
 
 ## Amber Guard: corte verificado del 7 de noviembre
 
-Código privado `a85f529` (conserva `40335ec`), rama `codex/amber-guard-pilot-20261107`; suite **395/395**. Se corrigió la entrada JSON del evaluador, se recuperan hablantes solo con condiciones de identidad inequívocas y se distinguen temas/prompts de respuestas NPC. No se crearon aprobaciones ni se modificaron producción o históricos protegidos.
+Código privado `a85f529` (conserva `40335ec`), rama `codex/amber-guard-pilot-20261107`; suite **397/397**. Se corrigió la entrada JSON del evaluador, se recuperan hablantes solo con condiciones de identidad inequívocas y se distinguen temas/prompts de respuestas NPC. No se crearon aprobaciones ni se modificaron producción o históricos protegidos.
+
+**Piloto real de Amber Guard ejecutado:** 132 fuentes → 133 unidades segmentadas → 132 candidatas reensambladas; 17 solicitudes Luna (US$0,006778) y dos muestras independientes Sol (US$0,002778), total **US$0,009556**, el 7,92 % del cap autorizado US$0,120590. Cero uso incierto, reservas nuevas pendientes, reenvíos, posediciones o aprobaciones. No se importó ni instaló en producción. Sol respondió `no_issue` en sus dos muestras; no revisó todas las traducciones.
+
+El resultado técnico es satisfactorio; **la coherencia editorial aún no**. La lectura posterior identificó una inicial T omitida, Reach alternando Marca/Cuenca, variantes de tienda y de hidromiel, una tilde ausente, fechas no uniformes y una frase original defectuosa interpretada sin evidencia. Hay 17 unidades con observaciones vinculadas a hashes y dos casos adicionales en cuarentena del visor por Thane. La preparación pasó `glossary=()` al flujo: no recibió el glosario maestro; el visor sí aplicó su referencia semilla. Es una limitación de esta ejecución, no prueba de cumplimiento terminológico. No se alteraron candidatas ni términos aprobados.
+
+Se corrigió la compatibilidad del visor con `model`/`priority` de Plan B, manteniendo metadatos históricos. Sus 133 casos cargaron offline: 17 Necesita criterio, dos Cuarentena técnica, un Control de calidad y 113 Consulta opcional; una de las dos muestras de Sol está también entre los 17. Suite completa 396/396 y luego 397/397 tras ambos ajustes; repetición offline con cero HTTP y recibos intactos. Los 100 archivos protegidos permanecieron idénticos; API Lock activo. Código adicional del visor permanece privado.
+
+Coste observado: US$0,072394 por 1.000 fuentes y extrapolación lineal US$17,424063 para 240.684. Es un escenario de un mod pequeño, no presupuesto de producción: excluye reparaciones, investigación terminológica, entrega y cambios de mezcla/tamaño. Sol representa el 29,07 % del coste y solo revisó dos casos; falta medir su valor sobre riesgos naturales.
 
 Diagnósticos reales, cada confirmación con autorización independiente:
 
@@ -18,7 +26,7 @@ Diagnósticos reales, cada confirmación con autorización independiente:
 
 La preparación aislada usa **Amber Guard instalado 1.9.2** (1.09.2 del autor), ligado al hash del plugin. El [historial del autor](https://www.nexusmods.com/skyrimspecialedition/mods/55564?tab=logs) indica que 1.10.x sustituyó misiones/diálogos; esa documentación reciente no respalda el lore antiguo. De 146 entradas inventariadas quedan 132 traducibles, 13 nombres conservados y un identificador. Las cuatro cartas/notas se resolvieron con su propio cuerpo; Karthgrav se conserva sin aprobar un término maestro. Se añadieron 43 campos del plugin solo como contexto, incluyendo NPC fuera del inventario ganador. No se propone sobrescribirlos.
 
-Se recuperaron 14 hablantes; las tareas de contexto bajaron de 32 a **3 títulos de misión**, pendientes sin inventar narrativa. Preparación: 133 unidades segmentadas, 17 solicitudes de generación, cero retenidas por tamaño. Reserva conservadora de generación US$0,040590 más bolsa propuesta de evaluación US$0,08: **US$0,120590**. No es gasto, permiso ni garantía de cobertura completa de revisión. Piloto completo no ejecutado; la exportación y compatibilidad en juego siguen pendientes.
+Se recuperaron 14 hablantes; las tareas de contexto bajaron de 32 a **3 títulos de misión**, pendientes sin inventar narrativa. Preparación: 133 unidades segmentadas, 17 solicitudes de generación, cero retenidas por tamaño. Reserva conservadora de generación US$0,040590 más bolsa propuesta de evaluación US$0,08: **US$0,120590**. No es gasto, permiso ni garantía de cobertura completa de revisión. La generación y revisión selectiva de este alcance ya se ejecutaron; exportación, compatibilidad en juego y calidad global siguen pendientes.
 
 ## Dónde está el proyecto
 
@@ -40,7 +48,7 @@ Nolvus AI Translator localiza Nolvus Awakening al español latinoamericano neutr
 | Revisión humana al corte actual | 41 decisiones en la copia activa de evolución: 29 aprobaciones y 12 investigaciones; el archivo humano continúa activo |
 | Consumo acumulado del cuarto piloto | US$0,1176624 de US$0,17; 50 respuestas reales, sin llamadas pendientes |
 | TM del staging / promoción a producción | 0 / 0; no se crearon aprobaciones humanas automáticas |
-| Última suite registrada | 395/395; incluye regresión de esquema y categorías del evaluador |
+| Última suite registrada | 397/397; incluye compatibilidad del visor con dictámenes y prioridad de Plan B |
 | Código local | Rama `codex/plan-b-cleanup-20261106`, commit funcional `e260fc6`; conserva `25c3297`, `6a153dd` y los anteriores, con código solo privado |
 
 El coste histórico del cuarto piloto fue calculado con tokens reportados y tarifa registrada; no certifica la factura ni una tarifa vigente. Las 110 pruebas de cierre de aquel piloto reforzaron la forma SHA-256 offline. El consumo y los límites de la nueva ejecución se registran por separado en «Próximos pasos».
@@ -101,7 +109,7 @@ La coherencia entre registros ya incorpora nombres localizados con identidad/pro
 
 | Orden | Trabajo pendiente | Condición para avanzar |
 |---|---|---|
-| 1 | Evaluar calidad natural con el piloto de Amber Guard | Intercambio estricto confirmado; piloto completo pendiente de autorización económica y evaluación natural |
+| 1 | Corregir cobertura terminológica y consistencia entre registros | Piloto ejecutado; conservar candidatas y medir reparaciones selectivas, sin repetir toda la generación |
 | 2 | Aclarar el recibo económico incierto y conservar cuarentenas históricas | Evidencia del proveedor; no liberar US$0,00249593 ni reenviar su fuente |
 | 3 | Adjudicar las parejas conservadas | Evaluación ciega; distinguir validación mecánica, naturalidad y fidelidad |
 | 4 | Completar y calibrar el juez sobre casos naturales | Ocho controles pasados no miden falsas aprobaciones ni ahorro humano |
