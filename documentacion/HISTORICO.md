@@ -2,6 +2,10 @@
 
 Actualizado el **2026-11-07**. Es un índice de hechos cerrados y decisiones sustituidas, no una guía de ejecución. [Estado vigente](ESTADO_ACTUAL.md) · [Uso](GUIA_DE_USO.md) · [Reglas](REFERENCIA_TECNICA.md).
 
+## Continuación técnica offline de Amber Guard, 2026-11-07
+
+Conexión inmutable del glosario maestro aprobado (`ApprovedGlossaryView`, 109 entradas), aplicación por identidad/sentido (`1.0.3`), consistencia entre registros y candidatas hermanas sin aprobar (`coherence-1.2`), abstención de posedición ante originales ambiguos (`risk-2.4.0`) y preparación offline sin ejecutar de la reparación focalizada de 11 unidades (conservando 121/132 candidatas; cap cerrado requerido US$0,093514, sin permiso creado). Código privado `8a2bc23`, suite completa 403/403, cero HTTP/créditos, candado activo y 180/180 archivos protegidos idénticos. Detalle vigente en ESTADO_ACTUAL.
+
 ## Revisión documental, 2026-11-07
 
 Se corrigieron referencias a última ejecución, preparaciones presentadas como vigentes, límites heredados de Sol, dependencias, rutas del piloto, lectura de su libro económico y enlaces de la entrega inicial. Se actualizaron README y los cuatro documentos, conservando resultados e informes cerrados. Sin cambios funcionales ni llamadas API; no se repitió la suite de código por esta edición documental.

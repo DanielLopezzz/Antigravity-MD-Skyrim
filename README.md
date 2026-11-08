@@ -13,7 +13,7 @@ Localización propia de Nolvus Awakening al español latinoamericano neutro (ES-
 
 Evaluación estratégica del 2026-11-06: [viabilidad de traducción masiva y dictamen B — Evolucionar](Fase10_Evolucion_Linguistica/StrategicEvaluation_20261106/README.md), con proyección económica, alternativas y experimento propuesto. Es una evaluación; no autoriza migración ni gasto.
 
-La ejecución más reciente es Amber Guard: 132 fuentes generadas con revisión selectiva; se encontraron pendientes de coherencia y terminología. El cuarto piloto de 1.000 cadenas es un antecedente separado. El estado enlazado distingue aceptación mecánica, aprobación humana y cuarentena. No se autoriza una nueva ejecución ni producción por seguir esta documentación.
+La ejecución real más reciente es Amber Guard: 132 fuentes generadas con revisión selectiva; la continuación técnica offline posterior conectó el glosario maestro y la consistencia entre registros, conservó 121/132 candidatas y dejó preparada (sin ejecutar) una reparación focalizada acotada. El cuarto piloto de 1.000 cadenas es un antecedente separado. El estado enlazado distingue aceptación mecánica, aprobación humana y cuarentena. No se autoriza una nueva ejecución ni producción por seguir esta documentación.
 
 En el workspace local, abre `Revisar_piloto_Amber_Guard.bat` para el resultado actual. `Revisar_cuarta_prueba.bat` conserva la muestra histórica y `launch_gui.bat` abre la aplicación. El repositorio público contiene únicamente documentación: esos ejecutables y el código permanecen locales.
 

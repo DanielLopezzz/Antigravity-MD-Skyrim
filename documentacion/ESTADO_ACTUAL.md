@@ -2,6 +2,14 @@
 
 Verificado el **2026-11-07**. Esta es la fuente del estado vigente; [uso](GUIA_DE_USO.md), [reglas y arquitectura](REFERENCIA_TECNICA.md) e [histórico](HISTORICO.md) cubren temas distintos. Las cifras de revisión son un corte, no un contador en tiempo real.
 
+## Continuación técnica offline posterior a Amber Guard, 7 de noviembre
+
+Rama privada `codex/amber-guard-continuation-20261107`, commit funcional `8a2bc23` (sobre `7c37e9f` / `2dc5464`); suite completa **403/403** con cero llamadas HTTP/API nuevas, `PHASE_1_PAID_API_LOCK = True`, **180/180** archivos protegidos idénticos y cero decisiones humanas posteriores al corte en `full_pilot_live/run/private/human_reviews.json`.
+
+- **Glosario maestro conectado de extremo a extremo:** `ApprovedGlossaryView` lee en solo lectura inmutable las **109** entradas aprobadas de `workspace_data/nolvus_translator.db` (`terms_sha256` sellado en `approved_glossary.json`) y las aplica por identidad/sentido en preparación, traducción, QA, evaluación, posedición, staging y visor. Sobre las 133 unidades de Amber Guard coinciden **7** unidades: **5** ya cumplen (`Forsworn`, `Stormcloaks`, `Sovngarde`) y **2** infringen `Thane` (`000EA3F0`, `000EA3F2`). Hay **0** coincidencias exactas en la TM aprobada ES-419.
+- **Consistencia entre registros y fidelidad local:** se resuelve `The Reach → La Cuenca` a mitad de oración (`000EA415`), se degrada `Cliffside Retreat` (`000FE892`) a conflicto por sombra de homónimo local sin traducir en `Amber Guard.esp` (`CELL:FULL`), y se contrastan candidatas hermanas del mismo plugin sin convertirlas en referencias aprobadas (`Accouterments for Adventure` en facción/ubicación/llave —incluida una de las dos muestras de Sol—, `Amber Mead Distillery` frente a llave/objeto y `Eastern Tower` frente a `Eastern Tower Key`). Se añaden detectores de inicial omitida (`T` en `0006DBE1`), tilde ausente (`breton → bretón` en `000EA3F3`), abstención de posedición ante original defectuoso (`001C5086` `"You wrought if..."`), marcado `incomplete_versioned_context` para los tres títulos de misión sin narrativa vinculada y estilo informativo (`info`) para fechas entre segmentos (`0006DBE8`).
+- **Clasificación offline verificada y alcance preparado sin ejecutar:** sobre la copia aislada (`20261107_AmberGuard_Continuation/private`) se separan **4** errores demostrados, **8** inconsistencias contextuales, **4** ambigüedades del original, **2** preferencias editoriales y **6** alertas informativas; el visor carga 111 Consulta opcional, 19 Necesita criterio, dos Cuarentena técnica y un Control de calidad. Se conservan **121/132** fuentes originales (**122/133** unidades segmentadas) sin regenerar y queda preparado offline —sin `permit.json` ni envíos— el experimento focalizado `amber_guard_1_09_2_focused_repair_v1` sobre **11** unidades reparables (**3** lotes Luna, **4** revisiones estrictas Sol `evaluation-v1` y contingencia máxima de **1** posedición Luna + **1** recomprobación Sol: **7** solicitudes base / **9** máximas, tope cerrado requerido **US$0,093514**), excluyendo de reescritura automática los **5** casos ambiguos, homónimos o sin contexto (`001C5086`, `000FE892`, `0022A9E3`–`0022A9E5`). No se declara mejora lingüística real ni calibración de Sol.
+
 ## Amber Guard: corte verificado del 7 de noviembre
 
 Código privado `2dc5464` (conserva `a85f529` y `40335ec`), rama `codex/amber-guard-pilot-20261107`; suite **397/397**. Se corrigió la entrada JSON del evaluador, se recuperan hablantes solo con condiciones de identidad inequívocas y se distinguen temas/prompts de respuestas NPC. No se crearon aprobaciones ni se modificaron producción o históricos protegidos.
@@ -48,8 +56,8 @@ Nolvus AI Translator localiza Nolvus Awakening al español latinoamericano neutr
 | Revisión humana en el corte histórico | 41 decisiones en la copia activa de evolución: 29 aprobaciones y 12 investigaciones; el archivo humano continúa activo |
 | Consumo acumulado del cuarto piloto | US$0,1176624 de US$0,17; 50 respuestas reales, sin llamadas pendientes |
 | TM del staging / promoción a producción | 0 / 0; no se crearon aprobaciones humanas automáticas |
-| Última suite registrada | 397/397; incluye compatibilidad del visor con dictámenes y prioridad de Plan B |
-| Código vigente | Rama privada `codex/amber-guard-pilot-20261107`, commit funcional `2dc5464`; conserva las etapas y lectores anteriores |
+| Última suite registrada | 403/403 (conserva el corte previo 397/397); glosario inmutable, coherencia entre registros y abstención por ambigüedad |
+| Código vigente | Rama privada `codex/amber-guard-continuation-20261107`, commit funcional `8a2bc23` (conserva `2dc5464` y etapas anteriores) |
 
 El coste histórico del cuarto piloto fue calculado con tokens reportados y tarifa registrada; no certifica la factura ni una tarifa vigente. Las 110 pruebas de cierre de aquel piloto reforzaron la forma SHA-256 offline. El consumo y los límites de la nueva ejecución se registran por separado en «Próximos pasos».
 
@@ -111,7 +119,7 @@ La coherencia entre registros ya incorpora nombres localizados con identidad/pro
 
 | Orden | Trabajo pendiente | Condición para avanzar |
 |---|---|---|
-| 1 | Corregir cobertura terminológica y consistencia entre registros | Piloto ejecutado; conservar candidatas y medir reparaciones selectivas, sin repetir toda la generación |
+| 1 | Autorizar o revisar la reparación focalizada de Amber Guard (11 unidades) y adjudicar los 5 casos humanos | Glosario y consistencia ya conectados offline; conservar 121/132 candidatas y decidir con permiso explícito (cap US$0,093514) |
 | 2 | Aclarar el recibo económico incierto y conservar cuarentenas históricas | Conciliar por separado US$0,00249593 históricos y US$0,010256 del diagnóstico; no liberar reservas ni reenviar por suposición |
 | 3 | Adjudicar las parejas conservadas | Evaluación ciega; distinguir validación mecánica, naturalidad y fidelidad |
 | 4 | Completar y calibrar el juez sobre casos naturales | Ocho controles pasados no miden falsas aprobaciones ni ahorro humano |
