@@ -4,7 +4,7 @@ Verificado el **2026-11-07**. Esta es la fuente del estado vigente; [uso](GUIA_D
 
 ## Amber Guard: corte verificado del 7 de noviembre
 
-Código privado `a85f529` (conserva `40335ec`), rama `codex/amber-guard-pilot-20261107`; suite **397/397**. Se corrigió la entrada JSON del evaluador, se recuperan hablantes solo con condiciones de identidad inequívocas y se distinguen temas/prompts de respuestas NPC. No se crearon aprobaciones ni se modificaron producción o históricos protegidos.
+Código privado `2dc5464` (conserva `a85f529` y `40335ec`), rama `codex/amber-guard-pilot-20261107`; suite **397/397**. Se corrigió la entrada JSON del evaluador, se recuperan hablantes solo con condiciones de identidad inequívocas y se distinguen temas/prompts de respuestas NPC. No se crearon aprobaciones ni se modificaron producción o históricos protegidos.
 
 **Piloto real de Amber Guard ejecutado:** 132 fuentes → 133 unidades segmentadas → 132 candidatas reensambladas; 17 solicitudes Luna (US$0,006778) y dos muestras independientes Sol (US$0,002778), total **US$0,009556**, el 7,92 % del cap autorizado US$0,120590. Cero uso incierto, reservas nuevas pendientes, reenvíos, posediciones o aprobaciones. No se importó ni instaló en producción. Sol respondió `no_issue` en sus dos muestras; no revisó todas las traducciones.
 
