@@ -6,7 +6,15 @@ Verificado el **2026-11-07**. Esta es la fuente del estado vigente; [uso](GUIA_D
 
 Código privado `a85f529` (conserva `40335ec`), rama `codex/amber-guard-pilot-20261107`; suite **395/395**. Se corrigió la entrada JSON del evaluador, se recuperan hablantes solo con condiciones de identidad inequívocas y se distinguen temas/prompts de respuestas NPC. No se crearon aprobaciones ni se modificaron producción o históricos protegidos.
 
-El microdiagnóstico autorizado de hasta US$0,05 terminó con **tres envíos**: dos Luna válidos (US$0,000120 conciliados, variable conservada) y un Sol rechazado con HTTP 400 por faltar la indicación JSON en los mensajes de entrada. La corrección está probada offline; no se envió una cuarta solicitud. Sin uso verificable de Sol, se conservan US$0,010256 de reserva, adicionales a los US$0,00249593 históricos intactos. La exposición del diagnóstico es US$0,010376 entre gasto y reserva, no gasto confirmado. Una autorización posterior permitió una sola llamada adicional a Sol, por US$0,000918: aceptó JSON y detectó el cambio 10→20, pero devolvió la categoría española `fidelidad`, incompatible con el enum `accuracy`. El recibo quedó conciliado y `protocol_failed`, sin aprobación ni reenvío. Se sustituyó la evaluación por contrato `evaluation-v1` con JSON Schema estricto y enums explícitos; comprobado offline, todavía no por API. Gasto conciliado acumulado de ambos diagnósticos US$0,001038; ambas reservas anteriores siguen intactas. No acredita calidad lingüística ni confirma aún el circuito de revisión completo.
+Diagnósticos reales, cada confirmación con autorización independiente:
+
+| Alcance | Resultado | Coste conciliado |
+|---|---|---|
+| Inicial: dos Luna y un Sol, cap US$0,05 | Luna válidos y variable conservada; Sol HTTP 400 por indicación JSON ausente de entrada | US$0,000120 |
+| Confirmación JSON: un Sol, cap US$0,02 | Detectó 10→20, pero devolvió `fidelidad`; rechazado como `protocol_failed` | US$0,000918 |
+| Confirmación de esquema estricto: un Sol, cap US$0,02 | Detectó 10→20 como `accuracy/major`; evidencia aceptada, estado `machine_reviewed` | US$0,001198 |
+
+**Total conciliado: US$0,002236**, cinco envíos en tres alcances; no hubo reenvíos automáticos. La reserva US$0,010256 del HTTP 400 sigue retenida, separada de los US$0,00249593 históricos intactos; no son gasto confirmado. La última confirmación no deja reserva pendiente nueva. Reanudarla offline reutilizó el mismo recibo con cero HTTP y saldos verificados. Los 88 archivos protegidos permanecieron idénticos y API Lock quedó activo. El esquema `evaluation-v1` ya está confirmado por API en un caso numérico sembrado; no acredita calibración, calidad lingüística natural, posedición completa o preparación para producción.
 
 La preparación aislada usa **Amber Guard instalado 1.9.2** (1.09.2 del autor), ligado al hash del plugin. El [historial del autor](https://www.nexusmods.com/skyrimspecialedition/mods/55564?tab=logs) indica que 1.10.x sustituyó misiones/diálogos; esa documentación reciente no respalda el lore antiguo. De 146 entradas inventariadas quedan 132 traducibles, 13 nombres conservados y un identificador. Las cuatro cartas/notas se resolvieron con su propio cuerpo; Karthgrav se conserva sin aprobar un término maestro. Se añadieron 43 campos del plugin solo como contexto, incluyendo NPC fuera del inventario ganador. No se propone sobrescribirlos.
 
@@ -93,7 +101,7 @@ La coherencia entre registros ya incorpora nombres localizados con identidad/pro
 
 | Orden | Trabajo pendiente | Condición para avanzar |
 |---|---|---|
-| 1 | Confirmar por API el evaluador corregido y después el piloto de Amber Guard | Dos diagnósticos consumidos (3+1 envíos); esquema estricto del juez pendiente de comprobación real, con nuevo alcance específico |
+| 1 | Evaluar calidad natural con el piloto de Amber Guard | Intercambio estricto confirmado; piloto completo pendiente de autorización económica y evaluación natural |
 | 2 | Aclarar el recibo económico incierto y conservar cuarentenas históricas | Evidencia del proveedor; no liberar US$0,00249593 ni reenviar su fuente |
 | 3 | Adjudicar las parejas conservadas | Evaluación ciega; distinguir validación mecánica, naturalidad y fidelidad |
 | 4 | Completar y calibrar el juez sobre casos naturales | Ocho controles pasados no miden falsas aprobaciones ni ahorro humano |

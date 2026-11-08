@@ -2,6 +2,10 @@
 
 Actualizado el **2026-11-07**. Es un índice de hechos cerrados y decisiones sustituidas, no una guía de ejecución. [Estado vigente](ESTADO_ACTUAL.md) · [Uso](GUIA_DE_USO.md) · [Reglas](REFERENCIA_TECNICA.md).
 
+## Confirmación del contrato estricto, 2026-11-07
+
+Con autorización posterior: un Sol, US$0,001198 conciliados, 10→20 detectado como `accuracy/major`, evidencia aceptada y cero aprobaciones editoriales. Cero reservas pendientes nuevas, 88 archivos protegidos idénticos y candado restaurado. Reanudación offline con cero HTTP y hash del recibo intacto. Sin cambios funcionales adicionales; continúa vigente la suite 395/395. Calidad natural y piloto completo pendientes; detalle económico acumulado en ESTADO_ACTUAL.
+
 ## Confirmación acotada de Sol, 2026-11-07
 
 Con autorización posterior se envió una solicitud nueva, sin reabrir diarios: US$0,000918 conciliados. Sol aceptó JSON y señaló 10→20, pero el enum traducido `fidelidad` provocó rechazo de contrato. Se conservó el recibo, no hubo reenvío ni aprobación, y se añadió esquema estricto para evaluación. Suite 395/395; el nuevo esquema se verificó solo offline. Los 79 archivos protegidos, incluidos los del diagnóstico previo, permanecieron idénticos.
