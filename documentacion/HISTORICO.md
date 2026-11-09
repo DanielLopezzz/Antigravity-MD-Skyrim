@@ -64,6 +64,7 @@ Tras la consolidación, **coherencia contextual del 2026-11-05**: registro de no
 
 Los enlaces siguientes apuntan a la documentación ya publicada; su estructura de fases se conserva para no perder enlaces externos.
 
+- [Integración MO2, Nolvus y reglas de exportación DSD](https://github.com/DanielLopezzz/Antigravity-MD-Skyrim/blob/codex/amber-guard-continuation-docs-20261107/Fase10_Evolucion_Linguistica/MO2_Nolvus_Integration_20261109/README.md).
 - [Análisis profesional de revisión humana](https://github.com/DanielLopezzz/Antigravity-MD-Skyrim/blob/main/Fase10_Evolucion_Linguistica/Pilot4_Review_Analysis_20261105/README.md).
 - [Resultado completo y barrido del cuarto piloto](https://github.com/DanielLopezzz/Antigravity-MD-Skyrim/blob/main/Fase10_Evolucion_Linguistica/Pilot4_Completed_20261104/README.md).
 - [Preparación](https://github.com/DanielLopezzz/Antigravity-MD-Skyrim/tree/main/Fase10_Evolucion_Linguistica/Pilot4_Preparation_20261104), [primera etapa](https://github.com/DanielLopezzz/Antigravity-MD-Skyrim/tree/main/Fase10_Evolucion_Linguistica/Pilot4_Stage1_20261104) y [R2](https://github.com/DanielLopezzz/Antigravity-MD-Skyrim/tree/main/Fase10_Evolucion_Linguistica/Pilot4_R2_20261104): incidencias y evidencias anteriores.

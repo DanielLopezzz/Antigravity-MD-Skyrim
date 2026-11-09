@@ -77,9 +77,10 @@ Para la revisión anterior: `python -m nolvus_translator --review-cases` con el 
 
 - `pyproject.toml` declara Python >=3.11. El punto de entrada es `nolvus_translator.__main__:main`; no se requiere una versión exacta de Python/SQLite tomada de un informe antiguo.
 - `workspace_data/config.json` es la configuración local; la DB principal es `workspace_data/nolvus_translator.db`. No se usan como destinos de una prueba de traducción nueva.
-- La suite se ejecuta con `python -m unittest discover -s tests -t .` y `PYTHONPATH=src`. Crea datos temporales de prueba; no constituye una operación de solo lectura. La última suite de código verificada es 403/403.
+- La suite se ejecuta con `python -m unittest discover -s tests -t .` y `PYTHONPATH=src`. Crea datos temporales de prueba; no constituye una operación de solo lectura. La última suite de código verificada es 404/404.
 - Workbench offline: `python -m nolvus_translator.translation.intelligence_workbench --source <DB> --pilot <R7> --output <carpeta-nueva>`. Solo lee fuentes y crea un experimento aislado; rechaza reemplazar uno existente. `--benchmark-count` opcional mide ingesta sintética. No ejecuta traducciones ni jueces reales.
 - Catálogo contextual offline: `python -m nolvus_translator.lore.knowledge_workbench --source <DB> --output <carpeta-nueva>`. Para enriquecer una copia ya creada: `--knowledge <sidecar> --documents-manifest <registro-json>`. Verifica hashes/permisos del registro; no descarga ni ejecuta código externo.
+- Pruebas de mods traducidos en MO2: copiar el paquete bajo `MODS\mods\<NombreMod>` y activarlo al final del panel izquierdo (para que sus archivos sueltos prevalezcan sobre BSAs en USVFS). El icono "No valid game data" (`X`) en MO2 para paquetes de solo DSD es cosmético e inocuo. En el juego, verificar interacción de puertas (`CELL FULL`), subtítulos hablados sincronizados, opciones de menú, menús MCM y etapas de misión.
 - Antes de una exportación futura: vista previa, evidencia editorial, respaldo, perfil clonado de MO2 y compatibilidad del ejecutable real. Las capacidades de exportación existentes no autorizan desplegar el piloto actual.
 - No actives proveedores, ejecutes runners facturables ni deshabilites el candado por seguir esta guía. Cada prueba nueva exige alcance, presupuesto y autorización.
 
