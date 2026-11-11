@@ -2,6 +2,10 @@
 
 Actualizado el **2026-11-07**. Es un índice de hechos cerrados y decisiones sustituidas, no una guía de ejecución. [Estado vigente](ESTADO_ACTUAL.md) · [Uso](GUIA_DE_USO.md) · [Reglas](REFERENCIA_TECNICA.md).
 
+## Continuación técnica, reparación focalizada y paquete DSD de Amber Guard, 2026-11-07 / 2026-11-09
+
+Conexión inmutable del glosario maestro aprobado (`ApprovedGlossaryView`, 109 entradas), aplicación por identidad/sentido (`1.0.3`), consistencia entre registros y candidatas hermanas sin aprobar (`coherence-1.2`), adaptación contextual ante inglés defectuoso con contexto (`risk-2.4.0`), registro de 12 decisiones humanas aprobadas por Daniel (`Equipo para la aventura`, `Torre del Este` / `Llave de la Torre del Este`, fechas cardinales), ejecución autorizada de la reparación focalizada de 11 unidades (`amber_guard_1_09_2_focused_repair_v1`, conservando 121/132 candidatas; 9 solicitudes reales Luna/Sol, US$0,011996 conciliados frente al cap US$0,093406, primer ciclo natural completo `Sol → posedición Luna → recomprobación Sol` en `0006DBE1`, replay con cero HTTP) y corrección del exportador DSD tras la primera prueba en juego (`INFO NAM1` 1-based `TRDT` evitando colisión con `INFO RNAM` en `index=0`, `QUST NNAM` con índice `QOBJ`, `QUST CNAM` con `original`, más 17 `CELL FULL` de puertas interiores y 2 `NPC_ FULL` sobrescritos por parches de MO2; `151` entradas en `Amber_Guard_ES419_Provisional`, suite 404/404, candado activo y 180/180 archivos protegidos idénticos). Detalle vigente en ESTADO_ACTUAL.
+
 ## Revisión documental, 2026-11-07
 
 Se corrigieron referencias a última ejecución, preparaciones presentadas como vigentes, límites heredados de Sol, dependencias, rutas del piloto, lectura de su libro económico y enlaces de la entrega inicial. Se actualizaron README y los cuatro documentos, conservando resultados e informes cerrados. Sin cambios funcionales ni llamadas API; no se repitió la suite de código por esta edición documental.
@@ -60,6 +64,7 @@ Tras la consolidación, **coherencia contextual del 2026-11-05**: registro de no
 
 Los enlaces siguientes apuntan a la documentación ya publicada; su estructura de fases se conserva para no perder enlaces externos.
 
+- [Integración MO2, Nolvus y reglas de exportación DSD](https://github.com/DanielLopezzz/Antigravity-MD-Skyrim/blob/codex/amber-guard-continuation-docs-20261107/Fase10_Evolucion_Linguistica/MO2_Nolvus_Integration_20261109/README.md).
 - [Análisis profesional de revisión humana](https://github.com/DanielLopezzz/Antigravity-MD-Skyrim/blob/main/Fase10_Evolucion_Linguistica/Pilot4_Review_Analysis_20261105/README.md).
 - [Resultado completo y barrido del cuarto piloto](https://github.com/DanielLopezzz/Antigravity-MD-Skyrim/blob/main/Fase10_Evolucion_Linguistica/Pilot4_Completed_20261104/README.md).
 - [Preparación](https://github.com/DanielLopezzz/Antigravity-MD-Skyrim/tree/main/Fase10_Evolucion_Linguistica/Pilot4_Preparation_20261104), [primera etapa](https://github.com/DanielLopezzz/Antigravity-MD-Skyrim/tree/main/Fase10_Evolucion_Linguistica/Pilot4_Stage1_20261104) y [R2](https://github.com/DanielLopezzz/Antigravity-MD-Skyrim/tree/main/Fase10_Evolucion_Linguistica/Pilot4_R2_20261104): incidencias y evidencias anteriores.
