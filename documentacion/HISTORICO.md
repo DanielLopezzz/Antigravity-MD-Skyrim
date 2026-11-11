@@ -2,9 +2,13 @@
 
 Actualizado el **2026-11-11**. Es un índice de hechos cerrados y decisiones sustituidas, no una guía de ejecución. [Estado vigente](ESTADO_ACTUAL.md) · [Uso](GUIA_DE_USO.md) · [Reglas](REFERENCIA_TECNICA.md).
 
+## Cobertura visual y línea base inicial de Moon and Star, 2026-11-11
+
+El usuario completó ocho comprobaciones del mod original. El criterio visual acepta silencio o voz inglesa correcta del protagonista. Se comprobó la carga de DBVO 2.0.1.5, se incorporaron tres marcadores de mapa al inventario y se probó offline la exportación de 800 campos, incluidas 194 opciones, con rollback. Se construyeron dos ZIP aislados, uno para Mandyn y Selyse y otro para el mensaje del elevador. Suite 412/412, validación de los ZIP en Skyrim pendiente. [Guía de la prueba](GUIA_DE_USO.md#protocolo-en-skyrim-para-moon-and-star).
+
 ## Preparación offline de Moon and Star, 2026-11-11
 
-Se cerró el inventario de plugins del piloto y se verificó la exportación por copia del ganador con cambios solo de texto. El ensayo procesó 605 campos y revirtió las dos publicaciones de prueba. Se encontró una ruta de mapeo DBVO y se verificaron dos ejemplos offline. Sus 194 opciones y un mensaje de script quedan como retenciones. La instalación, el corpus aprobado y los pilotos históricos se preservaron. [Cobertura y estimación](REFERENCIA_TECNICA.md#preparación-de-moon-and-star).
+Se cerró el inventario de plugins del piloto y se verificó la exportación por copia del ganador con cambios solo de texto. El ensayo de la PR #16 procesó 605 campos y revirtió dos publicaciones de prueba. Se verificaron dos ejemplos de mapeo DBVO offline. En ese corte quedaron retenidas las 194 opciones y un mensaje de script. [PR #16](https://github.com/DanielLopezzz/Antigravity-MD-Skyrim/pull/16).
 
 ## Compatibilidad y seguridad funcional, 2026-11-11
 
