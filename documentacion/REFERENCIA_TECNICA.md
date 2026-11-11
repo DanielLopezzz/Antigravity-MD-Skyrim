@@ -2,6 +2,41 @@
 
 Corte documental **2026-11-11**. Resume lo vigente sin sustituir los contratos del código. [Estado](ESTADO_ACTUAL.md) · [Uso](GUIA_DE_USO.md) · [Histórico y originales](HISTORICO.md).
 
+## Preparación de Moon and Star
+
+### Cobertura y mecanismo
+
+La instalación usa Moon and Star 3.2 y el reemplazo 2.0, Nexus **106878**, llamado Cleaned Plugin Replacer por MO2. Se leyeron los maestros TES4 y se resolvieron 32 plugins relacionados en el orden activo. Además de los 793 campos del origen base, el alcance incluye los textos propios de los parches Immersion, Clockwork/Lamashtu, DBM, Curator's Companion, Quests Award Perk Points y Wintersun. Se excluyeron tres mensajes genéricos de DynDOLOD ajenos al mod. [Versión base](https://www.nexusmods.com/skyrimspecialedition/mods/4301?tab=files) · [Reemplazo instalado](https://www.nexusmods.com/skyrimspecialedition/mods/106878).
+
+| Cobertura del inventario | Campos | Vía |
+|---|---:|---|
+| `INFO NAM1`, subtítulos NPC | 328 | Copia del ganador, verificada estructuralmente |
+| `QUST CNAM`, diarios, y `FACT FULL` | 65 + 2 | Misma copia, sin llave global de DSD |
+| Objetivos, libros, objetos, nombres y otros campos admitidos | 210 | DSD. Incluye 30 campos de libro y 36 de misión |
+| `DIAL FULL`, opciones de jugador | 194 | Retención DBVO. Prototipo offline de dos opciones con FUZ Bella existente |
+| Nombres e identificadores conservados | 25 | 12 nombres y 13 identificadores |
+| Papyrus y recursos auxiliares | 132 PEX inspeccionados | Un `MessageBox` visible retenido y 18 literales técnicos. Archivos PSC, FUZ, SEQ, modelos y configuraciones inventariados. Cero fallos de parseo PEX en el alcance |
+
+El empaquetador permite `enable_inline_plugin_export` de forma explícita. Crea copias privadas con el **mismo nombre** de los plugins que poseen los registros ganadores. MO2 aplica prioridad de archivo. El comparador verifica la cabecera TES4 completa, grupos, FormID, flags, orden y subregistros. Solo pueden variar el texto autorizado y las longitudes de sus contenedores. Los registros comprimidos se comparan descomprimidos. Se verifican los índices existentes, el texto fuente exacto y las variables. Las colisiones con JSON DSD activos, ganadores distintos, DLL o BSA asociados cambiados bloquean la exportación. La separación NPC/jugador se conserva con DBVO activo. El mecanismo de copia evita añadir un plugin y remapear referencias como exigiría un ESP independiente. [Definiciones TES5 de xEdit](https://raw.githubusercontent.com/TES5Edit/TES5Edit/dev-4.1.6/Core/wbDefinitionsTES5.pas) · [Conflictos de archivo en MO2](https://github.com/ModOrganizer2/modorganizer/blob/master/src/organizer_en.ts).
+
+El DBVO instalado contiene mapas español a clave inglesa. Dos ejemplos se verificaron con su FUZ y contra las claves de cinco archivos de idioma activos. Una primera redacción chocaba con una clave vanilla, lo que confirmó la necesidad de comprobar colisiones. La forma de resolver las claves y el resultado sonoro aún requieren ejecución con el DLL instalado. El prototipo queda fuera del paquete ordinario. [Historial del autor de DBVO](https://www.nexusmods.com/skyrimspecialedition/mods/84329?category=archived&tab=files).
+
+La prueba con los plugins reales exportó 605 marcadores en cinco copias verificadas y diez JSON DSD. Releyó 824 campos en una proyección del perfil, comprobó el orden y revirtió primero a la copia previa y después a los originales. Para el inventario se resolvieron archivos en 1,98 s, se leyeron cabeceras y registros de alcance en 1,43 s y se calcularon hashes completos de 1,16 GB de plugins y DLL en 2,06 s en la pasada medida. Se evitó extraer registros de todos los plugins. La validación offline cubre estructura y empaquetado. Falta la prueba en Skyrim y el cotejo de glifos y audio.
+
+### Proyecto y estimación
+
+El staging privado conserva el vínculo de fuente con archivo, ganador y perfil. El contexto usa relaciones de tópico y misión con plugin propietario, nombres de actores vinculados por identidad, recursos del mod y 109 términos aprobados leídos de una vista inmutable. No se encontró reutilización exacta de TM aprobada para estas unidades. Cuatro casos quedan señalados para completar contexto. Los paquetes Luna separan misiones en diálogo y misiones y conservan segmentación, QA, recibos y reanudación de Plan B. Las referencias de autor se registraron como metadatos.
+
+| Concepto | Solicitudes o escenario | USD estimado |
+|---|---|---:|
+| Luna, NPC y mundo | 134 para 617 unidades en tres cohortes | 0,039–0,059 |
+| Luna, opciones DBVO retenidas | 29 para 194 unidades | 0,008–0,012 |
+| Sol, muestra independiente | Una por cohorte, tres iniciales y una si se habilita opciones | Reserva de referencia 0,016–0,027 por llamada |
+| Sol, discrepancias y recomprobaciones | Solo ante hallazgos sustentados. Asignaciones de revisión de 0,085 y 0,035 USD por etapa | Hasta 0,120 asignados entre revisiones y comprobaciones |
+| Luna, posedición | Solo con error fundamentado, con reserva independiente | Hasta 0,020 de asignación propuesta |
+
+Las estimaciones Luna usan el tamaño de los cuerpos preparados y una banda de bytes por token. La proyección usa tarifa estándar. Las reservas conservadoras acumuladas de generación suman aproximadamente 0,390 USD si cada envío agotara su reserva. El despachador reconcilia una solicitud antes de la siguiente y libera el remanente. Para una futura autorización de 0,30 USD globales, medir primero una cohorte, aplicar el mismo presupuesto a ambas etapas y detenerse al alcanzar el límite. La cobertura completa dentro del tope depende de los recibos. [Tarifas estándar de OpenAI](https://developers.openai.com/api/docs/pricing).
+
 ## Compatibilidad y exportación auditadas el 11 de noviembre
 
 ### Entorno y diagnóstico
@@ -28,10 +63,10 @@ Extraer desde el **registro ganador** del perfil, agrupar el alcance por `origin
 | Nombres de NPC, objetos, celdas, lugares, puertas y títulos | DSD 1.5.2 para campos admitidos. El despacho consultado carece de `FACT FULL`. | Confirmar FormID local y ganador. Probar nombres de celda que aparecen al abrir puertas. |
 | `BOOK FULL/DESC`, descripciones admitidas | DSD con comprobación de campo. `DESC` utiliza un hook de lectura. | Preservar etiquetas, páginas y fuentes manuscritas. Dos puertas y el Diario de Audomar son observaciones de juego acotadas. |
 | Objetivos de misión `QUST NNAM` | DSD con `QOBJ` binario presente, incluso objetivo 0. | Verificar objetivo activo, alias, contadores y cambio de etapa sin tocar condiciones ni scripts. |
-| Diario `QUST CNAM` | Ruta DSD ordinaria retenida. Tabla nativa si el plugin ya está localizado y la familia está verificada. Para inline, evaluar copia/override controlado. | Contrastar cada entrada de etapa y condición. El mapa global por original tiene riesgo de aplicar texto fuera del FormID previsto. |
-| `DIAL FULL`, `INFO RNAM/NAM1` | DSD retenido en paquetes ordinarios/provisionales. Candidato a tabla nativa para `0x80` o override de texto con ganador completo para inline. Con DBVO, los prompts localizados quedan retenidos. | Mantener orden de respuestas, referencias `DNAM/PNAM/TCLT`, `TRDT`, voz y flags. Probar opciones, audio NPC, voz del jugador y cierre del menú por separado. [DBVO 2](https://www.nexusmods.com/skyrimspecialedition/mods/84329). |
+| Diario `QUST CNAM` | Ruta DSD ordinaria retenida. Tabla nativa si el plugin ya está localizado y la familia está verificada. Disponible por copia inline verificada para el piloto. | Contrastar cada entrada de etapa y condición. El mapa global por original tiene riesgo de aplicar texto fuera del FormID previsto. |
+| `DIAL FULL`, `INFO RNAM/NAM1` | DSD retenido en paquetes ordinarios y provisionales. Tabla nativa para `0x80` o copia inline. Con DBVO, las opciones permanecen retenidas. | Mantener orden de respuestas, referencias `DNAM/PNAM/TCLT`, `TRDT`, voz y flags. Probar opciones, audio NPC, voz del jugador y cierre del menú por separado. [DBVO 2](https://www.nexusmods.com/skyrimspecialedition/mods/84329). |
 | Plugins localizados `0x80` | STRINGS/DLSTRINGS/ILSTRINGS de la familia confirmada. Parche de tabla española completa, con IDs intactos. | Sin base española verificable, cobertura incompleta o ID ambiguo, se retiene la familia. Evitar `LOOKUP FAILED!` antes de evaluar traducción. |
-| Plugins inline ESP/ESM/ESL/ESPFE | Evaluar override creado con xEdit desde el ganador. Escritura de plugins nativos pendiente. | Diff estructural completo, conservar maestros, FormID, EditorID, flags, grupos, condiciones y VMAD. No compactar IDs ni activar ESL como arreglo automático. Verificar runtime y BEES para cabecera 1.71 y rango extendido. [xEdit](https://github.com/tes5edit/tes5edit/releases) · [BEES](https://github.com/Nukem9/skyrimse-backported-esl-support). |
+| Plugins inline ESP/ESM/ESL/ESPFE | Copia del mismo archivo para campos permitidos. Un override independiente de xEdit requeriría su propia validación. | Diff estructural completo de maestros, FormID, EditorID, flags, grupos, condiciones y VMAD. Verificar runtime y BEES para cabecera 1.71 y rango extendido. [xEdit](https://github.com/tes5edit/tes5edit/releases) · [BEES](https://github.com/Nukem9/skyrimse-backported-esl-support). |
 | SkyUI / MCM Helper | Tabla TXT completa UTF-16LE BOM y JSON selectivo de texto. | Preservar claves, IDs, tipos, acciones y almacenamiento. Si ya existe tabla española, resolver su conflicto antes de sustituir. [MCM Helper](https://github.com/Exit-9B/MCM-Helper). |
 | JSON, INI, XML y distribuidores | Modificar campos de texto reconocidos con hash de origen. Consumidor y versión específicos. | Comparar estructura, claves, rutas, condiciones, IDs y prioridad de distribuidores. Los consumidores desconocidos necesitan validación propia. |
 | Papyrus | Referencia PSC y reconstrucción PEX solo en simulación en esta ruta. | Revisar literales usados como IDs, llamadas, propiedades, índices, código y estados. Reparación funcional separada, con fuente verificable y su prueba propia. |
@@ -49,7 +84,7 @@ Los conteos corresponden a campos extraídos de registros ganadores, con el plug
 
 **Amber Guard:** conservar los resultados y la regresión estática. Una reparación mínima se reconsidera si aparece una fuente o un parche compatible que proporcione los fragmentos exactos y pueda ensayarse por separado. La reconstrucción a partir de etapas supuestas tiene mayor riesgo y mantenimiento que validar otro mod. El plan anterior de compilar PEX queda aplazado.
 
-**Verificación realizada:** 407 pruebas offline. Incluye índices no secuenciales, colisiones, plugin inactivo, borrado ganador, preservación de IDs no editados, cambios de perfil/plugin y rechazo de rollback sobre archivos modificados. El empaquetado sigue separado de la instalación. Pendientes: comparación binaria automatizada de un override ESPFE, pruebas de tabla ausente y diálogos en el runtime efectivo de cada mod, y validación lingüística completa del nuevo piloto. El cálculo de hashes de plugins activos en la exportación real lee sus archivos completos para detectar actualizaciones, con coste proporcional a sus bytes. No se ha medido el tiempo de esta puerta en el perfil completo.
+**Verificación de la auditoría inicial.** 407 pruebas offline. Incluyó índices no secuenciales, colisiones, plugin inactivo, borrado ganador, preservación de IDs no editados, cambios de perfil y rechazo de rollback sobre archivos modificados. La preparación de Moon and Star añadió la comparación binaria de copias y la medición de hashes que se indican arriba.
 
 ## Integración real y visor de Amber Guard
 

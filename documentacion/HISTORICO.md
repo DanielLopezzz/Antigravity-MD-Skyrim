@@ -2,6 +2,10 @@
 
 Actualizado el **2026-11-11**. Es un índice de hechos cerrados y decisiones sustituidas, no una guía de ejecución. [Estado vigente](ESTADO_ACTUAL.md) · [Uso](GUIA_DE_USO.md) · [Reglas](REFERENCIA_TECNICA.md).
 
+## Preparación offline de Moon and Star, 2026-11-11
+
+Se cerró el inventario de plugins del piloto y se verificó la exportación por copia del ganador con cambios solo de texto. El ensayo procesó 605 campos y revirtió las dos publicaciones de prueba. Se encontró una ruta de mapeo DBVO y se verificaron dos ejemplos offline. Sus 194 opciones y un mensaje de script quedan como retenciones. La instalación, el corpus aprobado y los pilotos históricos se preservaron. [Cobertura y estimación](REFERENCIA_TECNICA.md#preparación-de-moon-and-star).
+
 ## Compatibilidad y seguridad funcional, 2026-11-11
 
 Se inspeccionó el perfil instalado y el código de DSD. El BSA de Amber Guard contiene 27 LIP asociados a WAV y dos INFO ganadores referencian fragmentos ausentes del alcance inventariado. Se corrigió el diagnóstico del 9 de noviembre en la referencia canónica. El escáner y la exportación incorporaron índices binarios, ganador completo, tablas conservadoras y puertas de perfil e integridad. Suite offline 407/407. Se seleccionó Moon and Star para la siguiente línea base funcional, pendiente de ejecutar. [Evidencia y matriz](REFERENCIA_TECNICA.md#compatibilidad-y-exportación-auditadas-el-11-de-noviembre).

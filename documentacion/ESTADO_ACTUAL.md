@@ -2,6 +2,14 @@
 
 Verificado el **2026-11-11**. Esta es la fuente del estado vigente; [uso](GUIA_DE_USO.md), [reglas y arquitectura](REFERENCIA_TECNICA.md) e [histórico](HISTORICO.md) cubren temas distintos. Las cifras de revisión son un corte, no un contador en tiempo real.
 
+## Piloto Moon and Star preparado offline
+
+El inventario incluye **824 campos de plugin**. Son 793 del mod base y 31 propios de seis parches dedicados. Hay **799 traducibles** y 25 que se conservan como nombres o identificadores. El paquete de ensayo procesó **605** campos y verificó su reversión. Otras **194 opciones del jugador** siguen retenidas por DBVO. De los 132 PEX inspeccionados, un mensaje visible queda retenido por su ruta funcional.
+
+El proyecto privado tiene staging editorial sin aprobaciones y dos planes sin consumo. Las 605 fuentes de la primera fase se dividen en 617 unidades, 134 solicitudes Luna y tres cohortes. La fase de opciones tiene otras 29 solicitudes previstas. La copia de diálogo y diario pasó la comparación estructural sobre los binarios instalados. Dos opciones con mapeo de voz forman un prototipo separado para validación posterior. La suite offline pasó **410/410**.
+
+**Puerta pendiente.** Recibir la línea base del usuario y comparar en un perfil aislado con la misma voz DBVO. Confirmar las dos opciones y resolver el mensaje Papyrus antes de declarar cobertura completa. Cualquier traducción facturable requiere autorización específica. API Lock activo y US$0 consumidos. [Cobertura y presupuesto](REFERENCIA_TECNICA.md#preparación-de-moon-and-star) · [Casos y reversión](GUIA_DE_USO.md#protocolo-en-skyrim-para-moon-and-star).
+
 ## Compatibilidad MO2 y Nolvus, 11 de noviembre
 
 **Decisión. Pasar el piloto funcional a Moon and Star.** Amber Guard queda como regresión para las dos puertas y el libro observados en Skyrim. El alcance funcional de Amber Guard presenta fragmentos de misión y diálogo sin PEX correspondiente. Reconstruir su lógica requeriría un proyecto de reparación separado. Moon and Star tiene 793 campos ganadores, 31 dependientes directos y 73 de 73 nombres de fragmento identificados con PEX disponible. El mod base instalado es 3.2 y el archivo `MoonAndStar_MAS.esp` activo viene de Cleaned Plugin Replacer 2.0. Su línea base en Skyrim queda pendiente.
