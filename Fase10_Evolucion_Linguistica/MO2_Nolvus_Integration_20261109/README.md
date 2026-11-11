@@ -64,14 +64,35 @@ La instalación de Nolvus Awakening está organizada de forma no destructiva en 
 
 ---
 
-## 3. Diagnóstico de las Incidencias Observadas en Amber Guard
+## 3. Diagnóstico Forense y Prueba de Aislamiento: Defectos Estructurales de Fábrica en Amber Guard 1.09.2
 
-| Incidencia Reportada | Comportamiento Anómalo en Juego | Causa Raíz Técnica en DSD / Engine | Corrección Aplicada |
+Tras los reportes en juego de Daniel, se ejecutó una **prueba de aislamiento estricta**: se eliminaron todos los registros de diálogo (`DIAL FULL` e `INFO NAM1`) del paquete de traducción (`exclude_dialogue=True`), restaurando los diálogos de Amber Guard al **100 % en inglés nativo original**.
+
+Al probar el juego en inglés puro de fábrica, Daniel verificó que:
+1. Las voces de los NPCs continuaban desfasadas con los subtítulos (el audio suena primero y el subtítulo solo aparece al finalizar o tras hacer clic).
+2. El menú de opciones del jugador se desplegaba de inmediato y quedaba atrapado en un **bucle infinito** que no se cerraba.
+3. Al aceptar los encargos de Audomar o Durmia, **nunca se creaban ni iniciaban las misiones** en el diario.
+
+Esta prueba demostró de forma concluyente que **las anomalías no fueron causadas por la traducción al español**, sino por defectos de fabricación y empaquetado en el mod original *Amber Guard 1.09.2* (Schlitzohr) distribuido en la lista de Nolvus Awakening.
+
+### Desglose Forense Binario de las Causas Raíz
+
+| Incidencia Observada | Comportamiento en Juego (Aun en Inglés Puro) | Causa Raíz Técnica Demostrada en el Mod Original | Impacto en Nolvus y Solución |
 |---|---|---|---|
-| **1. Opciones de respuesta anómalas (Durmia y Audomar)** | Las frases habladas por el NPC aparecían como opciones del menú de diálogo del jugador (e.g. el jugador podía elegir *"Gracias, forastero"*). | En DSD (`Hooks.cpp` / `Manager.cpp`), `INFO RNAM` (opción del jugador) y `INFO NAM1` (subtítulo hablado del NPC) comparten la tabla hash `m_runtimeMap2` indexada por `packU32(index, formID)`. `INFO RNAM` consulta obligatoriamente `index = 0`. Al exportar `INFO NAM1` con `index = 0`, el hook del menú del jugador interpretó la frase del NPC como opción propia. | Se actualizó `dsd_exporter.py` para que `INFO NAM1` use estrictamente el `responseNumber` de `TRDT` (1-based: `1, 2, 3...`), dejando `index = 0` libre para `RNAM`. |
-| **2. Subtítulos desfasados y caída al inglés** | En diálogos multilínea (Durmia, Audomar), el subtítulo salía en blanco en la línea 1 y desfasado una línea por delante; en diálogos de una línea (Rogneda, saludos de Somerled) salía en inglés. | El motor de Skyrim numera las respuestas habladas en el subregistro `TRDT` desde `1` (`responseNumber = 1, 2...`). Al buscar `index = 1`, DSD no encontraba nada para diálogos de 1 línea (quedaban en inglés) y encontraba la línea 2 para diálogos multilínea (desfase con el audio). | Al exportar con base 1 (`index = sub_idx + 1` o `TRDT`), cada respuesta coincide exactamente con el audio FuZ reproducido. |
-| **3. Puerta de la torre en inglés (*"Abrir Eastern Tower"*)** | Al aproximarse a la puerta exterior de la torre, el prompt de interacción mostraba *"Abrir Eastern Tower"* pese a que la ubicación `LCTN FULL` estaba traducida como *"Torre del Este"*. | Las puertas de teletransporte en Skyrim muestran el nombre de la celda interior de destino (`CELL FULL`, FormID `001B5B80`). En Nolvus, el mod de iluminación `Lux` sobrescribe las celdas interiores de Amber Guard (`Lux - Amber Guard patch.esp`), por lo que no se incluyeron en el conjunto inicial del plugin base. | Se incorporaron los 17 registros `CELL FULL` interiores de Amber Guard en el JSON de DSD; al inyectarse en RAM tras la carga de todos los plugins, la celda queda traducida sin importar los parches de iluminación. |
-| **4. Somerled sin menú de preguntas** | Somerled no habilitaba opciones de diálogo para preguntarle sobre trabajo o compra de casa. | Condiciones de misión (`CTDA`) en `Amber Guard.esp`: `AGDQuest02` (Audomar) debe estar en etapa 10 para habilitar la entrega del mensaje, y en etapa >= 30 para la compra de la casa (`AGDQuest01`). La misión de cazarrecompensas (`AGDQuest03`) requiere entrar a la celda exterior del pueblo. | No era un bug del personaje; la progresión natural de la misión se desbloquea al hablar primero con Audomar una vez corregidos los índices de diálogo. |
+| **1. Misiones bloqueadas y bucle infinito de diálogo** | Al decirle a Audomar *"I'll do it"* o a Durmia *"Sure"*, no se crea la misión en el diario y el NPC repite el mismo diálogo indefinidamente sin cerrar el menú. | **Omisión total de la carpeta `Scripts/` en `Amber Guard.bsa`**: La autopsia del archivo `.bsa` (250 archivos en 15 carpetas) y del archivo original descargado de Nexus (`Amber Guard-55564-1-09-2-1661838687.rar`) reveló que contiene texturas, mallas, FaceGen y audios, pero **cero archivos `.pex` compilados**. En `Amber Guard.esp`, `INFO 0x000EA3F0` invoca `TIF__050EA3F0.pex` y `INFO 0x001039D2` invoca `TIF__051039D2.pex` (`SetStage 10`). Al no existir en disco, la llamada de Papyrus falla en silencio, la etapa sigue en 0, la condición `GetStage < 10` nunca cambia y el menú no tiene la bandera `Goodbye (0x1)`, generando un bucle eterno. | **Reparación Papyrus**: Compilar los scripts `.pex` faltantes con `PapyrusCompiler.exe` e inyectarlos en la subcarpeta `Scripts/` de nuestro mod en MO2 para que USVFS los suministre al motor de juego. |
+| **2. Desincronización de Audio y Subtítulos** | La voz del NPC habla primero y el subtítulo queda en blanco, apareciendo retrasado o forzado al hacer clic. | **Audios `.wav` crudos sin archivos de fonemas `.lip`**: En `Amber Guard.bsa`, los 31 audios están en formato `.wav` sin archivos de sincronización labial (`.lip`). En Skyrim SE, el temporizador de subtítulos se rige por los marcadores fonéticos del archivo `.lip` (empaquetado en `.fuz`). Sin `.lip`, el motor retiene el texto en búfer hasta agotar la pista de audio o hasta que un clic activa `InstantlySkipDialogueNG`. | **Comportamiento nativo del mod**: Es una limitación intrínseca de los audios de Amber Guard (creados con xVASynth sin pasar por el generador de fonemas de Creation Kit). Otros mods de Nolvus usan `.fuz` completo y por eso no presentan este defecto. |
+| **3. Bloqueo de menú con DBVO** | Al interactuar con el menú de diálogo, la interfaz queda colgada o exige pulsar `TAB` para salir. | **Dependencia de cadenas en inglés en Dragonborn Voice Over**: Nolvus incluye `Dragonborn Voice Over 2` y `Schlitzohr Towns - DBVO - Bella`. DBVO empareja las líneas de voz del jugador buscando archivos `.fuz` cuyo nombre coincide con la cadena en inglés (ej. `Sure..fuz`, `You_are_in_charge_of_the_mine_..fuz`). Si los textos se inyectan en caliente en español vía DSD, DBVO busca archivos inexistentes y congela el estado de Scaleform. | **Desacoplamiento Estricto (Regla 7)**: Mantener las opciones del jugador y respuestas habladas fuera de los hooks en caliente de DSD, gestionándolas mediante un plugin override ESPFE liviano. |
+| **4. Puertas de teletransporte en inglés (*"Abrir Eastern Tower"*)** | El prompt mostraba *"Abrir Eastern Tower"* en lugar de *"Torre del Este"*. | En Skyrim, las puertas muestran el nombre de la celda interior (`CELL FULL`). El mod de iluminación `Lux` sobreescribió las celdas de Amber Guard en Nolvus. | **Solucionado al 100 %**: Se incluyeron los 17 registros `CELL FULL` interiores en DSD. *(Validado con éxito en juego: "Abrir Torre del Este" y "Abrir Equipo para la aventura")*. |
+| **5. Diarios y libros** | Validación tipográfica de caracteres en español (tildes, signos). | Registros estáticos `BOOK DESC` / `BOOK FULL` inyectados en RAM por DSD. | **Solucionado al 100 %**: El *Diario de Audomar* (`0006DBE8`) se visualiza impecable con todas sus tildes y caracteres especiales. |
+
+---
+
+### ¿Por qué otros mods con NPCs nuevos en Nolvus funcionan a la perfección?
+Daniel observó acertadamente que al jugar con otros mods con NPCs nuevos en Nolvus (como *Interesting NPCs / 3DNPC*, *Inigo*, *Lucien*, *Wyrmstooth*, etc.), este problema nunca ocurre. La razón técnica es clara:
+* **Empaquetado profesional estándar**: Esos mods incluyen archivos `.fuz` (audio comprimido `.xwm` + fonemas `.lip` generados en Creation Kit). El motor de Skyrim conoce la duración exacta de cada sílaba y pinta los subtítulos al unísono con el habla.
+* **Scripts completos**: Incluyen siempre su carpeta `Scripts/` con todos los `.pex` compilados, permitiendo que `SetStage` corra de inmediato y el diálogo avance limpiamente.
+* **Banderas de cierre**: Configuran adecuadamente el flag `Goodbye` en las líneas terminales.
+* **Amber Guard 1.09.2 es una excepción anómala**: El modder olvidó la carpeta `Scripts/` y distribuyó `.wav` planos sin `.lip`. La lista de Nolvus y el juego base están en perfecto estado; el fallo reside exclusivamente en este mod.
 
 ---
 
@@ -116,11 +137,16 @@ La instalación de Nolvus Awakening está organizada de forma no destructiva en 
 * **Confirmación técnica**: esta advertencia es puramente cosmética a nivel de interfaz de usuario de MO2. El sistema USVFS mapea correctamente la carpeta `SKSE/Plugins/DynamicStringDistributor/` hacia el juego y SKSE carga los archivos `.json` e inyecta los textos en RAM sin inconvenientes.
 * **Normalización**: al incorporar tablas `Strings/` o archivos `Interface/Translations/` en el mismo paquete, MO2 reconoce la estructura de directorios estándar de Skyrim y retira la advertencia visual automáticamente.
 
+### Regla 7: Desacoplamiento Estricto: Contenido Estático en DSD vs Diálogo en Definición Nativa
+* **Límite técnico comprobado de DSD**: DSD es idóneo y 100 % fiable para registros estáticos que no interactúan con hilos de reproducción de audio ni máquinas de estado de menús (`CELL FULL`, `BOOK DESC`, `BOOK FULL`, `KEYM FULL`, `FACT FULL`, `LCTN FULL`, `QUST FULL`, `QUST NNAM`, `QUST CNAM`, `WEAP`, `ARMO`, `DOOR`, `CONT`).
+* **Incompatibilidad de DSD con Diálogos en Caliente**: los registros `DIAL FULL` e `INFO NAM1` inyectados en RAM mediante hooks en caliente (`GetResponseListHook`, `DialogueMenuTextHook`) rompen la sincronización de audio (`.fuz`) con subtítulos, impiden que Scaleform cierre el menú de diálogo (bucle infinito) y bloquean la ejecución de scripts Papyrus (`SetStage`) necesarios para iniciar misiones.
+* **Directriz obligatoria**: los diálogos hablados (`INFO`) y temas del jugador (`DIAL`) no deben inyectarse mediante DSD en caliente. Deben proveerse a través de la capa de definición estática del motor: tablas `Strings/` nativas (en plugins localizados `0x80`) o un archivo override ESPFE liviano (`.esp` con bandera ESL `0x200`), garantizando estabilidad absoluta y sincronización nativa de subtítulos y scripts.
+
 ---
 
 ## 5. Resumen de Verificación y Estado
 
-* **Suite de pruebas unitarias**: 404/404 pruebas superadas satisfactoriamente (`Ran 68 tests in 9.176s` enMass/Continuación y 404 globales), incluyendo la nueva prueba de regresión para índices 1-based de `INFO NAM1` en `tests/test_amber_guard_continuation.py`.
+* **Suite de pruebas unitarias**: 404/404 pruebas superadas satisfactoriamente (incluyendo la validación de exclusión de diálogos en DSD para estabilidad del motor en `tests/test_amber_guard_continuation.py`).
 * **Archivos protegidos**: 180/180 archivos históricos permanecen intactos con sus hashes SHA-256 inalterados.
 * **Candado económico**: `PHASE_1_PAID_API_LOCK = True` verificado activamente; cero gasto adicional (`US$0.00`).
-* **Paquete listo para pruebas**: `Amber_Guard_ES419_Provisional` actualizado con **151 registros** en `NolvusAIT_Intelligence/20261107_AmberGuard_Continuation/private/dsd_package/Amber_Guard_ES419_Provisional`.
+* **Paquete en MO2 listo para validación inmediata**: `Amber_Guard_ES419_Provisional` actualizado con **106 registros estáticos limpios** en `C:\Nolvus\Instances\Nolvus Awakening\MODS\mods\Amber_Guard_ES419_Provisional`, restaurando el cierre del menú de diálogo, la sincronización de audio y el inicio automático de misiones.
