@@ -1,6 +1,6 @@
 # Guía de uso y revisión local
 
-Actualizada el **2026-11-11** a partir de los lanzadores, CLI y visor existentes. [Estado y pendientes](ESTADO_ACTUAL.md) · [Referencia técnica](REFERENCIA_TECNICA.md).
+Actualizada el **2026-11-12** a partir de los lanzadores, CLI y visor existentes. [Estado y pendientes](ESTADO_ACTUAL.md) · [Referencia técnica](REFERENCIA_TECNICA.md).
 
 ## Protocolo en Skyrim para Moon and Star
 
@@ -21,7 +21,7 @@ Actualizada el **2026-11-11** a partir de los lanzadores, CLI y visor existentes
 
 La prueba de `Moon_and_Star_ES419_Elevator_Test.zip` queda diferida al recorrido normal. Cuando llegues al elevador averiado de Kagrenar Depths, compara desde antes de entrar a la zona. Verifica que la inicialización y activación coincidan y que el cuadro muestre «Parece que se descompuso al bajar.» y pueda cerrarse. La carpeta `Scripts` del ZIP debe ganar para `masbrokenelevator.pex`. Al desactivarla, comprueba que el script vuelva a provenir de `MoonAndStar_MAS.bsa` con el hash original del manifiesto. La prueba de empaquetado no modifica ese BSA.
 
-En el recorrido ampliado conserva los resultados de las ocho comprobaciones iniciales del original y añade rutas alternativas, entrega de objetos, recompensas y misiones completas. Repite desde guardados anteriores a la interacción. Registra FormID o EditorID, versión del paquete, resultado antes y después, capturas y errores del log. La aceptación visual incluye texto ES-419 legible en todos los campos traducibles del alcance, con tildes, eñes y signos de apertura. La aceptación funcional incluye el comportamiento original y la reversión.
+La tabla sirve para reproducir incidencias del recorrido ampliado. Si aparece una, registra versión del paquete, misión o escena, opción elegida y resultado. Una captura y un guardado anterior ayudan cuando se trata de función. Para aislar la causa, repite el caso en el perfil de prueba con y sin el paquete desde el mismo guardado de referencia.
 
 | Caso | Identidad local en `MoonAndStar_MAS.esp` | Evidencia en ambas pasadas |
 |---|---|---|
@@ -32,13 +32,13 @@ En el recorrido ampliado conserva los resultados de las ocho comprobaciones inic
 | Selyse | `MASSelyseDialog` `0000C01B` | Contadores de pieles, nirnroot u otros encargos. |
 | Libro y recompensa | `MASKagrenarBookTranslated` `00011909`, `MASMainQuestMandynGiveTopic` `00010E11` | *Memories of Dorana*, páginas y glifos. En el recorrido correspondiente, anota inventario antes y después de entregar el objeto y recibir la recompensa. |
 
-Para completar el piloto, coteja el texto ES-419 contra el manifiesto, incluidos los textos de menú y subtítulos. La ejecución real incluye las 194 opciones del jugador.
+El recorrido del usuario ya se registró como evidencia parcial del piloto. Las observaciones posteriores se incorporan si aparecen durante el juego normal. La revisión estructural y los controles por mecanismo cubren el resto del trabajo repetible.
 
 ### Revisar el piloto real de Moon and Star
 
 Abre `Revisar_piloto_Moon_and_Star.bat` desde la raíz. **Necesita criterio** muestra el aviso de doble negación y **Control de calidad** reúne las cuatro muestras independientes de Sol. La consulta y los cambios editoriales se guardan en el proyecto privado. El visor muestra candidatas por texto completo, incluidos libros reensamblados.
 
-En la instancia de prueba, desactiva el ZIP de dos opciones o la versión anterior antes de activar `Moon_and_Star_ES419_Prueba_Completa.zip`. Confirma que las cinco copias y los JSON del manifiesto ganan, y que el orden de plugins es idéntico al de la referencia. Repite Mandyn y Selyse desde el mismo guardado y verifica objetivos, diarios, subtítulos y mapa al avanzar. En Kagrenar, la versión 0.2 muestra «báculo» tanto en el subtítulo de la oferta como en la opción del jugador. Cierra Skyrim y desactiva el ZIP para volver a los archivos originales. El ZIP completo es provisional y el del elevador se prueba cuando llegues a Kagrenar Depths.
+En la instancia de prueba, desactiva el ZIP de dos opciones o la versión anterior antes de activar `Moon_and_Star_ES419_Prueba_Completa.zip`. Confirma que las cinco copias y los JSON del manifiesto ganan, y que el orden de plugins es idéntico al de la referencia. En Kagrenar, la versión 0.2 contiene «báculo» en el subtítulo de la oferta y en la opción del jugador. Cierra Skyrim y desactiva el ZIP para volver a los archivos originales. Si durante el recorrido normal quieres observar el mensaje traducido del elevador averiado, usa su ZIP independiente siguiendo el control descrito arriba.
 
 ## Revisar el resultado real de Amber Guard
 

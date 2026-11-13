@@ -2,15 +2,13 @@
 
 Verificado el **2026-11-12**. Esta es la fuente del estado vigente; [uso](GUIA_DE_USO.md), [reglas y arquitectura](REFERENCIA_TECNICA.md) e [histórico](HISTORICO.md) cubren temas distintos. Las cifras de revisión son un corte, no un contador en tiempo real.
 
-## Moon and Star, prueba visual inicial en Skyrim
+## Moon and Star, cierre del piloto en Skyrim
 
-El 12 de noviembre se ejecutó el piloto facturable autorizado de Moon and Star. Se prepararon **800/800 candidatas** en ES-419, incluidas las 194 opciones del jugador. Gasto conciliado **US$0,077835** de un tope de US$0,30. Se verificó un ZIP provisional con las candidatas reales y se dejó el mensaje del elevador en su ZIP independiente. La revisión local presenta un caso de criterio, cuatro muestras y 795 casos de consulta opcional. [Revisión y prueba](GUIA_DE_USO.md#revisar-el-piloto-real-de-moon-and-star).
+**Piloto funcional y lingüísticamente satisfactorio dentro del alcance probado, con cobertura parcial y observaciones pendientes.** El usuario encontró la traducción natural y comprensible en diálogos, subtítulos, objetivos, documentos, comercio, objetos, mapa, libros, acertijos y la progresión de la ruta principal que recorrió. No reportó fallos funcionales atribuibles a la traducción. La aparente salida bloqueada de Kagrenar se resolvió al encontrar la segunda puerta.
 
-El usuario confirmó las **ocho comprobaciones iniciales del original**. Mandyn abre y cierra el diálogo, `MASMainQuest` aparece en el diario, Little Vivec es accesible y las interacciones probadas con Selyse, Toren y Bal-Ran progresan. La misión principal completa y sus variantes quedan pendientes. El protagonista permaneció en silencio durante las observaciones del usuario.
+El paquete provisional cubre **800/800 candidatas** del alcance de plugins, incluidas 194 opciones del jugador, con 27 campos protegidos intactos. El coste conciliado fue **US$0,077835** de un tope de US$0,30. La verificación estructural y el recorrido reportado miden coberturas distintas. No consta una pasada completa con la versión 0.2 ni con el ZIP independiente del mensaje del elevador. La revisión de los acertijos cotejó los textos con las mecánicas y conservó sus redacciones. [Ejecución real y revisión de Kagrenar](REFERENCIA_TECNICA.md#ejecución-real-de-moon-and-star).
 
-El inventario incluye **827 campos de plugin**. El ensayo reversible exportó los **800 traducibles**, entre ellos 194 opciones del jugador, y conservó 27 nombres e identificadores. La suite offline pasó **412/412**. El 12 de noviembre el usuario confirmó en Skyrim que las dos opciones localizadas se muestran en español, se pueden seleccionar y reciben la respuesta NPC correcta. Mandyn conserva la progresión de misión. Selyse ejecuta la rama de rechazo y el usuario observó que la opción inglesa «Sure.» continúa el encargo. El ZIP independiente del elevador se difiere hasta que el recorrido llegue allí.
-
-**Siguiente paso.** Continuar la prueba en Skyrim con el ZIP provisional 0.2. Esta versión incorpora la observación del usuario sobre la recompensa de Kagrenar y alinea el subtítulo con el báculo del parche activo. Quedan por verificar las rutas restantes y el mensaje del elevador. El API Lock global permanece activo. [Detalle de la adaptación, cobertura y coste](REFERENCIA_TECNICA.md#ejecución-real-de-moon-and-star).
+El recorrido normal puede aportar observaciones adicionales. El proyecto pasa a preparar el escalamiento offline con el API Lock activo. [Plan técnico](REFERENCIA_TECNICA.md#escalamiento-por-cohortes).
 
 ## Compatibilidad MO2 y Nolvus, 11 de noviembre
 
@@ -143,13 +141,13 @@ La coherencia entre registros ya incorpora nombres localizados con identidad/pro
 
 | Orden | Trabajo pendiente | Condición para avanzar |
 |---|---|---|
-| 1 | Preparar la línea base de Moon and Star y cerrar los campos retenidos de exportación | Aplicar la matriz de mecanismos. Confirmar misiones, diálogo y recursos en el perfil aislado antes de ampliar el piloto |
+| 1 | Preparar un conjunto de referencia y medir la cobertura por mecanismo de exportación | Usar Moon and Star como regresión funcional parcial y incluir formatos y riesgos adicionales con fuentes identificadas |
 | 2 | Aclarar el recibo económico incierto y conservar cuarentenas históricas | Conciliar por separado US$0,00249593 históricos y US$0,010256 del diagnóstico; no liberar reservas ni reenviar por suposición |
 | 3 | Adjudicar las parejas conservadas | Evaluación ciega; distinguir validación mecánica, naturalidad y fidelidad |
-| 4 | Completar y calibrar el juez sobre casos naturales | Ocho controles pasados no miden falsas aprobaciones ni ahorro humano |
-| 5 | Validación natural y escalamiento gradual | Perfil confirmado por API y juez calibrado; preservar candidatas y decisiones, sin repetir todo |
+| 4 | Calibrar el juez con casos naturales y discrepancias adjudicadas | Medir detección, falsos avisos, abstenciones, trabajo humano y coste incremental sobre los mismos ejemplos |
+| 5 | Escalar por mecanismos verificados y cohortes reanudables | Comparar coste y cobertura por estrato, conservar los recibos y aislar las rutas de exportación pendientes |
 
-No se recomienda aumentar carga sin calibración y presupuesto compatible. El transporte real pasó los controles sintéticos; calidad del juez sobre traducciones naturales, calibración, escalamiento y producción siguen pendientes. La segmentación automática exige límites compartidos fiables; un párrafo demasiado largo o desalineado queda retenido sin truncarse. Los cambios de esta fase se proponen en una PR solo documental; el código permanece privado.
+La siguiente ejecución facturable requiere autorización específica con manifiesto, modelos y presupuesto. La segmentación automática exige límites compartidos fiables. Un párrafo demasiado largo o desalineado queda retenido sin truncarse. Los cambios se publican por PR documental y el código permanece privado.
 
 ## Fuentes de los cortes históricos
 

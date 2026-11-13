@@ -1,6 +1,6 @@
 # Reglas y referencia técnica
 
-Corte documental **2026-11-11**. Resume lo vigente sin sustituir los contratos del código. [Estado](ESTADO_ACTUAL.md) · [Uso](GUIA_DE_USO.md) · [Histórico y originales](HISTORICO.md).
+Corte documental **2026-11-12**. Resume lo vigente sin sustituir los contratos del código. [Estado](ESTADO_ACTUAL.md) · [Uso](GUIA_DE_USO.md) · [Histórico y originales](HISTORICO.md).
 
 ## Preparación de Moon and Star
 
@@ -58,7 +58,40 @@ El piloto del 12 de noviembre usó 159 solicitudes de traducción Luna (US$0,058
 
 El cierre editorial conservó las dos redacciones probadas en juego, normalizó 23 menciones de Little Vivec y corrigió la caja de términos protegidos en cuatro segmentos recuperados. Se detectó una etiqueta `font` con un alias dentro de un atributo. El protector ahora enmascara toda la etiqueta, con regresión verificada. La suite pasó **413 pruebas**. Se mantuvo visible un aviso de doble negación y la muestra independiente sigue siendo acotada.
 
-Las **800/800 candidatas** pasaron la reconstrucción y exportación estructural. El ZIP provisional contiene cinco copias verificadas y once JSON DSD. Al proyectar las copias se releyeron los 827 campos, con cambios exclusivos en los textos autorizados y el mismo orden. Las 27 fuentes protegidas quedaron intactas. El elevador tiene su propio paquete manual y la prueba completa dentro de Skyrim sigue pendiente.
+Las **800/800 candidatas** pasaron la reconstrucción y exportación estructural. El ZIP provisional contiene cinco copias verificadas y once JSON DSD. Al proyectar las copias se releyeron los 827 campos, con cambios exclusivos en los textos autorizados y el mismo orden. Las 27 fuentes protegidas quedaron intactas. El elevador averiado tiene su propio paquete manual.
+
+### Revisión contextual de Kagrenar
+
+Se cotejaron los títulos y cuerpos de cuatro libros directamente contra el plugin inglés ganador y las ocho entradas DSD del ZIP. Los campos coinciden entre las versiones 0.1 y 0.2. Se verificaron fuentes, etiquetas y saltos de página. Los scripts del BSA y sus propiedades VMAD vinculan cada cofre a una identidad de objeto. Los tres aciertos habilitan el acceso a la llave de la tumba. La puerta de salida usa la llave del elevador. [Diseño de Kagrenar por Marc Soskin](https://marcsoskin.com/moon-and-star-design/).
+
+| Texto | Fidelidad comprobada |
+|---|---|
+| Primera pregunta | Conserva la materialización de la magia y la unión de dos almas. Ambas pistas corresponden al colgante nupcial. |
+| Segunda pregunta | Conserva la metáfora del arma, la elevación de los mortales y la capacidad de vencer al tiempo. La respuesta de la pluma sigue siendo indirecta. |
+| Tercera pregunta | Conserva el contraste entre destruir en frío y crear en caliente, junto con la imagen de cubrir el corazón. «Envuelva» atenúa el matiz de recubrimiento rígido de `encase`. Las pistas siguen apuntando al acero. |
+| Prueba final | Conserva la instrucción de tomar las llaves y la advertencia para los indignos. Es un libro distinto de los tres acertijos de los cofres. |
+
+Se conservaron los textos y la dificultad. La inspección fue offline. El cotejo visual de glifos o de variantes de ruta sigue disponible si aparece una incidencia en juego.
+
+### Calidad lingüística y valor observado de Sol
+
+Se releyeron con verificación de hash los 45 recibos de revisión. Las cuatro muestras independientes de Sol cubrieron tres subtítulos y una opción de diálogo, con redacciones defendibles en el cotejo bilingüe. Quedaron fuera los acertijos, los objetivos y otros formatos. El aviso de doble negación del visor corresponde a una reformulación afirmativa que conserva el sentido de la frase revisada. El cotejo confirma también la coincidencia del nombre de Campamento de Moss Creek en el marcador y el objetivo de Bal-Ran.
+
+Las tres escaladas devueltas como `no_issue` contenían una variante incoherente del topónimo Little Vivec frente al marcador. La evidencia del nombre confirmado estaba en los tres paquetes de revisión. Luna señaló explícitamente el topónimo en dos de ellos. En el tercero, Luna discutió un título de facción y la auditoría local identificó el desajuste del topónimo. El cierre offline corrigió los tres dentro de las 23 menciones normalizadas. No hubo posediciones iniciadas por Sol. El gasto de Sol fue **17,7 %** del piloto. Cuatro muestras y tres escaladas permiten analizar casos, pero no estimar precisión, sensibilidad ni ahorro humano para Nolvus.
+
+La QA local ya detectaba el cambio de nombre mediante `ENTITY_CHANGED`. El filtro que decide si una posedición recomprobada puede sustituir a la candidata omitía ese código. Plan B ahora conserva la candidata anterior cuando la propuesta incumple un nombre confirmado. La propuesta y el dictamen siguen en la traza de revisión. La regresión offline reproduce el caso con un Sol simulado que devuelve `no_issue`. Suite completa **414/414**. El ZIP del piloto y los recibos se conservaron.
+
+### Escalamiento por cohortes
+
+| Etapa | Automatización y criterio de avance |
+|---|---|
+| Inventario verificable | Reconciliar la estimación histórica de 240.684 con el manifiesto del perfil activo. Identificar ganador, origen, slot, hash, mecanismo, versión y exclusión por campo. Separar candidatos exportables, campos protegidos y retenciones por formato. Comprobar que la cuenta cierre sin duplicar parches ni reutilizaciones. |
+| Contexto mecánico y terminología | Aprovechar el índice de ganadores y el contexto existente. Probar relaciones extraídas de fuentes verificables, como libro → cofre → objeto, objetivo → marcador y oferta → opción → recompensa. Registrar el alcance del parche. Aplicar invariantes por identidad y reservar la revisión para ambigüedades reales. Las fuentes en conflicto quedan visibles. |
+| Calibración offline | Construir un conjunto adjudicado con traducciones naturales, errores conocidos y reformulaciones válidas. Separar diálogo, misión, libros, términos, interfaz y mecanismos de exportación. Incluir casos que pasaron QA y casos retenidos. Comparar detectados, omitidos, falsos avisos, abstenciones y correcciones que sobrevivieron el cotejo. Medir tiempo editorial por incidencia y por 1.000 campos. |
+| Salida y recuperación | Ejecutar controles estructurales en el 100 % de las candidatas. Automatizar hashes, diff de campos autorizados, ganadores, conflictos, PEX referenciados y rollback en perfiles aislados. Reproducir cortes, uso incierto, fallos de protocolo y recuperación de resultados válidos desde recibos. Usar verificaciones en juego por mecanismo nuevo o incidencia reproducible. |
+| Piloto transversal y ampliación | Simular cohortes de 500, 1.000 y 2.000 campos con agrupación narrativa. Comparar cobertura, tokens, bytes, solicitudes, memoria, incidencias y reanudación. Elegir tamaños según el estrato y preparar presupuesto por etapa. En una futura ejecución autorizada, usar Luna para traducción y Sol para muestra independiente estratificada y discrepancias lingüísticas con evidencia. Registrar cada aumento de cobertura y su coste antes de ampliar. |
+
+Moon and Star produjo un coste observado de **US$0,09729 por 1.000 campos**. Aplicar ese promedio a 240.684 daría **US$23,42** como extrapolación aritmética de un solo mod. El presupuesto de un lote transversal requiere medir tokens, longitud, densidad de contexto, recuperación, revisión y exportación por estrato. Las tarifas y los supuestos de Batch o caché deben verificarse cuando se prepare una ejecución autorizada. El piloto usó un cierre específico para recuperar segmentos y reconciliar nombres. Generalizar esa recuperación con recibos y QA es trabajo pendiente antes de escalar. [Evaluación estratégica y escenarios históricos](https://github.com/DanielLopezzz/Antigravity-MD-Skyrim/blob/main/Fase10_Evolucion_Linguistica/StrategicEvaluation_20261106/README.md).
 
 ## Compatibilidad y exportación auditadas el 11 de noviembre
 
