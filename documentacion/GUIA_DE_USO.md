@@ -38,7 +38,7 @@ Para completar el piloto, coteja el texto ES-419 contra el manifiesto, incluidos
 
 Abre `Revisar_piloto_Moon_and_Star.bat` desde la raíz. **Necesita criterio** muestra el aviso de doble negación y **Control de calidad** reúne las cuatro muestras independientes de Sol. La consulta y los cambios editoriales se guardan en el proyecto privado. El visor muestra candidatas por texto completo, incluidos libros reensamblados.
 
-En la instancia de prueba, desactiva el ZIP de dos opciones antes de activar `Moon_and_Star_ES419_Prueba_Completa.zip`. Confirma que las cinco copias y los JSON del manifiesto ganan, y que el orden de plugins es idéntico al de la referencia. Repite Mandyn y Selyse desde el mismo guardado y verifica objetivos, diarios, subtítulos y mapa al avanzar. Cierra Skyrim y desactiva el ZIP para volver a los archivos originales. El ZIP completo es provisional y el del elevador se prueba cuando llegues a Kagrenar Depths.
+En la instancia de prueba, desactiva el ZIP de dos opciones o la versión anterior antes de activar `Moon_and_Star_ES419_Prueba_Completa.zip`. Confirma que las cinco copias y los JSON del manifiesto ganan, y que el orden de plugins es idéntico al de la referencia. Repite Mandyn y Selyse desde el mismo guardado y verifica objetivos, diarios, subtítulos y mapa al avanzar. En Kagrenar, la versión 0.2 muestra «báculo» tanto en el subtítulo de la oferta como en la opción del jugador. Cierra Skyrim y desactiva el ZIP para volver a los archivos originales. El ZIP completo es provisional y el del elevador se prueba cuando llegues a Kagrenar Depths.
 
 ## Revisar el resultado real de Amber Guard
 

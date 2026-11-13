@@ -10,7 +10,7 @@ El usuario confirmó las **ocho comprobaciones iniciales del original**. Mandyn 
 
 El inventario incluye **827 campos de plugin**. El ensayo reversible exportó los **800 traducibles**, entre ellos 194 opciones del jugador, y conservó 27 nombres e identificadores. La suite offline pasó **412/412**. El 12 de noviembre el usuario confirmó en Skyrim que las dos opciones localizadas se muestran en español, se pueden seleccionar y reciben la respuesta NPC correcta. Mandyn conserva la progresión de misión. Selyse ejecuta la rama de rechazo y el usuario observó que la opción inglesa «Sure.» continúa el encargo. El ZIP independiente del elevador se difiere hasta que el recorrido llegue allí.
 
-**Siguiente paso.** Revisar las muestras y probar el ZIP provisional en la instancia aislada desde el mismo guardado. Quedan por verificar en Skyrim la traducción completa, el mensaje del elevador y las rutas que exceden la primera prueba visual. El API Lock global permanece activo. [Cobertura y coste](REFERENCIA_TECNICA.md#ejecución-real-de-moon-and-star).
+**Siguiente paso.** Continuar la prueba en Skyrim con el ZIP provisional 0.2. Esta versión incorpora la observación del usuario sobre la recompensa de Kagrenar y alinea el subtítulo con el báculo del parche activo. Quedan por verificar las rutas restantes y el mensaje del elevador. El API Lock global permanece activo. [Detalle de la adaptación, cobertura y coste](REFERENCIA_TECNICA.md#ejecución-real-de-moon-and-star).
 
 ## Compatibilidad MO2 y Nolvus, 11 de noviembre
 
