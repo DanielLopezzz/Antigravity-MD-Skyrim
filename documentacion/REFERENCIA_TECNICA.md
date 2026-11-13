@@ -25,7 +25,7 @@ El log de SKSE registra la carga de `DBVO.dll` 2.0.1.5. La configuración base t
 
 `DIAL FULL` es el texto del tópico. Su rama `BNAM`, misión `QNAM` y prioridades viven en subregistros separados. `INFO NAM1` sigue siendo la respuesta de NPC. La copia probada conserva sus vínculos y condiciones. Con `enable_player_dialogue_visual_test` y la ruta inline habilitada, la presencia de DBVO permite construir el paquete de prueba con `runtime_validated: false`. El modo ordinario mantiene su retención. El paquete visual conserva el DLL, configuración, FUZ y mapas del usuario. En la instalación inspeccionada, `dialoguemenu.swf` lo provee Untarnished UI. Instantly Skip Dialogue NG, Dialogue History y el complemento de diálogo de Open Animation Replacer se conservan como variables controladas. [Definición de DIAL en xEdit](https://raw.githubusercontent.com/TES5Edit/TES5Edit/dev-4.1.6/Core/wbDefinitionsTES5.pas#L4476) · [Instantly Skip Dialogue](https://github.com/JonathanFeenstra/InstantlySkipDialogueSKSE) · [Dialogue History](https://github.com/powerof3/DialogueHistory).
 
-La prueba completa en disco exportó **800 campos con textos de ensayo**, en cinco copias de plugins y once JSON DSD. Releyó 827 campos en una proyección del perfil y revirtió las copias. El único ZIP de plugins destinado a Skyrim contiene dos ediciones de texto manuales. La aceptación admite silencio y voz inglesa correcta del protagonista. Rechaza una voz equivocada, opción ausente, respuesta incorrecta o cambio de progresión. Las ocho comprobaciones del original fueron reportadas por el usuario. Las dos opciones localizadas siguen pendientes de prueba en Skyrim.
+La prueba completa en disco exportó **800 campos con textos de ensayo**, en cinco copias de plugins y once JSON DSD. Releyó 827 campos en una proyección del perfil y revirtió las copias. El único ZIP de plugins destinado a Skyrim contiene dos ediciones de texto manuales. La aceptación admite silencio y voz inglesa correcta del protagonista. Rechaza una voz equivocada, opción ausente, respuesta incorrecta o cambio de progresión. El usuario confirmó en Skyrim la presentación, selección y respuesta NPC de ambas opciones. Mandyn avanzó. Selyse conservó su rama de rechazo y la opción inglesa «Sure.» permitió continuar. La evidencia en juego se limita a esas ramas.
 
 ### Marcadores de mapa y otros campos
 
@@ -49,6 +49,14 @@ El staging privado conserva el vínculo de fuente con archivo, ganador y perfil.
 | Luna, posedición | Solo con error fundamentado, con reserva independiente | Hasta 0,020 de asignación propuesta |
 
 Las estimaciones Luna usan el tamaño de los cuerpos preparados, una banda de bytes por token y la tarifa estándar. Las reservas acumuladas de generación suman 0,384 USD si cada envío agotara su reserva. El despachador reconcilia secuencialmente y libera el remanente. El libro global preparado fija 0,30 USD como escenario de trabajo sin permiso de ejecución. Una vez validada la prueba visual, la primera cohorte requiere autorización específica y sus recibos determinan la ampliación. [Tarifas estándar de OpenAI](https://developers.openai.com/api/docs/pricing).
+
+## Ejecución real de Moon and Star
+
+El piloto del 12 de noviembre usó 159 solicitudes de traducción Luna (US$0,058163), 38 revisiones auxiliares Luna (US$0,005897) y siete revisiones Sol (US$0,013775). Cuatro de Sol fueron muestras independientes y tres escaladas. Las siete devolvieron `no_issue`. Hubo un dictamen auxiliar fuera del contrato y cinco lotes de traducción retenidos por QA. Se recuperaron de sus recibos 19 segmentos sin reenviar. El total fue **US$0,077835**, sin reservas ni uso incierto al cierre. [Tarifas estándar de OpenAI](https://developers.openai.com/api/docs/pricing).
+
+El cierre editorial conservó las dos redacciones probadas en juego, normalizó 23 menciones de Little Vivec y corrigió la caja de términos protegidos en cuatro segmentos recuperados. Se detectó una etiqueta `font` con un alias dentro de un atributo. El protector ahora enmascara toda la etiqueta, con regresión verificada. La suite pasó **413 pruebas**. Se mantuvo visible un aviso de doble negación y la muestra independiente sigue siendo acotada.
+
+Las **800/800 candidatas** pasaron la reconstrucción y exportación estructural. El ZIP provisional contiene cinco copias verificadas y once JSON DSD. Al proyectar las copias se releyeron los 827 campos, con cambios exclusivos en los textos autorizados y el mismo orden. Las 27 fuentes protegidas quedaron intactas. El elevador tiene su propio paquete manual y la prueba completa dentro de Skyrim sigue pendiente.
 
 ## Compatibilidad y exportación auditadas el 11 de noviembre
 

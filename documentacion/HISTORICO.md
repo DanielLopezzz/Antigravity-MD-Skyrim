@@ -2,9 +2,11 @@
 
 Actualizado el **2026-11-11**. Es un índice de hechos cerrados y decisiones sustituidas, no una guía de ejecución. [Estado vigente](ESTADO_ACTUAL.md) · [Uso](GUIA_DE_USO.md) · [Reglas](REFERENCIA_TECNICA.md).
 
-## Cobertura visual y línea base inicial de Moon and Star, 2026-11-11
+## Cobertura visual y primera prueba en Skyrim de Moon and Star, 2026-11-11 y 2026-11-12
 
-El usuario completó ocho comprobaciones del mod original. El criterio visual acepta silencio o voz inglesa correcta del protagonista. Se comprobó la carga de DBVO 2.0.1.5, se incorporaron tres marcadores de mapa al inventario y se probó offline la exportación de 800 campos, incluidas 194 opciones, con rollback. Se construyeron dos ZIP aislados, uno para Mandyn y Selyse y otro para el mensaje del elevador. Suite 412/412, validación de los ZIP en Skyrim pendiente. [Guía de la prueba](GUIA_DE_USO.md#protocolo-en-skyrim-para-moon-and-star).
+El usuario completó ocho comprobaciones del original. Se comprobó la carga de DBVO 2.0.1.5, se incorporaron tres marcadores al inventario y se probó offline la exportación reversible de 800 campos, incluidas 194 opciones. Suite 412/412. En Skyrim el usuario confirmó las dos opciones localizadas, con avance en Mandyn y rechazo esperado en Selyse. El ensayo independiente del elevador se difirió al recorrido normal. [Guía de la prueba](GUIA_DE_USO.md#protocolo-en-skyrim-para-moon-and-star).
+
+El piloto real posterior completó 800 candidatas y la exportación estructural provisional por US$0,077835. La corrección del protector de etiquetas quedó cubierta por la suite 413/413. [Ejecución real](REFERENCIA_TECNICA.md#ejecución-real-de-moon-and-star).
 
 ## Preparación offline de Moon and Star, 2026-11-11
 
