@@ -1,6 +1,10 @@
 # Histórico resumido y acceso a evidencia
 
-Actualizado el **2026-11-11**. Es un índice de hechos cerrados y decisiones sustituidas, no una guía de ejecución. [Estado vigente](ESTADO_ACTUAL.md) · [Uso](GUIA_DE_USO.md) · [Reglas](REFERENCIA_TECNICA.md).
+Actualizado el **2026-11-12**. Índice de hechos cerrados y decisiones sustituidas. [Estado vigente](ESTADO_ACTUAL.md) · [Uso](GUIA_DE_USO.md) · [Reglas](REFERENCIA_TECNICA.md).
+
+## Cierre del recorrido de Moon and Star, 2026-11-12
+
+El usuario reportó buena calidad y progresión funcional en su recorrido. El hallazgo de la segunda puerta resolvió la incidencia de salida de Kagrenar. La duda sobre la claridad de los acertijos dio lugar a un cotejo offline de cuatro libros y sus mecanismos. Se conservaron los textos y se reforzó el control de nombres confirmados en las posediciones de Plan B. [Alcance vigente](ESTADO_ACTUAL.md#moon-and-star-cierre-del-piloto-en-skyrim) · [Evidencia técnica](REFERENCIA_TECNICA.md#revisión-contextual-de-kagrenar).
 
 ## Cobertura visual y primera prueba en Skyrim de Moon and Star, 2026-11-11 y 2026-11-12
 
