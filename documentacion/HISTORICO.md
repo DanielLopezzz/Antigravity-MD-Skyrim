@@ -1,6 +1,10 @@
 # Histórico resumido y acceso a evidencia
 
-Actualizado el **2026-11-12**. Índice de hechos cerrados y decisiones sustituidas. [Estado vigente](ESTADO_ACTUAL.md) · [Uso](GUIA_DE_USO.md) · [Reglas](REFERENCIA_TECNICA.md).
+Actualizado el **2026-11-14**. Índice de hechos cerrados y decisiones sustituidas. [Estado vigente](ESTADO_ACTUAL.md) · [Uso](GUIA_DE_USO.md) · [Reglas](REFERENCIA_TECNICA.md).
+
+## Recuperación por campo y primer ensayo transversal, 2026-11-14
+
+Se verificó la recuperación con una copia de recibos reales y se comparó la reanudación de Plan B con fallos simulados. Se sellaron los ganadores de Remiel y Mysticism para la muestra y se registró el conflicto MCM de True Armor. [Comparación, rutas y pendientes](REFERENCIA_TECNICA.md#recuperación-de-recibos-y-ensayo-transversal).
 
 ## Cierre del recorrido de Moon and Star, 2026-11-12
 

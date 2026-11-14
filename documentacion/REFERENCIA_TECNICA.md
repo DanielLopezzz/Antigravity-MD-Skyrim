@@ -1,6 +1,6 @@
 # Reglas y referencia técnica
 
-Corte documental **2026-11-12**. Resume lo vigente sin sustituir los contratos del código. [Estado](ESTADO_ACTUAL.md) · [Uso](GUIA_DE_USO.md) · [Histórico y originales](HISTORICO.md).
+Corte documental **2026-11-14**. Resume lo vigente sin sustituir los contratos del código. [Estado](ESTADO_ACTUAL.md) · [Uso](GUIA_DE_USO.md) · [Histórico y originales](HISTORICO.md).
 
 ## Preparación de Moon and Star
 
@@ -91,7 +91,23 @@ La QA local ya detectaba el cambio de nombre mediante `ENTITY_CHANGED`. El filtr
 | Salida y recuperación | Ejecutar controles estructurales en el 100 % de las candidatas. Automatizar hashes, diff de campos autorizados, ganadores, conflictos, PEX referenciados y rollback en perfiles aislados. Reproducir cortes, uso incierto, fallos de protocolo y recuperación de resultados válidos desde recibos. Usar verificaciones en juego por mecanismo nuevo o incidencia reproducible. |
 | Piloto transversal y ampliación | Simular cohortes de 500, 1.000 y 2.000 campos con agrupación narrativa. Comparar cobertura, tokens, bytes, solicitudes, memoria, incidencias y reanudación. Elegir tamaños según el estrato y preparar presupuesto por etapa. En una futura ejecución autorizada, usar Luna para traducción y Sol para muestra independiente estratificada y discrepancias lingüísticas con evidencia. Registrar cada aumento de cobertura y su coste antes de ampliar. |
 
-Moon and Star produjo un coste observado de **US$0,09729 por 1.000 campos**. Aplicar ese promedio a 240.684 daría **US$23,42** como extrapolación aritmética de un solo mod. El presupuesto de un lote transversal requiere medir tokens, longitud, densidad de contexto, recuperación, revisión y exportación por estrato. Las tarifas y los supuestos de Batch o caché deben verificarse cuando se prepare una ejecución autorizada. El piloto usó un cierre específico para recuperar segmentos y reconciliar nombres. Generalizar esa recuperación con recibos y QA es trabajo pendiente antes de escalar. [Evaluación estratégica y escenarios históricos](https://github.com/DanielLopezzz/Antigravity-MD-Skyrim/blob/main/Fase10_Evolucion_Linguistica/StrategicEvaluation_20261106/README.md).
+Moon and Star produjo un coste observado de **US$0,09729 por 1.000 campos**. Aplicar ese promedio a 240.684 daría **US$23,42** como extrapolación aritmética de un solo mod. El presupuesto de un lote transversal requiere medir tokens, longitud, densidad de contexto, recuperación, revisión y exportación por estrato. Las tarifas y los supuestos de Batch o caché deben verificarse cuando se prepare una ejecución autorizada. [Evaluación estratégica y escenarios históricos](https://github.com/DanielLopezzz/Antigravity-MD-Skyrim/blob/main/Fase10_Evolucion_Linguistica/StrategicEvaluation_20261106/README.md).
+
+### Recuperación de recibos y ensayo transversal
+
+El modo opcional de Plan B procesa un recibo conciliado tras verificar su identidad, hash, esquema, orden y cardinalidad. Un fallo de identidad retiene el lote. Si falla un marcador o el QA de una unidad, las demás pueden recuperarse con su texto original de recibo y su propia validación. El lote conserva `qa_failed` cuando procede, y el informe identifica la solicitud y los campos retenidos. El caché comprueba texto, fuente, contexto e instrucciones contra el recibo antes de reutilizar. La reanudación de un recibo conciliado conserva su reserva original si cambió la estimación local. Las solicitudes inciertas siguen sin reenvío automático.
+
+| Verificación | Resultado |
+|---|---|
+| Reproducción de cinco recibos retenidos de Moon and Star | **14/19** recuperados tal como llegaron. Cuatro retenciones de glosario y una de marcador. Cero envíos y balance idéntico. Las reparaciones editoriales específicas del piloto quedan en su historial. |
+| Flujo integrado con 1.220 campos y fallos inyectados | **1.207 → 1.211** candidatos con el mismo total de 88 intercambios simulados. Corte tras la primera cohorte y repetición final con cero intercambios adicionales. Una solicitud incierta conservó su reserva virtual y la identidad duplicada retuvo su lote. |
+| Tamaño de cohorte | Límites 500, 1.000 y 2.000 dieron 3, 2 y 1 cohortes. Los 88 paquetes y sus bytes fueron iguales en este conjunto. Se usó 500 para ensayar el corte. El plan sin contexto enriquecido sumó US$0,164449 en reservas virtuales de traducción como máximo acumulado teórico. |
+| Salida técnica aislada | Remiel: 90 campos de misión confirmados, 47 inline y 43 DSD. Mysticism: 629 campos DSD confirmados. Se verificó un cambio inline de diario y otro de subtítulo en una copia de Remiel, y el rollback exacto de un DSD de efecto mágico. True Armor: 507 entradas para 501 claves, seis claves repetidas y un destino español existente con los mismos bytes que el inglés. Se verificó el ciclo UTF-16LE con una tabla de prueba de cuatro claves únicas. |
+| Control lingüístico histórico | Se vincularon 12 decisiones de Amber Guard, seis idénticas a la candidata original y seis modificadas. Un texto aprobado conserva una alerta de ambigüedad del inglés. La repetición de siete recibos de Sol de Moon and Star reprodujo las tres señales locales de identidad. La muestra carece de comparaciones equivalentes para estimar rendimiento incremental de Sol o ahorro humano. |
+
+La preselección de la siguiente prueba combina **763 campos**. Incluye los 719 de plugin confirmados y 44 textos MCM de One Click Power Attack NG. El archivo MCM ganador tiene 48 claves únicas. No apareció el destino español en el inventario ni como archivo suelto activo. En sandbox se regeneró la tabla completa con un cambio de prueba, conservando las 48 claves, su orden y UTF-16LE BOM. Con contexto de registros y glosario, el plan pasó de 49 a **108 solicitudes**, con referencias recuperadas para los 763 campos y términos vinculantes para 237. El máximo acumulado virtual de reservas Luna pasó de US$0,092613 a US$0,296315. Es una suma de máximos por envío, y el gasto requiere conciliación. Medir el presupuesto por etapas y verificar el destino al exportar.
+
+La suite pasó **417 pruebas**. El ensayo transversal usó respuestas simuladas y verificaciones binarias offline. Quedan por verificar la pertinencia del contexto específico, la comparación lingüística sobre una muestra adjudicada y el funcionamiento en juego. Se conservaron las cinco retenciones del ejercicio de Moon and Star y la colisión de True Armor como controles de regresión.
 
 ## Compatibilidad y exportación auditadas el 11 de noviembre
 

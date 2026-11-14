@@ -1,6 +1,12 @@
 # Estado actual y próximos pasos
 
-Verificado el **2026-11-12**. Esta es la fuente del estado vigente; [uso](GUIA_DE_USO.md), [reglas y arquitectura](REFERENCIA_TECNICA.md) e [histórico](HISTORICO.md) cubren temas distintos. Las cifras de revisión son un corte, no un contador en tiempo real.
+Verificado el **2026-11-14**. [Uso](GUIA_DE_USO.md) · [Reglas y arquitectura](REFERENCIA_TECNICA.md) · [Histórico](HISTORICO.md).
+
+## Recuperación y piloto transversal offline
+
+Plan B dispone de recuperación opcional por campo para proyectos nuevos. En una copia de Moon and Star se recuperaron **14 de 19** segmentos de lotes retenidos con sus recibos existentes. El manifiesto de ensayo reúne **1.220 campos** de Remiel, Mysticism y True Armor. Los **719 campos de plugin** se cotejaron contra el perfil activo. Los **501 de True Armor** quedan retenidos para salida por claves duplicadas y una tabla española existente. Suite **417/417**, API Lock activo y cero gasto nuevo. [Resultados y límites](REFERENCIA_TECNICA.md#recuperación-de-recibos-y-ensayo-transversal).
+
+El manifiesto preliminar de la siguiente prueba combina los campos de plugin confirmados con 44 textos MCM de One Click Power Attack NG. Ya se preparó contexto local de registros y glosario en una copia aislada. Quedan la verificación de contexto específico, la ampliación de la muestra lingüística adjudicada y el presupuesto por etapa. La ejecución en juego sigue siendo una comprobación acotada por mecanismo.
 
 ## Moon and Star, cierre del piloto en Skyrim
 
