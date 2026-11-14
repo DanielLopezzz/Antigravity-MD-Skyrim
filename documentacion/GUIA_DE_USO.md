@@ -15,11 +15,11 @@ Actualizada el **2026-11-11** a partir de los lanzadores, CLI y visor existentes
 | Caso | Identidad local y cambio | Control funcional |
 |---|---|---|
 | Mandyn | `MASMainQuestHelp` `0000E253`. «Anything I can help with?» pasa a «¿Te puedo ayudar en algo?» | La respuesta `INFO 0000E254` conserva su continuación. Compara `MASMainQuest` y la respuesta completa con el control. |
-| Selyse | `MASSelyseDialogDecline` `0000C04F`. «I'm too busy right now.» pasa a «Ahora mismo tengo mucho que hacer.» | La respuesta `INFO 0000C050` conserva la posibilidad de volver por el encargo. Compara `MASSelyseDialog` con el control. |
+| Selyse | `MASSelyseDialogDecline` `0000C04F`. «I'm too busy right now.» pasa a «Ahora mismo tengo mucho que hacer.» | Se espera que el encargo quede disponible para más adelante. La respuesta `INFO 0000C050` invita a volver. La aceptación se prueba con `MASSelyseDialogAccept` `0000C04D`, «Sure.». |
 
 ### Elevador y recorrido ampliado
 
-Prueba `Moon_and_Star_ES419_Elevator_Test.zip` por separado cuando llegues al elevador averiado por progresión normal. Compara desde antes de entrar a la zona. Verifica que la inicialización y activación coincidan y que el cuadro muestre «Parece que se descompuso al bajar.» y pueda cerrarse. La carpeta `Scripts` del ZIP debe ganar para `masbrokenelevator.pex`. Al desactivarla, comprueba que el script vuelva a provenir de `MoonAndStar_MAS.bsa` con el hash original del manifiesto. La prueba de empaquetado no modifica ese BSA.
+La prueba de `Moon_and_Star_ES419_Elevator_Test.zip` queda diferida al recorrido normal. Cuando llegues al elevador averiado de Kagrenar Depths, compara desde antes de entrar a la zona. Verifica que la inicialización y activación coincidan y que el cuadro muestre «Parece que se descompuso al bajar.» y pueda cerrarse. La carpeta `Scripts` del ZIP debe ganar para `masbrokenelevator.pex`. Al desactivarla, comprueba que el script vuelva a provenir de `MoonAndStar_MAS.bsa` con el hash original del manifiesto. La prueba de empaquetado no modifica ese BSA.
 
 En el recorrido ampliado conserva los resultados de las ocho comprobaciones iniciales del original y añade rutas alternativas, entrega de objetos, recompensas y misiones completas. Repite desde guardados anteriores a la interacción. Registra FormID o EditorID, versión del paquete, resultado antes y después, capturas y errores del log. La aceptación visual incluye texto ES-419 legible en todos los campos traducibles del alcance, con tildes, eñes y signos de apertura. La aceptación funcional incluye el comportamiento original y la reversión.
 
@@ -32,7 +32,13 @@ En el recorrido ampliado conserva los resultados de las ocho comprobaciones inic
 | Selyse | `MASSelyseDialog` `0000C01B` | Contadores de pieles, nirnroot u otros encargos. |
 | Libro y recompensa | `MASKagrenarBookTranslated` `00011909`, `MASMainQuestMandynGiveTopic` `00010E11` | *Memories of Dorana*, páginas y glifos. En el recorrido correspondiente, anota inventario antes y después de entregar el objeto y recibir la recompensa. |
 
-Para completar el piloto, coteja el texto ES-419 contra el manifiesto, incluidos los textos de menú y subtítulos. El plan de Luna incluye las 194 opciones. Inicia la primera cohorte solo después de verificar la prueba visual y autorizar el presupuesto de API. Aplica Sol a la muestra y a discrepancias sustentadas, y conserva las correcciones propuestas como candidatas hasta la revisión editorial.
+Para completar el piloto, coteja el texto ES-419 contra el manifiesto, incluidos los textos de menú y subtítulos. La ejecución real incluye las 194 opciones del jugador.
+
+### Revisar el piloto real de Moon and Star
+
+Abre `Revisar_piloto_Moon_and_Star.bat` desde la raíz. **Necesita criterio** muestra el aviso de doble negación y **Control de calidad** reúne las cuatro muestras independientes de Sol. La consulta y los cambios editoriales se guardan en el proyecto privado. El visor muestra candidatas por texto completo, incluidos libros reensamblados.
+
+En la instancia de prueba, desactiva el ZIP de dos opciones o la versión anterior antes de activar `Moon_and_Star_ES419_Prueba_Completa.zip`. Confirma que las cinco copias y los JSON del manifiesto ganan, y que el orden de plugins es idéntico al de la referencia. Repite Mandyn y Selyse desde el mismo guardado y verifica objetivos, diarios, subtítulos y mapa al avanzar. En Kagrenar, la versión 0.2 muestra «báculo» tanto en el subtítulo de la oferta como en la opción del jugador. Cierra Skyrim y desactiva el ZIP para volver a los archivos originales. El ZIP completo es provisional y el del elevador se prueba cuando llegues a Kagrenar Depths.
 
 ## Revisar el resultado real de Amber Guard
 
