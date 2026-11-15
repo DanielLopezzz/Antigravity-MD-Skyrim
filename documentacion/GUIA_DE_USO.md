@@ -1,6 +1,6 @@
 # Guía de uso y revisión local
 
-Actualizada el **2026-11-14** a partir de los lanzadores, CLI y visor existentes. [Estado y pendientes](ESTADO_ACTUAL.md) · [Referencia técnica](REFERENCIA_TECNICA.md).
+Actualizada el **2026-11-15** a partir de los lanzadores, CLI y visor existentes. [Estado y pendientes](ESTADO_ACTUAL.md) · [Referencia técnica](REFERENCIA_TECNICA.md).
 
 ## Protocolo en Skyrim para Moon and Star
 
@@ -53,6 +53,8 @@ Tras la depuración, el visor y el staging pendiente muestran la posedición rec
 **Plan B, modo aislado:** `python -m nolvus_translator mass prepare --rows <filas.json> --project <proyecto-nuevo>` prepara manifiesto, contexto y cohortes. `mass status --project <proyecto>` abre el libro `project.sqlite3` del workbench y puede crearlo si no existe; exige los mismos caps con que se preparó. No es un lector genérico de pilotos. Para Amber Guard consulta `full_pilot_live/result.json` y `analysis.json` (o abre su `ledger.sqlite3` en solo lectura). `mass simulate --project <proyecto> --receipts <fixtures.json>` recorre el flujo integrado sin red. Los caps son virtuales en este modo; no autorizan gasto. En preparación pueden añadirse `--approved-glossary <db-o-json>`, `--name-source <db-solo-lectura>`, `--knowledge <sidecar>` y `--approved-memory <snapshot>`, todos consultados en solo lectura inmutable.
 
 Añade `--recover-valid-items` en `mass prepare` para probar la recuperación individual en un proyecto aislado. La opción queda sellada. Tras `mass simulate`, consulta `run/summary.json` y `run/cohorts/translation_*.json` para ver recibos recuperados y unidades retenidas con motivo. Reanuda con los mismos parámetros y recibos. Los segmentos recuperados son candidatos pendientes y los padres incompletos siguen retenidos al importar a staging.
+
+En el piloto transversal, compara el manifiesto y el sello del perfil antes de preparar cualquier envío. Usa las mismas parejas bilingües y referencias para ambos evaluadores, sin sus etiquetas de adjudicación. Si falta una candidata o su solicitud rebasa la reserva prevista, registra el caso como diferido. En una prueba de juego posterior, comprueba diario y objetivo de Remiel, nombre y descripción de un efecto de Mysticism, y etiqueta y ayuda de un ajuste de OCPA. [Preparación transversal](REFERENCIA_TECNICA.md#preparación-final-del-piloto-transversal).
 
 Usa el Python del entorno `.venv` desde el workspace. `--project` identifica la cartera compartida; `--run-name` permite otro mod o una revisión del manifiesto dentro de esa misma cartera, conservando gastos y caché. El valor predeterminado es `run`. La carpeta histórica `private/full_mod_pilot_v2` contiene solo preparación offline; el resultado vigente es el de Amber Guard indicado arriba.
 
