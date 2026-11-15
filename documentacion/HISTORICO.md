@@ -1,6 +1,10 @@
 # Histórico resumido y acceso a evidencia
 
-Actualizado el **2026-11-14**. Índice de hechos cerrados y decisiones sustituidas. [Estado vigente](ESTADO_ACTUAL.md) · [Uso](GUIA_DE_USO.md) · [Reglas](REFERENCIA_TECNICA.md).
+Actualizado el **2026-11-15**. Índice de hechos cerrados y decisiones sustituidas. [Estado vigente](ESTADO_ACTUAL.md) · [Uso](GUIA_DE_USO.md) · [Reglas](REFERENCIA_TECNICA.md).
+
+## Preparación del piloto transversal, 2026-11-15
+
+Se comparó el contexto general con referencias por identidad y se ensayó el alcance completo con transporte simulado. Quedaron preparados los controles para comparar a Luna y Sol y el presupuesto por etapa. [Resultados](REFERENCIA_TECNICA.md#preparación-final-del-piloto-transversal).
 
 ## Recuperación por campo y primer ensayo transversal, 2026-11-14
 

@@ -1,6 +1,6 @@
 # Reglas y referencia técnica
 
-Corte documental **2026-11-14**. Resume lo vigente sin sustituir los contratos del código. [Estado](ESTADO_ACTUAL.md) · [Uso](GUIA_DE_USO.md) · [Histórico y originales](HISTORICO.md).
+Corte documental **2026-11-15**. Resume lo vigente sin sustituir los contratos del código. [Estado](ESTADO_ACTUAL.md) · [Uso](GUIA_DE_USO.md) · [Histórico y originales](HISTORICO.md).
 
 ## Preparación de Moon and Star
 
@@ -108,6 +108,29 @@ El modo opcional de Plan B procesa un recibo conciliado tras verificar su identi
 La preselección de la siguiente prueba combina **763 campos**. Incluye los 719 de plugin confirmados y 44 textos MCM de One Click Power Attack NG. El archivo MCM ganador tiene 48 claves únicas. No apareció el destino español en el inventario ni como archivo suelto activo. En sandbox se regeneró la tabla completa con un cambio de prueba, conservando las 48 claves, su orden y UTF-16LE BOM. Con contexto de registros y glosario, el plan pasó de 49 a **108 solicitudes**, con referencias recuperadas para los 763 campos y términos vinculantes para 237. El máximo acumulado virtual de reservas Luna pasó de US$0,092613 a US$0,296315. Es una suma de máximos por envío, y el gasto requiere conciliación. Medir el presupuesto por etapas y verificar el destino al exportar.
 
 La suite pasó **417 pruebas**. El ensayo transversal usó respuestas simuladas y verificaciones binarias offline. Quedan por verificar la pertinencia del contexto específico, la comparación lingüística sobre una muestra adjudicada y el funcionamiento en juego. Se conservaron las cinco retenciones del ejercicio de Moon and Star y la colisión de True Armor como controles de regresión.
+
+### Preparación final del piloto transversal
+
+El piloto usa Remiel 1.7.5 (90 campos de misión), Mysticism 2.4.2 (629 efectos y encantamientos) y One Click Power Attack NG 1.11 (44 textos MCM). La política aislada conserva el título y un campo relacionado de la misma misión, el nombre o la descripción complementaria del mismo efecto, y el par etiqueta/ayuda de un mismo ajuste. Se excluyeron repeticiones del propio original y coincidencias léxicas sin vínculo comprobado. Los términos vinculantes se conservaron íntegros. Las páginas de los autores se registraron como metadatos. La evidencia de versión y mecánica enviada procede de los campos locales. [Remiel](https://www.nexusmods.com/skyrimspecialedition/mods/51874) · [Mysticism](https://www.nexusmods.com/skyrimspecialedition/mods/27839) · [OCPA](https://www.nexusmods.com/skyrimspecialedition/mods/60878).
+
+| Plan offline | Referencias para | Solicitudes Luna | Bytes totales del envío | Reservas acumuladas Luna |
+|---|---:|---:|---:|---:|
+| Recuperación general de contexto | 763 | 108 | 1.120.929 | US$0,296315 |
+| Relaciones comprobadas | 440 | 60 | 560.119 | US$0,155618 |
+
+La comparación conserva los **763 campos** y el mismo glosario. La reducción de solicitudes es del **44,4 %** y la observación lingüística está pendiente. Como control adicional se conservaron 12 decisiones históricas de Amber Guard, seis sobre la candidata exacta y seis sobre variantes editadas. Para este piloto se prepararon 12 variantes adjudicadas offline en seis familias, con un caso aceptable y uno defectuoso por familia. El QA local señaló uno de los seis defectos, por glosario, y dejó pasar las seis variantes aceptables. El conjunto es deliberadamente pequeño y sirve para comparar casos, sin extrapolar tasas.
+
+La primera comparación contempla seis controles a ciegas y tres candidatas naturales independientes, una por mod y de familias distintas a los controles. Ambos modelos reciben las mismas parejas bilingües y referencias. Se registran detecciones, omisiones, falsos avisos, abstenciones, fallos de protocolo y coste adicional de Sol. Las etiquetas se conservan fuera de la solicitud. La prueba mantiene el estado editorial pendiente y difiere la posedición.
+
+| Etapa propuesta | Solicitudes máximas | Reserva calculada | Sublímite |
+|---|---:|---:|---:|
+| Traducción Luna | 60 | US$0,155618 | US$0,157 |
+| Evaluación Luna y Sol | 18 | US$0,141131 | US$0,143 |
+| Total | **78** | **US$0,296749** | **US$0,300** |
+
+Los sublímites propuestos por modelo son US$0,164 para Luna y US$0,136 para Sol. Sol ocupa nueve revisiones comparables. Las reservas de revisión de candidatas naturales usan un máximo de bytes JSON por destino. Antes de enviar se comprueba el destino real, el saldo y la reserva de esa solicitud. Son máximos de planificación con tarifa estándar y conciliación por recibo. [Tarifas estándar de OpenAI](https://developers.openai.com/api/docs/pricing).
+
+El ensayo de extremo a extremo completó **78 intercambios simulados**, reanudó con cero adicionales y conciliación intacta. Las respuestas de prueba ejercitaron el contrato de revisión y las retenciones. API Lock activo, sin solicitudes de pago. El sello local vincula el perfil, hashes de fuentes, manifiesto, plan, glosario, casos y resultados. La autorización facturable se tramita para este alcance específico.
 
 ## Compatibilidad y exportación auditadas el 11 de noviembre
 

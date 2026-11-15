@@ -1,12 +1,12 @@
 # Estado actual y próximos pasos
 
-Verificado el **2026-11-14**. [Uso](GUIA_DE_USO.md) · [Reglas y arquitectura](REFERENCIA_TECNICA.md) · [Histórico](HISTORICO.md).
+Verificado el **2026-11-15**. [Uso](GUIA_DE_USO.md) · [Reglas y arquitectura](REFERENCIA_TECNICA.md) · [Histórico](HISTORICO.md).
 
 ## Recuperación y piloto transversal offline
 
 Plan B dispone de recuperación opcional por campo para proyectos nuevos. En una copia de Moon and Star se recuperaron **14 de 19** segmentos de lotes retenidos con sus recibos existentes. El manifiesto de ensayo reúne **1.220 campos** de Remiel, Mysticism y True Armor. Los **719 campos de plugin** se cotejaron contra el perfil activo. Los **501 de True Armor** quedan retenidos para salida por claves duplicadas y una tabla española existente. Suite **417/417**, API Lock activo y cero gasto nuevo. [Resultados y límites](REFERENCIA_TECNICA.md#recuperación-de-recibos-y-ensayo-transversal).
 
-El manifiesto preliminar de la siguiente prueba combina los campos de plugin confirmados con 44 textos MCM de One Click Power Attack NG. Ya se preparó contexto local de registros y glosario en una copia aislada. Quedan la verificación de contexto específico, la ampliación de la muestra lingüística adjudicada y el presupuesto por etapa. La ejecución en juego sigue siendo una comprobación acotada por mecanismo.
+La siguiente prueba transversal tiene un manifiesto offline de **763 campos**. El contexto por relación comprobada redujo las solicitudes de traducción de 108 a 60, con el mismo glosario. El ensayo incluyó 18 revisiones simuladas y reanudó sin enviar de nuevo. Se propone un tope total de **US$0,30**, sujeto a autorización específica. Quedan por medir calidad real, valor incremental de Sol y funcionamiento del paquete en Skyrim. [Alcance, comparación y presupuesto](REFERENCIA_TECNICA.md#preparación-final-del-piloto-transversal).
 
 ## Moon and Star, cierre del piloto en Skyrim
 
