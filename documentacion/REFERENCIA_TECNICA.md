@@ -149,6 +149,22 @@ Ambos evaluadores identificaron los tres defectos sembrados y dieron `no_issue` 
 
 El ZIP provisional contiene **650 cambios** verificados al releerlo. Incluye 560 campos DSD, 46 en la copia de Remiel y 44 claves traducidas en la tabla MCM completa. Los 110 campos con avisos y los tres retenidos quedan fuera del ZIP. El API Lock se restauró y los hashes de producción y perfil coincidieron al cierre. Las candidatas quedan pendientes de revisión editorial.
 
+### Consolidación del piloto transversal
+
+Se adjudicaron los **110 campos** de Mysticism vinculados con **25 avisos**. Se preservaron 50 y se editaron 60. Entre los editados, nueve corrigen significado, 23 alinean el nombre de un mismo efecto y 28 unifican familias con términos vinculantes. Se conservaron las distinciones de criatura y grado, y las variantes que comunican el mismo efecto, como las formas de *Fear Rune*. Se contrastaron los campos con sus registros, descripciones y términos del Skyrim instalado. El glosario maestro se consultó en solo lectura.
+
+Se corrigió la inferencia de nombres parciales entre etiquetas de magia. El detector podía asociar *Fortify Magicka* a *Fortify Magicka Regeneration* y pedir el nombre del efecto equivocado. La regresión conserva la advertencia cuando dos candidatas divergen para el mismo nombre completo y mantiene las referencias a efectos en descripciones. Las variantes aceptadas se adjudicaron solo en el piloto y se vincularon a las formas observadas.
+
+Los tres casos de cuarentena se reconstruyeron offline con los recibos y el original. Se repuso la apertura omitida del diario de Remiel, el nombre de *Command* separado de su descripción y el marcador `<mag>` de la runa de absorción. También se unificaron el nombre de la posada y la grafía de Nchuand-Zel en 17 campos de Remiel, y el término «ataque de poder» en cinco ayudas o etiquetas del MCM de OCPA. Se conservaron textos anteriores, motivos y hashes de recibos en la evidencia privada.
+
+El ZIP consolidado contiene **763 campos**. Hay 672 por DSD, 47 en una copia de Remiel y 44 en la tabla MCM completa. Se releyeron las salidas, se verificaron ganadores e índices y se comprobó la ausencia de colisiones por campo y por ruta de archivo. Una extracción temporal verificó los cuatro archivos y la reversión al retirar la capa. Los dictámenes de candidatas modificadas se conservan como evidencia histórica. **418 pruebas offline** pasaron. Queda pendiente la prueba en Skyrim de los tres mecanismos. [Comprobaciones en juego](GUIA_DE_USO.md#comprobar-el-paquete-transversal-consolidado).
+
+**Política provisional de revisión.** Luna traduce, la QA local verifica identidades, marcas, glosario y coherencia, y las decisiones repetidas se agrupan por familia. Reservar Sol para una discrepancia semántica de impacto en objetivo, efecto, instrucción o diálogo que siga abierta tras consultar el registro, el término y la revisión de Luna. En Moon and Star la revisión local detectó tres cambios de topónimo que Sol dejó pasar. En el transversal ambos detectaron los mismos tres errores sembrados, y Sol no añadió detecciones en las dos parejas naturales. Mantener una muestra breve de control y registrar qué aporta cada revisión. Conservar la candidata anterior y la discrepancia si falta evidencia para resolverla.
+
+**Siguiente lote recomendado.** 1.000 campos de rutas conocidas, en dos cohortes de hasta 500, con objetivos y diarios, magia e interfaz en grupos completos. Continuar a la segunda al conciliar la primera y revisar retenciones, familias terminológicas y cobertura del paquete. Mantener fuentes selladas, recibos, QA del 100 %, prohibición de reenvío incierto, reversión y candidatos pendientes de criterio. Antes de autorizar un nuevo gasto, comprobar el ZIP consolidado en Skyrim y calcular reservas con los cuerpos exactos del lote.
+
+El coste observado de traducción equivale a **US$0,03464 por 1.000 campos**. Para carga similar, con QA y hasta cuatro intervenciones justificadas de Sol, estimar **US$0,05–0,08 de gasto**. Como techo preliminar de reserva, **US$0,30** cubre el equivalente de aproximadamente US$0,204 de acumulación Luna, hasta US$0,066 de Sol y un margen de US$0,030. Las reservas se recalculan con el manifiesto y conservan sus topes y conciliación por etapa. [Tarifas estándar](https://developers.openai.com/api/docs/pricing).
+
 ## Compatibilidad y exportación auditadas el 11 de noviembre
 
 ### Entorno y diagnóstico

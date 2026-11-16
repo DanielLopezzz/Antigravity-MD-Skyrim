@@ -8,6 +8,8 @@ Se comparó el contexto general con referencias por identidad y se ensayó el al
 
 Tras el barrido del perfil, destinos y contratos, la ejecución autorizada produjo 760 candidatas de 763 campos por US$0,038519. Se separaron las variantes de Mysticism pendientes de criterio y se restauró el API Lock. [Cierre](REFERENCIA_TECNICA.md#resultado-del-piloto-transversal).
 
+La consolidación posterior resolvió los 25 avisos de coherencia de Mysticism, recuperó los tres campos omitidos o mal enrutados y generó una segunda versión del ZIP. Pasaron 418 pruebas offline y el paquete anterior quedó disponible como evidencia. [Consolidación](REFERENCIA_TECNICA.md#consolidación-del-piloto-transversal).
+
 ## Recuperación por campo y primer ensayo transversal, 2026-11-14
 
 Se verificó la recuperación con una copia de recibos reales y se comparó la reanudación de Plan B con fallos simulados. Se sellaron los ganadores de Remiel y Mysticism para la muestra y se registró el conflicto MCM de True Armor. [Comparación, rutas y pendientes](REFERENCIA_TECNICA.md#recuperación-de-recibos-y-ensayo-transversal).

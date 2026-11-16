@@ -58,6 +58,16 @@ En el piloto transversal, compara el manifiesto y el sello del perfil antes de p
 
 El resultado transversal queda en el visor local del proyecto de revisión. Los avisos de Mysticism se pueden recorrer por familia terminológica antes de resolver campos individuales. En el perfil aislado, si se prueba la copia de Remiel, conserva el nombre y la posición del plugin en el orden de carga y verifica qué archivos ganan. Para volver a los originales, cierra Skyrim y desactiva el paquete provisional. [Resultado del piloto](REFERENCIA_TECNICA.md#resultado-del-piloto-transversal).
 
+### Comprobar el paquete transversal consolidado
+
+Usa tres escenas breves en un perfil aislado con el mismo orden de carga.
+
+1. **Remiel.** Desde un guardado con el encargo disponible, comprueba una entrada del diario y un objetivo de la misión. El diario y el marcador deben referirse al mismo lugar y el estado de la misión debe coincidir con el guardado de referencia.
+2. **Mysticism.** Abre la descripción de un efecto disponible que muestre magnitud o duración, como una runa o un efecto de control. Comprueba el nombre, los valores renderizados y el efecto esperado.
+3. **OCPA.** Abre MCM y comprueba que el ajuste de ataques de poder y su ayuda aparecen juntos. Compara con la configuración del guardado de referencia.
+
+Cierra Skyrim, desactiva el paquete y verifica desde la referencia que el plugin y la tabla inglesa vuelven a ser los ganadores y que desaparecen los dos JSON DSD del paquete. [Consolidación](REFERENCIA_TECNICA.md#consolidación-del-piloto-transversal).
+
 Usa el Python del entorno `.venv` desde el workspace. `--project` identifica la cartera compartida; `--run-name` permite otro mod o una revisión del manifiesto dentro de esa misma cartera, conservando gastos y caché. El valor predeterminado es `run`. La carpeta histórica `private/full_mod_pilot_v2` contiene solo preparación offline; el resultado vigente es el de Amber Guard indicado arriba.
 
 Para revisar: `python -m nolvus_translator mass review --project <proyecto>`, o el botón **Abrir revisión Plan B** de la pestaña Revisión. Se guardan decisiones en el overlay privado del proyecto, sin escribir la TM maestra. No hay que aprobar toda la población para consultar una muestra. Los comandos existentes de pilotos históricos conservan su alcance anterior. [Procedimiento inicial de Plan B y límites](https://github.com/DanielLopezzz/Antigravity-MD-Skyrim/blob/4060d9f3581df44732228c7cb3eb46ae8646ad3b/Fase10_Evolucion_Linguistica/PlanB_20261106/README.md#9-procedimiento-para-un-piloto-de-un-mod-completo).
