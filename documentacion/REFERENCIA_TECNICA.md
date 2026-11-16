@@ -132,6 +132,23 @@ Los sublímites propuestos por modelo son US$0,164 para Luna y US$0,136 para Sol
 
 El ensayo de extremo a extremo completó **78 intercambios simulados**, reanudó con cero adicionales y conciliación intacta. Las respuestas de prueba ejercitaron el contrato de revisión y las retenciones. API Lock activo, sin solicitudes de pago. El sello local vincula el perfil, hashes de fuentes, manifiesto, plan, glosario, casos y resultados. La autorización facturable se tramita para este alcance específico.
 
+### Resultado del piloto transversal
+
+La verificación previa confirmó el perfil, los ganadores y los destinos, incluidos los DSD activos y la tabla de OCPA. Pasaron las 417 pruebas existentes y el ensayo sin red. El ejecutor privado limitó cada envío al plan y a las parejas de revisión del piloto. La ejecución real cerró **76 solicitudes conciliadas**. Se dejó diferida la muestra natural de Remiel porque su candidata original quedó retenida. No hubo cargos inciertos.
+
+| Etapa | Solicitudes | Gasto conciliado |
+|---|---:|---:|
+| Traducción Luna | 60 | US$0,026430 |
+| Evaluación Luna | 8 | US$0,000807 |
+| Evaluación Sol | 8 | US$0,011282 |
+| Total | **76** | **US$0,038519** |
+
+El flujo conservó **747 candidatas** de los recibos, incluidas 35 recuperadas de lotes con retenciones. Una corrección offline ganó 13 candidatas adicionales al ajustar únicamente la capitalización exigida por términos protegidos, con nuevo QA y trazabilidad de recibo. El cierre dejó **760 de 763 candidatas** y tres campos en cuarentena. El visor muestra 648 de consulta, dos de muestra, 110 pendientes de criterio y tres técnicos. Los 110 avisos de Mysticism corresponden a 25 detalles distintos de coherencia. Incluyen variantes válidas por contexto y nombres que requieren una decisión compartida. Se conservan como avisos pendientes.
+
+Ambos evaluadores identificaron los tres defectos sembrados y dieron `no_issue` a los tres controles aceptables. En la muestra natural, coincidieron en OCPA. En Mysticism, Luna señaló un matiz menor de *Encumber* y Sol dio `no_issue`. Sol representó el 29,3 % del gasto y no añadió detecciones en estos controles. Las dos muestras naturales y el conjunto sembrado permiten una comparación acotada. Faltan casos más difíciles y resultados en Skyrim para medir el valor incremental con mayor confianza.
+
+El ZIP provisional contiene **650 cambios** verificados al releerlo. Incluye 560 campos DSD, 46 en la copia de Remiel y 44 claves traducidas en la tabla MCM completa. Los 110 campos con avisos y los tres retenidos quedan fuera del ZIP. El API Lock se restauró y los hashes de producción y perfil coincidieron al cierre. Las candidatas quedan pendientes de revisión editorial.
+
 ## Compatibilidad y exportación auditadas el 11 de noviembre
 
 ### Entorno y diagnóstico

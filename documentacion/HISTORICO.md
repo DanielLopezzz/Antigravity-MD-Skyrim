@@ -6,6 +6,8 @@ Actualizado el **2026-11-15**. Índice de hechos cerrados y decisiones sustituid
 
 Se comparó el contexto general con referencias por identidad y se ensayó el alcance completo con transporte simulado. Quedaron preparados los controles para comparar a Luna y Sol y el presupuesto por etapa. [Resultados](REFERENCIA_TECNICA.md#preparación-final-del-piloto-transversal).
 
+Tras el barrido del perfil, destinos y contratos, la ejecución autorizada produjo 760 candidatas de 763 campos por US$0,038519. Se separaron las variantes de Mysticism pendientes de criterio y se restauró el API Lock. [Cierre](REFERENCIA_TECNICA.md#resultado-del-piloto-transversal).
+
 ## Recuperación por campo y primer ensayo transversal, 2026-11-14
 
 Se verificó la recuperación con una copia de recibos reales y se comparó la reanudación de Plan B con fallos simulados. Se sellaron los ganadores de Remiel y Mysticism para la muestra y se registró el conflicto MCM de True Armor. [Comparación, rutas y pendientes](REFERENCIA_TECNICA.md#recuperación-de-recibos-y-ensayo-transversal).
