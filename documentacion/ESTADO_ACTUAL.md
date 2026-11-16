@@ -6,7 +6,7 @@ Verificado el **2026-11-15**. [Uso](GUIA_DE_USO.md) · [Reglas y arquitectura](R
 
 Plan B dispone de recuperación opcional por campo para proyectos nuevos. En una copia de Moon and Star se recuperaron **14 de 19** segmentos de lotes retenidos con sus recibos existentes. El manifiesto de ensayo reúne **1.220 campos** de Remiel, Mysticism y True Armor. Los **719 campos de plugin** se cotejaron contra el perfil activo. Los **501 de True Armor** quedan retenidos para salida por claves duplicadas y una tabla española existente. Suite **417/417**, API Lock activo y cero gasto nuevo. [Resultados y límites](REFERENCIA_TECNICA.md#recuperación-de-recibos-y-ensayo-transversal).
 
-La siguiente prueba transversal tiene un manifiesto offline de **763 campos**. El contexto por relación comprobada redujo las solicitudes de traducción de 108 a 60, con el mismo glosario. El ensayo incluyó 18 revisiones simuladas y reanudó sin enviar de nuevo. Se propone un tope total de **US$0,30**, sujeto a autorización específica. Quedan por medir calidad real, valor incremental de Sol y funcionamiento del paquete en Skyrim. [Alcance, comparación y presupuesto](REFERENCIA_TECNICA.md#preparación-final-del-piloto-transversal).
+El piloto transversal autorizado procesó **763 campos** por **US$0,038519**, frente al tope de US$0,30. El cierre dejó **760 candidatas** y tres casos en cuarentena técnica. Luna y Sol detectaron los mismos tres defectos sembrados. Quedaron 110 campos de Mysticism con avisos de coherencia terminológica y sigue pendiente probar el paquete en Skyrim. [Resultados del piloto](REFERENCIA_TECNICA.md#resultado-del-piloto-transversal).
 
 ## Moon and Star, cierre del piloto en Skyrim
 
