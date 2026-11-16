@@ -6,7 +6,7 @@ Verificado el **2026-11-15**. [Uso](GUIA_DE_USO.md) · [Reglas y arquitectura](R
 
 Plan B dispone de recuperación opcional por campo para proyectos nuevos. En una copia de Moon and Star se recuperaron **14 de 19** segmentos de lotes retenidos con sus recibos existentes. El manifiesto de ensayo reúne **1.220 campos** de Remiel, Mysticism y True Armor. Los **719 campos de plugin** se cotejaron contra el perfil activo. Los **501 de True Armor** quedan retenidos para salida por claves duplicadas y una tabla española existente. Suite **417/417**, API Lock activo y cero gasto nuevo. [Resultados y límites](REFERENCIA_TECNICA.md#recuperación-de-recibos-y-ensayo-transversal).
 
-El piloto transversal autorizado procesó **763 campos** por **US$0,038519**, frente al tope de US$0,30. El cierre dejó **760 candidatas** y tres casos en cuarentena técnica. Luna y Sol detectaron los mismos tres defectos sembrados. Quedaron 110 campos de Mysticism con avisos de coherencia terminológica y sigue pendiente probar el paquete en Skyrim. [Resultados del piloto](REFERENCIA_TECNICA.md#resultado-del-piloto-transversal).
+El piloto transversal autorizado procesó **763 campos** por **US$0,038519**, frente al tope de US$0,30. La consolidación offline resolvió los 110 campos señalados de Mysticism y recuperó los tres casos en cuarentena. El **ZIP consolidado contiene 763 campos** verificados. Su uso en juego queda pendiente de tres comprobaciones breves en un perfil aislado. [Consolidación y siguiente lote](REFERENCIA_TECNICA.md#consolidación-del-piloto-transversal).
 
 ## Moon and Star, cierre del piloto en Skyrim
 
@@ -147,11 +147,11 @@ La coherencia entre registros ya incorpora nombres localizados con identidad/pro
 
 | Orden | Trabajo pendiente | Condición para avanzar |
 |---|---|---|
-| 1 | Preparar un conjunto de referencia y medir la cobertura por mecanismo de exportación | Usar Moon and Star como regresión funcional parcial y incluir formatos y riesgos adicionales con fuentes identificadas |
+| 1 | Comprobar las tres rutas del paquete consolidado | Remiel, Mysticism y OCPA en perfil aislado. Confirmar coincidencia en el juego y reversión. |
 | 2 | Aclarar el recibo económico incierto y conservar cuarentenas históricas | Conciliar por separado US$0,00249593 históricos y US$0,010256 del diagnóstico; no liberar reservas ni reenviar por suposición |
 | 3 | Adjudicar las parejas conservadas | Evaluación ciega; distinguir validación mecánica, naturalidad y fidelidad |
 | 4 | Calibrar el juez con casos naturales y discrepancias adjudicadas | Medir detección, falsos avisos, abstenciones, trabajo humano y coste incremental sobre los mismos ejemplos |
-| 5 | Escalar por mecanismos verificados y cohortes reanudables | Comparar coste y cobertura por estrato, conservar los recibos y aislar las rutas de exportación pendientes |
+| 5 | Escalar a 1.000 campos en dos cohortes de hasta 500 | Usar las rutas verificadas y conservar recibos. Revisar la primera cohorte antes de avanzar y mantener el API Lock hasta autorización específica. |
 
 La siguiente ejecución facturable requiere autorización específica con manifiesto, modelos y presupuesto. La segmentación automática exige límites compartidos fiables. Un párrafo demasiado largo o desalineado queda retenido sin truncarse. Los cambios se publican por PR documental y el código permanece privado.
 
