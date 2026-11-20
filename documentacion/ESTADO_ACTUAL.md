@@ -4,9 +4,9 @@ Verificado el **2026-11-20**. [Uso](GUIA_DE_USO.md) · [Reglas y arquitectura](R
 
 ## Validación en Skyrim y siguiente lote
 
-El usuario confirmó el funcionamiento y la traducción de los hechizos probados de Mysticism y de la misión de Remiel. OCPA queda pendiente de inspección visual. El juego leyó su tabla española y MCM Helper registró la configuración. Su nombre localizado es **Ataque de poder con un clic**. [Cómo localizar el menú](GUIA_DE_USO.md#localizar-el-menú-de-ocpa).
+El usuario confirmó el funcionamiento y la traducción de los hechizos probados de Mysticism y de la misión de Remiel. También confirmó que el menú de OCPA aparece en español como **Ataque de poder con un clic** y que sus opciones están traducidas. [Cómo localizar el menú](GUIA_DE_USO.md#localizar-el-menú-de-ocpa).
 
-Se prepararon **1.000 campos nuevos**, 500 de Apocalypse y 500 de Midwood Isle, en dos cohortes verificadas offline. El plan usa la misma ruta DSD probada y una copia inline para el diario de Midwood Isle. Las 98 solicitudes Luna suman US$0,237569 de reserva calculada, con US$0,05 acotados para Sol cuando haya una duda justificada. El API Lock sigue activo. [Plan y verificación](REFERENCIA_TECNICA.md#lote-de-1000-campos).
+El lote autorizado de **1.000 campos** cerró con dos ZIP provisionales de 500, uno de Apocalypse y otro de Midwood Isle. Las 98 solicitudes de Luna costaron **US$0,042429** del tope de US$0,30. La revisión local permitió cerrar ambas cohortes con cero llamadas a Sol, cero retenciones técnicas y el API Lock activo al cierre. Queda pendiente la comprobación de estos dos paquetes en Skyrim. [Ejecución y conciliación](REFERENCIA_TECNICA.md#lote-de-1000-campos).
 
 ## Recuperación y piloto transversal offline
 
@@ -153,11 +153,10 @@ La coherencia entre registros ya incorpora nombres localizados con identidad/pro
 
 | Orden | Trabajo pendiente | Condición para avanzar |
 |---|---|---|
-| 1 | Revisar el menú de OCPA cuando aparezca | Comprobar etiqueta y ayuda. Mysticism y Remiel ya tienen una comprobación de juego reportada. |
+| 1 | Comprobar los paquetes de Apocalypse y Midwood Isle en Skyrim | Validar un efecto de magia y una misión con diario y objetivo en un perfil aislado. |
 | 2 | Aclarar el recibo económico incierto y conservar cuarentenas históricas | Conciliar por separado US$0,00249593 históricos y US$0,010256 del diagnóstico; no liberar reservas ni reenviar por suposición |
 | 3 | Adjudicar las parejas conservadas | Evaluación ciega; distinguir validación mecánica, naturalidad y fidelidad |
 | 4 | Calibrar el juez con casos naturales y discrepancias adjudicadas | Medir detección, falsos avisos, abstenciones, trabajo humano y coste incremental sobre los mismos ejemplos |
-| 5 | Ejecutar el lote preparado de 1.000 campos con autorización específica | Conciliar, revisar y verificar las salidas de Apocalypse antes de iniciar Midwood Isle. |
 
 La siguiente ejecución facturable requiere autorización específica con manifiesto, modelos y presupuesto. La segmentación automática exige límites compartidos fiables. Un párrafo demasiado largo o desalineado queda retenido sin truncarse. Los cambios se publican por PR documental y el código permanece privado.
 
