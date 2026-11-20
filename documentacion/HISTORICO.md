@@ -2,9 +2,9 @@
 
 Actualizado el **2026-11-20**. Índice de hechos cerrados y decisiones sustituidas. [Estado vigente](ESTADO_ACTUAL.md) · [Uso](GUIA_DE_USO.md) · [Reglas](REFERENCIA_TECNICA.md).
 
-## Comprobación en Skyrim y preparación del lote de 1.000 campos, 2026-11-20
+## Comprobación en Skyrim y cierre del lote de 1.000 campos, 2026-11-20
 
-El usuario confirmó Mysticism y Remiel en juego. Para OCPA se verificaron el título localizado, el registro de MCM Helper y la lectura de la tabla por SKSE. Se prepararon 500 campos de Apocalypse y 500 de Midwood Isle con el API Lock activo. [Estado y evidencias](ESTADO_ACTUAL.md#validación-en-skyrim-y-siguiente-lote).
+El usuario confirmó Mysticism y Remiel en juego y después encontró el menú de OCPA con el título y los ajustes en español. Con esa comprobación autorizó ejecutar las dos cohortes preparadas de Apocalypse y Midwood Isle. Los recibos de ambas se conciliaron en una cartera compartida y la revisión local quedó incorporada en versiones separadas de los ZIP. [Estado y evidencias](ESTADO_ACTUAL.md#validación-en-skyrim-y-siguiente-lote).
 
 ## Preparación del piloto transversal, 2026-11-15
 

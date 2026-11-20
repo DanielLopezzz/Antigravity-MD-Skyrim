@@ -72,6 +72,18 @@ Cierra Skyrim, desactiva el paquete y verifica desde la referencia que el plugin
 
 Busca **Ataque de poder con un clic** en la configuración de mods. La clave del título es `$OCPA`. En una lista que conserve el nombre anterior puede verse como **One Click Power Attack** o **OCPA**. Menu Maid 2 controla la visibilidad y las páginas. Entra a **MenuMaid2 → Visibility**, revisa **Next Page** si aparece y activa la casilla si está desmarcada. Cierra y vuelve a abrir el menú. Si no encuentras la entrada, usa **Maintenance → Refresh MCMs** en el perfil de prueba. [Menu Maid 2](https://www.nexusmods.com/skyrimspecialedition/mods/67556).
 
+### Comprobar Apocalypse y Midwood Isle
+
+Usa los ZIP provisionales del workspace en una instancia de prueba de MO2 con guardados y `overwrite` aislados. Empieza desde una copia de referencia con el mismo orden de carga. Habilita cada paquete como un mod nuevo en el panel izquierdo. En Apocalypse el paquete aporta solo datos DSD. En Midwood Isle la copia del ESP debe ganar en **Data** y conservar su posición en `plugins.txt` y `loadorder.txt`. El BSA asociado debe seguir siendo el ganador de referencia. Contrasta las salidas y el original con `translation_manifest.json`.
+
+1. **Apocalypse.** Comprueba un efecto con daño o duración visible. Contrasta el nombre, los valores renderizados y el efecto con el guardado de referencia.
+2. **Midwood Isle.** Desde una misión ya disponible, contrasta una entrada del diario, su objetivo y el marcador. Comprueba que avancen a la misma etapa que con la capa desactivada.
+3. **Reversión.** Cierra Skyrim, desactiva la capa y confirma en **Data** que desaparecen sus JSON DSD y vuelve a ganar el ESP original de Midwood Isle. Conserva por separado el guardado de referencia.
+
+El avance de estos dos casos sirve para comprobar el mecanismo en juego. [Cobertura y cierre del lote](REFERENCIA_TECNICA.md#lote-de-1000-campos).
+
+### Consultar proyectos Plan B
+
 Usa el Python del entorno `.venv` desde el workspace. `--project` identifica la cartera compartida; `--run-name` permite otro mod o una revisión del manifiesto dentro de esa misma cartera, conservando gastos y caché. El valor predeterminado es `run`. La carpeta histórica `private/full_mod_pilot_v2` contiene solo preparación offline; el resultado vigente es el de Amber Guard indicado arriba.
 
 Para revisar: `python -m nolvus_translator mass review --project <proyecto>`, o el botón **Abrir revisión Plan B** de la pestaña Revisión. Se guardan decisiones en el overlay privado del proyecto, sin escribir la TM maestra. No hay que aprobar toda la población para consultar una muestra. Los comandos existentes de pilotos históricos conservan su alcance anterior. [Procedimiento inicial de Plan B y límites](https://github.com/DanielLopezzz/Antigravity-MD-Skyrim/blob/4060d9f3581df44732228c7cb3eb46ae8646ad3b/Fase10_Evolucion_Linguistica/PlanB_20261106/README.md#9-procedimiento-para-un-piloto-de-un-mod-completo).
