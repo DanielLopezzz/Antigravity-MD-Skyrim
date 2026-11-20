@@ -1,6 +1,6 @@
 # Guía de uso y revisión local
 
-Actualizada el **2026-11-15** a partir de los lanzadores, CLI y visor existentes. [Estado y pendientes](ESTADO_ACTUAL.md) · [Referencia técnica](REFERENCIA_TECNICA.md).
+Actualizada el **2026-11-20** a partir de los lanzadores, CLI y visor existentes. [Estado y pendientes](ESTADO_ACTUAL.md) · [Referencia técnica](REFERENCIA_TECNICA.md).
 
 ## Protocolo en Skyrim para Moon and Star
 
@@ -67,6 +67,10 @@ Usa tres escenas breves en un perfil aislado con el mismo orden de carga.
 3. **OCPA.** Abre MCM y comprueba que el ajuste de ataques de poder y su ayuda aparecen juntos. Compara con la configuración del guardado de referencia.
 
 Cierra Skyrim, desactiva el paquete y verifica desde la referencia que el plugin y la tabla inglesa vuelven a ser los ganadores y que desaparecen los dos JSON DSD del paquete. [Consolidación](REFERENCIA_TECNICA.md#consolidación-del-piloto-transversal).
+
+### Localizar el menú de OCPA
+
+Busca **Ataque de poder con un clic** en la configuración de mods. La clave del título es `$OCPA`. En una lista que conserve el nombre anterior puede verse como **One Click Power Attack** o **OCPA**. Menu Maid 2 controla la visibilidad y las páginas. Entra a **MenuMaid2 → Visibility**, revisa **Next Page** si aparece y activa la casilla si está desmarcada. Cierra y vuelve a abrir el menú. Si no encuentras la entrada, usa **Maintenance → Refresh MCMs** en el perfil de prueba. [Menu Maid 2](https://www.nexusmods.com/skyrimspecialedition/mods/67556).
 
 Usa el Python del entorno `.venv` desde el workspace. `--project` identifica la cartera compartida; `--run-name` permite otro mod o una revisión del manifiesto dentro de esa misma cartera, conservando gastos y caché. El valor predeterminado es `run`. La carpeta histórica `private/full_mod_pilot_v2` contiene solo preparación offline; el resultado vigente es el de Amber Guard indicado arriba.
 

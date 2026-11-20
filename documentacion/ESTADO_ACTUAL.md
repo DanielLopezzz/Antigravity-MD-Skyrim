@@ -1,12 +1,18 @@
 # Estado actual y próximos pasos
 
-Verificado el **2026-11-15**. [Uso](GUIA_DE_USO.md) · [Reglas y arquitectura](REFERENCIA_TECNICA.md) · [Histórico](HISTORICO.md).
+Verificado el **2026-11-20**. [Uso](GUIA_DE_USO.md) · [Reglas y arquitectura](REFERENCIA_TECNICA.md) · [Histórico](HISTORICO.md).
+
+## Validación en Skyrim y siguiente lote
+
+El usuario confirmó el funcionamiento y la traducción de los hechizos probados de Mysticism y de la misión de Remiel. OCPA queda pendiente de inspección visual. El juego leyó su tabla española y MCM Helper registró la configuración. Su nombre localizado es **Ataque de poder con un clic**. [Cómo localizar el menú](GUIA_DE_USO.md#localizar-el-menú-de-ocpa).
+
+Se prepararon **1.000 campos nuevos**, 500 de Apocalypse y 500 de Midwood Isle, en dos cohortes verificadas offline. El plan usa la misma ruta DSD probada y una copia inline para el diario de Midwood Isle. Las 98 solicitudes Luna suman US$0,237569 de reserva calculada, con US$0,05 acotados para Sol cuando haya una duda justificada. El API Lock sigue activo. [Plan y verificación](REFERENCIA_TECNICA.md#lote-de-1000-campos).
 
 ## Recuperación y piloto transversal offline
 
 Plan B dispone de recuperación opcional por campo para proyectos nuevos. En una copia de Moon and Star se recuperaron **14 de 19** segmentos de lotes retenidos con sus recibos existentes. El manifiesto de ensayo reúne **1.220 campos** de Remiel, Mysticism y True Armor. Los **719 campos de plugin** se cotejaron contra el perfil activo. Los **501 de True Armor** quedan retenidos para salida por claves duplicadas y una tabla española existente. Suite **417/417**, API Lock activo y cero gasto nuevo. [Resultados y límites](REFERENCIA_TECNICA.md#recuperación-de-recibos-y-ensayo-transversal).
 
-El piloto transversal autorizado procesó **763 campos** por **US$0,038519**, frente al tope de US$0,30. La consolidación offline resolvió los 110 campos señalados de Mysticism y recuperó los tres casos en cuarentena. El **ZIP consolidado contiene 763 campos** verificados. Su uso en juego queda pendiente de tres comprobaciones breves en un perfil aislado. [Consolidación y siguiente lote](REFERENCIA_TECNICA.md#consolidación-del-piloto-transversal).
+El piloto transversal autorizado procesó **763 campos** por **US$0,038519**, frente al tope de US$0,30. La consolidación offline resolvió los 110 campos señalados de Mysticism y recuperó los tres casos en cuarentena. El **ZIP consolidado contiene 763 campos** verificados. [Consolidación](REFERENCIA_TECNICA.md#consolidación-del-piloto-transversal).
 
 ## Moon and Star, cierre del piloto en Skyrim
 
@@ -147,11 +153,11 @@ La coherencia entre registros ya incorpora nombres localizados con identidad/pro
 
 | Orden | Trabajo pendiente | Condición para avanzar |
 |---|---|---|
-| 1 | Comprobar las tres rutas del paquete consolidado | Remiel, Mysticism y OCPA en perfil aislado. Confirmar coincidencia en el juego y reversión. |
+| 1 | Revisar el menú de OCPA cuando aparezca | Comprobar etiqueta y ayuda. Mysticism y Remiel ya tienen una comprobación de juego reportada. |
 | 2 | Aclarar el recibo económico incierto y conservar cuarentenas históricas | Conciliar por separado US$0,00249593 históricos y US$0,010256 del diagnóstico; no liberar reservas ni reenviar por suposición |
 | 3 | Adjudicar las parejas conservadas | Evaluación ciega; distinguir validación mecánica, naturalidad y fidelidad |
 | 4 | Calibrar el juez con casos naturales y discrepancias adjudicadas | Medir detección, falsos avisos, abstenciones, trabajo humano y coste incremental sobre los mismos ejemplos |
-| 5 | Escalar a 1.000 campos en dos cohortes de hasta 500 | Usar las rutas verificadas y conservar recibos. Revisar la primera cohorte antes de avanzar y mantener el API Lock hasta autorización específica. |
+| 5 | Ejecutar el lote preparado de 1.000 campos con autorización específica | Conciliar, revisar y verificar las salidas de Apocalypse antes de iniciar Midwood Isle. |
 
 La siguiente ejecución facturable requiere autorización específica con manifiesto, modelos y presupuesto. La segmentación automática exige límites compartidos fiables. Un párrafo demasiado largo o desalineado queda retenido sin truncarse. Los cambios se publican por PR documental y el código permanece privado.
 
