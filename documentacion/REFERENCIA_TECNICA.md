@@ -1,6 +1,6 @@
 # Reglas y referencia técnica
 
-Corte documental **2026-11-15**. Resume lo vigente sin sustituir los contratos del código. [Estado](ESTADO_ACTUAL.md) · [Uso](GUIA_DE_USO.md) · [Histórico y originales](HISTORICO.md).
+Corte documental **2026-11-20**. Resume lo vigente sin sustituir los contratos del código. [Estado](ESTADO_ACTUAL.md) · [Uso](GUIA_DE_USO.md) · [Histórico y originales](HISTORICO.md).
 
 ## Preparación de Moon and Star
 
@@ -164,6 +164,22 @@ El ZIP consolidado contiene **763 campos**. Hay 672 por DSD, 47 en una copia de 
 **Siguiente lote recomendado.** 1.000 campos de rutas conocidas, en dos cohortes de hasta 500, con objetivos y diarios, magia e interfaz en grupos completos. Continuar a la segunda al conciliar la primera y revisar retenciones, familias terminológicas y cobertura del paquete. Mantener fuentes selladas, recibos, QA del 100 %, prohibición de reenvío incierto, reversión y candidatos pendientes de criterio. Antes de autorizar un nuevo gasto, comprobar el ZIP consolidado en Skyrim y calcular reservas con los cuerpos exactos del lote.
 
 El coste observado de traducción equivale a **US$0,03464 por 1.000 campos**. Para carga similar, con QA y hasta cuatro intervenciones justificadas de Sol, estimar **US$0,05–0,08 de gasto**. Como techo preliminar de reserva, **US$0,30** cubre el equivalente de aproximadamente US$0,204 de acumulación Luna, hasta US$0,066 de Sol y un margen de US$0,030. Las reservas se recalculan con el manifiesto y conservan sus topes y conciliación por etapa. [Tarifas estándar](https://developers.openai.com/api/docs/pricing).
+
+### Validación del paquete consolidado en Skyrim
+
+El usuario confirmó que pudo usar los hechizos indicados de Mysticism, vio las descripciones traducidas y las consideró correctas. La misión de Remiel también pasó su comprobación. OCPA permanece pendiente de inspección visual porque el menú no apareció en la lista que consultó. El registro de SKSE muestra carga de `OneClickPowerAttack.dll` y lectura de `OCPA_SPANISH.txt`. MCM Helper registra `OCPA`. La tabla activa resuelve `$OCPA` como «Ataque de poder con un clic». El gestor efectivo es Menu Maid 2, con 120 entradas por página en los ajustes de Nolvus. La visibilidad en esa partida queda por confirmar. [Guía del menú](GUIA_DE_USO.md#localizar-el-menú-de-ocpa).
+
+### Lote de 1000 campos
+
+| Cohorte | Campos y mecanismo | Solicitudes Luna | Reserva acumulada Luna |
+|---|---|---:|---:|
+| 1 · Apocalypse | 250 efectos completos, nombre y descripción por DSD | 35 | US$0,096220 |
+| 2 · Midwood Isle | 28 registros de misión con 244 diarios inline y 256 títulos u objetivos DSD | 63 | US$0,141349 |
+| Total | **1.000 campos nuevos** | **98** | **US$0,237569** |
+
+Se sellaron el perfil actual, 43 plugins del alcance y el BSA asociado de Midwood Isle. Los registros elegidos se cotejaron con el inventario de pendientes y con sus ganadores activos. No se reutilizaron campos consolidados. Se comprobó la ausencia de colisiones DSD por registro y ruta, la serialización de los 756 campos DSD y la relectura de los 244 diarios en una copia modificada solo en memoria. El plan conserva dos objetivos de Midwood Isle señalados por falta de referencias vinculadas. La interfaz MCM se mantiene fuera del alcance de este lote.
+
+El tope propuesto es **US$0,30**, con US$0,25 para Luna y hasta US$0,05 para revisiones justificadas de Sol, dentro de un máximo de cuatro intervenciones. La reserva acumulada de traducción más el cupo de revisión suma **US$0,287569**. La reserva protege el tope. El gasto final se determinará con los recibos. Antes de la segunda cohorte se revisan la conciliación de Apocalypse, las retenciones y las familias de efectos. Pasaron 79 pruebas focalizadas. El libro de preparación sigue vacío y el API Lock activo. [Tarifas de Luna](https://developers.openai.com/api/docs/models/gpt-6-luna) · [Tarifas de Sol](https://developers.openai.com/api/docs/pricing).
 
 ## Compatibilidad y exportación auditadas el 11 de noviembre
 
