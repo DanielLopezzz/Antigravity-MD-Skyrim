@@ -1,12 +1,14 @@
 # Estado actual y próximos pasos
 
-Verificado el **2026-11-20**. [Uso](GUIA_DE_USO.md) · [Reglas y arquitectura](REFERENCIA_TECNICA.md) · [Histórico](HISTORICO.md).
+Verificado el **2026-11-27**. [Uso](GUIA_DE_USO.md) · [Reglas y arquitectura](REFERENCIA_TECNICA.md) · [Histórico](HISTORICO.md).
 
 ## Validación en Skyrim y siguiente lote
 
 El usuario confirmó el funcionamiento y la traducción de los hechizos probados de Mysticism y de la misión de Remiel. También confirmó que el menú de OCPA aparece en español como **Ataque de poder con un clic** y que sus opciones están traducidas. [Cómo localizar el menú](GUIA_DE_USO.md#localizar-el-menú-de-ocpa).
 
-El lote autorizado de **1.000 campos** cerró con dos ZIP provisionales de 500, uno de Apocalypse y otro de Midwood Isle. Las 98 solicitudes de Luna costaron **US$0,042429** del tope de US$0,30. La revisión local permitió cerrar ambas cohortes con cero llamadas a Sol, cero retenciones técnicas y el API Lock activo al cierre. Queda pendiente la comprobación de estos dos paquetes en Skyrim. [Ejecución y conciliación](REFERENCIA_TECNICA.md#lote-de-1000-campos).
+El lote autorizado de **1.000 campos** cerró con dos ZIP provisionales de 500, uno de Apocalypse y otro de Midwood Isle. Las 98 solicitudes de Luna costaron **US$0,042429** del tope de US$0,30. La revisión local cerró ambas cohortes con cero llamadas a Sol, cero retenciones técnicas y el API Lock activo. [Ejecución y conciliación](REFERENCIA_TECNICA.md#lote-de-1000-campos).
+
+En **Nolvus Ultra 6.0.22** el usuario confirmó la descripción y el funcionamiento de *Death March*, así como el avance, los objetivos traducidos y el contador de la escena inicial de Midwood Isle. La transición funcionó al recargar. La carta pertenece a la cobertura de documentos, pendiente en esta misión. [Alcance e incidencia](REFERENCIA_TECNICA.md#comprobación-del-lote-en-ultra-6022).
 
 ## Recuperación y piloto transversal offline
 
@@ -153,7 +155,7 @@ La coherencia entre registros ya incorpora nombres localizados con identidad/pro
 
 | Orden | Trabajo pendiente | Condición para avanzar |
 |---|---|---|
-| 1 | Comprobar los paquetes de Apocalypse y Midwood Isle en Skyrim | Validar un efecto de magia y una misión con diario y objetivo en un perfil aislado. |
+| 1 | Incorporar documentos vinculados a las misiones en un siguiente alcance | Resolver la carta de Midwood Isle por identidad del registro y comprobarla junto al objetivo que indica leerla. |
 | 2 | Aclarar el recibo económico incierto y conservar cuarentenas históricas | Conciliar por separado US$0,00249593 históricos y US$0,010256 del diagnóstico; no liberar reservas ni reenviar por suposición |
 | 3 | Adjudicar las parejas conservadas | Evaluación ciega; distinguir validación mecánica, naturalidad y fidelidad |
 | 4 | Calibrar el juez con casos naturales y discrepancias adjudicadas | Medir detección, falsos avisos, abstenciones, trabajo humano y coste incremental sobre los mismos ejemplos |

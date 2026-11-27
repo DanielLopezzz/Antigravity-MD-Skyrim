@@ -1,6 +1,6 @@
 # Guía de uso y revisión local
 
-Actualizada el **2026-11-20** a partir de los lanzadores, CLI y visor existentes. [Estado y pendientes](ESTADO_ACTUAL.md) · [Referencia técnica](REFERENCIA_TECNICA.md).
+Actualizada el **2026-11-27** a partir de los lanzadores, CLI y visor existentes. [Estado y pendientes](ESTADO_ACTUAL.md) · [Referencia técnica](REFERENCIA_TECNICA.md).
 
 ## Protocolo en Skyrim para Moon and Star
 
@@ -76,8 +76,8 @@ Busca **Ataque de poder con un clic** en la configuración de mods. La clave del
 
 Usa los ZIP provisionales del workspace en una instancia de prueba de MO2 con guardados y `overwrite` aislados. Empieza desde una copia de referencia con el mismo orden de carga. Habilita cada paquete como un mod nuevo en el panel izquierdo. En Apocalypse el paquete aporta solo datos DSD. En Midwood Isle la copia del ESP debe ganar en **Data** y conservar su posición en `plugins.txt` y `loadorder.txt`. El BSA asociado debe seguir siendo el ganador de referencia. Contrasta las salidas y el original con `translation_manifest.json`.
 
-1. **Apocalypse.** Comprueba un efecto con daño o duración visible. Contrasta el nombre, los valores renderizados y el efecto con el guardado de referencia.
-2. **Midwood Isle.** Desde una misión ya disponible, contrasta una entrada del diario, su objetivo y el marcador. Comprueba que avancen a la misma etapa que con la capa desactivada.
+1. **Apocalypse.** Usa *Death March* para comprobar la descripción traducida, los valores renderizados y que el efecto se active.
+2. **Midwood Isle.** En la misión inicial, compara el diario y el objetivo antes y después de viajar con los adoradores. Al derrotarlos, comprueba que el contador suba y aparezca el objetivo siguiente. Si el viaje se queda en negro, consulta `getstage MidwoodIsleMQ01` si responde la consola. Desde el mismo guardado previo, repite con la capa de traducción desactivada para aislar la incidencia.
 3. **Reversión.** Cierra Skyrim, desactiva la capa y confirma en **Data** que desaparecen sus JSON DSD y vuelve a ganar el ESP original de Midwood Isle. Conserva por separado el guardado de referencia.
 
 El avance de estos dos casos sirve para comprobar el mecanismo en juego. [Cobertura y cierre del lote](REFERENCIA_TECNICA.md#lote-de-1000-campos).
