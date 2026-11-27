@@ -187,7 +187,13 @@ La QA local revisó todos los campos y se cotejó una muestra de 12 por cohorte.
 
 En el perfil Ultra se cotejaron los 1.000 campos con los ganadores activos y se reprodujeron byte por byte las 244 ediciones de diario del ESP de Midwood Isle. En juego, el usuario confirmó el efecto y la descripción de *Death March*. En la misión `MidwoodIsleMQ01`, confirmó objetivos en español, el aumento del contador al derrotar a los adoradores y la actualización del objetivo. La pantalla negra del primer intento de viaje se resolvió tras recargar. El cotejo del ESP preserva el diálogo, la escena, el hechizo y los enlaces a scripts. La causa de la incidencia sigue abierta.
 
-La carta aparece en inglés. El lote cubrió `QUST`, con títulos, objetivos y entradas de diario. Las cartas leíbles se almacenan como `BOOK`. En esta misión existen la carta sin firma y dos variantes de la carta de Drakus según la ruta. Quedan pendientes la traducción de estos documentos y las conversaciones de NPC. El resultado en juego es satisfactorio dentro de la escena y del hechizo comprobados.
+La carta apareció en inglés durante la prueba. El lote cubría `QUST`, con títulos, objetivos y entradas de diario. El resultado en juego es satisfactorio dentro de la escena y del hechizo comprobados.
+
+### Complemento de documentos de Midwood Isle
+
+Se tradujeron 15 documentos de misión offline en un ZIP separado. Incluye la carta sin firma, los dos registros de la carta de Drakus, correspondencia de otras misiones, acuerdos y la receta de venado. Los **30 campos `BOOK FULL/DESC`** tienen 25 originales únicos. Se cotejaron los ganadores, las etiquetas, las fuentes, los saltos y los alias. En la receta se usaron los nombres del Skyrim en español. El acuerdo firmado conserva la firma adicional de Istlaf. Los cuerpos y objetivos del paquete anterior pueden coexistir con el complemento por identidad de registro y ruta. Se superaron 79 pruebas focalizadas, con cero llamadas API.
+
+El diario del nigromante queda pendiente de alineación con el objetivo de la misión. Las conversaciones conservan su alcance de revisión propio. [Prueba del complemento](GUIA_DE_USO.md#comprobar-los-documentos-de-midwood-isle).
 
 ## Compatibilidad y exportación auditadas el 11 de noviembre
 
