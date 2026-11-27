@@ -2,6 +2,10 @@
 
 Actualizado el **2026-11-27**. Índice de hechos cerrados y decisiones sustituidas. [Estado vigente](ESTADO_ACTUAL.md) · [Uso](GUIA_DE_USO.md) · [Reglas](REFERENCIA_TECNICA.md).
 
+## Primera ola preparada en Ultra, 2026-11-27
+
+La validación de la Carta de Drakus cerró la muestra de documentos. Se cotejó el inventario del perfil Ultra y se sellaron cuatro cohortes de 500 campos con recuperación de recibos y exportación ensayadas offline. [Preparación](REFERENCIA_TECNICA.md#primera-ola-de-ultra).
+
 ## Comprobación de Apocalypse y Midwood Isle en Ultra, 2026-11-27
 
 El usuario validó *Death March* y el objetivo con contador de la misión inicial de Midwood Isle. El viaje pudo completarse al recargar. La carta en inglés dio origen a un complemento de 15 documentos, preparado y verificado offline. [Alcance verificado](REFERENCIA_TECNICA.md#comprobación-del-lote-en-ultra-6022).

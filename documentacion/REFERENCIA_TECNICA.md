@@ -195,6 +195,12 @@ Se tradujeron 15 documentos de misión offline en un ZIP separado. Incluye la ca
 
 El diario del nigromante queda pendiente de alineación con el objetivo de la misión. Las conversaciones conservan su alcance de revisión propio. [Prueba del complemento](GUIA_DE_USO.md#comprobar-los-documentos-de-midwood-isle).
 
+### Primera ola de Ultra
+
+Se resolvieron **352.023 campos ganadores** en 3.646 plugins activos de Ultra 6.0.22. Quedaron 279.199 campos clasificados como pendientes. Hay 121.676 de tipos admitidos por DSD, 4.983 por copia inline, 147.555 de diálogo y 4.985 de otras vías. Se reconocieron 57.200 localizaciones oficiales, 2.649 coincidencias exactas con candidatas de pilotos y 30 destinos DSD ocupados. El inventario se limita a plugins y tablas asociadas accesibles.
+
+La primera ola sella cuatro cohortes de 500, una por mod. Hay **1.602 destinos DSD y 398 campos inline**. Los 2.125 segmentos producen 386 solicitudes de Luna con una reserva de **US$0,810024**. Sol tiene hasta US$0,121 de reserva condicional por discrepancias semánticas importantes. El techo total suma US$0,931024. El ensayo offline recuperó y reanudó los 386 recibos simulados con cero reenvíos. Pasaron 79 pruebas focalizadas. El API Lock sigue activo. [Uso y reversión](GUIA_DE_USO.md#ejecutar-una-cohorte-de-la-primera-ola).
+
 ## Compatibilidad y exportación auditadas el 11 de noviembre
 
 ### Entorno y diagnóstico
