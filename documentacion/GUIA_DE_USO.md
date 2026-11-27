@@ -90,6 +90,10 @@ En el perfil de prueba, habilita DSD y el paquete de misiones. Instala `Midwood_
 
 Usa el Python del entorno `.venv` desde el workspace. `--project` identifica la cartera compartida; `--run-name` permite otro mod o una revisión del manifiesto dentro de esa misma cartera, conservando gastos y caché. El valor predeterminado es `run`. La carpeta histórica `private/full_mod_pilot_v2` contiene solo preparación offline; el resultado vigente es el de Amber Guard indicado arriba.
 
+### Ejecutar una cohorte de la primera ola
+
+Antes de solicitar autorización, conserva el sello y compara el perfil activo, los archivos ganadores y las rutas de destino. El ejecutor lee el manifiesto y la autorización ligada a la cohorte. Conciliar los recibos y revisar la muestra y las familias retenidas habilita el paso a la siguiente cohorte. Un envío incierto conserva la reserva hasta que se concilie. Prueba el ZIP provisional en un perfil clonado. Para revertir, retira la capa de la cohorte y verifica que el archivo ganador y los JSON coincidan con el perfil de referencia. [Alcance y presupuesto](REFERENCIA_TECNICA.md#primera-ola-de-ultra).
+
 Para revisar: `python -m nolvus_translator mass review --project <proyecto>`, o el botón **Abrir revisión Plan B** de la pestaña Revisión. Se guardan decisiones en el overlay privado del proyecto, sin escribir la TM maestra. No hay que aprobar toda la población para consultar una muestra. Los comandos existentes de pilotos históricos conservan su alcance anterior. [Procedimiento inicial de Plan B y límites](https://github.com/DanielLopezzz/Antigravity-MD-Skyrim/blob/4060d9f3581df44732228c7cb3eb46ae8646ad3b/Fase10_Evolucion_Linguistica/PlanB_20261106/README.md#9-procedimiento-para-un-piloto-de-un-mod-completo).
 
 | Acceso | Qué abre |

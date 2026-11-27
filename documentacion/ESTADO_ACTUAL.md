@@ -8,7 +8,9 @@ El usuario confirmó el funcionamiento y la traducción de los hechizos probados
 
 El lote autorizado de **1.000 campos** cerró con dos ZIP provisionales de 500, uno de Apocalypse y otro de Midwood Isle. Las 98 solicitudes de Luna costaron **US$0,042429** del tope de US$0,30. La revisión local cerró ambas cohortes con cero llamadas a Sol, cero retenciones técnicas y el API Lock activo. [Ejecución y conciliación](REFERENCIA_TECNICA.md#lote-de-1000-campos).
 
-En **Nolvus Ultra 6.0.22** el usuario confirmó la descripción y el funcionamiento de *Death March*, así como el avance, los objetivos traducidos y el contador de la escena inicial de Midwood Isle. La transición funcionó al recargar. El complemento de **15 documentos de misión**, que incluye las cartas de la escena inicial, está verificado offline y pendiente de prueba en Skyrim. [Alcance e incidencia](REFERENCIA_TECNICA.md#comprobación-del-lote-en-ultra-6022).
+En **Nolvus Ultra 6.0.22** el usuario confirmó la descripción y el funcionamiento de *Death March*, el avance y el contador de la escena inicial de Midwood Isle y la lectura de la Carta de Drakus con la corrección aplicada. La transición funcionó al recargar. La prueba de documentos cubre la carta observada. [Alcance e incidencia](REFERENCIA_TECNICA.md#comprobación-del-lote-en-ultra-6022).
+
+La **primera ola de Ultra** está preparada offline con 2.000 campos nuevos y una reserva máxima propuesta de **US$0,931024**. Incluye Apocalypse, Midwood Isle, Falskaar y Wyrmstooth. La ejecución requiere autorización explícita y el API Lock está activo. [Inventario, presupuesto y pruebas](REFERENCIA_TECNICA.md#primera-ola-de-ultra).
 
 ## Recuperación y piloto transversal offline
 
@@ -155,7 +157,7 @@ La coherencia entre registros ya incorpora nombres localizados con identidad/pro
 
 | Orden | Trabajo pendiente | Condición para avanzar |
 |---|---|---|
-| 1 | Comprobar el complemento de documentos de Midwood Isle | Leer la carta de Drakus en español y comprobar que se actualice el objetivo. |
+| 1 | Ejecutar la primera ola una vez autorizada | Conciliar y verificar la salida de cada cohorte antes de pasar a la siguiente. |
 | 2 | Aclarar el recibo económico incierto y conservar cuarentenas históricas | Conciliar por separado US$0,00249593 históricos y US$0,010256 del diagnóstico; no liberar reservas ni reenviar por suposición |
 | 3 | Adjudicar las parejas conservadas | Evaluación ciega; distinguir validación mecánica, naturalidad y fidelidad |
 | 4 | Calibrar el juez con casos naturales y discrepancias adjudicadas | Medir detección, falsos avisos, abstenciones, trabajo humano y coste incremental sobre los mismos ejemplos |
@@ -168,7 +170,7 @@ La siguiente ejecución facturable requiere autorización específica con manifi
 - [Análisis profesional: alertas, falsos positivos y recomendaciones](https://github.com/DanielLopezzz/Antigravity-MD-Skyrim/blob/main/Fase10_Evolucion_Linguistica/Pilot4_Review_Analysis_20261105/README.md).
 - Evidencia local: `NolvusAIT_Pilot4_Sweep/20261104/final_metrics.json`, `full_tests_after_hash_fix.txt` y `NolvusAIT_PilotStaging/Phase4_Luna1000_R7_DiagnosticComplete`.
 
-El inventario de ~240.684 cadenas es una estimación histórica reconciliada; no se ha vuelto a escanear Nolvus para actualizarla. Las cifras iniciales de otras fases se consultan en el histórico, no se suman a la muestra actual.
+El inventario histórico de ~240.684 cadenas incluía un alcance diferente. La primera ola usa el inventario actualizado de plugins de Ultra y un manifiesto por cohorte. [Alcance actual](REFERENCIA_TECNICA.md#primera-ola-de-ultra).
 
 El ejecutor legado mantiene Sol selectivo con muestreo ordinario del 2 % y hasta 14 revisiones iniciales por ejecución. Ese antecedente cerrado conserva sus 14 casos y cap US$0,30. El modo Plan B tiene selección económica dinámica y muestra independiente, descritas al inicio; no reinterpreta ni reabre el antecedente.
 
