@@ -1,6 +1,10 @@
 # Histórico resumido y acceso a evidencia
 
-Actualizado el **2026-11-20**. Índice de hechos cerrados y decisiones sustituidas. [Estado vigente](ESTADO_ACTUAL.md) · [Uso](GUIA_DE_USO.md) · [Reglas](REFERENCIA_TECNICA.md).
+Actualizado el **2026-11-27**. Índice de hechos cerrados y decisiones sustituidas. [Estado vigente](ESTADO_ACTUAL.md) · [Uso](GUIA_DE_USO.md) · [Reglas](REFERENCIA_TECNICA.md).
+
+## Comprobación de Apocalypse y Midwood Isle en Ultra, 2026-11-27
+
+El usuario validó *Death March* y el objetivo con contador de la misión inicial de Midwood Isle. El viaje pudo completarse al recargar y la carta quedó anotada como contenido pendiente. [Alcance verificado](REFERENCIA_TECNICA.md#comprobación-del-lote-en-ultra-6022).
 
 ## Comprobación en Skyrim y cierre del lote de 1.000 campos, 2026-11-20
 
