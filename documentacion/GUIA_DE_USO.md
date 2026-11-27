@@ -82,6 +82,10 @@ Usa los ZIP provisionales del workspace en una instancia de prueba de MO2 con gu
 
 El avance de estos dos casos sirve para comprobar el mecanismo en juego. [Cobertura y cierre del lote](REFERENCIA_TECNICA.md#lote-de-1000-campos).
 
+### Comprobar los documentos de Midwood Isle
+
+En el perfil de prueba, habilita DSD y el paquete de misiones. Instala `Midwood_Isle_ES419_Documentos_de_mision_Provisional.zip` como un mod separado. Desde un guardado previo a leer la carta de Drakus, comprueba su título, el texto abierto y el avance del objetivo. Si solo quieres comprobar el texto, puedes volver a abrir la carta si aún está en el inventario. Para retirar el complemento, cierra Skyrim y desactívalo en MO2. [Alcance](REFERENCIA_TECNICA.md#complemento-de-documentos-de-midwood-isle).
+
 ### Consultar proyectos Plan B
 
 Usa el Python del entorno `.venv` desde el workspace. `--project` identifica la cartera compartida; `--run-name` permite otro mod o una revisión del manifiesto dentro de esa misma cartera, conservando gastos y caché. El valor predeterminado es `run`. La carpeta histórica `private/full_mod_pilot_v2` contiene solo preparación offline; el resultado vigente es el de Amber Guard indicado arriba.

@@ -8,7 +8,7 @@ El usuario confirmó el funcionamiento y la traducción de los hechizos probados
 
 El lote autorizado de **1.000 campos** cerró con dos ZIP provisionales de 500, uno de Apocalypse y otro de Midwood Isle. Las 98 solicitudes de Luna costaron **US$0,042429** del tope de US$0,30. La revisión local cerró ambas cohortes con cero llamadas a Sol, cero retenciones técnicas y el API Lock activo. [Ejecución y conciliación](REFERENCIA_TECNICA.md#lote-de-1000-campos).
 
-En **Nolvus Ultra 6.0.22** el usuario confirmó la descripción y el funcionamiento de *Death March*, así como el avance, los objetivos traducidos y el contador de la escena inicial de Midwood Isle. La transición funcionó al recargar. La carta pertenece a la cobertura de documentos, pendiente en esta misión. [Alcance e incidencia](REFERENCIA_TECNICA.md#comprobación-del-lote-en-ultra-6022).
+En **Nolvus Ultra 6.0.22** el usuario confirmó la descripción y el funcionamiento de *Death March*, así como el avance, los objetivos traducidos y el contador de la escena inicial de Midwood Isle. La transición funcionó al recargar. El complemento de **15 documentos de misión**, que incluye las cartas de la escena inicial, está verificado offline y pendiente de prueba en Skyrim. [Alcance e incidencia](REFERENCIA_TECNICA.md#comprobación-del-lote-en-ultra-6022).
 
 ## Recuperación y piloto transversal offline
 
@@ -155,7 +155,7 @@ La coherencia entre registros ya incorpora nombres localizados con identidad/pro
 
 | Orden | Trabajo pendiente | Condición para avanzar |
 |---|---|---|
-| 1 | Incorporar documentos vinculados a las misiones en un siguiente alcance | Resolver la carta de Midwood Isle por identidad del registro y comprobarla junto al objetivo que indica leerla. |
+| 1 | Comprobar el complemento de documentos de Midwood Isle | Leer la carta de Drakus en español y comprobar que se actualice el objetivo. |
 | 2 | Aclarar el recibo económico incierto y conservar cuarentenas históricas | Conciliar por separado US$0,00249593 históricos y US$0,010256 del diagnóstico; no liberar reservas ni reenviar por suposición |
 | 3 | Adjudicar las parejas conservadas | Evaluación ciega; distinguir validación mecánica, naturalidad y fidelidad |
 | 4 | Calibrar el juez con casos naturales y discrepancias adjudicadas | Medir detección, falsos avisos, abstenciones, trabajo humano y coste incremental sobre los mismos ejemplos |
