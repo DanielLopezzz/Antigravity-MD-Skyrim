@@ -10,7 +10,7 @@ El lote autorizado de **1.000 campos** cerró con dos ZIP provisionales de 500, 
 
 En **Nolvus Ultra 6.0.22** el usuario confirmó la descripción y el funcionamiento de *Death March*, el avance y el contador de la escena inicial de Midwood Isle y la lectura de la Carta de Drakus con la corrección aplicada. La transición funcionó al recargar. La prueba de documentos cubre la carta observada. [Alcance e incidencia](REFERENCIA_TECNICA.md#comprobación-del-lote-en-ultra-6022).
 
-La **primera ola de Ultra** está preparada offline con 2.000 campos nuevos y una reserva máxima propuesta de **US$0,931024**. Incluye Apocalypse, Midwood Isle, Falskaar y Wyrmstooth. La ejecución requiere autorización explícita y el API Lock está activo. [Inventario, presupuesto y pruebas](REFERENCIA_TECNICA.md#primera-ola-de-ultra).
+La **primera ola de Ultra** produjo cuatro ZIP provisionales con **2.000 campos nuevos** de Apocalypse, Midwood Isle, Falskaar y Wyrmstooth. El gasto conciliado fue **US$0,136461** y el API Lock está activo. La comprobación en Skyrim de estos paquetes sigue pendiente. [Inventario, resultados y coste](REFERENCIA_TECNICA.md#primera-ola-de-ultra).
 
 ## Recuperación y piloto transversal offline
 
@@ -157,7 +157,7 @@ La coherencia entre registros ya incorpora nombres localizados con identidad/pro
 
 | Orden | Trabajo pendiente | Condición para avanzar |
 |---|---|---|
-| 1 | Ejecutar la primera ola una vez autorizada | Conciliar y verificar la salida de cada cohorte antes de pasar a la siguiente. |
+| 1 | Comprobar los paquetes de la primera ola en Skyrim | Verificar una inicial ilustrada por DSD, una entrada de diario inline y la continuidad de Midwood Isle en un perfil clonado. |
 | 2 | Aclarar el recibo económico incierto y conservar cuarentenas históricas | Conciliar por separado US$0,00249593 históricos y US$0,010256 del diagnóstico; no liberar reservas ni reenviar por suposición |
 | 3 | Adjudicar las parejas conservadas | Evaluación ciega; distinguir validación mecánica, naturalidad y fidelidad |
 | 4 | Calibrar el juez con casos naturales y discrepancias adjudicadas | Medir detección, falsos avisos, abstenciones, trabajo humano y coste incremental sobre los mismos ejemplos |

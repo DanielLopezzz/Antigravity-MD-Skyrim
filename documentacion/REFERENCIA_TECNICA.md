@@ -199,7 +199,19 @@ El diario del nigromante queda pendiente de alineación con el objetivo de la mi
 
 Se resolvieron **352.023 campos ganadores** en 3.646 plugins activos de Ultra 6.0.22. Quedaron 279.199 campos clasificados como pendientes. Hay 121.676 de tipos admitidos por DSD, 4.983 por copia inline, 147.555 de diálogo y 4.985 de otras vías. Se reconocieron 57.200 localizaciones oficiales, 2.649 coincidencias exactas con candidatas de pilotos y 30 destinos DSD ocupados. El inventario se limita a plugins y tablas asociadas accesibles.
 
-La primera ola sella cuatro cohortes de 500, una por mod. Hay **1.602 destinos DSD y 398 campos inline**. Los 2.125 segmentos producen 386 solicitudes de Luna con una reserva de **US$0,810024**. Sol tiene hasta US$0,121 de reserva condicional por discrepancias semánticas importantes. El techo total suma US$0,931024. El ensayo offline recuperó y reanudó los 386 recibos simulados con cero reenvíos. Pasaron 79 pruebas focalizadas. El API Lock sigue activo. [Uso y reversión](GUIA_DE_USO.md#ejecutar-una-cohorte-de-la-primera-ola).
+Cada cohorte exportó 500 campos nuevos. En conjunto hubo 2.125 segmentos, 386 solicitudes de Luna y cero llamadas a Sol. El techo autorizado de **US$0,931024** incluía US$0,810024 de reserva para Luna y US$0,121 para revisión semántica condicional.
+
+| Cohorte | DSD | Inline | Solicitudes Luna | Gasto |
+|---|---:|---:|---:|---:|
+| Apocalypse | 500 | 0 | 38 | US$0,020299 |
+| Midwood Isle | 394 | 106 | 105 | US$0,035975 |
+| Falskaar | 292 | 208 | 133 | US$0,043931 |
+| Wyrmstooth | 416 | 84 | 110 | US$0,036256 |
+| **Total** | **1.602** | **398** | **386** | **US$0,136461** |
+
+Se cotejaron 12 campos por cohorte y se conciliaron las retenciones mediante los recibos, el glosario y los registros relacionados. Los ajustes alinearon nombres entre tomos y hechizos y entre textos y marcadores del mapa. También se comprobaron las iniciales ilustradas y los controles de formato. Wyrmstooth recuperó cinco campos de respuestas conciliadas que la QA había retenido por diferencias de grafía. El ZIP integrado de Midwood Isle conserva 530 campos anteriores y añade los 500 de la ola. El glosario y la memoria aprobada permanecen fuera de la edición provisional.
+
+Se verificaron los manifiestos y hashes de los ZIP. Los 386 recibos reales se reprodujeron en una copia de la cartera con cero reenvíos y sin variación del saldo. Pasaron 79 pruebas focalizadas. El coste observado fue **US$0,06823 por 1.000 campos** para estos tipos y longitudes. La ola excluyó diálogos y la comprobación en juego sigue pendiente. [Comprobación y reversión](GUIA_DE_USO.md#comprobar-los-zip-de-la-primera-ola).
 
 ## Compatibilidad y exportación auditadas el 11 de noviembre
 

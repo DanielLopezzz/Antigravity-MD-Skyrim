@@ -2,9 +2,9 @@
 
 Actualizado el **2026-11-27**. Índice de hechos cerrados y decisiones sustituidas. [Estado vigente](ESTADO_ACTUAL.md) · [Uso](GUIA_DE_USO.md) · [Reglas](REFERENCIA_TECNICA.md).
 
-## Primera ola preparada en Ultra, 2026-11-27
+## Primera ola ejecutada en Ultra, 2026-11-27
 
-La validación de la Carta de Drakus cerró la muestra de documentos. Se cotejó el inventario del perfil Ultra y se sellaron cuatro cohortes de 500 campos con recuperación de recibos y exportación ensayadas offline. [Preparación](REFERENCIA_TECNICA.md#primera-ola-de-ultra).
+La validación de la Carta de Drakus cerró la muestra de documentos. Después de cotejar el inventario del perfil Ultra, se ensayó la recuperación offline y se ejecutaron las cuatro cohortes autorizadas. Se empaquetó Midwood Isle con los campos previos y los nuevos en una sola capa para evitar que se sobrescriban. [Ejecución y evidencia](REFERENCIA_TECNICA.md#primera-ola-de-ultra).
 
 ## Comprobación de Apocalypse y Midwood Isle en Ultra, 2026-11-27
 
