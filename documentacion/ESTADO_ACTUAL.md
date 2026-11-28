@@ -157,7 +157,7 @@ La coherencia entre registros ya incorpora nombres localizados con identidad/pro
 
 | Orden | Trabajo pendiente | Condición para avanzar |
 |---|---|---|
-| 1 | Comprobar los paquetes de la primera ola en Skyrim | Verificar los textos por DSD, un libro inline con inicial ilustrada y la continuidad de Midwood Isle en un perfil clonado. |
+| 1 | Comprobar los paquetes de la primera ola en Skyrim | Verificar una inicial ilustrada por DSD, una entrada de diario inline y la continuidad de Midwood Isle en un perfil clonado. |
 | 2 | Aclarar el recibo económico incierto y conservar cuarentenas históricas | Conciliar por separado US$0,00249593 históricos y US$0,010256 del diagnóstico; no liberar reservas ni reenviar por suposición |
 | 3 | Adjudicar las parejas conservadas | Evaluación ciega; distinguir validación mecánica, naturalidad y fidelidad |
 | 4 | Calibrar el juez con casos naturales y discrepancias adjudicadas | Medir detección, falsos avisos, abstenciones, trabajo humano y coste incremental sobre los mismos ejemplos |
